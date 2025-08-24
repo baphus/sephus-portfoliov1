@@ -140,7 +140,7 @@ function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
   }, [api]);
 
   return (
-    <div>
+    <div className="w-full max-w-sm mx-auto">
        <Carousel 
         setApi={setApi}
         plugins={[plugin.current]}
@@ -153,12 +153,12 @@ function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
             <CarouselItem key={`${item.title}-img-${imgIndex}`}>
               <div className="p-1">
                 <Card>
-                  <CardContent className="flex aspect-[1/1.4142] items-center justify-center p-0">
+                  <CardContent className="flex aspect-square items-center justify-center p-0">
                     <Image 
                       src={img.src} 
                       alt={img.alt} 
                       width={600} 
-                      height={848}
+                      height={600}
                       className="rounded-lg object-cover w-full h-full" 
                       data-ai-hint={img.aiHint} 
                     />
