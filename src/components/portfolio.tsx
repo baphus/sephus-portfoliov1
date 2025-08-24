@@ -63,10 +63,10 @@ const portfolioItems = [
       tech: 'MySQL, PHP, HTML, CSS',
       features: ['User registration and login.', 'Movie browsing and seat selection.', 'Ticket booking and confirmation.', 'Database design and implementation.'],
       gallery: [
+        { src: '/portfolio/absolute-cinema/absolute1.png', alt: 'Website Screenshot 1', aiHint: 'website screenshot' },
         { src: '/portfolio/absolute-cinema/absolute2.png', alt: 'Website Screenshot 1', aiHint: 'website screenshot' },
         { src: '/portfolio/absolute-cinema/absolute3.png', alt: 'Database Schema', aiHint: 'database schema' },
         { src: '/portfolio/absolute-cinema/absolute4.png', alt: 'Database Schema', aiHint: 'database schema' },
-        { src: '/portfolio/absolute-cinema/absolute5.png', alt: 'Database Schema', aiHint: 'database schema' },
         { src: '/portfolio/absolute-cinema/absolute6.png', alt: 'Database Schema', aiHint: 'database schema' },
         { src: '/portfolio/absolute-cinema/absolute7.png', alt: 'Database Schema', aiHint: 'database schema' },
         { src: '/portfolio/absolute-cinema/absolute8.png', alt: 'Database Schema', aiHint: 'database schema' },
@@ -81,48 +81,20 @@ const portfolioItems = [
   {
     title: 'Web App: LET Reviewer',
     description: 'Designed and developed a LET reviewer app and its landing page as a side project for upcoming examinees.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/portfolio/let-review/app-preview.png',
     aiHint: 'landing page app',
     details: {
       role: 'Developer (Personal Project)',
       link: 'https://let-review-two.vercel.app/',
       tech: 'Next.js, Tailwind CSS',
       features: ['Designed and developed the app and landing page.', 'Fully responsive design for all devices.', 'Modern UI/UX principles applied.'],
-      gallery: [{ src: 'https://placehold.co/600x400.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' }]
-    }
-  },
-  {
-    title: 'Professional Interviews',
-    description: 'Interviewed a Project Manager and a Lead Executive, gaining valuable industry insights.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'professional interview',
-    details: {
-      role: 'Interviewer & Researcher',
-      tasks: [
-        'Interviewed a Project Manager from Chowis Co. Ltd.',
-        'Interviewed a Lead Executive from Ishmael Enterprises & Dormitory Incorporated.',
-        'Gained valuable insights into project management and business leadership.',
-        'Enhanced communication and public speaking skills.'
-      ],
       gallery: [
-        { src: 'https://placehold.co/600x400.png', alt: 'Interview setup', aiHint: 'professional interview setup' },
-      ]
-    }
-  },
-  {
-    title: 'High School Business Project - Marketing Video',
-    description: 'Created a marketing video edit for a high school business project selling food and snacks.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'marketing video',
-    details: {
-      role: 'Video Editor',
-      tasks: [
-        'Developed concept and storyboard for the marketing video.',
-        'Edited and produced the final video to promote the business project.',
-      ],
-      embed: <div className="aspect-video bg-muted rounded-lg flex items-center justify-center"><p>Marketing Video Placeholder</p></div>,
-      gallery: [
-        { src: 'https://placehold.co/600x400.png', alt: 'Video still', aiHint: 'video editing' },
+        { src: '/portfolio/let-review/landing.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' },
+        { src: '/portfolio/let-review/app-preview.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' },
+        { src: '/portfolio/let-review/feature-challenges.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' },
+        { src: '/portfolio/let-review/feature-progress.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' },
+        { src: '/portfolio/let-review/feature-reviewer.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' },
+        { src: '/portfolio/let-review/feature-timer.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' }
       ]
     }
   }
@@ -155,7 +127,7 @@ function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
   }, [api]);
 
   return (
-    <div className="w-full max-w-sm mx-auto">
+    <div className="w-full max-w-2xl mx-auto">
        <Carousel 
         setApi={setApi}
         plugins={[plugin.current]}
@@ -248,13 +220,14 @@ export default function Portfolio() {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="mt-4 space-y-6">
+                  {item.details.gallery && item.details.gallery.length > 0 && (
+                    <ProjectCarousel item={item} />
+                  )}
+
                   {item.details.role && <p><strong>Role:</strong> {item.details.role}</p>}
                   {item.details.duration && <p><strong>Duration:</strong> {item.details.duration}</p>}
                   {item.details.tech && <p><strong>Technology:</strong> {item.details.tech}</p>}
                   
-                  {item.details.gallery && item.details.gallery.length > 0 && (
-                    <ProjectCarousel item={item} />
-                  )}
 
                   {item.details.stats && (
                     <div>
