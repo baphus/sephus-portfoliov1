@@ -24,7 +24,7 @@ const portfolioItems = [
     aiHint: 'social media marketing',
     details: {
       role: 'Social Media Manager & Creative Designer',
-      duration: 'July 2025 – Aug 2025',
+      duration: 'April 21, 2025 - Present',
       stats: [
         { label: 'Total Views', value: '5,156' },
         { label: 'Unique Reach', value: '2,260' },
@@ -153,7 +153,6 @@ export default function Portfolio() {
                   {item.details.role && <p><strong>Role:</strong> {item.details.role}</p>}
                   {item.details.duration && <p><strong>Duration:</strong> {item.details.duration}</p>}
                   {item.details.tech && <p><strong>Technology:</strong> {item.details.tech}</p>}
-                  {item.details.tools && <p><strong>Tools:</strong> {item.details.tools.join(', ')}</p>}
                   
                   {item.details.stats && (
                     <div>
