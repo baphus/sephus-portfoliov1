@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Guitar, Gamepad2, Lightbulb, Rocket } from 'lucide-react';
 
-const professionalAttributes = [
-  'Detail-Oriented',
-  'Reliable',
-  'Communication Skills',
-  'Adaptability',
-  'Research-Driven',
-  'Self-Motivated',
+const personalDetails = [
+  { label: 'Tech-Savvy', icon: <Rocket className="mr-2 h-4 w-4" /> },
+  { label: 'Curious', icon: <Lightbulb className="mr-2 h-4 w-4" /> },
+  { label: 'Plays Guitar', icon: <Guitar className="mr-2 h-4 w-4" /> },
+  { label: 'Gamer', icon: <Gamepad2 className="mr-2 h-4 w-4" /> },
 ];
 
 export default function About() {
@@ -33,19 +32,24 @@ export default function About() {
           </div>
           <div className="md:col-span-3 space-y-6">
             <div className="space-y-4">
-               <p className="text-lg text-muted-foreground">
-               Dynamic and versatile digital professional with expertise spanning video editing, social media management, web development, and data analytics. Currently pursuing a Bachelor of Science in Information Systems (BSIS) with demonstrated success in driving organic social media growth, creating compelling visual content, and managing multi-platform digital campaigns.
+              <h3 className="text-2xl font-semibold font-headline">Hey, I'm Josephus!</h3>
+              <p className="text-lg text-muted-foreground">
+                I'm a creative professional from Toledo City, Cebu, with a passion for blending technology and storytelling. As a tech-savvy and naturally curious person, I love diving into new challenges, whether it's producing a viral video for a social media campaign or designing and building a web application from scratch.
               </p>
               <p className="text-muted-foreground">
-              Proven track record of achieving measurable results including 5,156 total post views and 2,260 unique reach across social media campaigns. Strong foundation in database management, data visualization, and modern web technologies with a commitment to continuous learning and professional development.
+                My approach is all about working smart—finding efficient and creative solutions to help businesses grow. Nothing excites me more than seeing an idea come to life and deliver real results, like when I helped my family's business, JK Bros Combos, reach over 2,200 people organically. It's this drive to solve problems and connect with people that fuels my work.
+              </p>
+              <p className="text-muted-foreground">
+                When I'm not focused on a project, you can usually find me playing my guitar or diving into a good video game. I'm always open to new opportunities and love engaging with like-minded people. If you have a project in mind or just want to connect, feel free to reach out!
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-4 font-headline">Professional Attributes</h3>
+              <h3 className="text-xl font-semibold mb-4 font-headline">A Little More About Me</h3>
               <div className="flex flex-wrap gap-2">
-                {professionalAttributes.map((quality) => (
-                  <Badge key={quality} variant="secondary" className="px-3 py-1 text-sm">
-                    {quality}
+                {personalDetails.map((detail) => (
+                  <Badge key={detail.label} variant="secondary" className="px-3 py-1.5 text-sm flex items-center">
+                    {detail.icon}
+                    {detail.label}
                   </Badge>
                 ))}
               </div>
