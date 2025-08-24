@@ -203,8 +203,8 @@ export default function Portfolio() {
                   
                   {item.details.gallery && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {item.details.gallery.map(img => (
-                        <Image key={img.src} src={img.src} alt={img.alt} width={400} height={300} className="rounded-lg object-cover" data-ai-hint={img.aiHint} />
+                      {item.details.gallery.map((img, imgIndex) => (
+                        <Image key={`${img.src}-${imgIndex}`} src={img.src} alt={img.alt} width={400} height={300} className="rounded-lg object-cover" data-ai-hint={img.aiHint} />
                       ))}
                     </div>
                   )}
