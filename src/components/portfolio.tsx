@@ -26,7 +26,7 @@ import { ArrowUpRight } from 'lucide-react';
 const portfolioItems = [
   {
     title: 'Social Media Campaign – JK Bros Combos',
-    description: 'Managed a 4-week social media campaign and designed all creative assets for a family food business.',
+    description: 'Managed a comprehensive social media campaign, handling all content creation, media production, and day-to-day management for a family food business.',
     image: 'https://placehold.co/600x400.png',
     aiHint: 'social media marketing',
     details: {
@@ -39,7 +39,7 @@ const portfolioItems = [
         { label: 'Peak Single Post', value: '971' },
         { label: 'Engagement Rate', value: '2.3%' },
       ],
-      highlights: ['Developed complete brand identity including logo.', 'Created and executed the full content calendar.', 'Managed organic growth strategy with zero ad spend.', 'Produced all food photography and promotional graphics.'],
+      highlights: ['Developed the complete brand identity, including the logo and all visual assets.', 'Created and executed the content strategy, including posts, media, and promotional materials.', 'Managed all aspects of the social media presence to drive organic growth and engagement.', 'Handled all food photography, styling, and graphic design for the campaign.'],
       gallery: [
         { src: 'https://placehold.co/400x300.png', alt: 'JK Bros Logo', aiHint: 'business logo' },
         { src: 'https://placehold.co/400x300.png', alt: 'Viral Promo Post', aiHint: 'social media post' }
