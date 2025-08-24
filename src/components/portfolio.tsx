@@ -29,7 +29,7 @@ const portfolioItems = [
   {
     title: 'Social Media Campaign – JK Bros Combos',
     description: 'Managed a comprehensive social media campaign, handling all content creation, media production, and day-to-day management for a family food business.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/portfolio/social-media-campaign/banner.png',
     aiHint: 'social media marketing',
     details: {
       role: 'Social Media Manager & Creative Designer',
@@ -43,8 +43,8 @@ const portfolioItems = [
       ],
       highlights: ['Developed the complete brand identity, including the logo and all visual assets.', 'Created and executed the content strategy, including posts, media, and promotional materials.', 'Managed all aspects of the social media presence to drive organic growth and engagement.', 'Handled all food photography, styling, and graphic design for the campaign.'],
       gallery: [
-        { src: 'https://placehold.co/400x300.png', alt: 'JK Bros Logo', aiHint: 'business logo' },
-        { src: 'https://placehold.co/400x300.png', alt: 'Viral Promo Post', aiHint: 'social media post' }
+        { src: '/portfolio/social-media-campaign/jkbroscombos.png', alt: 'JK Bros Logo', aiHint: 'business logo' },
+        { src: '/portfolio/social-media-campaign/GALLERY1.png', alt: 'Viral Promo Post', aiHint: 'social media post' }
       ]
     }
   },
@@ -153,12 +153,12 @@ function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
             <CarouselItem key={`${item.title}-img-${imgIndex}`}>
               <div className="p-1">
                 <Card>
-                  <CardContent className="flex aspect-video items-center justify-center p-0">
+                  <CardContent className="flex aspect-[1/1.4142] items-center justify-center p-0">
                     <Image 
                       src={img.src} 
                       alt={img.alt} 
-                      width={800} 
-                      height={450} 
+                      width={600} 
+                      height={848}
                       className="rounded-lg object-cover w-full h-full" 
                       data-ai-hint={img.aiHint} 
                     />
@@ -233,14 +233,14 @@ export default function Portfolio() {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="mt-4 space-y-6">
-                  {item.details.gallery && item.details.gallery.length > 0 && (
-                    <ProjectCarousel item={item} />
-                  )}
-
                   {item.details.role && <p><strong>Role:</strong> {item.details.role}</p>}
                   {item.details.duration && <p><strong>Duration:</strong> {item.details.duration}</p>}
                   {item.details.tech && <p><strong>Technology:</strong> {item.details.tech}</p>}
                   
+                  {item.details.gallery && item.details.gallery.length > 0 && (
+                    <ProjectCarousel item={item} />
+                  )}
+
                   {item.details.stats && (
                     <div>
                       <h3 className="font-semibold mb-2">Campaign Stats:</h3>
