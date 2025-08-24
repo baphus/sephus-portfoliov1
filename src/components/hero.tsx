@@ -10,7 +10,7 @@ export default function Hero() {
             Hi, I’m Josephus
           </h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">
-            Video Editor • Digital Creative • Social Media Manager • BSIS Graduate
+            A dynamic and versatile digital professional with expertise in video editing, social media management, and web development.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button asChild size="lg">

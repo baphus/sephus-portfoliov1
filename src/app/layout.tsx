@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: "Kim's Portfolio",
-  description: 'Portfolio of Josephus Kim L. Sarsonas, a BSIS graduate from Cebu Technological University.',
+  description: 'Dynamic and versatile digital professional with expertise spanning video editing, social media management, web development, and data analytics.',
 };
 
 export default function RootLayout({

@@ -18,60 +18,39 @@ import { ArrowUpRight } from 'lucide-react';
 
 const portfolioItems = [
   {
-    title: 'Video Editing – The English Home',
-    description: 'Freelance video editor for an English tutoring company.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'video editing',
-    details: {
-      role: 'Video Editor',
-      tasks: ['Edited tutoring sessions for promotional materials.', 'Created engaging social media video clips.', 'Ensured consistent branding across all video content.'],
-      embed: <div className="aspect-video bg-muted rounded-lg flex items-center justify-center"><p>Video Placeholder</p></div>
-    }
-  },
-  {
     title: 'Social Media Campaign – JK Bros Combos',
-    description: 'Managed social media and designed creative assets.',
+    description: 'Managed a 4-week social media campaign and designed all creative assets for a family food business.',
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'social media',
+    aiHint: 'social media marketing',
     details: {
       role: 'Social Media Manager & Creative Designer',
-      duration: 'July 26 – Aug 22, 2025',
+      duration: 'July 2025 – Aug 2025',
       stats: [
-        { label: 'Followers', value: '+4' },
-        { label: 'Visits', value: '113' },
-        { label: 'Interactions', value: '29' },
-        { label: 'Reach', value: '322' },
-        { label: 'Views', value: '1,026' },
+        { label: 'Total Views', value: '5,156' },
+        { label: 'Unique Reach', value: '2,260' },
+        { label: 'Interactions', value: '121' },
+        { label: 'Peak Single Post', value: '971' },
+        { label: 'Engagement Rate', value: '2.3%' },
       ],
-      highlights: ['Created the official business logo.', 'Designed all graphic materials for the campaign.', 'Managed organic content strategy and growth.']
-    }
-  },
-  {
-    title: 'Creative Ads – JK Bros Combos',
-    description: 'Managed social media, created posts, designed assets, and marketed our family business, JK Bros Combos, via engaging posts.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'graphic design',
-    details: {
-      role: 'Creative Designer & Social Media Manager',
-      tasks: ['Designed posters, flyers, and digital ads.', 'Developed a cohesive visual identity for the business.', 'Managed social media channels and content calendar.', 'Created engaging posts to drive customer interaction.'],
+      highlights: ['Developed complete brand identity including logo.', 'Created and executed the full content calendar.', 'Managed organic growth strategy with zero ad spend.', 'Produced all food photography and promotional graphics.'],
       gallery: [
-        { src: 'https://placehold.co/400x300.png', alt: 'Ad 1', aiHint: 'business ad' },
-        { src: 'https://placehold.co/400x300.png', alt: 'Ad 2', aiHint: 'product flyer' }
+        { src: 'https://placehold.co/400x300.png', alt: 'JK Bros Logo', aiHint: 'business logo' },
+        { src: 'https://placehold.co/400x300.png', alt: 'Viral Promo Post', aiHint: 'social media post' }
       ]
     }
   },
   {
     title: 'Web Project: Cinema Ticketing Website',
-    description: 'An academic project featuring a cinema ticket booking system.',
+    description: 'An academic project featuring a full-stack cinema ticket booking system.',
     image: 'https://placehold.co/600x400.png',
     aiHint: 'web development',
     details: {
       role: 'Developer (Academic Project)',
       tech: 'MySQL, PHP, HTML, CSS',
-      features: ['User registration and login.', 'Movie browsing and seat selection.', 'Ticket booking and confirmation.'],
+      features: ['User registration and login.', 'Movie browsing and seat selection.', 'Ticket booking and confirmation.', 'Database design and implementation.'],
       gallery: [
         { src: 'https://placehold.co/600x400.png', alt: 'Website Screenshot 1', aiHint: 'website screenshot' },
-        { src: 'https://placehold.co/600x400.png', alt: 'Website Screenshot 2', aiHint: 'database schema' }
+        { src: 'https://placehold.co/600x400.png', alt: 'Database Schema', aiHint: 'database schema' }
       ]
     }
   },
@@ -79,16 +58,17 @@ const portfolioItems = [
     title: 'Web App: LET Reviewer',
     description: 'Designed and developed a LET reviewer app and its landing page as a side project for upcoming examinees.',
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'landing page',
+    aiHint: 'landing page app',
     details: {
       role: 'Developer (Personal Project)',
       link: 'https://let-review-two.vercel.app/',
-      features: ['Designed and developed the app and landing page.', 'Fully responsive design.', 'Built with Next.js and Tailwind CSS.'],
+      tech: 'Next.js, Tailwind CSS',
+      features: ['Designed and developed the app and landing page.', 'Fully responsive design for all devices.', 'Modern UI/UX principles applied.'],
       gallery: [{ src: 'https://placehold.co/600x400.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' }]
     }
   },
   {
-    title: 'Executive Interviews',
+    title: 'Professional Interviews',
     description: 'Interviewed a Project Manager and a Lead Executive, gaining valuable industry insights.',
     image: 'https://placehold.co/600x400.png',
     aiHint: 'professional interview',
