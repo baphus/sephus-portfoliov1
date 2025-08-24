@@ -3,13 +3,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Guitar, Gamepad2, Lightbulb, Rocket, Briefcase, Mic, Users, Cpu } from 'lucide-react';
 
-const personalDetails = [
-  { label: 'Tech-Savvy', icon: <Rocket className="mr-2 h-4 w-4" /> },
-  { label: 'Curious', icon: <Lightbulb className="mr-2 h-4 w-4" /> },
-  { label: 'Plays Guitar', icon: <Guitar className="mr-2 h-4 w-4" /> },
-  { label: 'Gamer', icon: <Gamepad2 className="mr-2 h-4 w-4" /> },
-];
-
 const professionalAttributes = [
     { label: 'Detail-Oriented', icon: <Cpu className="mr-2 h-4 w-4" /> },
     { label: 'Reliable', icon: <Briefcase className="mr-2 h-4 w-4" /> },
@@ -59,17 +52,6 @@ export default function About() {
                   <Badge key={attr.label} variant="secondary" className="px-3 py-1.5 text-sm flex items-center">
                     {attr.icon}
                     {attr.label}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4 font-headline">A Little More About Me</h3>
-              <div className="flex flex-wrap gap-2">
-                {personalDetails.map((detail) => (
-                  <Badge key={detail.label} variant="secondary" className="px-3 py-1.5 text-sm flex items-center">
-                    {detail.icon}
-                    {detail.label}
                   </Badge>
                 ))}
               </div>
