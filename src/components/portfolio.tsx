@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Autoplay from "embla-carousel-autoplay";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import {
   Dialog,
@@ -18,6 +19,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -116,6 +118,74 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
+
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
+  return (
+    <div>
+       <Carousel 
+        setApi={setApi}
+        plugins={[plugin.current]}
+        className="w-full"
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+      >
+        <CarouselContent>
+          {item.details.gallery && item.details.gallery.map((img, imgIndex) => (
+            <CarouselItem key={`${item.title}-img-${imgIndex}`}>
+              <div className="p-1">
+                <Card>
+                  <CardContent className="flex aspect-video items-center justify-center p-0">
+                    <Image 
+                      src={img.src} 
+                      alt={img.alt} 
+                      width={800} 
+                      height={450} 
+                      className="rounded-lg object-cover w-full h-full" 
+                      data-ai-hint={img.aiHint} 
+                    />
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+      <div className="flex justify-center items-center gap-2 mt-4">
+        {Array.from({ length: count }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => api?.scrollTo(i)}
+            className={`h-2 w-2 rounded-full transition-all ${
+              i === current - 1 ? "w-4 bg-primary" : "bg-muted-foreground/50"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Portfolio() {
   return (
     <section id="portfolio" className="w-full py-16 md:py-24 bg-background">
@@ -164,30 +234,7 @@ export default function Portfolio() {
                 </DialogHeader>
                 <div className="mt-4 space-y-6">
                   {item.details.gallery && item.details.gallery.length > 0 && (
-                    <Carousel className="w-full">
-                      <CarouselContent>
-                        {item.details.gallery.map((img, imgIndex) => (
-                          <CarouselItem key={`${item.title}-img-${imgIndex}`}>
-                            <div className="p-1">
-                              <Card>
-                                <CardContent className="flex aspect-video items-center justify-center p-0">
-                                  <Image 
-                                    src={img.src} 
-                                    alt={img.alt} 
-                                    width={800} 
-                                    height={450} 
-                                    className="rounded-lg object-cover w-full h-full" 
-                                    data-ai-hint={img.aiHint} 
-                                  />
-                                </CardContent>
-                              </Card>
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                      <CarouselPrevious />
-                      <CarouselNext />
-                    </Carousel>
+                    <ProjectCarousel item={item} />
                   )}
 
                   {item.details.role && <p><strong>Role:</strong> {item.details.role}</p>}
