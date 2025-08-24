@@ -33,7 +33,7 @@ const portfolioItems = [
     aiHint: 'social media marketing',
     details: {
       role: 'Social Media Manager & Creative Designer',
-      duration: 'April 21, 2025 - Present',
+      duration: 'April 21, 2025 - August 24, 2025',
       stats: [
         { label: 'Total Views', value: '5,156' },
         { label: 'Unique Reach', value: '2,260' },
@@ -44,7 +44,7 @@ const portfolioItems = [
       highlights: ['Developed the complete brand identity, including the logo and all visual assets.', 'Created and executed the content strategy, including posts, media, and promotional materials.', 'Managed all aspects of the social media presence to drive organic growth and engagement.', 'Handled all food photography, styling, and graphic design for the campaign.'],
       gallery: [
         { src: '/portfolio/social-media-campaign/jkbroscombos.png', alt: 'JK Bros Logo', aiHint: 'business logo' },
-        { src: '/portfolio/social-media-campaign/GALLERY1.png', alt: 'Viral Promo Post', aiHint: 'social media post' },
+        { src: '/portfolio/social-media-campaign/banner.png', alt: 'Viral Promo Post', aiHint: 'social media post' },
         { src: '/portfolio/social-media-campaign/posts.jpg', alt: 'Viral Promo Post', aiHint: 'social media post' },
         { src: '/portfolio/social-media-campaign/posts(1).png', alt: 'Viral Promo Post', aiHint: 'social media post' },
         { src: '/portfolio/social-media-campaign/posts(2).png', alt: 'Viral Promo Post', aiHint: 'social media post' },
@@ -146,7 +146,7 @@ function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
                       alt={img.alt} 
                       width={600} 
                       height={400}
-                      className="rounded-lg object-contain w-full" 
+                      className="rounded-lg object-contain w-full h-auto" 
                       data-ai-hint={img.aiHint} 
                     />
                   </CardContent>

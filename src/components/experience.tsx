@@ -2,7 +2,7 @@ const experienceData = [
   {
     role: 'Social Media Manager & Creative Designer',
     company: 'JK Bros Combos',
-    period: 'April 21, 2025 - Present',
+    period: 'April 21, 2025 - August 24, 2025',
     description: 'Developed and executed an intensive social media campaign, handling everything from brand identity and logo design to daily content creation, community management, and performance analytics, resulting in significant organic growth. I continue to manage all aspects of the business\'s digital presence.',
   },
   {

@@ -1,18 +1,58 @@
+"use client";
+
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download } from 'lucide-react';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full py-32 md:py-48 bg-background">
+    <section id="home" className="relative w-full py-32 md:py-48 bg-background overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
+        <motion.div
+          className="max-w-3xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1
+            className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
+            variants={itemVariants}
+          >
             Hi, I’m Josephus
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">
+          </motion.h1>
+          <motion.p
+            className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl"
+            variants={itemVariants}
+          >
             A dynamic and versatile digital professional with expertise in video editing, social media management, and web development.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          </motion.p>
+          <motion.div
+            className="mt-10 flex items-center justify-center gap-x-6"
+            variants={itemVariants}
+          >
             <Button asChild size="lg">
               <a href="/Josephus_Sarsonas_Resume.pdf" download>
                 <Download className="mr-2 h-4 w-4" />
@@ -25,8 +65,8 @@ export default function Hero() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
