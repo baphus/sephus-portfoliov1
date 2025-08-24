@@ -7,16 +7,10 @@ const experienceData = [
     description: 'Edited video content for an online English tutoring company, creating promotional materials and social media content.',
   },
   {
-    role: 'Social Media Manager',
-    company: 'JK Bros Combos',
-    period: 'Jul 2025 - Aug 2025',
-    description: 'Managed social media presence, designed creative assets, and executed an organic growth strategy for a food business.',
-  },
-  {
-    role: 'Creative Designer',
-    company: 'Family Business',
-    period: 'Ongoing',
-    description: 'Developed brand identity and created various marketing materials including logos, posters, and digital ads.',
+    role: 'Social Media Manager & Creative Designer',
+    company: 'JK Bros Combos (Family Business)',
+    period: 'Apr 2024 - Present',
+    description: 'Managed social media presence, designed creative assets, and executed an organic growth strategy for a food business. Developed brand identity and created various marketing materials including logos, posters, and digital ads.',
   },
   {
     role: 'Academic Project',
