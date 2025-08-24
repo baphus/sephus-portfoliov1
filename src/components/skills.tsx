@@ -1,36 +1,36 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Monitor, Presentation, Briefcase, Code, Database, Wand2 } from 'lucide-react';
+import { Monitor, Presentation, Briefcase, Code, Database, Wand2, Megaphone, Brush } from 'lucide-react';
 
 const skillsData = [
   {
+    category: 'Digital Marketing & Branding',
+    skills: ['Social Media Management', 'Content Strategy', 'Brand Development', 'Organic Growth', 'Campaign Analysis'],
+    icon: <Megaphone />,
+  },
+  {
+    category: 'Creative Design',
+    skills: ['Graphic Design (Ads, Posters)', 'Logo & Brand Identity', 'Food Photography & Styling', 'Canva', 'Notion'],
+    icon: <Brush />,
+  },
+  {
     category: 'Video Editing',
-    skills: ['Capcut', 'Premiere Pro', 'Filmora', 'Sony Vegas', 'Canva'],
+    skills: ['Capcut', 'Premiere Pro', 'Filmora', 'Sony Vegas', 'Creative Storytelling'],
     icon: <Monitor />,
   },
   {
-    category: 'Presentations',
-    skills: ['Canva', 'MS PowerPoint', 'Prezi', 'Google Slides'],
-    icon: <Presentation />,
-  },
-  {
-    category: 'Office Tools',
-    skills: ['Word', 'Excel', 'Adobe PDF→Word conversion'],
-    icon: <Briefcase />,
-  },
-  {
-    category: 'Web & Design',
-    skills: ['Squarespace', 'WordPress', 'Canva', 'Notion'],
-    icon: <Wand2 />,
-  },
-  {
-    category: 'Development',
-    skills: ['Cinema Ticketing Website (MySQL)', 'Landing Page App'],
+    category: 'Web Development',
+    skills: ['HTML/CSS/PHP', 'MySQL', 'Squarespace', 'WordPress', 'Next.js'],
     icon: <Code />,
   },
   {
-    category: 'Data & Productivity',
-    skills: ['Google Forms', 'Scheduling', 'Fast Typing'],
-    icon: <Database />,
+    category: 'Presentations & Office Tools',
+    skills: ['Canva', 'MS PowerPoint', 'Google Slides', 'MS Word & Excel', 'Adobe PDF'],
+    icon: <Presentation />,
+  },
+  {
+    category: 'Professional Skills',
+    skills: ['Fast Typing', 'Scheduling', 'Google Forms', 'Remote Collaboration'],
+    icon: <Briefcase />,
   },
 ];
 
