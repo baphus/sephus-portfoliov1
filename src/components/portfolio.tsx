@@ -47,13 +47,13 @@ const portfolioItems = [
     }
   },
   {
-    title: 'Creative Ads & Family Business',
-    description: 'Designed promotional graphics for a family-owned business.',
+    title: 'Creative Ads – JK Bros Combos',
+    description: 'Managed social media, created posts, designed assets, and marketed our family business, JK Bros Combos, via engaging posts.',
     image: 'https://placehold.co/600x400.png',
     aiHint: 'graphic design',
     details: {
-      role: 'Creative Designer',
-      tasks: ['Designed posters, flyers, and digital ads.', 'Developed a cohesive visual identity for the business.'],
+      role: 'Creative Designer & Social Media Manager',
+      tasks: ['Designed posters, flyers, and digital ads.', 'Developed a cohesive visual identity for the business.', 'Managed social media channels and content calendar.', 'Created engaging posts to drive customer interaction.'],
       gallery: [
         { src: 'https://placehold.co/400x300.png', alt: 'Ad 1', aiHint: 'business ad' },
         { src: 'https://placehold.co/400x300.png', alt: 'Ad 2', aiHint: 'product flyer' }
@@ -77,7 +77,7 @@ const portfolioItems = [
   },
   {
     title: 'Web App: LET Reviewer',
-    description: 'A side project to design and build a LET reviewer app and its landing page for upcoming examinees.',
+    description: 'Designed and developed a LET reviewer app and its landing page as a side project for upcoming examinees.',
     image: 'https://placehold.co/600x400.png',
     aiHint: 'landing page',
     details: {
@@ -88,17 +88,34 @@ const portfolioItems = [
     }
   },
   {
-    title: 'Academic Work & Presentations',
-    description: 'Various presentations and academic projects.',
+    title: 'Executive Interviews',
+    description: 'Interviewed a Project Manager and a Lead Executive, gaining valuable industry insights.',
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'presentation slides',
+    aiHint: 'professional interview',
     details: {
-      role: 'Student & Project Manager',
-      tools: ['Canva', 'MS PowerPoint', 'Prezi', 'Google Slides'],
-      tasks: ['Led team for a Project Manager Interview project.', 'Designed numerous academic presentations.'],
-      gallery: [{ src: 'https://placehold.co/600x400.png', alt: 'Presentation Slide', aiHint: 'infographic slide' }]
+      role: 'Interviewer & Researcher',
+      tasks: [
+        'Interviewed a Project Manager from Chowis Co. Ltd.',
+        'Interviewed a Lead Executive from Ishmael Enterprises & Dormitory Incorporated.',
+        'Gained valuable insights into project management and business leadership.',
+        'Enhanced communication and public speaking skills.'
+      ]
     }
   },
+  {
+    title: 'High School Business Project - Marketing Video',
+    description: 'Created a marketing video edit for a high school business project selling food and snacks.',
+    image: 'https://placehold.co/600x400.png',
+    aiHint: 'marketing video',
+    details: {
+      role: 'Video Editor',
+      tasks: [
+        'Developed concept and storyboard for the marketing video.',
+        'Edited and produced the final video to promote the business project.',
+      ],
+      embed: <div className="aspect-video bg-muted rounded-lg flex items-center justify-center"><p>Marketing Video Placeholder</p></div>
+    }
+  }
 ];
 
 const cardVariants = {

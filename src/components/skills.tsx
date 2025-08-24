@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Monitor, Presentation, Briefcase, Code, Database, Wand2, Megaphone, Brush } from 'lucide-react';
+import { Monitor, Presentation, Briefcase, Code, Database, Wand2, Megaphone, Brush, MessageSquare } from 'lucide-react';
 
 const skillsData = [
   {
@@ -29,7 +29,7 @@ const skillsData = [
   },
   {
     category: 'Professional Skills',
-    skills: ['Fast Typing', 'Scheduling', 'Google Forms', 'Remote Collaboration'],
+    skills: ['Fast Typing', 'Scheduling', 'Google Forms', 'Remote Collaboration', 'Public Speaking', 'Interviewing'],
     icon: <Briefcase />,
   },
 ];
