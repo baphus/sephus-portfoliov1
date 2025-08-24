@@ -3,11 +3,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 const personalQualities = [
-  'Detail-Oriented',
-  'Reliable',
-  'Good Communication',
-  'Researcher & Fast Learner',
-  'Editing (spelling, grammar, text)',
+  'Communication',
+  'Time Management',
+  'Organization',
+  'Problem-Solving',
+  'Adaptability',
+  'Reliability',
+  'Self-Motivation',
+  'Attention to Detail',
 ];
 
 export default function About() {
@@ -15,7 +18,7 @@ export default function About() {
     <section id="about" className="w-full py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">About Me</h2>
-        <div className="mt-12 grid gap-12 md:grid-cols-5 md:gap-16 items-center">
+        <div className="mt-12 grid gap-12 md:grid-cols-5 md:gap-16 items-start">
           <div className="md:col-span-2">
             <Card className="overflow-hidden rounded-2xl shadow-md">
               <CardContent className="p-0">
@@ -32,14 +35,15 @@ export default function About() {
           </div>
           <div className="md:col-span-3 space-y-6">
             <div className="space-y-4">
-              <p className="text-lg text-muted-foreground">
-                I am a detail-oriented, reliable, and versatile individual with experience in video editing, social media management, creative design, website creation, and academic research. I am also an avid learner and researcher who gives 100% effort into mastering new skills and tools.
+               <p className="text-lg text-muted-foreground">
+                Hi, I’m Josephus Kim L. Sarsonas, a creative and detail-oriented professional based in Toledo City, Cebu. I hold a Bachelor of Science in Information Systems from Cebu Technological University, and I’m passionate about combining technology, creativity, and storytelling to bring ideas to life.
               </p>
-              <ul className="space-y-2 text-foreground">
-                <li><strong>Name:</strong> Josephus Kim L. Sarsonas</li>
-                <li><strong>From:</strong> Toledo City, Cebu</li>
-                <li><strong>Education:</strong> Bachelor of Science in Information Systems, Cebu Technological University</li>
-              </ul>
+              <div>
+                <h3 className="text-xl font-semibold mb-2 font-headline">What I Do</h3>
+                <p className="text-muted-foreground">
+                  I specialize in video editing, digital media creation, social media management, and creative design. My work blends technical precision with creativity—whether I’m editing a video, building a brand’s online presence, or designing visual campaigns.
+                </p>
+              </div>
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-4 font-headline">Personal Qualities</h3>
