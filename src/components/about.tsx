@@ -1,13 +1,22 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Guitar, Gamepad2, Lightbulb, Rocket } from 'lucide-react';
+import { Guitar, Gamepad2, Lightbulb, Rocket, Briefcase, Mic, Users, Cpu } from 'lucide-react';
 
 const personalDetails = [
   { label: 'Tech-Savvy', icon: <Rocket className="mr-2 h-4 w-4" /> },
   { label: 'Curious', icon: <Lightbulb className="mr-2 h-4 w-4" /> },
   { label: 'Plays Guitar', icon: <Guitar className="mr-2 h-4 w-4" /> },
   { label: 'Gamer', icon: <Gamepad2 className="mr-2 h-4 w-4" /> },
+];
+
+const professionalAttributes = [
+    { label: 'Detail-Oriented', icon: <Cpu className="mr-2 h-4 w-4" /> },
+    { label: 'Reliable', icon: <Briefcase className="mr-2 h-4 w-4" /> },
+    { label: 'Strong Communicator', icon: <Mic className="mr-2 h-4 w-4" /> },
+    { label: 'Adaptable', icon: <Users className="mr-2 h-4 w-4" /> },
+    { label: 'Self-Motivated', icon: <Rocket className="mr-2 h-4 w-4" /> },
+    { label: 'Research-Driven', icon: <Lightbulb className="mr-2 h-4 w-4" /> },
 ];
 
 export default function About() {
@@ -30,7 +39,7 @@ export default function About() {
               </CardContent>
             </Card>
           </div>
-          <div className="md:col-span-3 space-y-6">
+          <div className="md:col-span-3 space-y-8">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold font-headline">Hey, I'm Josephus!</h3>
               <p className="text-lg text-muted-foreground">
@@ -42,6 +51,17 @@ export default function About() {
               <p className="text-muted-foreground">
                 When I'm not focused on a project, you can usually find me playing my guitar or diving into a good video game. I'm always open to new opportunities and love engaging with like-minded people. If you have a project in mind or just want to connect, feel free to reach out!
               </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4 font-headline">Professional Attributes</h3>
+              <div className="flex flex-wrap gap-2">
+                {professionalAttributes.map((attr) => (
+                  <Badge key={attr.label} variant="secondary" className="px-3 py-1.5 text-sm flex items-center">
+                    {attr.icon}
+                    {attr.label}
+                  </Badge>
+                ))}
+              </div>
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-4 font-headline">A Little More About Me</h3>
