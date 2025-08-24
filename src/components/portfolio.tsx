@@ -44,22 +44,37 @@ const portfolioItems = [
       highlights: ['Developed the complete brand identity, including the logo and all visual assets.', 'Created and executed the content strategy, including posts, media, and promotional materials.', 'Managed all aspects of the social media presence to drive organic growth and engagement.', 'Handled all food photography, styling, and graphic design for the campaign.'],
       gallery: [
         { src: '/portfolio/social-media-campaign/jkbroscombos.png', alt: 'JK Bros Logo', aiHint: 'business logo' },
-        { src: '/portfolio/social-media-campaign/GALLERY1.png', alt: 'Viral Promo Post', aiHint: 'social media post' }
+        { src: '/portfolio/social-media-campaign/GALLERY1.png', alt: 'Viral Promo Post', aiHint: 'social media post' },
+        { src: '/portfolio/social-media-campaign/posts.jpg', alt: 'Viral Promo Post', aiHint: 'social media post' },
+        { src: '/portfolio/social-media-campaign/posts(1).png', alt: 'Viral Promo Post', aiHint: 'social media post' },
+        { src: '/portfolio/social-media-campaign/posts(2).png', alt: 'Viral Promo Post', aiHint: 'social media post' },
+        { src: '/portfolio/social-media-campaign/posts(3).png', alt: 'Viral Promo Post', aiHint: 'social media post' },
+        { src: '/portfolio/social-media-campaign/posts(4).png', alt: 'Viral Promo Post', aiHint: 'social media post' }
       ]
     }
   },
   {
-    title: 'Web Project: Cinema Ticketing Website',
+    title: 'Absolute Cinema: Cinema Ticketing Website',
     description: 'An academic project featuring a full-stack cinema ticket booking system.',
-    image: 'https://placehold.co/600x400.png',
+    image: '/portfolio/absolute-cinema/absolute.png',
     aiHint: 'web development',
     details: {
       role: 'Developer (Academic Project)',
       tech: 'MySQL, PHP, HTML, CSS',
       features: ['User registration and login.', 'Movie browsing and seat selection.', 'Ticket booking and confirmation.', 'Database design and implementation.'],
       gallery: [
-        { src: 'https://placehold.co/600x400.png', alt: 'Website Screenshot 1', aiHint: 'website screenshot' },
-        { src: 'https://placehold.co/600x400.png', alt: 'Database Schema', aiHint: 'database schema' }
+        { src: '/portfolio/absolute-cinema/absolute2.png', alt: 'Website Screenshot 1', aiHint: 'website screenshot' },
+        { src: '/portfolio/absolute-cinema/absolute3.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute4.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute5.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute6.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute7.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute8.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute9.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute10.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute11.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute12.png', alt: 'Database Schema', aiHint: 'database schema' },
+        { src: '/portfolio/absolute-cinema/absolute13.png', alt: 'Database Schema', aiHint: 'database schema' }
       ]
     }
   },
@@ -153,13 +168,13 @@ function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
             <CarouselItem key={`${item.title}-img-${imgIndex}`}>
               <div className="p-1">
                 <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-0">
+                  <CardContent className="flex items-center justify-center p-0">
                     <Image 
                       src={img.src} 
                       alt={img.alt} 
                       width={600} 
-                      height={600}
-                      className="rounded-lg object-cover w-full h-full" 
+                      height={400}
+                      className="rounded-lg object-contain w-full" 
                       data-ai-hint={img.aiHint} 
                     />
                   </CardContent>
