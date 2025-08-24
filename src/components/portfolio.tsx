@@ -76,14 +76,14 @@ const portfolioItems = [
     }
   },
   {
-    title: 'Web Project: Landing Page App',
-    description: 'A responsive landing page built with modern web technologies.',
+    title: 'Web App: LET Reviewer',
+    description: 'A side project to design and build a LET reviewer app and its landing page for upcoming examinees.',
     image: 'https://placehold.co/600x400.png',
     aiHint: 'landing page',
     details: {
       role: 'Developer (Personal Project)',
       link: 'https://let-review-two.vercel.app/',
-      features: ['Fully responsive design.', 'Built with Next.js and Tailwind CSS.'],
+      features: ['Designed and developed the app and landing page.', 'Fully responsive design.', 'Built with Next.js and Tailwind CSS.'],
       gallery: [{ src: 'https://placehold.co/600x400.png', alt: 'Landing Page Screenshot', aiHint: 'webpage design' }]
     }
   },
