@@ -12,6 +12,13 @@ import {
   DialogTrigger,
   DialogDescription,
 } from '@/components/ui/dialog';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { ArrowUpRight } from 'lucide-react';
@@ -79,6 +86,9 @@ const portfolioItems = [
         'Interviewed a Lead Executive from Ishmael Enterprises & Dormitory Incorporated.',
         'Gained valuable insights into project management and business leadership.',
         'Enhanced communication and public speaking skills.'
+      ],
+      gallery: [
+        { src: 'https://placehold.co/600x400.png', alt: 'Interview setup', aiHint: 'professional interview setup' },
       ]
     }
   },
@@ -93,7 +103,10 @@ const portfolioItems = [
         'Developed concept and storyboard for the marketing video.',
         'Edited and produced the final video to promote the business project.',
       ],
-      embed: <div className="aspect-video bg-muted rounded-lg flex items-center justify-center"><p>Marketing Video Placeholder</p></div>
+      embed: <div className="aspect-video bg-muted rounded-lg flex items-center justify-center"><p>Marketing Video Placeholder</p></div>,
+      gallery: [
+        { src: 'https://placehold.co/600x400.png', alt: 'Video still', aiHint: 'video editing' },
+      ]
     }
   }
 ];
@@ -150,6 +163,33 @@ export default function Portfolio() {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="mt-4 space-y-6">
+                  {item.details.gallery && item.details.gallery.length > 0 && (
+                    <Carousel className="w-full">
+                      <CarouselContent>
+                        {item.details.gallery.map((img, imgIndex) => (
+                          <CarouselItem key={`${item.title}-img-${imgIndex}`}>
+                            <div className="p-1">
+                              <Card>
+                                <CardContent className="flex aspect-video items-center justify-center p-0">
+                                  <Image 
+                                    src={img.src} 
+                                    alt={img.alt} 
+                                    width={800} 
+                                    height={450} 
+                                    className="rounded-lg object-cover w-full h-full" 
+                                    data-ai-hint={img.aiHint} 
+                                  />
+                                </CardContent>
+                              </Card>
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious />
+                      <CarouselNext />
+                    </Carousel>
+                  )}
+
                   {item.details.role && <p><strong>Role:</strong> {item.details.role}</p>}
                   {item.details.duration && <p><strong>Duration:</strong> {item.details.duration}</p>}
                   {item.details.tech && <p><strong>Technology:</strong> {item.details.tech}</p>}
@@ -196,14 +236,6 @@ export default function Portfolio() {
                   )}
 
                   {item.details.embed && <div className="mt-4">{item.details.embed}</div>}
-                  
-                  {item.details.gallery && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {item.details.gallery.map((img, imgIndex) => (
-                        <Image key={`${img.src}-${imgIndex}`} src={img.src} alt={img.alt} width={400} height={300} className="rounded-lg object-cover" data-ai-hint={img.aiHint} />
-                      ))}
-                    </div>
-                  )}
 
                   {item.details.link && (
                     <Button asChild>
