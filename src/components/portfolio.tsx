@@ -54,6 +54,28 @@ const portfolioItems = [
     }
   },
   {
+    title: 'Video Advertisement - Snack Bar',
+    description: 'Produced a compelling video advertisement for a local snack bar to boost their online presence and attract more customers.',
+    image: 'https://picsum.photos/600/400',
+    aiHint: 'video production',
+    details: {
+      role: 'Video Producer & Editor',
+      highlights: ['Conceptualized, filmed, and edited a promotional video.', 'Utilized dynamic shots and engaging music to capture audience attention.', 'The video was used across social media platforms to drive engagement.'],
+      embed: (
+        <div className="aspect-video w-full">
+          <iframe
+            className="w-full h-full rounded-lg"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      ),
+      gallery: []
+    }
+  },
+  {
     title: 'Absolute Cinema: Cinema Ticketing Website',
     description: 'An academic project featuring a full-stack cinema ticket booking system.',
     image: '/portfolio/absolute-cinema/absolute.png',
