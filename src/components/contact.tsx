@@ -112,17 +112,17 @@ export default function Contact() {
               </Form>
               <div className="mt-8 flex justify-center space-x-4">
                 <Button variant="outline" size="icon" asChild>
-                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <a href="https://www.linkedin.com/in/josephus-kim-sarsonas-1b5191260/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="outline" size="icon" asChild>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <a href="https://github.com/baphus" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <Github className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="outline" size="icon" asChild>
-                  <a href="mailto:example@email.com" aria-label="Email">
+                  <a href="mailto:sarsonasjosephuskim@email.com" aria-label="Email">
                     <Mail className="h-5 w-5" />
                   </a>
                 </Button>
