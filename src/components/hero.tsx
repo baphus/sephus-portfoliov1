@@ -42,19 +42,19 @@ const logoVariants = {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full py-32 md:py-48 bg-background overflow-hidden">
+    <section id="home" className="relative w-full py-24 md:py-32">
       <div className="container mx-auto px-4 md:px-6 text-center">
         <motion.div
-          className="max-w-3xl mx-auto"
+          className="max-w-4xl mx-auto bg-background/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 shadow-lg"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.div
-            className="flex justify-center mb-8"
+            className="flex justify-center mb-6"
             variants={logoVariants}
           >
-            <Image src="/logo.svg" alt="Josephus Sarsonas Logo" width={100} height={100} />
+            <Image src="/logo.svg" alt="Josephus Sarsonas Logo" width={90} height={90} />
           </motion.div>
           <motion.h1
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
@@ -63,7 +63,7 @@ export default function Hero() {
             Hi, I’m Josephus
           </motion.h1>
           <motion.p
-            className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl"
+            className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl"
             variants={itemVariants}
           >
             A dynamic and versatile digital professional with expertise in video editing, social media management, and web development.
@@ -78,7 +78,7 @@ export default function Hero() {
                 Download Resume
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="bg-background/50 hover:bg-background/80">
               <a href="#portfolio">
                 View My Work
                 <ArrowRight className="ml-2 h-4 w-4" />
