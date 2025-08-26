@@ -54,13 +54,13 @@ const portfolioItems = [
     }
   },
   {
-    title: 'Video Advertisement - Snack Bar',
-    description: 'Produced a compelling video advertisement for a local snack bar to boost their online presence and attract more customers.',
+    title: 'Video Advertisement - Sci High Pi',
+    description: 'Produced a compelling video advertisement for a local snack bar, "Sci High Pi", using CapCut to boost their online presence and attract more customers.',
     image: 'https://picsum.photos/600/400',
     aiHint: 'video production',
     details: {
-      role: 'Video Producer & Editor',
-      highlights: ['Conceptualized, filmed, and edited a promotional video.', 'Utilized dynamic shots and engaging music to capture audience attention.', 'The video was used across social media platforms to drive engagement.'],
+      role: 'Video Producer & Editor (CapCut)',
+      highlights: ['Conceptualized, filmed, and edited a promotional video for "Sci High Pi".', 'Utilized dynamic shots and engaging music in CapCut to capture audience attention.', 'The video was used across social media platforms to drive engagement.'],
       embed: (
         <div className="aspect-video w-full">
           <iframe
