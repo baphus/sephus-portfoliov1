@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -22,7 +23,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 md:px-6">
         <a href="#home" className="mr-6 flex items-center space-x-2">
-          <span className="font-bold">Josephus Sarsonas</span>
+          <Image src="/logo.svg" alt="Josephus Sarsonas Logo" width={40} height={40} className="h-8 w-auto" />
+          <span className="font-bold hidden sm:inline-block">Josephus Sarsonas</span>
         </a>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navLinks.map(({ href, label }) => (
@@ -44,6 +46,7 @@ export default function Navbar() {
               <SheetContent side="right">
                 <div className="p-4">
                   <a href="#home" className="mb-8 flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Image src="/logo.svg" alt="Josephus Sarsonas Logo" width={40} height={40} className="h-8 w-auto" />
                     <span className="font-bold">Josephus Sarsonas</span>
                   </a>
                   <nav className="flex flex-col space-y-4">
