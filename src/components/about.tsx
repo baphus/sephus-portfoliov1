@@ -22,7 +22,7 @@ export default function About() {
             <Card className="overflow-hidden rounded-2xl shadow-md">
               <CardContent className="p-0">
                 <Image
-                  src="/about/600x750.jpg"
+                  src="/about/600x750.png"
                   alt="Portrait of Josephus Kim L. Sarsonas"
                   width={600}
                   height={750}
