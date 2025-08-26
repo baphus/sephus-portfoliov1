@@ -56,7 +56,7 @@ const portfolioItems = [
   {
     title: 'Video Advertisement - Sci High Pi',
     description: 'Produced a compelling video advertisement for a local snack bar, "Sci High Pi", using CapCut to boost their online presence and attract more customers.',
-    image: 'https://picsum.photos/600/400',
+    image: '/portfolio/video-ad/thumbnail.png',
     aiHint: 'video production',
     details: {
       role: 'Video Producer & Editor (CapCut)',
@@ -65,7 +65,7 @@ const portfolioItems = [
         <div className="aspect-video w-full">
           <iframe
             className="w-full h-full rounded-lg"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            src="/portfolio/video-ad/videoo.mp4"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -73,6 +73,24 @@ const portfolioItems = [
         </div>
       ),
       gallery: []
+    }
+  },
+  {
+    title: 'Professional Interviews with Industry Leaders',
+    description: 'Conducted in-depth interviews with two lead executives from different companies to gain insights into project management and business leadership.',
+    image: 'https://picsum.photos/600/400',
+    aiHint: 'professional interview business',
+    details: {
+      role: 'Interviewer & Researcher (Academic Project)',
+      highlights: [
+        'Interviewed a Project Manager from Chowis Co. Ltd. to understand project lifecycles and team collaboration in the tech industry.',
+        'Interviewed a Lead Executive from Ishmael Enterprises to explore business development strategies and leadership principles.',
+        'Documented and analyzed findings, enhancing research, communication, and public speaking skills.',
+      ],
+      gallery: [
+        { src: 'https://picsum.photos/600/400?random=1', alt: 'Interview Screenshot 1', aiHint: 'interview screenshot' },
+        { src: 'https://picsum.photos/600/400?random=2', alt: 'Interview Screenshot 2', aiHint: 'interview screenshot' }
+      ]
     }
   },
   {

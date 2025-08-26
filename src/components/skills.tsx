@@ -19,7 +19,7 @@ const skillsData = [
   },
   {
     category: 'Data Management & Analysis',
-    skills: ['SQL & Database Management', 'Excel & Google Sheets', 'Data Visualization', 'Google Forms', 'Campaign Analytics & Reporting'],
+    skills: ['SQL & Database Management', 'Excel & Google Sheets (incl. Payrolls)', 'Data Visualization', 'Google Forms', 'Campaign Analytics & Reporting'],
     icon: <BarChart3 />,
   },
   {
@@ -29,7 +29,7 @@ const skillsData = [
   },
   {
     category: 'Communication & Administrative',
-    skills: ['Content Editing & Proofreading', 'Interview Coordination', 'Comprehensive Research', 'Client Communication', 'Fast Typing & Data Entry'],
+    skills: ['Email Composition & Management', 'Appointment Scheduling', 'Content Editing & Proofreading', 'Interview Coordination', 'Comprehensive Research', 'Client Communication', 'Fast Typing & Data Entry'],
     icon: <Briefcase />,
   },
 ];
