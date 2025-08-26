@@ -76,16 +76,16 @@ const portfolioItems = [
     }
   },
   {
-    title: 'Professional Interviews with Industry Leaders',
-    description: 'Conducted in-depth interviews with two lead executives from different companies to gain insights into project management and business leadership.',
+    title: 'Academic Research & Industry Interviews',
+    description: 'Conducted in-depth research and interviews with two lead executives from different companies to gain insights into project management and business leadership.',
     image: 'https://picsum.photos/600/400',
     aiHint: 'professional interview business',
     details: {
       role: 'Interviewer & Researcher (Academic Project)',
       highlights: [
-        'Interviewed a Project Manager from Chowis Co. Ltd. to understand project lifecycles and team collaboration in the tech industry.',
-        'Interviewed a Lead Executive from Ishmael Enterprises to explore business development strategies and leadership principles.',
-        'Documented and analyzed findings, enhancing research, communication, and public speaking skills.',
+        'Ishmael Enterprises & Dormitory Inc.: This research was conducted in order to examine the current operational practices of Ishmael Enterprises & Dormitory Incorporated, with a particular focus on how the company manages its dormitory services and rental transactions. The main objective is to explore the systems and processes used in managing tenant accommodations and how these contribute to service efficiency, client satisfaction, and overall operational performance. To achieve these research goals, the researchers focused on qualitative methods to gather data directly from the workplace setting. The participants involved in the study include the dormitory manager and selected staff members. Data was collected through semi-structured interviews and direct observations. These methods allowed the researchers to gain first-hand insights into actual workflows and client interactions. The gathered data were then carefully analyzed to identify patterns, recurring issues, and opportunities for improvement in both manual and system-based processes. In addition to primary data collection, the study also incorporated secondary sources such as organizational documents, if available, and related literature to support the analysis and findings.',
+        'Chowis Co. Ltd.: The project manager oversees the entire lifecycle of a project, from initiation to closure. Key tasks include defining project scope, setting deadlines, assigning responsibilities, and monitoring progress. The project manager acts as the primary liaison between stakeholders, ensuring clear communication and managing expectations. They also handle resource allocation, budget management, and risk mitigation to ensure the project stays on track and within budget.',
+        'My Role (Chowis Interview): Project Manager/Team Leader, founded the interviewee, finalized questionnaires, and conducted the interview.',
       ],
       gallery: [
         { src: 'https://picsum.photos/600/400?random=1', alt: 'Interview Screenshot 1', aiHint: 'interview screenshot' },
@@ -186,7 +186,7 @@ function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
                       alt={img.alt} 
                       width={600} 
                       height={400}
-                      className="rounded-lg object-contain w-full h-auto" 
+                      className="rounded-lg object-contain w-full h-auto max-h-[60vh]" 
                       data-ai-hint={img.aiHint} 
                     />
                   </CardContent>
@@ -280,15 +280,6 @@ export default function Portfolio() {
                           </div>
                         ))}
                       </div>
-                    </div>
-                  )}
-
-                  {item.details.tasks && (
-                    <div>
-                      <h3 className="font-semibold mb-2">Key Responsibilities:</h3>
-                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        {item.details.tasks.map(task => <li key={task}>{task}</li>)}
-                      </ul>
                     </div>
                   )}
 
