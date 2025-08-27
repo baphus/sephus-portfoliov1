@@ -213,25 +213,24 @@ export default function Portfolio() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.03 }}
-                  className="cursor-pointer h-full"
+                  className="cursor-pointer"
                 >
-                  <Card className="h-full overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl flex flex-col">
-                    <CardContent className="p-0">
+                  <div className="portfolio-card w-full h-52">
+                    <div className="portfolio-card__image-container">
                       <Image
                         src={item.image}
                         alt={item.title}
-                        width={600}
-                        height={400}
-                        className="w-full h-48 object-cover"
+                        width={400}
+                        height={250}
+                        className="w-full h-full object-cover"
                         data-ai-hint={item.aiHint}
                       />
-                    </CardContent>
-                    <CardHeader className="flex-grow">
-                      <CardTitle className="font-headline">{item.title}</CardTitle>
-                      <CardDescription>{item.description}</CardDescription>
-                    </CardHeader>
-                  </Card>
+                    </div>
+                    <div className="portfolio-card__content">
+                      <p className="portfolio-card__title">{item.title}</p>
+                      <p className="portfolio-card__description">{item.description}</p>
+                    </div>
+                  </div>
                 </motion.div>
               </DialogTrigger>
               <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl">
