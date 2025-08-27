@@ -104,24 +104,33 @@
 }
 
 @layer components {
-  .holographic-container {
+  /* Business Card Flip Effect */
+  .flip-container {
     perspective: 1000px;
+    width: 600px;
+    height: 350px;
   }
-  .holographic-card {
+  .flipper {
+    position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
+    transition: transform 0.6s;
     transform-style: preserve-3d;
-    transition: transform 0.8s;
   }
-  .holographic-face {
+  .flip-container:hover .flipper {
+    transform: rotateY(180deg);
+  }
+  .card-face {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Safari */
   }
-  .holographic-back {
+  .card-face.front {
+    transform: rotateY(0deg);
+  }
+  .card-face.back {
     transform: rotateY(180deg);
   }
 }
