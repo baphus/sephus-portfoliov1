@@ -99,66 +99,70 @@ export default function Navbar() {
 
   return (
     <div className="sticky top-0 z-50 w-full p-4">
-      <header className="relative container mx-auto flex h-16 max-w-screen-lg items-center justify-between rounded-full border border-border/40 bg-background/80 px-4 shadow-lg backdrop-blur-md md:px-6">
-        <a href="#home" className="mr-6 flex items-center space-x-2">
-          <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
-          <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
-        </a>
-        <nav className="hidden md:flex items-center space-x-1 text-sm font-medium">
-          {navLinks.map(({ href, label }) => {
-            const isActive = activeSection === href.substring(1);
-            return (
-              <a
-                key={href}
-                href={href}
-                className={cn(
-                  "px-4 py-2 rounded-full transition-colors hover:text-primary",
-                  isActive ? "bg-primary/10 text-primary" : "text-foreground/70"
-                )}
-              >
-                {label}
-              </a>
-            )
-          })}
-        </nav>
-        <div className="flex items-center space-x-2">
-          <ThemeToggle />
-          <div className="md:hidden">
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle Menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <div className="p-4">
-                  <a href="#home" className="mb-8 flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
-                    <span className="font-bold">Josephus Sarsonas</span>
-                  </a>
-                  <nav className="flex flex-col space-y-4">
-                    {navLinks.map(({ href, label }) => (
-                      <a
-                        key={href}
-                        href={href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="text-lg transition-colors hover:text-primary"
-                      >
-                        {label}
-                      </a>
-                    ))}
-                  </nav>
-                </div>
-              </SheetContent>
-            </Sheet>
+      <div className="relative container mx-auto max-w-screen-lg">
+        <header className="relative flex h-16 items-center justify-between rounded-full border border-border/40 bg-background/80 px-4 shadow-lg backdrop-blur-md md:px-6">
+          <a href="#home" className="mr-6 flex items-center space-x-2">
+            <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
+            <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
+          </a>
+          <nav className="hidden md:flex items-center space-x-1 text-sm font-medium">
+            {navLinks.map(({ href, label }) => {
+              const isActive = activeSection === href.substring(1);
+              return (
+                <a
+                  key={href}
+                  href={href}
+                  className={cn(
+                    "px-4 py-2 rounded-full transition-colors hover:text-primary",
+                    isActive ? "bg-primary/10 text-primary" : "text-foreground/70"
+                  )}
+                >
+                  {label}
+                </a>
+              )
+            })}
+          </nav>
+          <div className="flex items-center space-x-2">
+            <ThemeToggle />
+            <div className="md:hidden">
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-5 w-5" />
+                    <span className="sr-only">Toggle Menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                  <div className="p-4">
+                    <a href="#home" className="mb-8 flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
+                      <span className="font-bold">Josephus Sarsonas</span>
+                    </a>
+                    <nav className="flex flex-col space-y-4">
+                      {navLinks.map(({ href, label }) => (
+                        <a
+                          key={href}
+                          href={href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-lg transition-colors hover:text-primary"
+                        >
+                          {label}
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
-        </div>
+        </header>
         <motion.div
-          className="absolute bottom-0 left-0 h-0.5 bg-primary rounded-full"
-          style={{ width: `${scrollProgress}%` }}
+          className="absolute inset-0 h-full w-full rounded-full border-2 border-primary pointer-events-none"
+          style={{
+            clipPath: `polygon(0% 0%, ${scrollProgress}% 0%, ${scrollProgress}% 100%, 0% 100%)`,
+          }}
         />
-      </header>
+      </div>
     </div>
   );
 }
