@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download } from 'lucide-react';
+import Logo from './logo';
 
 const containerVariants = {
   hidden: { opacity: 0 },
