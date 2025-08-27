@@ -103,15 +103,8 @@
   }
 
   .custom-cursor.hovering {
-    animation: pulse 0.5s infinite alternate;
-  }
-
-  @keyframes pulse {
-    from {
-      transform: translate(-50%, -50%) scale(1);
-    }
-    to {
-      transform: translate(-50%, -50%) scale(1.4);
-    }
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
   }
 }

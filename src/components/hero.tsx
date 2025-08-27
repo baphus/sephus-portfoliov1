@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download } from 'lucide-react';
-import { Logo } from './logo';
+import Image from 'next/image';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -54,7 +54,7 @@ export default function Hero() {
             className="flex justify-center mb-6"
             variants={logoVariants}
           >
-            <Logo className="h-24 w-24" />
+            <Image src="/logo.svg" alt="Logo" width={96} height={96} className="h-24 w-24" />
           </motion.div>
           <motion.h1
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
