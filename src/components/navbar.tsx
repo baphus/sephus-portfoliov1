@@ -7,6 +7,7 @@ import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -20,6 +21,19 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = window.scrollY;
+      const progress = (scrolled / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const sectionIds = navLinks.map(link => link.href.substring(1));
@@ -27,7 +41,7 @@ export default function Navbar() {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.3, // A section is considered active if 30% of it is visible
+      threshold: 0.3,
     };
 
     let lastActiveSection = 'home';
@@ -36,7 +50,6 @@ export default function Navbar() {
       let intersectingEntries = entries.filter(entry => entry.isIntersecting);
 
       if (intersectingEntries.length > 0) {
-        // Find the entry with the highest intersection ratio
         const mostVisibleEntry = intersectingEntries.reduce((prev, current) => {
           return prev.intersectionRatio > current.intersectionRatio ? prev : current;
         });
@@ -47,9 +60,6 @@ export default function Navbar() {
           lastActiveSection = newActiveSection;
         }
       } else {
-        // If no sections are intersecting (e.g., when at the very bottom of the page)
-        // we can choose to keep the last active section highlighted.
-        // We find the entry closest to the viewport.
         const closestEntry = entries.reduce((prev, current) => {
           const prevDistance = Math.abs(prev.boundingClientRect.top);
           const currentDistance = Math.abs(current.boundingClientRect.top);
@@ -59,7 +69,6 @@ export default function Navbar() {
         if (closestEntry && closestEntry.target.id !== lastActiveSection) {
            const scrollPosition = window.scrollY + window.innerHeight;
            const pageHeight = document.documentElement.scrollHeight;
-           // If scrolled to the bottom, activate the last section
            if (scrollPosition >= pageHeight - 2) {
              const lastSectionId = sectionIds[sectionIds.length-1];
              if(lastActiveSection !== lastSectionId) {
@@ -90,7 +99,7 @@ export default function Navbar() {
 
   return (
     <div className="sticky top-0 z-50 w-full p-4">
-      <header className="container mx-auto flex h-16 max-w-screen-lg items-center justify-between rounded-full border border-border/40 bg-background/80 px-4 shadow-lg backdrop-blur-md md:px-6">
+      <header className="relative container mx-auto flex h-16 max-w-screen-lg items-center justify-between rounded-full border border-border/40 bg-background/80 px-4 shadow-lg backdrop-blur-md md:px-6">
         <a href="#home" className="mr-6 flex items-center space-x-2">
           <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
           <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
@@ -145,6 +154,10 @@ export default function Navbar() {
             </Sheet>
           </div>
         </div>
+        <motion.div
+          className="absolute bottom-0 left-0 h-0.5 bg-primary rounded-full"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </header>
     </div>
   );
