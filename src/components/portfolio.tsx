@@ -76,23 +76,6 @@ const portfolioItems = [
     }
   },
   {
-    title: 'Academic Research & Industry Interviews',
-    description: 'Conducted in-depth research and interviews with two lead executives from different companies to gain insights into project management and business leadership.',
-    image: 'https://picsum.photos/600/400',
-    aiHint: 'professional interview business',
-    details: {
-      role: 'Interviewer & Researcher (Academic Project)',
-      highlights: [
-        'Ishmael Enterprises & Dormitory Inc.: Led a qualitative study on operational practices, focusing on dormitory services and rental transactions. Conducted semi-structured interviews and direct observations with management and staff to analyze workflows, identify process-improvement opportunities, and enhance client satisfaction. The research provided actionable insights for optimizing both manual and system-based processes.',
-        'Chowis Co. Ltd.: Conducted an in-depth interview with a Project Manager to analyze their project lifecycle management, from initiation to closure. As the Project Manager and Team Leader for this academic project, I sourced the interviewee, developed the questionnaire, and led the interview, gaining key insights into scope definition, stakeholder communication, and resource management in a corporate setting.',
-      ],
-      gallery: [
-        { src: 'https://picsum.photos/600/400?random=1', alt: 'Interview Screenshot 1', aiHint: 'interview screenshot' },
-        { src: 'https://picsum.photos/600/400?random=2', alt: 'Interview Screenshot 2', aiHint: 'interview screenshot' }
-      ]
-    }
-  },
-  {
     title: 'Absolute Cinema: Cinema Ticketing Website',
     description: 'An academic project featuring a full-stack cinema ticket booking system.',
     image: '/portfolio/absolute-cinema/absolute.png',
