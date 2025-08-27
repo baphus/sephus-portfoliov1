@@ -159,7 +159,7 @@ export default function Navbar() {
         <motion.div
           className="absolute inset-0 h-full w-full rounded-full border-2 border-primary pointer-events-none"
           style={{
-            clipPath: `polygon(0% 0%, ${scrollProgress}% 0%, ${scrollProgress}% 100%, 0% 100%)`,
+            clipPath: `polygon(0% 50%, 0% 100%, ${scrollProgress}% 100%, ${scrollProgress}% 50%)`,
           }}
         />
       </div>
