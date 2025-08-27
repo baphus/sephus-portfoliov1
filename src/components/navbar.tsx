@@ -160,6 +160,8 @@ export default function Navbar() {
           className="absolute inset-0 h-full w-full rounded-full border-2 border-primary pointer-events-none"
           style={{
             clipPath: `polygon(0% 50%, 0% 100%, ${scrollProgress}% 100%, ${scrollProgress}% 50%)`,
+            maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
           }}
         />
       </div>
