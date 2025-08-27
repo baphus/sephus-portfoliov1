@@ -1,6 +1,5 @@
 import Navbar from '@/components/navbar';
 import Hero from '@/components/hero';
-import HolographicCard from '@/components/holographic-card';
 import About from '@/components/about';
 import Skills from '@/components/skills';
 import Portfolio from '@/components/portfolio';
@@ -14,7 +13,6 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <HolographicCard />
         <About />
         <Skills />
         <Portfolio />
