@@ -68,6 +68,7 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: none;
   }
   body {
     @apply bg-background text-foreground;
@@ -75,11 +76,6 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    cursor: none;
-  }
-
-  a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
-    cursor: none;
   }
 
   .custom-cursor {
@@ -93,7 +89,7 @@
     opacity: 0.7;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    transition: width 0.15s ease-in-out, height 0.15s ease-in-out, opacity 0.15s ease-in-out, transform 0.1s ease-out;
+    transition: width 0.15s ease-in-out, height 0.15s ease-in-out, opacity 0.15s ease-in-out;
     z-index: 9999;
   }
 
