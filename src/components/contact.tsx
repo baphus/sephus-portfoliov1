@@ -52,7 +52,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="w-full py-16 md:py-24 bg-background">
+    <section id="contact" className="w-full py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">Get In Touch</h2>
         <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">

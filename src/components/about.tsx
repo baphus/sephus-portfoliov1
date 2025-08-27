@@ -14,7 +14,7 @@ const professionalAttributes = [
 
 export default function About() {
   return (
-    <section id="about" className="w-full py-16 md:py-24 bg-background">
+    <section id="about" className="w-full py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">About Me</h2>
         <div className="mt-12 grid gap-12 md:grid-cols-5 md:gap-16 items-start">
