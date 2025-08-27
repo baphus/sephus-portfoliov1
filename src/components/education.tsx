@@ -6,8 +6,7 @@ const educationData = [
     degree: 'Bachelor of Science in Information Technology',
     period: '2024 - Present',
     details: [
-      'Passed the DOST (Department of Science and Technology) exam.',
-      'Currently an OWWA (Overseas Workers Welfare Administration) scholar.',
+      'Passed the DOST (Department of Science and Technology) exam to become an OWWA (Overseas Workers Welfare Administration) scholar.',
     ],
     icon: <GraduationCap />,
   },
