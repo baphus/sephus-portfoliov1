@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import Image from 'next/image';
+import Logo from './logo';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
@@ -102,7 +102,7 @@ export default function Navbar() {
       <div className="relative container mx-auto max-w-screen-lg">
         <header className="relative flex h-16 items-center justify-between rounded-full border border-border/40 bg-background/80 px-4 shadow-lg backdrop-blur-md md:px-6">
           <a href="#home" className="mr-6 flex items-center space-x-2">
-            <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
+            <Logo className="h-8 w-auto" />
             <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
           </a>
           <nav className="hidden md:flex items-center space-x-1 text-sm font-medium">
@@ -136,7 +136,7 @@ export default function Navbar() {
                   <SheetHeader>
                     <SheetTitle>
                       <a href="#home" className="mb-8 flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                        <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
+                        <Logo className="h-8 w-auto" />
                         <span className="font-bold">Josephus Sarsonas</span>
                       </a>
                     </SheetTitle>

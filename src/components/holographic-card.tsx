@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, User, MapPin } from 'lucide-react';
-import Image from 'next/image';
+import Logo from './logo';
 
 export default function HolographicCard() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -30,7 +30,7 @@ export default function HolographicCard() {
 
           {/* Back of the card */}
           <div className="holographic-face holographic-back bg-background/80 backdrop-blur-lg border border-white/20 rounded-2xl p-8 md:p-12 shadow-2xl flex flex-col justify-center items-center">
-            <Image src="/logo.svg" alt="Logo" width={64} height={64} className="h-16 w-16 mb-6" />
+            <Logo className="h-16 w-16 mb-6" />
             <div className="space-y-4 text-left w-full max-w-sm">
                <div className="flex items-center gap-4">
                  <User className="h-5 w-5 text-primary"/>
