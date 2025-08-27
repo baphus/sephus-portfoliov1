@@ -3,8 +3,8 @@ import { GraduationCap, Trophy, Medal } from 'lucide-react';
 const educationData = [
   {
     institution: 'Cebu Technological University - Main Campus',
-    degree: 'Bachelor of Science in Information Technology',
-    period: '2024 - Present',
+    degree: 'Bachelor of Science in Information Systems',
+    period: '2022 - Present',
     details: [
       'Passed the DOST (Department of Science and Technology) exam to become an OWWA (Overseas Workers Welfare Administration) scholar.',
     ],
@@ -36,7 +36,7 @@ export default function Education() {
               <div className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
                 <div className={`w-full md:w-5/12 p-4 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                   <p className="text-sm text-muted-foreground">{item.period}</p>
-                  <h3 className="text-xl font-bold font-headline flex items-center gap-2 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}">
+                  <h3 className={`text-xl font-bold font-headline flex items-center gap-2 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
                     {item.icon} {item.institution}
                   </h3>
                   <p className="font-semibold text-primary">{item.degree}</p>
