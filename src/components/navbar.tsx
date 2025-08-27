@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -133,11 +133,18 @@ export default function Navbar() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
+                  <SheetHeader>
+                    <SheetTitle>
+                      <a href="#home" className="mb-8 flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
+                        <span className="font-bold">Josephus Sarsonas</span>
+                      </a>
+                    </SheetTitle>
+                    <SheetDescription className="sr-only">
+                      Mobile navigation menu
+                    </SheetDescription>
+                  </SheetHeader>
                   <div className="p-4">
-                    <a href="#home" className="mb-8 flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Image src="/logo.svg" alt="Logo" width={32} height={32} className="h-8 w-auto" />
-                      <span className="font-bold">Josephus Sarsonas</span>
-                    </a>
                     <nav className="flex flex-col space-y-4">
                       {navLinks.map(({ href, label }) => (
                         <a
