@@ -5,12 +5,6 @@
 @layer base {
   html {
     @apply scroll-smooth;
-    scrollbar-width: none; /* For Firefox */
-  }
-  
-  /* For Webkit browsers like Chrome, Safari */
-  ::-webkit-scrollbar {
-    display: none;
   }
 }
 
@@ -77,5 +71,29 @@
   }
   body {
     @apply bg-background text-foreground;
+    cursor: none;
+  }
+  a, button, [role="button"], .cursor-pointer {
+    cursor: none;
+  }
+  .custom-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: hsl(var(--primary));
+    pointer-events: none;
+    mix-blend-mode: difference;
+    z-index: 9999;
+    transition: transform 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out;
+  }
+  .custom-cursor.clicked {
+    transform: scale(0.9);
+  }
+  .custom-cursor.hovering {
+    width: 30px;
+    height: 30px;
   }
 }
