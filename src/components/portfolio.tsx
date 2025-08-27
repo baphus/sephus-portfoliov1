@@ -10,8 +10,8 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogDescription,
+  DialogTrigger,
 } from '@/components/ui/dialog';
 import {
   Carousel,
@@ -231,9 +231,9 @@ export default function Portfolio() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.03 }}
-                  className="cursor-pointer"
+                  className="cursor-pointer h-full"
                 >
-                  <Card className="h-full overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl">
+                  <Card className="h-full overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl flex flex-col">
                     <CardContent className="p-0">
                       <Image
                         src={item.image}
@@ -244,7 +244,7 @@ export default function Portfolio() {
                         data-ai-hint={item.aiHint}
                       />
                     </CardContent>
-                    <CardHeader>
+                    <CardHeader className="flex-grow">
                       <CardTitle className="font-headline">{item.title}</CardTitle>
                       <CardDescription>{item.description}</CardDescription>
                     </CardHeader>
