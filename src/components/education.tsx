@@ -18,7 +18,7 @@ const educationData = [
     details: [
       'Graduated with honors, ranking 12th in my class.',
       'As a member of the TOLEDO Robotics Team, achieved 1st place in the Division Science Fair for Robotics (2019).',
-      'Secured 2nd place in the 1kg Sumobot category at the Regional Science & Technology Fair (2019).',
+      'Secured 2nd, 4th, and 6th place across different categories at the Regional Science & Technology Fair (2019).',
     ],
     icon: <Trophy />,
   },
