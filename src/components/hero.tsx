@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download } from 'lucide-react';
-import Logo from './logo';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,18 +27,6 @@ const itemVariants = {
   },
 };
 
-const logoVariants = {
-  hidden: { scale: 0.5, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
-
 export default function Hero() {
   return (
     <section id="home" className="relative w-full py-24 md:py-32">
@@ -50,12 +37,6 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.div
-            className="flex justify-center mb-6"
-            variants={logoVariants}
-          >
-            <Logo className="h-24 w-24" />
-          </motion.div>
           <motion.h1
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
             variants={itemVariants}
