@@ -20,11 +20,11 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 md:px-6">
+    <div className="sticky top-0 z-50 w-full p-4">
+      <header className="container mx-auto flex h-16 max-w-screen-lg items-center justify-between rounded-full border border-border/40 bg-background/80 px-4 shadow-lg backdrop-blur-md md:px-6">
         <a href="#home" className="mr-6 flex items-center space-x-2">
           <Image src="/logo.svg" alt="Josephus Sarsonas Logo" width={40} height={40} className="h-8 w-auto" />
-          <span className="font-bold hidden sm:inline-block">Josephus Sarsonas</span>
+          <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
         </a>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navLinks.map(({ href, label }) => (
@@ -66,7 +66,7 @@ export default function Navbar() {
             </Sheet>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
