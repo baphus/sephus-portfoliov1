@@ -23,16 +23,53 @@ export default function Navbar() {
 
   useEffect(() => {
     const sectionIds = navLinks.map(link => link.href.substring(1));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3, // A section is considered active if 30% of it is visible
+    };
+
+    let lastActiveSection = 'home';
+
+    const observer = new IntersectionObserver((entries) => {
+      let intersectingEntries = entries.filter(entry => entry.isIntersecting);
+
+      if (intersectingEntries.length > 0) {
+        // Find the entry with the highest intersection ratio
+        const mostVisibleEntry = intersectingEntries.reduce((prev, current) => {
+          return prev.intersectionRatio > current.intersectionRatio ? prev : current;
         });
-      },
-      { rootMargin: '-50% 0px -50% 0px' }
-    );
+        
+        const newActiveSection = mostVisibleEntry.target.id;
+        if (newActiveSection !== lastActiveSection) {
+          setActiveSection(newActiveSection);
+          lastActiveSection = newActiveSection;
+        }
+      } else {
+        // If no sections are intersecting (e.g., when at the very bottom of the page)
+        // we can choose to keep the last active section highlighted.
+        // We find the entry closest to the viewport.
+        const closestEntry = entries.reduce((prev, current) => {
+          const prevDistance = Math.abs(prev.boundingClientRect.top);
+          const currentDistance = Math.abs(current.boundingClientRect.top);
+          return prevDistance < currentDistance ? prev : current;
+        });
+        
+        if (closestEntry && closestEntry.target.id !== lastActiveSection) {
+           const scrollPosition = window.scrollY + window.innerHeight;
+           const pageHeight = document.documentElement.scrollHeight;
+           // If scrolled to the bottom, activate the last section
+           if (scrollPosition >= pageHeight - 2) {
+             const lastSectionId = sectionIds[sectionIds.length-1];
+             if(lastActiveSection !== lastSectionId) {
+                setActiveSection(lastSectionId);
+                lastActiveSection = lastSectionId;
+             }
+           }
+        }
+      }
+    }, observerOptions);
 
     sectionIds.forEach(id => {
       const element = document.getElementById(id);
