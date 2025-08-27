@@ -14,11 +14,11 @@ const educationData = [
   {
     institution: 'Toledo City Science Highschool',
     degree: 'High School Diploma, With Honors',
-    period: 'Graduated 2024',
+    period: 'Graduated 2022',
     details: [
       'Graduated with honors, ranking 12th in my class.',
       'As a member of the TOLEDO Robotics Team, achieved 1st place in the Division Science Fair for Robotics (2019).',
-      'Secured 2nd, 4th, and 6th place across different categories at the Regional Science & Technology Fair (2019).',
+      'Secured 2nd, 4th, and 6th place across different Sumobot categories at the Regional Science & Technology Fair (2019).',
     ],
     icon: <Trophy />,
   },
