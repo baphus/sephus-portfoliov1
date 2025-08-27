@@ -75,5 +75,49 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    cursor: none;
+  }
+
+  a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
+    cursor: none;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: hsl(var(--primary));
+    opacity: 0.7;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    z-index: 9999;
+  }
+
+  .custom-cursor.clicked {
+    width: 30px;
+    height: 30px;
+  }
+
+  .custom-cursor.hovering {
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.4);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.7;
+    }
   }
 }
