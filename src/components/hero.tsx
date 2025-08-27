@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download } from 'lucide-react';
-import Image from 'next/image';
+import { Logo } from './logo';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -54,7 +54,7 @@ export default function Hero() {
             className="flex justify-center mb-6"
             variants={logoVariants}
           >
-            <Image src="/logo.svg" alt="Josephus Sarsonas Logo" width={90} height={90} />
+            <Logo className="h-24 w-24" />
           </motion.div>
           <motion.h1
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"

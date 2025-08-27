@@ -1,11 +1,25 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const CustomCursor: React.FC = () => {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isClicked, setIsClicked] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const requestRef = useRef<number>();
+
+  const animateCursor = () => {
+    if (cursorRef.current) {
+      cursorRef.current.style.transform = `translate(${position.x - 10}px, ${position.y - 10}px)`;
+    }
+    requestRef.current = requestAnimationFrame(animateCursor);
+  };
+  
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(animateCursor);
+    return () => cancelAnimationFrame(requestRef.current as number);
+  }, [position]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -14,10 +28,7 @@ const CustomCursor: React.FC = () => {
 
     const handleMouseDown = () => {
       setIsClicked(true);
-    };
-
-    const handleMouseUp = () => {
-      setIsClicked(false);
+      setTimeout(() => setIsClicked(false), 200);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -46,14 +57,12 @@ const CustomCursor: React.FC = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
     document.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseout', handleMouseOut);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
     };
@@ -67,8 +76,8 @@ const CustomCursor: React.FC = () => {
 
   return (
     <div
+      ref={cursorRef}
       className={cursorClasses}
-      style={{ left: `${position.x}px`, top: `${position.y}px` }}
     />
   );
 };
