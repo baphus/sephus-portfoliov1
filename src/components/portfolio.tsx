@@ -63,13 +63,14 @@ const portfolioItems = [
       highlights: ['Conceptualized, filmed, and edited a promotional video for "Sci High Pi".', 'Utilized dynamic shots and engaging music in CapCut to capture audience attention.', 'The video was used across social media platforms to drive engagement.'],
       embed: (
         <div className="aspect-video w-full">
-          <iframe
+          <video
             className="w-full h-full rounded-lg"
             src="/portfolio/video-ad/videoo.mp4"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+            title="Sci High Pi Advertisement"
+            controls
+            autoPlay
+            loop
+          />
         </div>
       ),
       gallery: []
@@ -215,14 +216,13 @@ export default function Portfolio() {
                   transition={{ delay: index * 0.1 }}
                   className="cursor-pointer"
                 >
-                  <div className="portfolio-card w-full h-52">
-                    <div className="portfolio-card__image-container">
+                  <div className="portfolio-card w-full h-64">
+                    <div className="portfolio-card__image-container w-full h-full">
                       <Image
                         src={item.image}
                         alt={item.title}
-                        width={400}
-                        height={250}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                         data-ai-hint={item.aiHint}
                       />
                     </div>
