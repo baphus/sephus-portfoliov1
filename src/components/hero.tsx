@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef, useState } from 'react';
@@ -25,7 +24,8 @@ const fadeIn = {
   visible: { 
     opacity: 1,
     transition: {
-      duration: 1
+      duration: 1,
+      ease: "easeOut"
     }
   },
 };
@@ -66,8 +66,8 @@ export default function Hero() {
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString('Hello, I am ')
-                      .typeString('<strong>Josephus Sarsonas.</strong>')
+                      .typeString("Hi, I'm ")
+                      .typeString('<strong>Josephus.</strong>')
                       .callFunction(handleTypingComplete)
                       .start();
                   }}
@@ -76,14 +76,22 @@ export default function Hero() {
                   }}
                 />
               </h1>
-              <motion.p 
+              <div 
                 className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0"
-                variants={fadeIn}
-                initial="hidden"
-                animate={fadeInControls}
               >
-                Digital Creator & Web Developer
-              </motion.p>
+                <Typewriter
+                  options={{
+                    strings: [
+                      'Digital Creator',
+                      'Web Developer',
+                      'Video Editor',
+                      'Social Media Manager',
+                    ],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+              </div>
                <motion.div
                 className="mt-10 flex items-center justify-center md:justify-start gap-x-6"
                 variants={fadeIn}
