@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useState } from 'react';
@@ -39,6 +40,7 @@ export default function Hero() {
   });
 
   const [animationsStarted, setAnimationsStarted] = useState(false);
+  const [headlineFinished, setHeadlineFinished] = useState(false);
   const cardControls = useAnimation();
   const fadeInControls = useAnimation();
 
@@ -68,7 +70,10 @@ export default function Hero() {
                     typewriter
                       .typeString("Hi, I'm ")
                       .typeString('<strong>Josephus.</strong>')
-                      .callFunction(handleTypingComplete)
+                      .callFunction(() => {
+                        setHeadlineFinished(true);
+                        handleTypingComplete();
+                      })
                       .start();
                   }}
                   options={{
@@ -79,18 +84,20 @@ export default function Hero() {
               <div 
                 className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0"
               >
-                <Typewriter
-                  options={{
-                    strings: [
-                      'Digital Creator',
-                      'Web Developer',
-                      'Video Editor',
-                      'Social Media Manager',
-                    ],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
+                {headlineFinished && (
+                  <Typewriter
+                    options={{
+                      strings: [
+                        'Digital Creator',
+                        'Web Developer',
+                        'Video Editor',
+                        'Social Media Manager',
+                      ],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
+                )}
               </div>
                <motion.div
                 className="mt-10 flex items-center justify-center md:justify-start gap-x-6"
