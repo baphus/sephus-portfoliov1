@@ -1,30 +1,12 @@
 
 "use client";
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Download } from 'lucide-react';
 import HolographicCard from './holographic-card';
-
-const sentence = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 0.5,
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const letter = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
+import Typewriter from 'typewriter-effect';
 
 const cardVariants = {
   hidden: { opacity: 0, x: 100 },
@@ -32,7 +14,6 @@ const cardVariants = {
     opacity: 1, 
     x: 0,
     transition: {
-      delay: 2, 
       duration: 0.8,
       ease: "easeOut" 
     }
@@ -44,7 +25,6 @@ const fadeIn = {
   visible: { 
     opacity: 1,
     transition: {
-      delay: 2.5,
       duration: 1
     }
   },
@@ -58,12 +38,20 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
+  const [animationsStarted, setAnimationsStarted] = useState(false);
+  const cardControls = useAnimation();
+  const fadeInControls = useAnimation();
+
+  const handleTypingComplete = () => {
+    setAnimationsStarted(true);
+    cardControls.start("visible");
+    fadeInControls.start("visible");
+  };
+
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
   const cardY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.7], [1, 0.8]);
-
-  const name = "Josephus Sarsonas";
 
   return (
     <section ref={targetRef} id="home" className="relative h-screen w-full">
@@ -74,23 +62,25 @@ export default function Hero() {
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
-              <motion.h1
-                className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-8xl lg:text-9xl font-headline"
-                variants={sentence}
-                initial="hidden"
-                animate="visible"
-              >
-                {name.split("").map((char, index) => (
-                  <motion.span key={char + "-" + index} variants={letter}>
-                    {char}
-                  </motion.span>
-                ))}
-              </motion.h1>
+              <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-8xl lg:text-9xl font-headline">
+                <Typewriter
+                  onInit={(typewriter) => {
+                    typewriter
+                      .typeString('Hello, I am ')
+                      .typeString('<strong>Josephus Sarsonas.</strong>')
+                      .callFunction(handleTypingComplete)
+                      .start();
+                  }}
+                  options={{
+                    delay: 50,
+                  }}
+                />
+              </h1>
               <motion.p 
                 className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0"
                 variants={fadeIn}
                 initial="hidden"
-                animate="visible"
+                animate={fadeInControls}
               >
                 Digital Creator & Web Developer
               </motion.p>
@@ -98,7 +88,7 @@ export default function Hero() {
                 className="mt-10 flex items-center justify-center md:justify-start gap-x-6"
                 variants={fadeIn}
                 initial="hidden"
-                animate="visible"
+                animate={fadeInControls}
               >
                 <Button asChild size="lg">
                   <a href="/Josephus_Sarsonas_Resume.pdf" download>
@@ -114,7 +104,7 @@ export default function Hero() {
                 </Button>
               </motion.div>
             </div>
-            <motion.div style={{ y: cardY }} variants={cardVariants} initial="hidden" animate="visible">
+            <motion.div style={{ y: cardY }} variants={cardVariants} initial="hidden" animate={cardControls}>
               <HolographicCard />
             </motion.div>
           </div>
@@ -126,4 +116,3 @@ export default function Hero() {
     </section>
   );
 }
-
