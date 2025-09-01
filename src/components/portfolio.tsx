@@ -198,105 +198,103 @@ function ProjectCarousel({ item }: { item: (typeof portfolioItems)[0] }) {
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="w-full py-16 md:py-24 bg-transparent">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">My Portfolio</h2>
-        <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
-          Here's a selection of my work. Click on any project to see more details.
-        </p>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {portfolioItems.map((item, index) => (
-            <Dialog key={item.title}>
-              <DialogTrigger asChild>
-                <motion.div
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="cursor-pointer"
-                >
-                  <div className="portfolio-card w-full h-64">
-                    <div className="portfolio-card__image-container w-full h-full">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                        data-ai-hint={item.aiHint}
-                      />
-                    </div>
-                    <div className="portfolio-card__content">
-                      <p className="portfolio-card__title">{item.title}</p>
-                      <p className="portfolio-card__description">{item.description}</p>
+    <div className="container mx-auto px-4 md:px-6">
+      <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">My Portfolio</h2>
+      <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
+        Here's a selection of my work. Click on any project to see more details.
+      </p>
+      <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {portfolioItems.map((item, index) => (
+          <Dialog key={item.title}>
+            <DialogTrigger asChild>
+              <motion.div
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.1 }}
+                className="cursor-pointer"
+              >
+                <div className="portfolio-card w-full h-64">
+                  <div className="portfolio-card__image-container w-full h-full">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={item.aiHint}
+                    />
+                  </div>
+                  <div className="portfolio-card__content">
+                    <p className="portfolio-card__title">{item.title}</p>
+                    <p className="portfolio-card__description">{item.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-headline">{item.title}</DialogTitle>
+                <DialogDescription>
+                  {item.description}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="mt-4 space-y-6">
+                {item.details.gallery && item.details.gallery.length > 0 && (
+                  <ProjectCarousel item={item} />
+                )}
+
+                {item.details.role && <p><strong>Role:</strong> {item.details.role}</p>}
+                {item.details.duration && <p><strong>Duration:</strong> {item.details.duration}</p>}
+                {item.details.tech && <p><strong>Technology:</strong> {item.details.tech}</p>}
+                
+
+                {item.details.stats && (
+                  <div>
+                    <h3 className="font-semibold mb-2">Campaign Stats:</h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-center">
+                      {item.details.stats.map(stat => (
+                        <div key={stat.label} className="bg-secondary p-3 rounded-lg">
+                          <p className="text-2xl font-bold">{stat.value}</p>
+                          <p className="text-sm text-muted-foreground">{stat.label}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </motion.div>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-headline">{item.title}</DialogTitle>
-                  <DialogDescription>
-                    {item.description}
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="mt-4 space-y-6">
-                  {item.details.gallery && item.details.gallery.length > 0 && (
-                    <ProjectCarousel item={item} />
-                  )}
+                )}
 
-                  {item.details.role && <p><strong>Role:</strong> {item.details.role}</p>}
-                  {item.details.duration && <p><strong>Duration:</strong> {item.details.duration}</p>}
-                  {item.details.tech && <p><strong>Technology:</strong> {item.details.tech}</p>}
-                  
+                {item.details.features && (
+                  <div>
+                    <h3 className="font-semibold mb-2">Features:</h3>
+                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                      {item.details.features.map(feature => <li key={feature}>{feature}</li>)}
+                    </ul>
+                  </div>
+                )}
 
-                  {item.details.stats && (
-                    <div>
-                      <h3 className="font-semibold mb-2">Campaign Stats:</h3>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-center">
-                        {item.details.stats.map(stat => (
-                          <div key={stat.label} className="bg-secondary p-3 rounded-lg">
-                            <p className="text-2xl font-bold">{stat.value}</p>
-                            <p className="text-sm text-muted-foreground">{stat.label}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                {item.details.highlights && (
+                  <div>
+                    <h3 className="font-semibold mb-2">Highlights:</h3>
+                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                      {item.details.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}
+                    </ul>
+                  </div>
+                )}
 
-                  {item.details.features && (
-                    <div>
-                      <h3 className="font-semibold mb-2">Features:</h3>
-                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        {item.details.features.map(feature => <li key={feature}>{feature}</li>)}
-                      </ul>
-                    </div>
-                  )}
+                {item.details.embed && <div className="mt-4">{item.details.embed}</div>}
 
-                  {item.details.highlights && (
-                    <div>
-                      <h3 className="font-semibold mb-2">Highlights:</h3>
-                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        {item.details.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}
-                      </ul>
-                    </div>
-                  )}
-
-                  {item.details.embed && <div className="mt-4">{item.details.embed}</div>}
-
-                  {item.details.link && (
-                    <Button asChild>
-                      <a href={item.details.link} target="_blank" rel="noopener noreferrer">
-                        Visit Site <ArrowUpRight className="ml-2 h-4 w-4" />
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </DialogContent>
-            </Dialog>
-          ))}
-        </div>
+                {item.details.link && (
+                  <Button asChild>
+                    <a href={item.details.link} target="_blank" rel="noopener noreferrer">
+                      Visit Site <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </DialogContent>
+          </Dialog>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

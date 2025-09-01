@@ -52,85 +52,83 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="w-full py-16 md:py-24 bg-transparent">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">Get In Touch</h2>
-        <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
-          Have a question or want to work together? Feel free to reach out.
-        </p>
-        <div className="mt-12 max-w-2xl mx-auto">
-          <Card className="rounded-2xl shadow-lg">
-            <CardHeader>
-              <CardTitle>Send a Message</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your Name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input placeholder="your.email@example.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="Your message..." {...field} rows={5} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" className="w-full" disabled={isPending}>
-                    {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Send Message'}
-                  </Button>
-                </form>
-              </Form>
-              <div className="mt-8 flex justify-center space-x-4">
-                <Button variant="outline" size="icon" asChild>
-                  <a href="https://www.linkedin.com/in/josephus-kim-sarsonas-1b5191260/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <Linkedin className="h-5 w-5" />
-                  </a>
+    <div className="container mx-auto px-4 md:px-6">
+      <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">Get In Touch</h2>
+      <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
+        Have a question or want to work together? Feel free to reach out.
+      </p>
+      <div className="mt-12 max-w-2xl mx-auto">
+        <Card className="rounded-2xl shadow-lg">
+          <CardHeader>
+            <CardTitle>Send a Message</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="your.email@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="Your message..." {...field} rows={5} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full" disabled={isPending}>
+                  {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Send Message'}
                 </Button>
-                <Button variant="outline" size="icon" asChild>
-                  <a href="https://github.com/baphus" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <Github className="h-5 w-5" />
-                  </a>
-                </Button>
-                <Button variant="outline" size="icon" asChild>
-                  <a href="mailto:sarsonasjosephuskim@email.com" aria-label="Email">
-                    <Mail className="h-5 w-5" />
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+              </form>
+            </Form>
+            <div className="mt-8 flex justify-center space-x-4">
+              <Button variant="outline" size="icon" asChild>
+                <a href="https://www.linkedin.com/in/josephus-kim-sarsonas-1b5191260/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button variant="outline" size="icon" asChild>
+                <a href="https://github.com/baphus" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <Github className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button variant="outline" size="icon" asChild>
+                <a href="mailto:sarsonasjosephuskim@email.com" aria-label="Email">
+                  <Mail className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-    </section>
+    </div>
   );
 }
