@@ -67,12 +67,13 @@ export default function Hero() {
                   onInit={(typewriter) => {
                     typewriter
                       .typeString("Hi, I'm ")
-                      .typeString('<strong>Josephus.</strong>')
+                      .typeString('<strong>Josephus</strong>')
                       .callFunction(handleTypingComplete)
                       .start();
                   }}
                   options={{
-                    delay: 50,
+                    cursor: '_',
+                    delay: 100,
                   }}
                 />
               </h1>
@@ -85,7 +86,14 @@ export default function Hero() {
                       'Digital Creator',
                       'Web Developer',
                       'Video Editor',
-                      'Social Media Manager',
+                      'Lifelong Learner',
+                      'Systems Designer',
+                      'Problem Solver',
+                      'Team Player',
+                      'Innovator',
+                      'Content Strategist',
+                      'Creative Thinker',
+                      'Tech Enthusiast',
                     ],
                     autoStart: true,
                     loop: true,
