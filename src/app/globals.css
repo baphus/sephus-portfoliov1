@@ -115,9 +115,31 @@
     transition: transform 0.6s;
     transform-style: preserve-3d;
   }
-  .flip-container:hover .flipper {
-    transform: rotateY(180deg);
+
+  @media (hover: hover) {
+    .flip-container:hover .flipper {
+      transform: rotateY(180deg);
+    }
   }
+
+  @media (max-width: 767px) {
+    .flipper {
+      animation: auto-flip 8s infinite ease-in-out;
+    }
+  }
+
+  @keyframes auto-flip {
+    0%, 20% {
+      transform: rotateY(0deg);
+    }
+    30%, 70% {
+      transform: rotateY(180deg);
+    }
+    80%, 100% {
+      transform: rotateY(0deg);
+    }
+  }
+
   .card-face {
     position: absolute;
     width: 100%;

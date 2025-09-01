@@ -112,7 +112,13 @@ export default function Hero() {
                 </Button>
               </motion.div>
             </div>
-            <motion.div style={{ y: cardY }} variants={cardVariants} initial="hidden" animate={cardControls}>
+            <motion.div 
+              style={{ y: cardY }} 
+              variants={cardVariants} 
+              initial="hidden" 
+              animate={cardControls}
+              className="relative md:-mt-8"
+            >
               <HolographicCard />
             </motion.div>
           </div>
