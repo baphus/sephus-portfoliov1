@@ -89,7 +89,7 @@ export default function Navbar() {
   return (
     <div className="w-full p-4">
       <div className="relative container mx-auto max-w-screen-lg">
-        <header className="frutiger-aero-navbar relative flex h-16 items-center justify-between rounded-2xl px-4 md:px-6">
+        <header className="frutiger-aero-navbar relative flex h-16 items-center justify-between px-4 md:px-6">
           <a href="#home" className="mr-6 flex items-center space-x-2">
             <Logo className="h-8 w-auto text-primary" />
             <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
