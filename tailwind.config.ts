@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['"Myriad Pro"', 'system-ui', 'sans-serif'],
-        headline: ['"Myriad Pro"', 'system-ui', 'sans-serif'],
+        body: ['"Lucida Grande"', '"Segoe UI"', 'Roboto', 'system-ui', 'sans-serif'],
+        headline: ['"Gill Sans"', 'system-ui', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
