@@ -127,7 +127,7 @@ export default function Hero() {
                       roles.forEach((role, index) => {
                         typeInstance = typeInstance
                           .typeString(role)
-                          .pauseFor(1500)
+                          .pauseFor(1000)
                           .deleteChars(role.length)
                       });
 
@@ -136,6 +136,8 @@ export default function Hero() {
                     options={{
                       loop: true,
                       autoStart: true,
+                      delay: 50,
+                      deleteSpeed: 30,
                     }}
                   />
                 )}
