@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef, useState } from 'react';
@@ -83,7 +82,7 @@ export default function Hero() {
                 />
               </h1>
               <div 
-                className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0"
+                className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0 h-8"
               >
                 <Typewriter
                   options={{
