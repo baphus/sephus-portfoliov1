@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, User, Lightbulb, Briefcase, GraduationCap, Mail } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
@@ -10,12 +10,12 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#education', label: 'Education' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#home', label: 'Home', icon: <Home className="h-5 w-5" /> },
+  { href: '#about', label: 'About', icon: <User className="h-5 w-5" /> },
+  { href: '#skills', label: 'Skills', icon: <Lightbulb className="h-5 w-5" /> },
+  { href: '#portfolio', label: 'Portfolio', icon: <Briefcase className="h-5 w-5" /> },
+  { href: '#education', label: 'Education', icon: <GraduationCap className="h-5 w-5" /> },
+  { href: '#contact', label: 'Contact', icon: <Mail className="h-5 w-5" /> },
 ];
 
 export default function Navbar() {
@@ -92,19 +92,20 @@ export default function Navbar() {
             <Logo className="h-8 w-auto text-primary" />
             <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
           </a>
-          <nav className="hidden md:flex items-center space-x-1 text-sm font-medium">
-            {navLinks.map(({ href, label }) => {
+          <nav className="hidden md:flex items-center space-x-2 text-sm font-medium">
+            {navLinks.map(({ href, label, icon }) => {
               const isActive = activeSection === href.substring(1);
               return (
                 <a
                   key={href}
                   href={href}
+                  aria-label={label}
                   className={cn(
-                    "px-4 py-2 rounded-full transition-colors hover:text-primary",
+                    "p-3 rounded-full transition-colors hover:text-primary",
                     isActive ? "frutiger-aero-navbar-active-link" : "text-foreground/70"
                   )}
                 >
-                  {label}
+                  {icon}
                 </a>
               )
             })}
