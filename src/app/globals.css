@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Lucida Grande';
-  src: url('/fonts/LucidaGrande.woff2') format('woff2');
+  src: url('/fonts/LucidaGrande.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'Lucida Grande';
-  src: url('/fonts/LucidaGrande-Bold.woff2') format('woff2');
+  src: url('/fonts/LucidaGrandeBold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: 'Gill Sans';
-  src: url('/fonts/GillSans.woff2') format('woff2');
+  src: url('/fonts/GillSans.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -36,7 +36,7 @@
 
 @font-face {
   font-family: 'Gill Sans';
-  src: url('/fonts/GillSans-Bold.woff2') format('woff2');
+  src: url('/fonts/GillSansBold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -185,19 +185,19 @@
   .frutiger-aero-navbar-active-link::after {
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid rgba(0, 0, 0, 0.8);
+    border-top: 8px solid rgba(0, 0, 0, 0.8);
     transition: all 0.2s ease-out;
   }
   
   .dark .frutiger-aero-navbar-active-link::after {
-    border-bottom-color: rgba(255, 255, 255, 0.8);
+    border-top-color: rgba(255, 255, 255, 0.8);
   }
   
   .frutiger-aero-navbar-active-link:hover {
@@ -205,11 +205,11 @@
   }
   
   .frutiger-aero-navbar-active-link:hover::after {
-    border-bottom-color: hsl(var(--primary));
+    border-top-color: hsl(var(--primary));
   }
   
   .dark .frutiger-aero-navbar-active-link:hover::after {
-    border-bottom-color: hsl(var(--primary-foreground));
+    border-top-color: hsl(var(--primary-foreground));
   }
 
   /* Business Card Flip Effect */
@@ -260,6 +260,46 @@
   }
   .card-face.back {
     transform: rotateY(180deg);
+  }
+  
+  .card-face-aqua {
+    background: linear-gradient(rgba(0, 65, 184, 0.85), rgba(45, 115, 199, 0.85), rgba(33, 160, 196, 0.85));
+    box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.3), 
+                0 0.125em 0.125em rgba(0, 78, 187, 0.5), 
+                inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),
+                inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-face-aqua::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 33%;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
+    width: calc(100% - 2em);
+    border-radius: 2em 2em 0.5em 0.5em;
+    top: 5%;
+    filter: blur(1px);
+    z-index: 2;
+  }
+  
+  .card-face-aqua::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 33%;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgb(255, 255, 255, 0.5));
+    width: calc(100% - 2em);
+    border-radius: 0.75em;
+    bottom: 10%;
+    filter: blur(3px);
   }
 
   /* Portfolio Card Flip-up */
