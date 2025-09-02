@@ -100,7 +100,7 @@ export default function Navbar() {
   return (
     <div className="sticky top-0 z-50 w-full p-4">
       <div className="relative container mx-auto max-w-screen-lg">
-        <header className="relative flex h-16 items-center justify-between rounded-full border border-border/40 bg-background/80 px-4 shadow-lg backdrop-blur-md md:px-6">
+        <header className="frutiger-aero-navbar relative flex h-16 items-center justify-between rounded-2xl px-4 md:px-6">
           <a href="#home" className="mr-6 flex items-center space-x-2">
             <Logo className="h-8 w-auto" />
             <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
@@ -114,7 +114,7 @@ export default function Navbar() {
                   href={href}
                   className={cn(
                     "px-4 py-2 rounded-full transition-colors hover:text-primary",
-                    isActive ? "bg-primary/10 text-primary" : "text-foreground/70"
+                    isActive ? "frutiger-aero-navbar-active-link" : "text-foreground/70"
                   )}
                 >
                   {label}
@@ -163,14 +163,19 @@ export default function Navbar() {
             </div>
           </div>
         </header>
-        <motion.div
-          className="absolute inset-0 h-full w-full rounded-full border-2 border-primary pointer-events-none"
+        <div 
+          className="absolute inset-x-2 bottom-2 h-1 pointer-events-none"
           style={{
-            clipPath: `polygon(0% 50%, 0% 100%, ${scrollProgress}% 100%, ${scrollProgress}% 50%)`,
-            maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+            width: `calc(100% - 1rem)`
           }}
-        />
+        >
+          <motion.div
+            className="frutiger-aero-progress-bar"
+            style={{
+              width: `${scrollProgress}%`,
+            }}
+          />
+        </div>
       </div>
     </div>
   );
