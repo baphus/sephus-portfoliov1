@@ -109,12 +109,10 @@ export default function Hero() {
                 animate={fadeInControls}
               >
                 <a href="/Josephus_Sarsonas_Resume.pdf" download className="btn-aqua btn-aqua-primary text-base">
-                  <Download className="mr-2 h-4 w-4 inline-block" />
                   <span>Download Resume</span>
                 </a>
                 <a href="#about" className="btn-aqua btn-aqua-secondary text-base">
                   <span>Learn More</span>
-                  <ArrowDown className="ml-2 h-4 w-4 inline-block" />
                 </a>
               </motion.div>
             </div>
