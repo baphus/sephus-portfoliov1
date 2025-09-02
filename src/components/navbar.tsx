@@ -1,21 +1,23 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Home, User, Lightbulb, Briefcase, GraduationCap, Mail } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import Logo from './logo';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { Menu } from 'lucide-react';
+import Image from 'next/image';
 
 const navLinks = [
-  { href: '#home', label: 'Home', icon: <Home className="h-5 w-5" /> },
-  { href: '#about', label: 'About', icon: <User className="h-5 w-5" /> },
-  { href: '#skills', label: 'Skills', icon: <Lightbulb className="h-5 w-5" /> },
-  { href: '#portfolio', label: 'Portfolio', icon: <Briefcase className="h-5 w-5" /> },
-  { href: '#education', label: 'Education', icon: <GraduationCap className="h-5 w-5" /> },
-  { href: '#contact', label: 'Contact', icon: <Mail className="h-5 w-5" /> },
+  { href: '#home', label: 'Home', iconSrc: 'https://placehold.co/24x24/png' },
+  { href: '#about', label: 'About', iconSrc: 'https://placehold.co/24x24/png' },
+  { href: '#skills', label: 'Skills', iconSrc: 'https://placehold.co/24x24/png' },
+  { href: '#portfolio', label: 'Portfolio', iconSrc: 'https://placehold.co/24x24/png' },
+  { href: '#education', label: 'Education', iconSrc: 'https://placehold.co/24x24/png' },
+  { href: '#contact', label: 'Contact', iconSrc: 'https://placehold.co/24x24/png' },
 ];
 
 export default function Navbar() {
@@ -93,7 +95,7 @@ export default function Navbar() {
             <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
           </a>
           <nav className="hidden md:flex items-center space-x-2 text-sm font-medium">
-            {navLinks.map(({ href, label, icon }) => {
+            {navLinks.map(({ href, label, iconSrc }) => {
               const isActive = activeSection === href.substring(1);
               return (
                 <a
@@ -102,10 +104,10 @@ export default function Navbar() {
                   aria-label={label}
                   className={cn(
                     "p-3 rounded-full transition-colors hover:text-primary",
-                    isActive ? "frutiger-aero-navbar-active-link" : "text-foreground/70"
+                    isActive ? "frutiger-aero-navbar-active-link" : ""
                   )}
                 >
-                  {icon}
+                  <Image src={iconSrc} alt={label} width={24} height={24} className="h-5 w-5" />
                 </a>
               )
             })}
