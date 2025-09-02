@@ -50,9 +50,9 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%; /* Lighter, slightly blue-tinted white */
+    --background: 210 20% 96%; /* Softer, Frutiger Aero Gray */
     --foreground: 222.2 84% 4.9%;
-    --card: 210 20% 98%;
+    --card: 210 20% 96%; /* Softer, Frutiger Aero Gray */
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
@@ -475,11 +475,19 @@
     @apply flex justify-center gap-2.5;
   }
   .skills-keyboard .key {
-    @apply w-16 h-16 text-2xl rounded-lg flex items-center justify-center cursor-pointer transition-all ease-in-out;
+    width: 60px;
+    height: 60px;
     background: linear-gradient(145deg, #2e2e2e, #1a1a1a);
-    box-shadow: 3px 3px 5px #0d0d0d, -3px -3px 5px #333333;
+    box-shadow: 3px 3px 5px #0d0d0d, -3px -3px 5px #333;
     color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     transform: perspective(600px) rotateX(10deg);
+    transition: all 0.1s ease-in-out;
   }
   .skills-keyboard .key:hover {
     background: #444;
