@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useState, useEffect } from 'react';
@@ -57,6 +58,17 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.7], [1, 0.8]);
   const cloudY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
+  const roles = [
+    'Web Developer',
+    'Digital Creator',
+    'Video Editor',
+    'Systems Designer',
+    'Problem Solver',
+    'Team Player',
+    'Creative Thinker',
+    'Tech Enthusiast',
+  ];
+
   return (
     <section ref={targetRef} id="home" className="parallax-hero">
       <motion.div 
@@ -108,20 +120,22 @@ export default function Hero() {
                 style={{ textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
               >
                 {headlineFinished && (
-                  <Typewriter
+                   <Typewriter
+                    onInit={(typewriter) => {
+                      let typeInstance = typewriter.typeString("I'm a ");
+                      
+                      roles.forEach((role, index) => {
+                        typeInstance = typeInstance
+                          .typeString(role)
+                          .pauseFor(1500)
+                          .deleteChars(role.length)
+                      });
+
+                      typeInstance.start();
+                    }}
                     options={{
-                      strings: [
-                        'Web Developer',
-                        'Digital Creator',
-                        'Video Editor',
-                        'Systems Designer',
-                        'Problem Solver',
-                        'Team Player',
-                        'Creative Thinker',
-                        'Tech Enthusiast',
-                      ],
-                      autoStart: true,
                       loop: true,
+                      autoStart: true,
                     }}
                   />
                 )}
