@@ -10,7 +10,7 @@ import SectionWrapper from '@/components/section-wrapper';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
       <Hero />
       <main id="main-content" className="flex-1 content-wrapper">

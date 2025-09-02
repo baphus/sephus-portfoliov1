@@ -58,7 +58,7 @@ export default function Contact() {
         Have a question or want to work together? Feel free to reach out.
       </p>
       <div className="mt-12 max-w-2xl mx-auto">
-        <Card className="rounded-2xl shadow-lg">
+        <Card className="rounded-2xl shadow-lg bg-white/60 backdrop-blur-sm border border-white/20">
           <CardHeader>
             <CardTitle>Send a Message</CardTitle>
           </CardHeader>

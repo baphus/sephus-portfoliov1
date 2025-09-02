@@ -10,31 +10,31 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 20% 98%; /* Lighter, slightly blue-tinted white */
     --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
+    --card: 210 20% 98%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 207 90% 42%;
+    --primary: 207 90% 54%; /* Frutiger Aero Sky Blue */
     --primary-foreground: 210 40% 98%;
-    --secondary: 0 0% 96.1%;
+    --secondary: 210 15% 90%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 0 0% 96.1%;
+    --muted: 210 15% 90%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 207 100% 31%;
+    --accent: 207 80% 48%; /* Slightly Deeper Blue */
     --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 207 90% 42%;
+    --border: 210 10% 80%;
+    --input: 210 10% 85%;
+    --ring: 207 90% 54%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --radius: 0.8rem; /* Larger radius for bubbly feel */
   }
  
   .dark {

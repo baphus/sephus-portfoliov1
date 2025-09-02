@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowDown, Download } from 'lucide-react';
 import HolographicCard from './holographic-card';
 import Typewriter from 'typewriter-effect';
+import Image from 'next/image';
 
 const cardVariants = {
   hidden: { opacity: 0, x: 100 },
@@ -53,9 +54,22 @@ export default function Hero() {
   const cardY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.7], [1, 0.8]);
+  const cloudY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={targetRef} id="home" className="relative h-screen w-full">
+    <section ref={targetRef} id="home" className="parallax-hero">
+      <motion.div 
+        className="absolute inset-0 z-0"
+        style={{y: cloudY}}
+      >
+        <Image 
+          src="/clouds.jpg" 
+          alt="Clouds background" 
+          fill 
+          className="object-cover" 
+          data-ai-hint="clouds sky"
+        />
+      </motion.div>
       <div className="sticky top-0 flex h-full w-full items-center justify-center overflow-hidden">
         <motion.div
           style={{ y: textY, opacity, scale }}
@@ -127,9 +141,6 @@ export default function Hero() {
             </motion.div>
           </div>
         </motion.div>
-        
-        {/* Background gradient */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-background via-primary/10 to-background" />
       </div>
     </section>
   );
