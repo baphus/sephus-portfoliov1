@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -107,7 +106,7 @@ export default function Navbar() {
                     isActive ? "frutiger-aero-navbar-active-link" : ""
                   )}
                 >
-                  <Image src={iconSrc} alt={label} width={32} height={32} className="h-6 w-6" />
+                  <Image src={iconSrc} alt={label} width={40} height={40} className="h-8 w-8" />
                 </a>
               )
             })}
