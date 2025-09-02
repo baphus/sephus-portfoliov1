@@ -475,26 +475,18 @@
     @apply flex justify-center gap-2.5;
   }
   .skills-keyboard .key {
-    @apply w-16 h-16 bg-gradient-to-br from-foreground/80 to-foreground/90 text-background text-2xl rounded-lg flex items-center justify-center cursor-pointer transition-all ease-in-out;
-    box-shadow: 3px 3px 5px hsla(var(--foreground), 0.2), -3px -3px 5px hsla(var(--background), 1);
+    @apply w-16 h-16 text-2xl rounded-lg flex items-center justify-center cursor-pointer transition-all ease-in-out;
+    background: linear-gradient(145deg, #2e2e2e, #1a1a1a);
+    box-shadow: 3px 3px 5px #0d0d0d, -3px -3px 5px #333333;
+    color: #fff;
     transform: perspective(600px) rotateX(10deg);
   }
-  .dark .skills-keyboard .key {
-    @apply bg-gradient-to-br from-background/80 to-background/90 text-foreground;
-    box-shadow: 3px 3px 5px hsla(var(--background), 0.2), -3px -3px 5px hsla(var(--foreground), 0.1);
-  }
   .skills-keyboard .key:hover {
-    @apply bg-foreground/70;
-  }
-  .dark .skills-keyboard .key:hover {
-    @apply bg-background/70;
+    background: #444;
   }
   .skills-keyboard .key.pressed {
     transform: translateY(4px) scale(0.98);
-    box-shadow: inset 2px 2px 3px hsla(var(--foreground), 0.3);
-  }
-  .dark .skills-keyboard .key.pressed {
-    box-shadow: inset 2px 2px 3px hsla(var(--foreground), 0.3);
+    box-shadow: inset 2px 2px 3px #000;
   }
   .skills-keyboard .key.space {
     @apply w-72;
