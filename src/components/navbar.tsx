@@ -25,18 +25,24 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const mainContent = document.getElementById('main-content');
-      if (!mainContent) return;
+        const mainContent = document.getElementById('main-content');
+        if (!mainContent) return;
 
-      const totalHeight = mainContent.scrollHeight - mainContent.clientHeight;
-      const scrolled = window.scrollY - mainContent.offsetTop;
-      const progress = Math.max(0, Math.min(100, (scrolled / totalHeight) * 100));
-      setScrollProgress(progress);
+        const scrollableHeight = mainContent.scrollHeight - window.innerHeight;
+        const currentScroll = Math.max(0, window.scrollY - mainContent.offsetTop);
+        
+        if (scrollableHeight <= 0) {
+            setScrollProgress(100);
+            return;
+        }
+
+        const progress = Math.min(100, (currentScroll / scrollableHeight) * 100);
+        setScrollProgress(progress);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+}, []);
 
   useEffect(() => {
     const sectionIds = navLinks.map(link => link.href.substring(1));
@@ -167,17 +173,17 @@ export default function Navbar() {
           </div>
         </header>
         <div 
-          className="absolute inset-x-2 bottom-2 h-1 pointer-events-none"
-          style={{
-            width: `calc(100% - 1rem)`
-          }}
+          className="absolute inset-x-2 bottom-2.5 pointer-events-none"
+          style={{ width: `calc(100% - 1rem)` }}
         >
-          <motion.div
-            className="frutiger-aero-progress-bar"
-            style={{
-              width: `${scrollProgress}%`,
-            }}
-          />
+          <div className="frutiger-aero-progress-bar-container">
+            <motion.div
+              className="frutiger-aero-progress-bar"
+              style={{
+                width: `${scrollProgress}%`,
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
