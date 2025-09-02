@@ -98,7 +98,7 @@ export default function Hero() {
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
-              <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-8xl lg:text-9xl font-headline" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+              <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl font-headline" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter

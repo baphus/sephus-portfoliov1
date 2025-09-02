@@ -203,7 +203,7 @@ export default function Portfolio() {
       <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
         Here's a selection of my work. Click on any project to see more details.
       </p>
-      <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-8 md:grid-cols-2">
         {portfolioItems.map((item, index) => (
           <Dialog key={item.title}>
             <DialogTrigger asChild>
@@ -252,7 +252,7 @@ export default function Portfolio() {
                 {item.details.stats && (
                   <div>
                     <h3 className="font-semibold mb-2">Campaign Stats:</h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-center">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
                       {item.details.stats.map(stat => (
                         <div key={stat.label} className="bg-secondary p-3 rounded-lg">
                           <p className="text-2xl font-bold">{stat.value}</p>

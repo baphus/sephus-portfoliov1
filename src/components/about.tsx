@@ -17,8 +17,8 @@ export default function About() {
     <div className="container mx-auto px-4 md:px-6">
       <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">About Me</h2>
       <div className="mt-12 grid gap-12 md:grid-cols-5 md:gap-16 items-start">
-        <div className="md:col-span-2">
-          <Card className="overflow-hidden rounded-2xl shadow-md">
+        <div className="md:col-span-2 mx-auto md:mx-0">
+          <Card className="overflow-hidden rounded-2xl shadow-md max-w-sm">
             <CardContent className="p-0">
               <Image
                 src="/about/600x750.png"
@@ -32,7 +32,7 @@ export default function About() {
           </Card>
         </div>
         <div className="md:col-span-3 space-y-8">
-          <div className="space-y-4">
+          <div className="space-y-4 text-center md:text-left">
             <h3 className="text-2xl font-semibold font-headline">Hey, I'm Josephus!</h3>
             <p className="text-lg text-muted-foreground">
               I'm a creative professional from Toledo City, Cebu, with a passion for blending technology and storytelling. As a tech-savvy and naturally curious person, I love diving into new challenges, whether it's producing a viral video for a social media campaign or designing and building a web application from scratch.
@@ -44,9 +44,9 @@ export default function About() {
               When I'm not focused on a project, you can usually find me playing my guitar or diving into a good video game. I'm always open to new opportunities and love engaging with like-minded people. If you have a project in mind or just want to connect, feel free to reach out!
             </p>
           </div>
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="text-xl font-semibold mb-4 font-headline">Professional Attributes</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
               {professionalAttributes.map((attr) => (
                 <Badge key={attr.label} variant="secondary" className="px-3 py-1.5 text-sm flex items-center">
                   {attr.icon}

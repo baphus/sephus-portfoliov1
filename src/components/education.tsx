@@ -28,12 +28,12 @@ export default function Education() {
     <div className="container mx-auto px-4 md:px-6">
       <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">Education & Achievements</h2>
       <div className="relative mt-12 max-w-3xl mx-auto">
-        <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
+        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
         {educationData.map((item, index) => (
-          <div key={index} className="relative mb-8">
-            <div className="absolute left-1/2 top-1 w-4 h-4 bg-primary rounded-full border-4 border-secondary -translate-x-1/2"></div>
-            <div className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-              <div className={`w-full md:w-5/12 p-4 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+          <div key={index} className="relative mb-8 pl-12 md:pl-0">
+            <div className="absolute left-4 md:left-1/2 top-1 w-4 h-4 bg-primary rounded-full border-4 border-secondary -translate-x-1/2"></div>
+            <div className={`md:flex ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
+              <div className={`w-full md:w-5/12 p-4 text-left ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                 <p className="text-sm text-muted-foreground">{item.period}</p>
                 <h3 className={`text-xl font-bold font-headline flex items-center gap-2 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
                   {item.icon} {item.institution}
