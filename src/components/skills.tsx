@@ -1,15 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const NextJsLogo = () => (
   <svg width="32" height="32" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,40 +50,30 @@ const skills = [
   ]
 ];
 
-const SkillKey = ({ skill }: any) => {
+const SkillKey = ({ skill, onSelect, isPressed, onMouseDown, onMouseUp }: any) => {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <div className="key">
-          <div className="flex flex-col items-center justify-center h-full">
-            {typeof skill.logo === 'string' ? (
-              <span className="text-2xl">{skill.logo}</span>
-            ) : (
-              skill.logo
-            )}
-          </div>
-        </div>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-2xl flex items-center gap-2">
-            {typeof skill.logo === 'string' ? (
-                <span className="text-3xl">{skill.logo}</span>
-            ) : (
-                React.cloneElement(skill.logo, { width: 32, height: 32})
-            )}
-            {skill.name}
-          </DialogTitle>
-          <DialogDescription className="pt-4 text-base">
-            {skill.overview}
-          </DialogDescription>
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
+    <div
+      className={`key ${isPressed ? 'pressed' : ''}`}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      onClick={() => onSelect(skill)}
+    >
+      <div className="flex flex-col items-center justify-center h-full">
+        {typeof skill.logo === 'string' ? (
+          <span className="text-2xl">{skill.logo}</span>
+        ) : (
+          skill.logo
+        )}
+      </div>
+    </div>
   );
 };
 
 export default function Skills() {
+  const [selectedSkill, setSelectedSkill] = useState<(typeof skills[0][0]) | null>(null);
+  const [pressedKey, setPressedKey] = useState<string | null>(null);
+
   return (
     <div className="container mx-auto px-4 md:px-6">
       <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">
@@ -103,8 +85,8 @@ export default function Skills() {
       <div className="mt-12 flex justify-center">
         <div className="skills-keyboard">
           {skills.map((row, rowIndex) => (
-            <motion.div 
-              key={rowIndex} 
+            <motion.div
+              key={rowIndex}
               className="row"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -115,22 +97,51 @@ export default function Skills() {
                 <SkillKey
                   key={skill.name}
                   skill={skill}
+                  onSelect={setSelectedSkill}
+                  isPressed={pressedKey === skill.name}
+                  onMouseDown={() => setPressedKey(skill.name)}
+                  onMouseUp={() => setPressedKey(null)}
                 />
               ))}
             </motion.div>
           ))}
-          <motion.div 
+          <motion.div
             className="row"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: skills.length * 0.1 }}
           >
-            <div className="key space">
+            <div className="key space" onClick={() => setSelectedSkill(null)}>
               Creative & Technical Skills
             </div>
           </motion.div>
         </div>
+      </div>
+
+      <div className="mt-8 min-h-[120px] max-w-3xl mx-auto">
+        <AnimatePresence mode="wait">
+          {selectedSkill && (
+            <motion.div
+              key={selectedSkill.name}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="text-center p-6 rounded-lg bg-secondary/50"
+            >
+              <h3 className="text-2xl font-bold font-headline flex items-center justify-center gap-3">
+                {typeof selectedSkill.logo === 'string' ? (
+                  <span className="text-3xl">{selectedSkill.logo}</span>
+                ) : (
+                  React.cloneElement(selectedSkill.logo, { width: 32, height: 32 })
+                )}
+                {selectedSkill.name}
+              </h3>
+              <p className="mt-4 text-muted-foreground">{selectedSkill.overview}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
