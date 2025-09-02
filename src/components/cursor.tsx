@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const CustomCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -8,6 +9,7 @@ const CustomCursor: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<number>();
+  const isMobile = useIsMobile();
 
   const animateCursor = () => {
     if (cursorRef.current) {
@@ -17,11 +19,17 @@ const CustomCursor: React.FC = () => {
   };
   
   useEffect(() => {
+    if (isMobile) {
+      if(requestRef.current) cancelAnimationFrame(requestRef.current);
+      return;
+    }
     requestRef.current = requestAnimationFrame(animateCursor);
     return () => cancelAnimationFrame(requestRef.current as number);
-  }, [position]);
+  }, [position, isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
@@ -66,7 +74,9 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   const cursorClasses = [
     'custom-cursor',

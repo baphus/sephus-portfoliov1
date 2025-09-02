@@ -71,29 +71,43 @@
   }
   body {
     @apply bg-background text-foreground;
-    cursor: none;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
   body::-webkit-scrollbar {
     display: none;
   }
-  a, button, [role="button"], .cursor-pointer {
-    cursor: none;
+
+  @media (hover: hover) and (pointer: fine) {
+    body {
+      cursor: none;
+    }
+    a, button, [role="button"], .cursor-pointer {
+      cursor: none;
+    }
   }
+
   .custom-cursor {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: hsl(var(--primary));
-    pointer-events: none;
-    mix-blend-mode: difference;
-    z-index: 9999;
-    transition: transform 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out;
+    display: none;
   }
+  
+  @media (hover: hover) and (pointer: fine) {
+    .custom-cursor {
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: hsl(var(--primary));
+      pointer-events: none;
+      mix-blend-mode: difference;
+      z-index: 9999;
+      transition: transform 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out;
+    }
+  }
+
   .custom-cursor.clicked {
     transform: scale(0.9);
   }
