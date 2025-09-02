@@ -143,15 +143,15 @@ export default function Hero() {
                 )}
               </div>
                <motion.div
-                className="mt-10 flex items-center justify-center md:justify-start gap-x-6"
+                className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-y-4 sm:gap-y-0 sm:gap-x-6"
                 variants={fadeIn}
                 initial="hidden"
                 animate={fadeInControls}
               >
-                <a href="/Josephus_Sarsonas_Resume.pdf" download className="btn-aqua btn-aqua-primary text-base">
+                <a href="/Josephus_Sarsonas_Resume.pdf" download className="btn-aqua btn-aqua-primary text-base w-full sm:w-auto">
                   <span>Download Resume</span>
                 </a>
-                <a href="#about" className="btn-aqua btn-aqua-secondary text-base">
+                <a href="#about" className="btn-aqua btn-aqua-secondary text-base w-full sm:w-auto">
                   <span>Learn More</span>
                 </a>
               </motion.div>
