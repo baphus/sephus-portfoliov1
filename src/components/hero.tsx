@@ -69,7 +69,7 @@ export default function Hero() {
                   onInit={(typewriter) => {
                     typewriter
                       .typeString("Hi, I'm ")
-                      .typeString('<strong>Josephus.</strong>')
+                      .typeString('<strong>Josephus</strong>')
                       .callFunction(() => {
                         setHeadlineFinished(true);
                         handleTypingComplete();
@@ -77,27 +77,33 @@ export default function Hero() {
                       .start();
                   }}
                   options={{
-                    delay: 50,
+                    cursor: '_',
+                    delay: 100,
                   }}
                 />
               </h1>
               <div 
                 className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0"
               >
-                {headlineFinished && (
-                  <Typewriter
-                    options={{
-                      strings: [
-                        'Digital Creator',
-                        'Web Developer',
-                        'Video Editor',
-                        'Social Media Manager',
-                      ],
-                      autoStart: true,
-                      loop: true,
-                    }}
-                  />
-                )}
+                <Typewriter
+                  options={{
+                    strings: [
+                      'Digital Creator',
+                      'Web Developer',
+                      'Video Editor',
+                      'Lifelong Learner',
+                      'Systems Designer',
+                      'Problem Solver',
+                      'Team Player',
+                      'Innovator',
+                      'Content Strategist',
+                      'Creative Thinker',
+                      'Tech Enthusiast',
+                    ],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
               </div>
                <motion.div
                 className="mt-10 flex items-center justify-center md:justify-start gap-x-6"
