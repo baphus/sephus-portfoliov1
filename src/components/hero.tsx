@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Download } from 'lucide-react';
@@ -38,16 +38,16 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const [animationsStarted, setAnimationsStarted] = useState(false);
   const [headlineFinished, setHeadlineFinished] = useState(false);
   const cardControls = useAnimation();
   const fadeInControls = useAnimation();
 
-  const handleTypingComplete = () => {
-    setAnimationsStarted(true);
-    cardControls.start("visible");
-    fadeInControls.start("visible");
-  };
+  useEffect(() => {
+    if (headlineFinished) {
+      cardControls.start("visible");
+      fadeInControls.start("visible");
+    }
+  }, [headlineFinished, cardControls, fadeInControls]);
 
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
   const cardY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
@@ -67,11 +67,10 @@ export default function Hero() {
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString("Hello, I'm ")
+                      .typeString("Hi, I'm ")
                       .typeString('<strong>Josephus</strong>')
                       .callFunction(() => {
                         setHeadlineFinished(true);
-                        handleTypingComplete();
                       })
                       .start();
                   }}
@@ -84,22 +83,24 @@ export default function Hero() {
               <div 
                 className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0 h-8"
               >
-                <Typewriter
-                  options={{
-                    strings: [
-                      'Web Developer',
-                      'Digital Creator',
-                      'Video Editor',
-                      'Systems Designer',
-                      'Problem Solver',
-                      'Team Player',
-                      'Creative Thinker',
-                      'Tech Enthusiast',
-                    ],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
+                {headlineFinished && (
+                  <Typewriter
+                    options={{
+                      strings: [
+                        'Web Developer',
+                        'Digital Creator',
+                        'Video Editor',
+                        'Systems Designer',
+                        'Problem Solver',
+                        'Team Player',
+                        'Creative Thinker',
+                        'Tech Enthusiast',
+                      ],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
+                )}
               </div>
                <motion.div
                 className="mt-10 flex items-center justify-center md:justify-start gap-x-6"
@@ -107,18 +108,14 @@ export default function Hero() {
                 initial="hidden"
                 animate={fadeInControls}
               >
-                <Button asChild size="lg">
-                  <a href="/Josephus_Sarsonas_Resume.pdf" download>
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Resume
-                  </a>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="bg-background/50 hover:bg-background/80">
-                  <a href="#about">
-                    Learn More
-                    <ArrowDown className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
+                <a href="/Josephus_Sarsonas_Resume.pdf" download className="btn-aqua btn-aqua-primary text-base">
+                  <Download className="mr-2 h-4 w-4 inline-block" />
+                  <span>Download Resume</span>
+                </a>
+                <a href="#about" className="btn-aqua btn-aqua-secondary text-base">
+                  <span>Learn More</span>
+                  <ArrowDown className="ml-2 h-4 w-4 inline-block" />
+                </a>
               </motion.div>
             </div>
             <motion.div 
