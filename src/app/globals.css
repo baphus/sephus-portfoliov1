@@ -494,7 +494,7 @@
     box-shadow: inset 2px 2px 3px hsla(var(--foreground), 0.3);
   }
   .dark .skills-keyboard .key.pressed {
-    box-shadow: inset 2px 2px 3px hsla(var(--background), 0.3);
+    box-shadow: inset 2px 2px 3px hsla(var(--foreground), 0.3);
   }
   .skills-keyboard .key.space {
     @apply w-72;
