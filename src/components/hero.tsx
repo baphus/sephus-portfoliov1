@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef, useState } from 'react';
@@ -83,27 +82,29 @@ export default function Hero() {
                 />
               </h1>
               <div 
-                className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0"
+                className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0 h-8"
               >
-                <Typewriter
-                  options={{
-                    strings: [
-                      'Digital Creator',
-                      'Web Developer',
-                      'Video Editor',
-                      'Lifelong Learner',
-                      'Systems Designer',
-                      'Problem Solver',
-                      'Team Player',
-                      'Innovator',
-                      'Content Strategist',
-                      'Creative Thinker',
-                      'Tech Enthusiast',
-                    ],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
+                {headlineFinished && (
+                  <Typewriter
+                    options={{
+                      strings: [
+                        'Digital Creator',
+                        'Web Developer',
+                        'Video Editor',
+                        'Lifelong Learner',
+                        'Systems Designer',
+                        'Problem Solver',
+                        'Team Player',
+                        'Innovator',
+                        'Content Strategist',
+                        'Creative Thinker',
+                        'Tech Enthusiast',
+                      ],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
+                )}
               </div>
                <motion.div
                 className="mt-10 flex items-center justify-center md:justify-start gap-x-6"
