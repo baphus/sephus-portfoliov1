@@ -68,7 +68,7 @@ export default function Hero() {
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString("Hi, I'm ")
+                      .typeString("Hello, I'm ")
                       .typeString('<strong>Josephus</strong>')
                       .callFunction(() => {
                         setHeadlineFinished(true);
