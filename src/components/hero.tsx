@@ -88,15 +88,12 @@ export default function Hero() {
                 <Typewriter
                   options={{
                     strings: [
-                      'Digital Creator',
                       'Web Developer',
+                      'Digital Creator',
                       'Video Editor',
-                      'Lifelong Learner',
                       'Systems Designer',
                       'Problem Solver',
                       'Team Player',
-                      'Innovator',
-                      'Content Strategist',
                       'Creative Thinker',
                       'Tech Enthusiast',
                     ],
