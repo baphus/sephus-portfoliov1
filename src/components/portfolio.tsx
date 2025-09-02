@@ -108,7 +108,7 @@ const portfolioItems = [
     aiHint: 'landing page app',
     details: {
       role: 'Developer (Personal Project)',
-      link: 'https://let-review-two.vercel.app/',
+      link: 'https://sephus-let-review.vercel.app/',
       tech: 'Next.js, Tailwind CSS',
       features: ['Designed and developed the app and landing page.', 'Fully responsive design for all devices.', 'Modern UI/UX principles applied.'],
       gallery: [
