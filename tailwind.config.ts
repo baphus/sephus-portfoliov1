@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['"Lucida Grande"', '"Segoe UI"', 'Roboto', 'system-ui', 'sans-serif'],
-        headline: ['"Gill Sans"', 'system-ui', 'sans-serif'],
+        body: ["'Lucida Grande'", 'system-ui', 'sans-serif'],
+        headline: ["'Gill Sans'", 'system-ui', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
