@@ -103,11 +103,11 @@ export default function Navbar() {
                   href={href}
                   aria-label={label}
                   className={cn(
-                    "p-3 rounded-full transition-colors hover:text-primary",
+                    "p-3 rounded-full transition-colors",
                     isActive ? "frutiger-aero-navbar-active-link" : ""
                   )}
                 >
-                  <Image src={iconSrc} alt={label} width={24} height={24} className="h-5 w-5" />
+                  <Image src={iconSrc} alt={label} width={32} height={32} className="h-6 w-6" />
                 </a>
               )
             })}
