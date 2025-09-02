@@ -21,28 +21,6 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-        const mainContent = document.getElementById('main-content');
-        if (!mainContent) return;
-
-        const scrollableHeight = mainContent.scrollHeight - window.innerHeight;
-        const currentScroll = Math.max(0, window.scrollY - mainContent.offsetTop);
-        
-        if (scrollableHeight <= 0) {
-            setScrollProgress(100);
-            return;
-        }
-
-        const progress = Math.min(100, (currentScroll / scrollableHeight) * 100);
-        setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-}, []);
 
   useEffect(() => {
     const sectionIds = navLinks.map(link => link.href.substring(1));
@@ -172,19 +150,6 @@ export default function Navbar() {
             </div>
           </div>
         </header>
-        <div 
-          className="absolute inset-x-2 bottom-2.5 pointer-events-none"
-          style={{ width: `calc(100% - 1rem)` }}
-        >
-          <div className="frutiger-aero-progress-bar-container">
-            <motion.div
-              className="frutiger-aero-progress-bar"
-              style={{
-                width: `${scrollProgress}%`,
-              }}
-            />
-          </div>
-        </div>
       </div>
     </div>
   );
