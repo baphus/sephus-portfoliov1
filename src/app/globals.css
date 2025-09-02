@@ -192,12 +192,12 @@
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid rgba(0, 0, 0, 0.8);
+    border-top: 6px solid rgba(0, 0, 0, 0.8);
     transition: all 0.2s ease-out;
   }
   
   .dark .frutiger-aero-navbar-active-link::after {
-    border-bottom-color: rgba(255, 255, 255, 0.8);
+    border-top-color: rgba(255, 255, 255, 0.8);
   }
   
   .frutiger-aero-navbar-active-link:hover {
@@ -205,11 +205,11 @@
   }
   
   .frutiger-aero-navbar-active-link:hover::after {
-    border-bottom-color: hsl(var(--primary));
+    border-top-color: hsl(var(--primary));
   }
   
   .dark .frutiger-aero-navbar-active-link:hover::after {
-    border-bottom-color: hsl(var(--primary-foreground));
+    border-top-color: hsl(var(--primary-foreground));
   }
 
   /* Business Card Flip Effect */
@@ -252,8 +252,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; /* Safari */
   }
   .card-face.front {
     transform: rotateY(0deg);
@@ -466,6 +466,38 @@
   .btn-aqua-secondary span {
     text-shadow: 0 0.25em 0.2em rgba(0, 0, 0, 0.25);
   }
-}
 
-    
+  /* Skills Keyboard */
+  .skills-keyboard {
+    @apply flex flex-col gap-2.5;
+  }
+  .skills-keyboard .row {
+    @apply flex justify-center gap-2.5;
+  }
+  .skills-keyboard .key {
+    @apply w-16 h-16 bg-gradient-to-br from-secondary to-background text-foreground text-sm rounded-lg flex items-center justify-center cursor-pointer transition-all ease-in-out;
+    color: hsl(var(--foreground));
+    box-shadow: 3px 3px 5px hsla(var(--foreground), 0.2), -3px -3px 5px hsla(var(--background), 1);
+    transform: perspective(600px) rotateX(10deg);
+  }
+  .dark .skills-keyboard .key {
+    box-shadow: 3px 3px 5px #0d0d0d, -3px -3px 5px #333;
+    background: linear-gradient(145deg, #2e2e2e, #1a1a1a);
+  }
+  .skills-keyboard .key:hover {
+    @apply bg-primary/20;
+  }
+  .dark .skills-keyboard .key:hover {
+    background: #444;
+  }
+  .skills-keyboard .key.pressed {
+    transform: translateY(4px) scale(0.98);
+    box-shadow: inset 2px 2px 3px hsla(var(--foreground), 0.3);
+  }
+  .dark .skills-keyboard .key.pressed {
+    box-shadow: inset 2px 2px 3px #000;
+  }
+  .skills-keyboard .key.space {
+    @apply w-72;
+  }
+}
