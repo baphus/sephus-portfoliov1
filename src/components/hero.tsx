@@ -7,6 +7,7 @@ import { ArrowDown, Download } from 'lucide-react';
 import HolographicCard from './holographic-card';
 import Typewriter from 'typewriter-effect';
 import Image from 'next/image';
+import Navbar from './navbar';
 
 const cardVariants = {
   hidden: { opacity: 0, x: 100 },
@@ -21,16 +22,16 @@ const cardVariants = {
 };
 
 const fadeIn = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: -20 },
   visible: { 
     opacity: 1,
+    y: 0,
     transition: {
       duration: 1,
       ease: "easeOut"
     }
   },
 };
-
 
 export default function Hero() {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -70,6 +71,14 @@ export default function Hero() {
           data-ai-hint="clouds sky"
         />
       </motion.div>
+       <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        animate={headlineFinished ? "visible" : "hidden"}
+        className="fixed top-0 left-0 right-0 z-50"
+      >
+        <Navbar />
+      </motion.div>
       <div className="sticky top-0 flex h-full w-full items-center justify-center overflow-hidden">
         <motion.div
           style={{ y: textY, opacity, scale }}
@@ -77,7 +86,7 @@ export default function Hero() {
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
-              <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-8xl lg:text-9xl font-headline">
+              <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-8xl lg:text-9xl font-headline" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
@@ -95,7 +104,8 @@ export default function Hero() {
                 />
               </h1>
               <div 
-                className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl max-w-lg mx-auto md:mx-0 h-8"
+                className="mt-6 text-lg leading-8 text-white/90 sm:text-xl max-w-lg mx-auto md:mx-0 h-8"
+                style={{ textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
               >
                 {headlineFinished && (
                   <Typewriter

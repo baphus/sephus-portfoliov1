@@ -25,9 +25,12 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = window.scrollY;
-      const progress = (scrolled / totalHeight) * 100;
+      const mainContent = document.getElementById('main-content');
+      if (!mainContent) return;
+
+      const totalHeight = mainContent.scrollHeight - mainContent.clientHeight;
+      const scrolled = window.scrollY - mainContent.offsetTop;
+      const progress = Math.max(0, Math.min(100, (scrolled / totalHeight) * 100));
       setScrollProgress(progress);
     };
 
@@ -98,11 +101,11 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="sticky top-0 z-50 w-full p-4">
+    <div className="w-full p-4">
       <div className="relative container mx-auto max-w-screen-lg">
         <header className="frutiger-aero-navbar relative flex h-16 items-center justify-between rounded-2xl px-4 md:px-6">
           <a href="#home" className="mr-6 flex items-center space-x-2">
-            <Logo className="h-8 w-auto" />
+            <Logo className="h-8 w-auto text-primary" />
             <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
           </a>
           <nav className="hidden md:flex items-center space-x-1 text-sm font-medium">
@@ -136,7 +139,7 @@ export default function Navbar() {
                   <SheetHeader>
                     <SheetTitle>
                       <a href="#home" className="mb-8 flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                        <Logo className="h-8 w-auto" />
+                        <Logo className="h-8 w-auto text-primary" />
                         <span className="font-bold">Josephus Sarsonas</span>
                       </a>
                     </SheetTitle>

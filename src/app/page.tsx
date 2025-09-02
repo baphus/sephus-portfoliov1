@@ -1,4 +1,3 @@
-import Navbar from '@/components/navbar';
 import Hero from '@/components/hero';
 import About from '@/components/about';
 import Skills from '@/components/skills';
@@ -7,11 +6,11 @@ import Education from '@/components/education';
 import Contact from '@/components/contact';
 import Footer from '@/components/footer';
 import SectionWrapper from '@/components/section-wrapper';
+import Navbar from '@/components/navbar';
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar />
       <Hero />
       <main id="main-content" className="flex-1 content-wrapper">
         <SectionWrapper id="about">
