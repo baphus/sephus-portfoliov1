@@ -152,12 +152,12 @@
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 8px solid hsl(var(--primary) / 0.8);
+    border-top: 8px solid rgba(0, 0, 0, 0.8);
     transition: all 0.2s ease-out;
   }
   
   .dark .frutiger-aero-navbar-active-link::after {
-    border-top-color: hsl(var(--primary-foreground) / 0.8);
+    border-top-color: rgba(255, 255, 255, 0.8);
   }
   
   .frutiger-aero-navbar-active-link:hover {
