@@ -129,7 +129,7 @@ export default function Hero() {
         </motion.div>
         
         {/* Background gradient */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-background via-secondary/50 to-background" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-background via-primary/10 to-background" />
       </div>
     </section>
   );
