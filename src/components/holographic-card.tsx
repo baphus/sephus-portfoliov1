@@ -7,8 +7,8 @@ import { Button } from './ui/button';
 
 export default function HolographicCard() {
   return (
-    <div id="business-card" className="w-full flex justify-center">
-      <div className="flip-container h-[250px] w-[400px] scale-[0.8] sm:scale-100">
+    <div id="business-card" className="w-full">
+      <div className="flip-container h-[250px] w-[400px] scale-[0.8] sm:scale-100 mx-auto">
         <div className="flipper">
           <div className="card-face front card-face-aqua rounded-2xl">
             <Logo className="h-32 w-32 text-white/90 drop-shadow-lg" />
