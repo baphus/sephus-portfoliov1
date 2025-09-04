@@ -2,7 +2,6 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Providers } from '@/components/providers';
 import { Toaster } from '@/components/ui/toaster';
-import CustomCursor from '@/components/cursor';
 
 export const metadata: Metadata = {
   title: "Kim's Portfolio",
@@ -21,7 +20,6 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <Providers attribute="class" defaultTheme="light" enableSystem>
-          <CustomCursor />
           {children}
           <Toaster />
         </Providers>
