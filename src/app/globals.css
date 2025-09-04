@@ -178,6 +178,7 @@
   .flip-container {
     perspective: 1000px;
   }
+  
   .flipper {
     position: relative;
     width: 100%;
@@ -217,9 +218,11 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
+
   .card-face.front {
     transform: rotateY(0deg);
   }
+  
   .card-face.back {
     transform: rotateY(180deg);
   }
