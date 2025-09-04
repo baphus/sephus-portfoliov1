@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Guitar, Gamepad2, Lightbulb, Rocket, Briefcase, Mic, Users, Cpu } from 'lucide-react';
+import { Cpu, Briefcase, Mic, Users, Rocket, Lightbulb } from 'lucide-react';
 
 const professionalAttributes = [
     { label: 'Detail-Oriented', icon: <Cpu className="mr-2 h-4 w-4" /> },
@@ -35,13 +35,13 @@ export default function About() {
           <div className="space-y-4 text-center md:text-left">
             <h3 className="text-2xl font-semibold font-headline">Hey, I'm Josephus!</h3>
             <p className="text-lg text-muted-foreground">
-              I'm a creative professional from Toledo City, Cebu, with a passion for blending technology and storytelling. As a tech-savvy and naturally curious person, I love diving into new challenges, whether it's producing a viral video for a social media campaign or designing and building a web application from scratch.
+              I'm a web developer from Cebu, Philippines, with a passion for building intuitive and performant web applications. My goal is to translate user needs into functional and engaging digital experiences.
             </p>
             <p className="text-muted-foreground">
-              My approach is all about working smart—finding efficient and creative solutions to help businesses grow. Nothing excites me more than seeing an idea come to life and deliver real results, like when I helped my family's business, JK Bros Combos, reach over 2,200 people organically. It's this drive to solve problems and connect with people that fuels my work.
+              I specialize in front-end technologies like React and Next.js, and I enjoy tackling challenges, whether it's designing a responsive UI or architecting a scalable web app. I am driven by a desire to solve problems and deliver high-quality, impactful work.
             </p>
             <p className="text-muted-foreground">
-              When I'm not focused on a project, you can usually find me playing my guitar or diving into a good video game. I'm always open to new opportunities and love engaging with like-minded people. If you have a project in mind or just want to connect, feel free to reach out!
+              When I'm not coding, you can find me exploring new technologies or playing my guitar. I am always open to new opportunities and collaborations.
             </p>
           </div>
           <div className="text-center md:text-left">

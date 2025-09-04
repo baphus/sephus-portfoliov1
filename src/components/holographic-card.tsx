@@ -5,14 +5,22 @@ import { useState } from 'react';
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 import Logo from './logo';
 import { Button } from './ui/button';
+import Image from 'next/image';
 
 export default function HolographicCard() {
   return (
     <div id="business-card" className="w-full flex items-center justify-center">
       <div className="flip-container h-[250px] w-[400px] scale-[0.8] sm:scale-100">
         <div className="flipper">
-          <div className="card-face front rounded-2xl bg-card border border-border flex items-center justify-center p-8">
-            <Logo className="h-36 w-36 text-primary" />
+          <div className="card-face front rounded-2xl bg-card border border-border flex items-center justify-center p-0 overflow-hidden">
+            <Image 
+              src="/about/600x750.png"
+              alt="Portrait of Josephus Kim L. Sarsonas"
+              width={400}
+              height={400}
+              className="object-cover w-full h-full scale-125"
+              data-ai-hint="professional portrait"
+            />
           </div>
           <div className="card-face back rounded-2xl bg-card border border-border flex flex-col overflow-hidden">
             <div className="bg-primary/90 w-1/3 h-full flex flex-col items-center justify-center p-6">
@@ -21,7 +29,7 @@ export default function HolographicCard() {
             <div className="w-2/3 h-full flex flex-col justify-center p-6 absolute right-0 top-0">
               <div className="text-left">
                 <h3 className="text-lg font-bold font-headline">Josephus Kim L. Sarsonas</h3>
-                <p className="text-sm text-primary pb-2 mb-2 border-b border-border">Digital Professional</p>
+                <p className="text-sm text-primary pb-2 mb-2 border-b border-border">Web Developer</p>
                 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
