@@ -2,21 +2,13 @@
 
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 import { Button } from './ui/button';
-import Image from 'next/image';
+import Logo from './logo';
 
 export default function HolographicCard() {
   return (
     <div className="h-[250px] w-[400px] scale-[0.8] sm:scale-100 mx-auto rounded-2xl bg-card border border-border flex overflow-hidden">
       <div className="bg-primary/90 w-1/3 h-full flex flex-col items-center justify-center p-4">
-        <div className="relative h-24 w-24 rounded-full overflow-hidden border-4 border-primary-foreground/80 shadow-lg">
-          <Image
-            src="/about/600x750.png"
-            alt="Portrait of Josephus Kim L. Sarsonas"
-            fill
-            className="object-cover"
-            data-ai-hint="professional portrait"
-          />
-        </div>
+        <Logo className="h-24 w-24 text-primary-foreground" />
       </div>
       <div className="w-2/3 h-full flex flex-col justify-center p-6 pl-8">
         <div className="text-left">
