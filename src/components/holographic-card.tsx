@@ -3,6 +3,7 @@
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 import { Button } from './ui/button';
 import Logo from './logo';
+import Image from 'next/image';
 
 export default function HolographicCard() {
   return (
@@ -11,24 +12,33 @@ export default function HolographicCard() {
         <Logo className="h-24 w-24 text-primary-foreground" />
       </div>
       <div className="w-2/3 h-full flex flex-col justify-center p-6 pl-8">
-        <div className="text-left">
-          <h3 className="text-lg font-bold font-headline">Josephus Kim L. Sarsonas</h3>
-          <p className="text-sm text-primary pb-2 mb-2 border-b border-border">Web Developer</p>
-          
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <Mail className="h-4 w-4 text-muted-foreground" />
-              <a href="mailto:sarsonasjosephuskim@gmail.com" className="text-xs text-foreground hover:text-primary transition-colors truncate">
-                sarsonasjosephuskim@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-muted-foreground" />
-              <span className="text-xs text-foreground">Cebu City, Philippines</span>
-            </div>
+        <div className="flex items-center gap-4 mb-3">
+          <Image
+            src="/about/600x750.png"
+            alt="Portrait of Josephus Kim L. Sarsonas"
+            width={60}
+            height={60}
+            className="rounded-full object-cover border-2 border-primary"
+            data-ai-hint="professional portrait"
+          />
+          <div className="text-left">
+            <h3 className="text-lg font-bold font-headline">Josephus Kim L. Sarsonas</h3>
+            <p className="text-sm text-primary">Web Developer</p>
           </div>
         </div>
-        <div className="flex-shrink-0 flex gap-2 mt-4">
+        <div className="space-y-2 py-2 border-t border-border">
+          <div className="flex items-center gap-2">
+            <Mail className="h-4 w-4 text-muted-foreground" />
+            <a href="mailto:sarsonasjosephuskim@gmail.com" className="text-xs text-foreground hover:text-primary transition-colors truncate">
+              sarsonasjosephuskim@gmail.com
+            </a>
+          </div>
+          <div className="flex items-center gap-2">
+            <MapPin className="h-4 w-4 text-muted-foreground" />
+            <span className="text-xs text-foreground">Cebu City, Philippines</span>
+          </div>
+        </div>
+        <div className="flex-shrink-0 flex gap-2 mt-2">
           <Button variant="outline" size="icon" className="h-8 w-8" asChild>
             <a href="https://www.linkedin.com/in/josephus-kim-sarsonas-1b5191260/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin className="h-4 w-4" />
