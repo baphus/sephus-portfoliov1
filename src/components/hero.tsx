@@ -34,6 +34,17 @@ const fadeIn = {
   },
 };
 
+const backgroundFadeIn = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      ease: "easeIn"
+    }
+  },
+};
+
 export default function Hero() {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
@@ -44,13 +55,15 @@ export default function Hero() {
   const [headlineFinished, setHeadlineFinished] = useState(false);
   const cardControls = useAnimation();
   const fadeInControls = useAnimation();
+  const backgroundControls = useAnimation();
 
   useEffect(() => {
     if (headlineFinished) {
       cardControls.start("visible");
       fadeInControls.start("visible");
+      backgroundControls.start("visible");
     }
-  }, [headlineFinished, cardControls, fadeInControls]);
+  }, [headlineFinished, cardControls, fadeInControls, backgroundControls]);
 
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
   const cardY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
@@ -70,10 +83,13 @@ export default function Hero() {
   ];
 
   return (
-    <section ref={targetRef} id="home" className="parallax-hero">
+    <section ref={targetRef} id="home" className="parallax-hero bg-black">
       <motion.div 
         className="absolute inset-0 z-0"
         style={{y: cloudY}}
+        variants={backgroundFadeIn}
+        initial="hidden"
+        animate={backgroundControls}
       >
         <Image 
           src="/clouds.jpg" 
@@ -98,7 +114,7 @@ export default function Hero() {
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
-              <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl font-headline" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl font-headline" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
