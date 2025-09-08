@@ -69,7 +69,6 @@ export default function Hero() {
   const cardY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.7], [1, 0.8]);
-  const cloudY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const cardRotateY = useTransform(scrollYProgress, [0, 0.5], [180, 0]);
 
   const roles = [
@@ -87,7 +86,6 @@ export default function Hero() {
     <section ref={targetRef} id="home" className="parallax-hero bg-black">
       <motion.div 
         className="absolute inset-0 z-0"
-        style={{y: cloudY}}
         variants={backgroundFadeIn}
         initial="hidden"
         animate={headlineFinished ? "visible" : "hidden"}
@@ -99,6 +97,7 @@ export default function Hero() {
           className="object-cover" 
           data-ai-hint="clouds sky"
         />
+        <div className="absolute inset-0 bg-black/50 dark:bg-black/70" />
       </motion.div>
        <motion.div
         variants={fadeIn}
