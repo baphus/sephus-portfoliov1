@@ -2,7 +2,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
+import { motion, useScroll, useTransform, useAnimation, MotionValue } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Download } from 'lucide-react';
 import HolographicCard from './holographic-card';
@@ -70,6 +70,7 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.7], [1, 0.8]);
   const cloudY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const cardRotateY = useTransform(scrollYProgress, [0, 0.5], [180, 0]);
 
   const roles = [
     'Web Developer',
@@ -89,7 +90,7 @@ export default function Hero() {
         style={{y: cloudY}}
         variants={backgroundFadeIn}
         initial="hidden"
-        animate={backgroundControls}
+        animate={headlineFinished ? "visible" : "hidden"}
       >
         <Image 
           src="/clouds.jpg" 
@@ -179,7 +180,7 @@ export default function Hero() {
               animate={cardControls}
               className="relative md:-mt-8"
             >
-              <HolographicCard />
+              <HolographicCard rotateY={cardRotateY} />
             </motion.div>
           </div>
         </motion.div>
