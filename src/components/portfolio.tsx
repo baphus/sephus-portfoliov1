@@ -33,7 +33,7 @@ const portfolioItems = [
     details: {
       role: 'Full-Stack Developer (Academic Project)',
       link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
-      tech: 'PHP, PDO, SQL, HTML, CSS, JavaScript, Bootstrap',
+      tech: 'PHP, PDO, Supabase (Postgres), HTML, CSS, JavaScript, Bootstrap',
       features: [
         'Secure user authentication and role-based access control (Admin, Doctor, Patient).',
         'Dynamic appointment scheduling and management.',
@@ -45,7 +45,7 @@ const portfolioItems = [
         'Implemented a custom routing system to understand the fundamentals of the MVC (Model-View-Controller) pattern.',
         'Utilized PHP Data Objects (PDO) for secure and prepared statement-based database interactions, preventing SQL injection.',
         'Gained experience in deploying a full-stack PHP application to a live server environment (Heroku).',
-        'Designed and managed a relational database schema to handle complex data relationships.',
+        'Designed and managed a relational database schema in a Supabase Postgres environment to handle complex data relationships.',
       ],
       gallery: [
         { src: '/portfolio/medicare-clinic/landing.png', alt: 'Medicare Clinic Landing Page', aiHint: 'web application landing page' },
