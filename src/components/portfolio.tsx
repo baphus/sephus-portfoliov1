@@ -28,7 +28,7 @@ const portfolioItems = [
   {
     title: 'Medicare Clinic System',
     description: 'A comprehensive clinic management system designed to handle patient records, appointments, and billing for a seamless healthcare experience.',
-    image: '/portfolio/medicare-clinic/landing.png',
+    image: '/portfolio/medicare-clinic/landing.jpg',
     aiHint: 'clinic management system',
     details: {
       role: 'Full-Stack Developer (Academic Project)',
