@@ -52,9 +52,11 @@ const portfolioItems = [
       gallery: [
         { src: '/portfolio/medicare-clinic/landing.jpg', alt: 'Medicare Clinic Landing Page', aiHint: 'web application landing page' },
         { src: '/portfolio/medicare-clinic/dashboard.png', alt: 'Admin Dashboard', aiHint: 'dashboard analytics' },
+        { src: '/portfolio/medicare-clinic/dashboard2.png', alt: 'Admin Dashboard', aiHint: 'dashboard analytics' },
         { src: '/portfolio/medicare-clinic/appointments.png', alt: 'Appointments Page', aiHint: 'calendar application' },
         { src: '/portfolio/medicare-clinic/patients.png', alt: 'Patient Records', aiHint: 'data table' },
         { src: '/portfolio/medicare-clinic/register.png', alt: 'Patient Records', aiHint: 'data table' },
+        { src: '/portfolio/medicare-clinic/patient-dashboard.png', alt: 'Patient Records', aiHint: 'data table' },
 
       ],
     },
