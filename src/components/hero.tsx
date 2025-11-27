@@ -73,13 +73,14 @@ export default function Hero() {
 
   const roles = [
     'Web Developer',
-    'Digital Creator',
-    'Video Editor',
+    'Data Analyst',
+    'Systems Analyst',
     'Systems Designer',
+    'Database Administrator',
+    'Video Editor',
     'Problem Solver',
     'Team Player',
     'Creative Thinker',
-    'Tech Enthusiast',
   ];
 
   return (
@@ -153,7 +154,7 @@ export default function Hero() {
                       loop: true,
                       autoStart: true,
                       delay: 50,
-                      deleteSpeed: 30,
+                      deleteSpeed: 50,
                     }}
                   />
                 )}
