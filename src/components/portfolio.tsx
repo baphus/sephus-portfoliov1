@@ -33,7 +33,7 @@ const portfolioItems = [
     details: {
       role: 'Full-Stack Developer (Academic Project)',
       link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
-      tech: 'PHP, PDO, Supabase (Postgres), HTML, CSS, JavaScript, Bootstrap',
+      tech: 'PHP, PDO, Supabase (Postgres), REST API, Cloudinary, HTML, CSS, JavaScript, Bootstrap',
       features: [
         'Secure user authentication and role-based access control (Admin, Doctor, Patient).',
         'Dynamic appointment scheduling and management.',
@@ -46,12 +46,16 @@ const portfolioItems = [
         'Utilized PHP Data Objects (PDO) for secure and prepared statement-based database interactions, preventing SQL injection.',
         'Gained experience in deploying a full-stack PHP application to a live server environment (Heroku).',
         'Designed and managed a relational database schema in a Supabase Postgres environment to handle complex data relationships.',
+        'Gained hands-on experience designing and consuming RESTful APIs for client-server communication.',
+        'Integrated Cloudinary for efficient cloud-based image and media management, including storage and delivery.',
       ],
       gallery: [
-        { src: '/portfolio/medicare-clinic/landing.png', alt: 'Medicare Clinic Landing Page', aiHint: 'web application landing page' },
+        { src: '/portfolio/medicare-clinic/landing.jpg', alt: 'Medicare Clinic Landing Page', aiHint: 'web application landing page' },
         { src: '/portfolio/medicare-clinic/dashboard.png', alt: 'Admin Dashboard', aiHint: 'dashboard analytics' },
         { src: '/portfolio/medicare-clinic/appointments.png', alt: 'Appointments Page', aiHint: 'calendar application' },
         { src: '/portfolio/medicare-clinic/patients.png', alt: 'Patient Records', aiHint: 'data table' },
+        { src: '/portfolio/medicare-clinic/register.png', alt: 'Patient Records', aiHint: 'data table' },
+
       ],
     },
   },
@@ -341,3 +345,5 @@ export default function Portfolio() {
     </div>
   );
 }
+
+    
