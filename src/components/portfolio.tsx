@@ -26,6 +26,41 @@ import { ArrowUpRight } from 'lucide-react';
 
 const portfolioItems = [
   {
+    title: 'BNHS E-Document Request System',
+    description: 'A production-ready web application for managing school document requests online, featuring OTP verification, request tracking, and an admin dashboard.',
+    image: '/portfolio/bnhs/dashboard.png',
+    aiHint: 'school system dashboard',
+    details: {
+      role: 'Full-Stack Developer (Academic Project)',
+      tech: 'Laravel 12, PHP 8.2+, Blade, Tailwind CSS, Alpine.js, PostgreSQL (Supabase), Heroku',
+      features: [
+        'Secure email OTP verification for document requests.',
+        'Multi-step request form with digital signature capture.',
+        'Real-time request tracking for students/alumni.',
+        'Comprehensive admin dashboard with statistics and request management.',
+        'Role-based access for Admin and Registrar staff.',
+        'Automated email notifications for status changes.',
+        'Full audit logging for all actions taken on a request.',
+      ],
+      learnings: [
+        'Built a complete, production-ready application from scratch using the Laravel framework.',
+        'Implemented a secure authentication flow with rate-limited email OTPs to prevent abuse.',
+        'Designed a normalized relational database schema using PostgreSQL to manage complex data relationships.',
+        'Developed a feature-rich admin panel with CRUD operations, bulk actions, and data visualization.',
+        'Mastered Blade templating with Tailwind CSS and Alpine.js for a responsive and interactive frontend.',
+        'Gained hands-on experience deploying a full-stack PHP/Laravel application to a live cloud environment (Heroku).',
+        'Implemented an automated audit trail system to log all significant user actions for security and accountability.'
+      ],
+      gallery: [
+        { src: '/portfolio/bnhs/dashboard.png', alt: 'Admin Dashboard', aiHint: 'analytics dashboard' },
+        { src: '/portfolio/bnhs/request-form.png', alt: 'Document Request Form', aiHint: 'online form' },
+        { src: '/portfolio/bnhs/tracking.png', alt: 'Request Tracking Page', aiHint: 'status tracking interface' },
+        { src: '/portfolio/bnhs/otp.png', alt: 'OTP Verification', aiHint: 'security code' },
+        { src: '/portfolio/bnhs/request-details.png', alt: 'Request Details View', aiHint: 'data management' },
+      ],
+    },
+  },
+  {
     title: 'Medicare Clinic System',
     description: 'A comprehensive clinic management system designed to handle patient records, appointments, and billing for a seamless healthcare experience.',
     image: '/portfolio/medicare-clinic/landing.jpg',
@@ -347,5 +382,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-    
