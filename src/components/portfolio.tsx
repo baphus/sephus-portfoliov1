@@ -28,7 +28,7 @@ const portfolioItems = [
   {
     title: 'BNHS E-Document Request System',
     description: 'A production-ready web application for managing school document requests online, featuring OTP verification, request tracking, and an admin dashboard.',
-    image: '/portfolio/bnhs/dashboard.png',
+    image: '/portfolio/bnhs/bnhs (1).png',
     aiHint: 'school system dashboard',
     details: {
       role: 'Full-Stack Developer (Academic Project)',
@@ -52,11 +52,11 @@ const portfolioItems = [
         'Implemented an automated audit trail system to log all significant user actions for security and accountability.'
       ],
       gallery: [
-        { src: '/portfolio/bnhs/dashboard.png', alt: 'Admin Dashboard', aiHint: 'analytics dashboard' },
-        { src: '/portfolio/bnhs/request-form.png', alt: 'Document Request Form', aiHint: 'online form' },
-        { src: '/portfolio/bnhs/tracking.png', alt: 'Request Tracking Page', aiHint: 'status tracking interface' },
-        { src: '/portfolio/bnhs/otp.png', alt: 'OTP Verification', aiHint: 'security code' },
-        { src: '/portfolio/bnhs/request-details.png', alt: 'Request Details View', aiHint: 'data management' },
+        { src: '/portfolio/bnhs/bnhs (1).png', alt: 'Admin Dashboard', aiHint: 'analytics dashboard' },
+        { src: '/portfolio/bnhs/bnhs (2).png', alt: 'Document Request Form', aiHint: 'online form' },
+        { src: '/portfolio/bnhs/bnhs (3).png', alt: 'Request Tracking Page', aiHint: 'status tracking interface' },
+        { src: '/portfolio/bnhs/bnhs (4).png', alt: 'OTP Verification', aiHint: 'security code' },
+        { src: '/portfolio/bnhs/bnhs (5).png', alt: 'Request Details View', aiHint: 'data management' },
       ],
     },
   },
