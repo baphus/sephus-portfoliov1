@@ -186,8 +186,8 @@ const portfolioItems = [
     aiHint: 'landing page app',
     details: {
       role: 'Developer & UI/UX Designer (Personal Project)',
-      link: 'https://sephus-let-review.vercel.app/',
-      tech: 'Next.js, Tailwind CSS',
+      link: 'https://studio--letreview.us-central1.hosted.app',
+      tech: 'Next.js, REST, Firebase, NoSQL, OAuth 2.0, Tailwind CSS, Firestore',
       features: ['Clean, modern landing page to attract users.', 'Fully responsive web app for practice tests.', 'Intuitive UI for a seamless user experience.'],
       learnings: [
         'Modern Front-End Frameworks: Gained proficiency in Next.js for building performant, server-rendered React applications.',
