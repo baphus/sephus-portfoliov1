@@ -31,6 +31,7 @@ const portfolioItems = [
     image: '/portfolio/bnhs/bnhs (1).png',
     aiHint: 'school system dashboard',
     details: {
+      link: 'https://bnhsedocumentrequest.onrender.com',
       role: 'Full-Stack Developer (Academic Project)',
       tech: 'Laravel 12, PHP 8.2+, Blade, Tailwind CSS, Alpine.js, PostgreSQL (Supabase), Heroku',
       features: [
