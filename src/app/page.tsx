@@ -10,9 +10,9 @@ import Navbar from '@/components/navbar';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Hero />
-      <main id="main-content" className="flex-1 content-wrapper">
+      <main id="main-content" className="flex-1">
         <SectionWrapper id="about">
           <About />
         </SectionWrapper>
@@ -30,6 +30,8 @@ export default function Home() {
         </SectionWrapper>
       </main>
       <Footer />
+      {/* macOS style Dock at the bottom */}
+      <Navbar />
     </div>
   );
 }

@@ -28,131 +28,62 @@ export default function Navbar() {
     
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
+      rootMargin: '-20% 0px -20% 0px',
+      threshold: 0.2,
     };
 
-    let lastActiveSection = 'home';
-
     const observer = new IntersectionObserver((entries) => {
-      let intersectingEntries = entries.filter(entry => entry.isIntersecting);
-
-      if (intersectingEntries.length > 0) {
-        const mostVisibleEntry = intersectingEntries.reduce((prev, current) => {
-          return prev.intersectionRatio > current.intersectionRatio ? prev : current;
-        });
-        
-        const newActiveSection = mostVisibleEntry.target.id;
-        if (newActiveSection !== lastActiveSection) {
-          setActiveSection(newActiveSection);
-          lastActiveSection = newActiveSection;
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
         }
-      } else {
-        const closestEntry = entries.reduce((prev, current) => {
-          const prevDistance = Math.abs(prev.boundingClientRect.top);
-          const currentDistance = Math.abs(current.boundingClientRect.top);
-          return prevDistance < currentDistance ? prev : current;
-        });
-        
-        if (closestEntry && closestEntry.target.id !== lastActiveSection) {
-           const scrollPosition = window.scrollY + window.innerHeight;
-           const pageHeight = document.documentElement.scrollHeight;
-           if (scrollPosition >= pageHeight - 2) {
-             const lastSectionId = sectionIds[sectionIds.length-1];
-             if(lastActiveSection !== lastSectionId) {
-                setActiveSection(lastSectionId);
-                lastActiveSection = lastSectionId;
-             }
-           }
-        }
-      }
+      });
     }, observerOptions);
 
     sectionIds.forEach(id => {
       const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
+      if (element) observer.observe(element);
     });
 
-    return () => {
-      sectionIds.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="w-full p-4">
-      <div className="relative container mx-auto max-w-screen-lg">
-        <header className="frutiger-aero-navbar relative flex h-16 items-center justify-between px-4 md:px-6">
-          <a href="#home" className="mr-6 flex items-center space-x-2">
-            <Logo className="h-8 w-auto text-primary" />
-            <span className="hidden font-bold sm:inline-block">Josephus Sarsonas</span>
-          </a>
-          <nav className="hidden md:flex items-center space-x-2 text-sm font-medium">
-            {navLinks.map(({ href, label, iconSrc }) => {
-              const isActive = activeSection === href.substring(1);
-              return (
-                <a
-                  key={href}
-                  href={href}
-                  aria-label={label}
-                  className={cn(
-                    "p-3 rounded-full transition-colors",
-                    isActive ? "frutiger-aero-navbar-active-link" : ""
-                  )}
-                >
-                  <Image src={iconSrc} alt={label} width={40} height={40} className="h-8 w-8" />
-                </a>
-              )
-            })}
-          </nav>
-          <div className="flex items-center space-x-2">
-            <ThemeToggle />
-            <div className="md:hidden">
-              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <Menu className="h-5 w-5" />
-                    <span className="sr-only">Toggle Menu</span>
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right">
-                  <SheetHeader>
-                    <SheetTitle>
-                      <a href="#home" className="mb-8 flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                        <Logo className="h-8 w-auto text-primary" />
-                        <span className="font-bold">Josephus Sarsonas</span>
-                      </a>
-                    </SheetTitle>
-                    <SheetDescription className="sr-only">
-                      Mobile navigation menu
-                    </SheetDescription>
-                  </SheetHeader>
-                  <div className="p-4">
-                    <nav className="flex flex-col space-y-4">
-                      {navLinks.map(({ href, label }) => (
-                        <a
-                          key={href}
-                          href={href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-lg transition-colors hover:text-primary"
-                        >
-                          {label}
-                        </a>
-                      ))}
-                    </nav>
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
-          </div>
-        </header>
-      </div>
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-auto max-w-[95vw]">
+      <header className="frutiger-aero-navbar flex h-16 items-center gap-2 px-3 py-2">
+        <div className="hidden md:flex items-center space-x-1 px-2 border-r border-white/20 mr-2">
+          <ThemeToggle />
+        </div>
+        
+        <nav className="flex items-center space-x-2 md:space-x-3">
+          {navLinks.map(({ href, label, iconSrc }) => {
+            const isActive = activeSection === href.substring(1);
+            return (
+              <a
+                key={href}
+                href={href}
+                aria-label={label}
+                className={cn(
+                  "relative p-2 rounded-xl transition-all duration-300 hover:scale-110 active:scale-95 group",
+                  isActive ? "frutiger-aero-navbar-active-link" : ""
+                )}
+              >
+                <div className="relative h-10 w-10 overflow-hidden">
+                  <Image src={iconSrc} alt={label} fill className="object-contain" />
+                </div>
+                {/* Tooltip */}
+                <span className="absolute -top-12 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold">
+                  {label}
+                </span>
+              </a>
+            )
+          })}
+        </nav>
+
+        <div className="md:hidden flex items-center ml-2 border-l border-white/20 pl-2">
+          <ThemeToggle />
+        </div>
+      </header>
     </div>
   );
 }

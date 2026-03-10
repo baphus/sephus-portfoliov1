@@ -1,14 +1,12 @@
-
 "use client";
 
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Github, Linkedin, Mail, Facebook, Send, ExternalLink, MousePointer2 } from 'lucide-react';
+import { Github, Linkedin, Mail, Facebook, Send, ExternalLink } from 'lucide-react';
 import Typewriter from 'typewriter-effect';
 import Image from 'next/image';
-import Navbar from './navbar';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -18,17 +16,6 @@ const fadeIn = {
     transition: {
       duration: 0.6,
       ease: "easeOut"
-    }
-  },
-};
-
-const backgroundFadeIn = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: {
-      duration: 1.5,
-      ease: "easeIn"
     }
   },
 };
@@ -69,36 +56,8 @@ export default function Hero() {
   ];
 
   return (
-    <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-background overflow-hidden">
-      {/* Background Layer */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        variants={backgroundFadeIn}
-        initial="hidden"
-        animate={headlineFinished ? "visible" : "hidden"}
-      >
-        <Image 
-          src="https://picsum.photos/seed/sky1/1920/1080" 
-          alt="Clouds background" 
-          fill 
-          className="object-cover opacity-40 dark:opacity-20" 
-          data-ai-hint="sky clouds"
-        />
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-      </motion.div>
-
-      {/* Navbar Integration */}
-      <motion.div
-        variants={fadeIn}
-        initial="hidden"
-        animate={headlineFinished ? "visible" : "hidden"}
-        className="fixed top-0 left-0 right-0 z-50"
-      >
-        <Navbar />
-      </motion.div>
-
-      <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-12">
+    <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-background overflow-hidden border-b border-border/50">
+      <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           
           {/* Left Content Section */}
@@ -183,9 +142,9 @@ export default function Hero() {
               initial="hidden"
               animate={fadeInControls}
             >
-              <Button asChild className="btn-aqua btn-aqua-primary h-12 px-8 rounded-full shadow-lg hover:scale-105 transition-transform">
-                <a href="#contact">
-                  <span>Get In Touch <Send className="ml-2 h-4 w-4" /></span>
+              <Button asChild className="btn-aqua btn-aqua-primary h-12 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
+                <a href="#contact" className="flex items-center gap-2">
+                  <span className="flex items-center">Get In Touch <Send className="ml-2 h-4 w-4" /></span>
                 </a>
               </Button>
               <Button asChild variant="outline" className="h-12 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent transition-all">
@@ -227,7 +186,7 @@ export default function Hero() {
             animate={headlineFinished ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="w-full max-w-md bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md rounded-3xl border border-white/20 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-8 space-y-8">
+            <div className="w-full max-w-md bg-white/60 dark:bg-neutral-900/60 backdrop-blur-md rounded-3xl border border-white/20 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-8 space-y-8">
               {/* Profile Image with Ring */}
               <div className="relative mx-auto w-40 h-40">
                 <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse" />
@@ -259,7 +218,7 @@ export default function Hero() {
                 <p className="text-xs text-center text-muted-foreground font-medium uppercase tracking-wider">Currently working on</p>
                 <div className="flex items-center justify-center gap-2 p-3 bg-primary/5 border border-primary/10 rounded-xl group cursor-default transition-all hover:bg-primary/10">
                   <span className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-sm font-semibold">Full-Stack Development</span>
+                  <span className="text-sm font-semibold">Normalite EDGE</span>
                   <ExternalLink className="h-3 w-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
