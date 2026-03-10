@@ -3,27 +3,27 @@
   "projects": [
     {
       "id": "bnhs",
-      "url": "/projects/bnhs.jpg",
+      "url": "/portfolio/bnhs/bnhs (1).png",
       "hint": "school documents"
     },
     {
       "id": "normalite",
-      "url": "/projects/normalite.jpg",
+      "url": "/portfolio/normalite/normalite.png",
       "hint": "academic excellence"
     },
     {
       "id": "letreview",
-      "url": "/projects/let-review.jpg",
+      "url": "/portfolio/let-review/app-preview.png",
       "hint": "educational app"
     },
     {
       "id": "medicare",
-      "url": "/projects/medicare.jpg",
+      "url": "/portfolio/medicare-clinic/dashboard.png",
       "hint": "medical clinic"
     },
     {
       "id": "cinema",
-      "url": "/projects/cinema.jpg",
+      "url": "/portfolio/absolute-cinema/absolute.png",
       "hint": "movie theater"
     }
   ]

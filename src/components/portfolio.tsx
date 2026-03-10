@@ -12,7 +12,8 @@ import {
   ExternalLink, 
   Code2, 
   Layers, 
-  Star 
+  Star,
+  Github
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import imageData from '@/app/lib/placeholder-images.json';
@@ -28,6 +29,7 @@ const portfolioItems = [
     hint: 'academic excellence',
     tech: ['React', 'Node.js', 'PostgreSQL', 'Tailwind', 'Render'],
     link: 'https://normalite-edge.vercel.app/',
+    type: 'demo'
   },
   {
     id: 'letreview',
@@ -39,6 +41,7 @@ const portfolioItems = [
     hint: 'educational app',
     tech: ['Next.js', 'Tailwind CSS', 'Vercel'],
     link: 'https://sephus-let-review.vercel.app/',
+    type: 'demo'
   },
   {
     id: 'bnhs',
@@ -50,6 +53,7 @@ const portfolioItems = [
     hint: 'school documents',
     tech: ['Laravel', 'PostgreSQL', 'Tailwind', 'PHP'],
     link: 'https://onhsedocumentrequest.onrender.com/',
+    type: 'demo'
   },
   {
     id: 'medicare',
@@ -61,17 +65,19 @@ const portfolioItems = [
     hint: 'medical clinic',
     tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary'],
     link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
+    type: 'demo'
   },
   {
     id: 'cinema',
     title: 'Absolute Cinema Ticketing',
     category: 'Web Apps',
     featured: false,
-    description: 'Full-stack cinema ticket booking system with user authentication, movie browsing, and seat selection.',
+    description: 'Full-stack cinema ticket booking system with user authentication, movie browsing, and seat selection. Developed as a comprehensive backend learning project.',
     image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
     hint: 'movie theater',
     tech: ['MySQL', 'PHP', 'HTML', 'CSS'],
-    link: '#',
+    link: 'https://github.com/baphus',
+    type: 'github'
   }
 ];
 
@@ -160,7 +166,8 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                     <Button variant="secondary" className="rounded-full gap-2 shadow-xl" asChild>
                       <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
-                        {item.link !== '#' ? 'View Project' : 'Coming Soon'} <ExternalLink className="h-4 w-4" />
+                        {item.type === 'github' ? 'View Repo' : (item.link !== '#' ? 'View Project' : 'Coming Soon')} 
+                        {item.type === 'github' ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
                       </a>
                     </Button>
                   </div>
@@ -188,8 +195,8 @@ export default function Portfolio() {
                     
                     <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl" disabled={item.link === '#'}>
                       <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer" className="flex items-center gap-2">
-                        <span>{item.link !== '#' ? 'Visit Demo' : 'Under Review'}</span>
-                        <ArrowUpRight className="h-4 w-4" />
+                        <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Visit Demo' : 'Under Review')}</span>
+                        {item.type === 'github' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
                       </a>
                     </Button>
                   </div>
