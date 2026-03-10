@@ -13,7 +13,9 @@ import {
   Code2, 
   Layers, 
   Star,
-  Github
+  Github,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import imageData from '@/app/lib/placeholder-images.json';
@@ -24,7 +26,7 @@ const portfolioItems = [
     title: 'LETReview — Gamified Study App',
     category: 'Web Apps',
     featured: true,
-    description: 'A gamified reviewer built for my girlfriend that went viral, gaining 3,000 visits and 300+ users in hours. Features reward systems and progress tracking to solve student burnout. Deployed Jan 2026.',
+    description: "Originally built as a personal solution for my girlfriend to help her stay consistent while reviewing for the Licensure Examination for Teachers (LET). After launching and sharing it on a school Facebook page, the response was viral—exceeding 3,000 visits and 300+ signups within just hours. It's a gamified practice platform focusing on motivation, structure, and consistency to solve student burnout. Deployed Jan 2026.",
     image: imageData.projects.find(p => p.id === 'letreview')?.url || 'https://picsum.photos/seed/let/800/600',
     hint: 'educational app',
     tech: ['Next.js', 'Tailwind CSS', 'Vercel', 'Firebase', 'Framer Motion'],
@@ -33,13 +35,13 @@ const portfolioItems = [
   },
   {
     id: 'normalite',
-    title: 'Normalite EDGE — Every Day Guide to Excellence',
+    title: 'Normalite EDGE — CNU Student Hub',
     category: 'Web Apps',
     featured: true,
-    description: 'A React-based web platform designed for Cebu Normal University students, guiding them toward academic excellence through user-tested features. Deployed Feb 2026.',
+    description: 'Leading the development of a comprehensive web platform for Cebu Normal University students. This lead role involves building a performant, secure, and user-tested guide to academic excellence. Built with React and Node.js, and deployed using modern CI/CD practices. Timeline: Feb 2026 - Present.',
     image: imageData.projects.find(p => p.id === 'normalite')?.url || 'https://picsum.photos/seed/normalite/800/600',
     hint: 'academic excellence',
-    tech: ['React', 'ExpressJS', 'Node.js', 'PostgreSQL', 'TailwindCSS', 'Vercel'],
+    tech: ['React', 'Node.js', 'PostgreSQL', 'TailwindCSS', 'Vercel', 'Render'],
     link: 'https://normalite-edge.vercel.app/',
     type: 'demo'
   },
@@ -48,10 +50,10 @@ const portfolioItems = [
     title: 'BNHS E-Document Request System',
     category: 'Web Apps',
     featured: true,
-    description: 'Official production system deployed at Bato National High School in Dec 2025. Utilized by administration for secure OTP-verified document requests and tracking.',
+    description: 'An official production system deployed at Bato National High School in Dec 2025. This full-stack application is actively used by school administration for secure, OTP-verified document requests and automated tracking workflows.',
     image: imageData.projects.find(p => p.id === 'bnhs')?.url || 'https://picsum.photos/seed/bnhs/800/600',
     hint: 'school documents',
-    tech: ['PHP Laravel', 'PostgreSQL', 'TailwindCSS', 'Laravel Livewire', 'Alpine.js', 'Render'],
+    tech: ['Laravel', 'PostgreSQL', 'TailwindCSS', 'Livewire', 'Alpine.js', 'Render'],
     link: 'https://bnhsedocumentrequest.onrender.com/',
     type: 'demo'
   },
@@ -60,10 +62,10 @@ const portfolioItems = [
     title: 'Medicare Clinic System',
     category: 'Web Apps',
     featured: false,
-    description: 'Comprehensive clinic management system designed to handle patient records, appointments, and billing with Supabase integration.',
+    description: 'A comprehensive academic project (2023-2024) designed to manage patient records, clinical appointments, and billing. Implemented with custom MVC routing and Supabase integration for real-time data handling.',
     image: imageData.projects.find(p => p.id === 'medicare')?.url || 'https://picsum.photos/seed/medicare/800/600',
     hint: 'medical clinic',
-    tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary'],
+    tech: ['PHP', 'Supabase', 'Cloudinary', 'Bootstrap', 'Heroku'],
     link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
     type: 'demo'
   },
@@ -72,10 +74,10 @@ const portfolioItems = [
     title: 'Absolute Cinema Ticketing',
     category: 'Web Apps',
     featured: false,
-    description: 'Full-stack cinema ticket booking system with user authentication, movie browsing, and seat selection. Developed as a comprehensive backend learning project.',
+    description: 'A full-stack cinema ticketing system featuring user authentication, seat selection, and a movie catalog. This project served as a foundational exploration of backend architecture and relational database design.',
     image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
     hint: 'movie theater',
-    tech: ['MySQL', 'PHP', 'HTML', 'CSS'],
+    tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
     link: 'https://github.com/baphus/AbsoluteCinema',
     type: 'github'
   }
@@ -89,6 +91,17 @@ const categories = [
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('featured');
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+
+  const toggleExpand = (id: string) => {
+    const newSet = new Set(expandedItems);
+    if (newSet.has(id)) {
+      newSet.delete(id);
+    } else {
+      newSet.add(id);
+    }
+    setExpandedItems(newSet);
+  };
 
   const filteredItems = portfolioItems.filter(item => {
     if (activeFilter === 'featured') return item.featured;
@@ -137,73 +150,94 @@ export default function Portfolio() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence mode="popLayout">
-          {filteredItems.map((item) => (
-            <motion.div
-              layout
-              key={item.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Card className="group h-full overflow-hidden border-border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 rounded-[2rem] flex flex-col">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    data-ai-hint={item.hint}
-                  />
-                  {item.featured && (
-                    <div className="absolute top-4 right-4 z-10">
-                      <Badge className="bg-emerald-500/90 hover:bg-emerald-500 text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
-                        <Star className="h-3 w-3 fill-white" />
-                        Featured
-                      </Badge>
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                    <Button variant="secondary" className="rounded-full gap-2 shadow-xl" asChild>
-                      <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
-                        {item.type === 'github' ? 'View Repo' : (item.link !== '#' ? 'View Project' : 'Coming Soon')} 
-                        {item.type === 'github' ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-
-                <CardContent className="p-8 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold font-headline mb-3 group-hover:text-primary transition-colors text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3 mb-6 leading-relaxed">
-                    {item.description}
-                  </p>
-                  
-                  <div className="mt-auto space-y-6">
-                    <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tech Stack</p>
-                      <div className="flex flex-wrap gap-2">
-                        {item.tech.map((t) => (
-                          <Badge key={t} variant="secondary" className="text-[10px] px-2 py-0.5 rounded-md bg-primary/5 text-primary border-primary/10">
-                            {t}
-                          </Badge>
-                        ))}
+          {filteredItems.map((item) => {
+            const isExpanded = expandedItems.has(item.id);
+            return (
+              <motion.div
+                layout
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="group h-full overflow-hidden border-border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 rounded-[2rem] flex flex-col">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      data-ai-hint={item.hint}
+                    />
+                    {item.featured && (
+                      <div className="absolute top-4 right-4 z-10">
+                        <Badge className="bg-emerald-500/90 hover:bg-emerald-500 text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
+                          <Star className="h-3 w-3 fill-white" />
+                          Featured
+                        </Badge>
                       </div>
+                    )}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                      <Button variant="secondary" className="rounded-full gap-2 shadow-xl" asChild>
+                        <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
+                          {item.type === 'github' ? 'View Repo' : (item.link !== '#' ? 'View Project' : 'Coming Soon')} 
+                          {item.type === 'github' ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+
+                  <CardContent className="p-8 flex flex-col flex-1">
+                    <h3 className="text-xl font-bold font-headline mb-3 group-hover:text-primary transition-colors text-foreground">
+                      {item.title}
+                    </h3>
+                    
+                    <div className="mb-6">
+                      <p className={cn(
+                        "text-muted-foreground text-sm leading-relaxed transition-all duration-300",
+                        isExpanded ? "" : "line-clamp-3"
+                      )}>
+                        {item.description}
+                      </p>
+                      {item.description.length > 150 && (
+                        <button 
+                          onClick={() => toggleExpand(item.id)}
+                          className="mt-2 text-primary text-xs font-bold flex items-center gap-1 hover:underline transition-all"
+                        >
+                          {isExpanded ? (
+                            <>Show Less <ChevronUp className="h-3 w-3" /></>
+                          ) : (
+                            <>Read More <ChevronDown className="h-3 w-3" /></>
+                          )}
+                        </button>
+                      )}
                     </div>
                     
-                    <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl" disabled={item.link === '#'}>
-                      <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer" className="flex items-center gap-2">
-                        <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Visit Demo' : 'Under Review')}</span>
-                        {item.type === 'github' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                    <div className="mt-auto space-y-6">
+                      <div className="space-y-2">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tech Stack</p>
+                        <div className="flex flex-wrap gap-2">
+                          {item.tech.map((t) => (
+                            <Badge key={t} variant="secondary" className="text-[10px] px-2 py-0.5 rounded-md bg-primary/5 text-primary border-primary/10">
+                              {t}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl" disabled={item.link === '#'}>
+                        <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer" className="flex items-center gap-2">
+                          <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Visit Demo' : 'Under Review')}</span>
+                          {item.type === 'github' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
       </div>
 
