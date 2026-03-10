@@ -1,8 +1,6 @@
-
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
 import { 
   Code2, 
   Layout, 
@@ -88,7 +86,7 @@ const categories = [
 ];
 
 const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
-  <div className="flex-shrink-0 group relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-6 rounded-[2rem] border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col gap-4 w-[320px] mx-4 cursor-default">
+  <div className="flex-shrink-0 relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-6 rounded-[2rem] border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col gap-4 w-[340px] mx-4 cursor-default group">
     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
     
     <div className="flex items-center gap-4">
@@ -110,7 +108,7 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
       </div>
     </div>
     
-    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 font-medium">
+    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 font-medium group-hover:text-foreground transition-colors">
       {skill.description}
     </p>
   </div>
@@ -118,7 +116,6 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('featured');
-  const [isPaused, setIsPaused] = useState(false);
 
   const filteredSkills = useMemo(() => {
     if (activeCategory === 'all') return skills;
@@ -128,14 +125,16 @@ export default function Skills() {
 
   const marqueeItems = useMemo(() => {
     if (filteredSkills.length === 0) return [];
-    // Increase multiplier to ensure enough items for infinite scroll
-    const multiplier = Math.max(4, Math.ceil(30 / filteredSkills.length));
-    return Array(multiplier).fill(filteredSkills).flat();
+    // Repeat items to ensure a long enough scroll
+    const minItems = 20;
+    const repeats = Math.ceil(minItems / filteredSkills.length);
+    return Array(repeats).fill(filteredSkills).flat();
   }, [filteredSkills]);
 
-  // Dynamic speed: duration based on item count to maintain consistent visual speed
-  const baseDuration = filteredSkills.length * 4;
-  const duration = Math.max(20, Math.min(60, baseDuration));
+  // Slower, dynamic duration based on item count
+  const duration = useMemo(() => {
+    return Math.max(60, filteredSkills.length * 12);
+  }, [filteredSkills.length]);
 
   return (
     <div className="space-y-20 py-10 overflow-hidden">
@@ -149,7 +148,7 @@ export default function Skills() {
             Skills & <span className="text-primary">Technologies</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl leading-relaxed text-base">
-            Comprehensive expertise in modern web development and digital creation, organized for exploring my full technical stack.
+            Comprehensive expertise in modern web development and digital creation. Select a category to explore my stack.
           </p>
 
           <div className="flex flex-wrap justify-center gap-2 mt-8 mb-8 p-3 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-xl rounded-[2.5rem] border border-white/10 max-w-6xl">
@@ -172,63 +171,65 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full space-y-10 pause-on-hover">
         {marqueeItems.length > 0 ? (
-          <div 
-            className="flex flex-col gap-8"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            {/* Row 1 */}
-            <div className="flex w-fit">
-              <motion.div 
-                className="flex"
-                animate={isPaused ? {} : { x: ["0%", "-50%"] }}
-                transition={{ 
-                  x: { 
-                    repeat: Infinity, 
-                    repeatType: "loop", 
-                    duration: duration, 
-                    ease: "linear" 
-                  } 
-                }}
+          <>
+            {/* Row 1: Forward Marquee */}
+            <div className="flex overflow-hidden select-none">
+              <div 
+                className="flex animate-marquee shrink-0"
+                style={{ animationDuration: `${duration}s` }}
               >
                 {marqueeItems.map((skill, idx) => (
                   <SkillCard key={`row1-${skill.title}-${idx}`} skill={skill} />
                 ))}
-              </motion.div>
+              </div>
+              <div 
+                className="flex animate-marquee shrink-0"
+                style={{ animationDuration: `${duration}s` }}
+                aria-hidden="true"
+              >
+                {marqueeItems.map((skill, idx) => (
+                  <SkillCard key={`row1-dup-${skill.title}-${idx}`} skill={skill} />
+                ))}
+              </div>
             </div>
 
-            {/* Row 2 (Reverse Direction) */}
-            <div className="flex w-fit">
-              <motion.div 
-                className="flex"
-                animate={isPaused ? {} : { x: ["-50%", "0%"] }}
-                transition={{ 
-                  x: { 
-                    repeat: Infinity, 
-                    repeatType: "loop", 
-                    duration: duration * 1.2, 
-                    ease: "linear" 
-                  } 
-                }}
+            {/* Row 2: Reverse Marquee */}
+            <div className="flex overflow-hidden select-none">
+              <div 
+                className="flex animate-marquee-reverse shrink-0"
+                style={{ animationDuration: `${duration * 1.2}s` }}
               >
                 {marqueeItems.map((skill, idx) => (
                   <SkillCard key={`row2-${skill.title}-${idx}`} skill={skill} />
                 ))}
-              </motion.div>
+              </div>
+              <div 
+                className="flex animate-marquee-reverse shrink-0"
+                style={{ animationDuration: `${duration * 1.2}s` }}
+                aria-hidden="true"
+              >
+                {marqueeItems.map((skill, idx) => (
+                  <SkillCard key={`row2-dup-${skill.title}-${idx}`} skill={skill} />
+                ))}
+              </div>
             </div>
-          </div>
+          </>
         ) : (
-          <div className="text-center py-20 text-muted-foreground">
-            No skills found in this category.
+          <div className="text-center py-20 text-muted-foreground font-bold tracking-widest uppercase text-xs">
+            No items in this category.
           </div>
         )}
       </div>
 
       <div className="container mx-auto px-4 md:px-6 mt-16 text-center">
-        <Button asChild className="btn-aqua btn-aqua-primary h-16 px-16 rounded-[2rem] shadow-xl text-lg">
-          <a href="/contact">Discuss Your Project</a>
+        <Button asChild className="btn-aqua btn-aqua-primary h-16 px-16 rounded-[2rem] shadow-xl text-lg group">
+          <a href="/contact">
+            <span className="flex items-center gap-3">
+              Discuss Your Stack <MessageSquare className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </a>
         </Button>
       </div>
     </div>
