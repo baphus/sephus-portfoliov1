@@ -3,8 +3,10 @@ import SectionWrapper from '@/components/section-wrapper';
 
 export default function AboutPage() {
   return (
-    <SectionWrapper id="experience" className="pt-32">
-      <Experience />
-    </SectionWrapper>
+    <div className="flex flex-col min-h-screen pt-20">
+      <SectionWrapper id="experience">
+        <Experience />
+      </SectionWrapper>
+    </div>
   );
 }

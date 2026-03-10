@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from './theme-toggle';
@@ -18,6 +18,12 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  // Prevent hydration mismatch by only rendering active states after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-auto max-w-[95vw]">
@@ -28,7 +34,7 @@ export default function Navbar() {
         
         <nav className="flex items-center space-x-2 md:space-x-3">
           {navLinks.map(({ href, label, iconSrc }) => {
-            const isActive = pathname === href;
+            const isActive = mounted && pathname === href;
             return (
               <Link
                 key={href}

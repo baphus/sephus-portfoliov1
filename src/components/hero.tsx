@@ -57,8 +57,6 @@ export default function Hero() {
 
   return (
     <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-transparent overflow-hidden">
-      {/* Background is now global in globals.css */}
-      
       <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           
@@ -149,7 +147,7 @@ export default function Hero() {
                   <span className="flex items-center gap-2">Get In Touch <Send className="h-4 w-4" /></span>
                 </a>
               </Button>
-              <Button asChild variant="outline" className="h-14 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-white transition-all">
+              <Button asChild variant="outline" className="h-14 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent transition-all">
                 <a href="/Josephus_Sarsonas_Resume.pdf" download>
                   Download Resume
                 </a>
@@ -189,7 +187,6 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="w-full max-w-md bg-white/60 dark:bg-neutral-900/60 backdrop-blur-md rounded-3xl border border-white/20 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-8 space-y-8">
-              {/* Profile Image with Ring */}
               <div className="relative mx-auto w-40 h-40">
                 <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse" />
                 <div className="absolute inset-2 rounded-full border-2 border-primary/40" />
@@ -201,11 +198,9 @@ export default function Hero() {
                     className="object-cover"
                   />
                 </div>
-                {/* Online Status Dot */}
                 <div className="absolute bottom-2 right-2 h-5 w-5 bg-emerald-500 rounded-full border-4 border-white dark:border-neutral-900" />
               </div>
 
-              {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-4">
                 {stats.map((stat) => (
                   <div key={stat.label} className="bg-background/40 border border-border p-4 rounded-2xl text-center space-y-1">
@@ -215,7 +210,6 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Currently Working On */}
               <div className="pt-4 border-t border-border space-y-3">
                 <p className="text-xs text-center text-muted-foreground font-medium uppercase tracking-wider">Currently working on</p>
                 <div className="flex items-center justify-center gap-2 p-3 bg-primary/5 border border-primary/10 rounded-xl group cursor-default transition-all hover:bg-primary/10">
@@ -229,7 +223,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator - Centered relative to screen */}
       <motion.div 
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
         animate={{ y: [0, 10, 0] }}

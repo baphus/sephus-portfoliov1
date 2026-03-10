@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -25,8 +24,7 @@ import {
   Sparkles,
   Lightbulb,
   Briefcase,
-  CheckCircle2,
-  Rocket
+  Target
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -36,50 +34,37 @@ const skills = [
   // Professional Skills
   { title: 'System Analysis & Design', category: 'professional', description: 'Analyzing complex business requirements and designing robust system architectures for scalability.', icon: <Monitor className="h-6 w-6 text-blue-500" />, isFeatured: true },
   { title: 'Project Management', category: 'professional', description: 'Leading development teams and managing project timelines to ensure high-quality delivery.', icon: <Briefcase className="h-6 w-6 text-emerald-500" />, isFeatured: true },
-  { title: 'Agile Methodology', category: 'professional', description: 'Implementing iterative development processes like Scrum and Kanban for efficient team collaboration.', icon: <InfinityIcon className="h-6 w-6 text-purple-500" /> },
-  { title: 'SDLC', category: 'professional', description: 'Managing the complete software development life cycle from planning and analysis to deployment and maintenance.', icon: <Box className="h-6 w-6 text-orange-500" /> },
+  { title: 'Agile Methodology', category: 'professional', description: 'Implementing iterative development processes like Scrum and Kanban for efficient team collaboration.', icon: <InfinityIcon className="h-6 w-6 text-purple-500" />, isFeatured: true },
+  { title: 'SDLC', category: 'professional', description: 'Managing the complete software development life cycle from planning and analysis to deployment and maintenance.', icon: <Box className="h-6 w-6 text-orange-500" />, isFeatured: true },
   { title: 'Problem Solving', category: 'professional', description: 'Diagnosing complex technical issues and architecting efficient, scalable solutions.', icon: <Lightbulb className="h-6 w-6 text-amber-500" />, isFeatured: true },
   { title: 'API Integration', category: 'professional', description: 'Connecting diverse services via RESTful APIs and secure data synchronization.', icon: <Activity className="h-6 w-6 text-emerald-500" />, isFeatured: true },
   { title: 'System Development', category: 'professional', description: 'Building full-scale academic and production-ready applications from scratch.', icon: <Terminal className="h-6 w-6 text-sky-500" /> },
-  { title: 'Data Analysis', category: 'professional', description: 'Utilizing relational data structures to derive insights and optimize performance.', icon: <Search className="h-6 w-6 text-indigo-500" /> },
   { title: 'Full Stack', category: 'professional', description: 'Managing the complete project lifecycle from frontend UI to backend server logic.', icon: <Layers className="h-6 w-6 text-purple-500" />, isFeatured: true },
-  { title: 'Research-based', category: 'professional', description: 'Driving development through modern methodologies and continuous technical research.', icon: <Search className="h-6 w-6 text-rose-500" /> },
-  { title: 'Communication', category: 'professional', description: 'Translating complex technical concepts for non-technical clients and stakeholders.', icon: <MessageSquare className="h-6 w-6 text-cyan-500" /> },
-  { title: 'Productivity', category: 'professional', description: 'Optimizing workflows with modern tools and efficient project management.', icon: <ShieldCheck className="h-6 w-6 text-blue-500" /> },
   
   // Frontend
   { title: 'Next.js', category: 'frontend', description: 'Building high-performance, SEO-friendly React applications with App Router.', icon: <Globe className="h-6 w-6 text-foreground" />, isFeatured: true },
   { title: 'React', category: 'frontend', description: 'Creating interactive, reusable UI components using hooks and modern patterns.', icon: <Layout className="h-6 w-6 text-sky-400" />, isFeatured: true },
   { title: 'Tailwind CSS', category: 'frontend', description: 'Rapidly styling responsive, accessible interfaces with utility-first CSS.', icon: <Monitor className="h-6 w-6 text-cyan-400" />, isFeatured: true },
   { title: 'TypeScript', category: 'frontend', description: 'Ensuring code quality and scalability with static typing and advanced interfaces.', icon: <Code2 className="h-6 w-6 text-blue-500" />, isFeatured: true },
-  { title: 'HTML5/CSS3', category: 'frontend', description: 'Structuring semantic, accessible web content with modern layouts.', icon: <Layout className="h-6 w-6 text-orange-500" /> },
-  { title: 'JavaScript', category: 'frontend', description: 'Powering dynamic logic and frontend interactivity with modern ES6+ features.', icon: <Code2 className="h-6 w-6 text-yellow-400" />, isFeatured: true },
   
   // Backend
   { title: 'Laravel', category: 'backend', description: 'Building secure, robust PHP applications with MVC architecture and Eloquent.', icon: <Server className="h-6 w-6 text-red-500" />, isFeatured: true },
   { title: 'Node.js', category: 'backend', description: 'Developing scalable, event-driven backend services and real-time features.', icon: <Cpu className="h-6 w-6 text-emerald-600" /> },
   { title: 'PHP', category: 'backend', description: 'Implementing server-side logic and database interactions for diverse systems.', icon: <Code2 className="h-6 w-6 text-indigo-400" /> },
-  { title: 'Express', category: 'backend', description: 'Lightweight and flexible web application framework for Node.js backends.', icon: <Terminal className="h-6 w-6 text-gray-400" /> },
   
   // Mobile
   { title: 'React Native', category: 'mobile', description: 'Cross-platform mobile app development with a focus on native performance.', icon: <Smartphone className="h-6 w-6 text-sky-400" /> },
   { title: 'Responsive UI', category: 'mobile', description: 'Designing interfaces that adapt perfectly across all device sizes and orientations.', icon: <Monitor className="h-6 w-6 text-primary" />, isFeatured: true },
-  { title: 'PWA', category: 'mobile', description: 'Converting web applications into installable, offline-capable mobile experiences.', icon: <Globe className="h-6 w-6 text-emerald-400" /> },
   
   // Database
   { title: 'Supabase', category: 'database', description: 'Leveraging open-source Firebase alternatives for real-time databases and Auth.', icon: <Database className="h-6 w-6 text-emerald-500" />, isFeatured: true },
   { title: 'Firebase', category: 'database', description: 'Implementing cloud-hosted databases, authentication, and serverless logic.', icon: <Cloud className="h-6 w-6 text-orange-500" />, isFeatured: true },
-  { title: 'MySQL', category: 'database', description: 'Designing and managing relational databases with complex query optimization.', icon: <Database className="h-6 w-6 text-blue-600" /> },
   { title: 'PostgreSQL', category: 'database', description: 'Advanced relational database management with focus on data integrity.', icon: <Database className="h-6 w-6 text-sky-600" />, isFeatured: true },
-  { title: 'Cloudinary', category: 'database', description: 'Optimizing and delivering media assets at scale through cloud-based storage.', icon: <Cloud className="h-6 w-6 text-blue-400" /> },
   
   // Tools
   { title: 'Git & GitHub', category: 'tools', description: 'Managing code versions and collaborating efficiently within development teams.', icon: <Fingerprint className="h-6 w-6 text-foreground" />, isFeatured: true },
   { title: 'Figma', category: 'tools', description: 'Prototyping and designing high-fidelity user interfaces and visual assets.', icon: <Monitor className="h-6 w-6 text-purple-400" /> },
   { title: 'Vercel', category: 'tools', description: 'Deploying and scaling modern web applications with seamless CI/CD.', icon: <Cloud className="h-6 w-6 text-foreground" /> },
-  { title: 'Heroku', category: 'tools', description: 'Cloud platform for deploying and managing diverse full-stack applications.', icon: <Server className="h-6 w-6 text-purple-600" /> },
-  { title: 'Render', category: 'tools', description: 'Modern cloud hosting for static sites, web services, and background workers.', icon: <Box className="h-6 w-6 text-emerald-500" /> },
-  { title: 'CapCut', category: 'tools', description: 'Professional mobile video editing for engaging social media content.', icon: <Smartphone className="h-6 w-6 text-sky-500" /> },
 ];
 
 const categories = [
@@ -94,7 +79,7 @@ const categories = [
 ];
 
 const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
-  <div className="flex-shrink-0 relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-6 rounded-[2rem] border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col gap-4 w-[340px] mx-4 cursor-default group">
+  <div className="flex-shrink-0 relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-6 rounded-[2rem] border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col gap-4 w-[340px] mx-4 cursor-default group hover:bg-white/80 dark:hover:bg-neutral-800/80">
     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
     
     <div className="flex items-center gap-4">
@@ -133,15 +118,13 @@ export default function Skills() {
 
   const marqueeItems = useMemo(() => {
     if (filteredSkills.length === 0) return [];
-    // Repeat items to ensure a long enough scroll
-    const minItems = 20;
-    const repeats = Math.ceil(minItems / filteredSkills.length);
+    // Repeat items to ensure smooth infinite loop
+    const repeats = Math.max(2, Math.ceil(15 / filteredSkills.length));
     return Array(repeats).fill(filteredSkills).flat();
   }, [filteredSkills]);
 
-  // Slower, dynamic duration based on item count
   const duration = useMemo(() => {
-    return Math.max(60, filteredSkills.length * 12);
+    return Math.max(40, filteredSkills.length * 8);
   }, [filteredSkills.length]);
 
   return (
@@ -179,13 +162,13 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="relative w-full space-y-10 pause-on-hover">
+      <div className="relative w-full space-y-10">
         {marqueeItems.length > 0 ? (
-          <>
+          <div className="flex flex-col gap-10">
             {/* Row 1: Forward Marquee */}
-            <div className="flex overflow-hidden select-none">
+            <div className="flex overflow-hidden select-none group">
               <div 
-                className="flex animate-marquee shrink-0"
+                className="flex animate-marquee shrink-0 group-hover:[animation-play-state:paused]"
                 style={{ animationDuration: `${duration}s` }}
               >
                 {marqueeItems.map((skill, idx) => (
@@ -193,7 +176,7 @@ export default function Skills() {
                 ))}
               </div>
               <div 
-                className="flex animate-marquee shrink-0"
+                className="flex animate-marquee shrink-0 group-hover:[animation-play-state:paused]"
                 style={{ animationDuration: `${duration}s` }}
                 aria-hidden="true"
               >
@@ -204,9 +187,9 @@ export default function Skills() {
             </div>
 
             {/* Row 2: Reverse Marquee */}
-            <div className="flex overflow-hidden select-none">
+            <div className="flex overflow-hidden select-none group">
               <div 
-                className="flex animate-marquee-reverse shrink-0"
+                className="flex animate-marquee-reverse shrink-0 group-hover:[animation-play-state:paused]"
                 style={{ animationDuration: `${duration * 1.2}s` }}
               >
                 {marqueeItems.map((skill, idx) => (
@@ -214,7 +197,7 @@ export default function Skills() {
                 ))}
               </div>
               <div 
-                className="flex animate-marquee-reverse shrink-0"
+                className="flex animate-marquee-reverse shrink-0 group-hover:[animation-play-state:paused]"
                 style={{ animationDuration: `${duration * 1.2}s` }}
                 aria-hidden="true"
               >
@@ -223,7 +206,7 @@ export default function Skills() {
                 ))}
               </div>
             </div>
-          </>
+          </div>
         ) : (
           <div className="text-center py-20 text-muted-foreground font-bold tracking-widest uppercase text-xs">
             No items in this category.
