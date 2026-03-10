@@ -2,6 +2,8 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Providers } from '@/components/providers';
 import { Toaster } from '@/components/ui/toaster';
+import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 
 export const metadata: Metadata = {
   title: "Kim's Portfolio",
@@ -18,9 +20,13 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased flex flex-col min-h-screen bg-background">
         <Providers attribute="class" defaultTheme="dark" enableSystem>
-          {children}
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <Navbar />
           <Toaster />
         </Providers>
       </body>

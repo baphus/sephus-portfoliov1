@@ -1,52 +1,23 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ThemeToggle } from './theme-toggle';
-import { Button } from './ui/button';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import Logo from './logo';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
-import { Menu } from 'lucide-react';
 import Image from 'next/image';
 
 const navLinks = [
-  { href: '#home', label: 'Home', iconSrc: '/nav-icons/home.png' },
-  { href: '#about', label: 'About', iconSrc: '/nav-icons/about.png' },
-  { href: '#skills', label: 'Skills', iconSrc: '/nav-icons/skills.png' },
-  { href: '#portfolio', label: 'Portfolio', iconSrc: '/nav-icons/portfolio.png' },
-  { href: '#education', label: 'Education', iconSrc: '/nav-icons/education.png' },
-  { href: '#contact', label: 'Contact', iconSrc: '/nav-icons/contact.png' },
+  { href: '/', label: 'Home', iconSrc: '/nav-icons/home.png' },
+  { href: '/about', label: 'About', iconSrc: '/nav-icons/about.png' },
+  { href: '/skills', label: 'Skills', iconSrc: '/nav-icons/skills.png' },
+  { href: '/portfolio', label: 'Portfolio', iconSrc: '/nav-icons/portfolio.png' },
+  { href: '/education', label: 'Education', iconSrc: '/nav-icons/education.png' },
+  { href: '/contact', label: 'Contact', iconSrc: '/nav-icons/contact.png' },
 ];
 
 export default function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    const sectionIds = navLinks.map(link => link.href.substring(1));
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -20% 0px',
-      threshold: 0.2,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, observerOptions);
-
-    sectionIds.forEach(id => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const pathname = usePathname();
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-auto max-w-[95vw]">
@@ -57,9 +28,9 @@ export default function Navbar() {
         
         <nav className="flex items-center space-x-2 md:space-x-3">
           {navLinks.map(({ href, label, iconSrc }) => {
-            const isActive = activeSection === href.substring(1);
+            const isActive = pathname === href;
             return (
-              <a
+              <Link
                 key={href}
                 href={href}
                 aria-label={label}
@@ -75,7 +46,7 @@ export default function Navbar() {
                 <span className="absolute -top-12 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold">
                   {label}
                 </span>
-              </a>
+              </Link>
             )
           })}
         </nav>
