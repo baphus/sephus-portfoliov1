@@ -21,25 +21,25 @@ import imageData from '@/app/lib/placeholder-images.json';
 const portfolioItems = [
   {
     id: 'normalite',
-    title: 'Normalite EDGE — CNU Student Hub',
+    title: 'Normalite EDGE — Every Day Guide to Excellence',
     category: 'Web Apps',
     featured: true,
     description: 'A React-based web platform designed for Cebu Normal University students, guiding them toward academic excellence through user-tested features. Powered by Node.js and PostgreSQL.',
     image: imageData.projects.find(p => p.id === 'normalite')?.url || 'https://picsum.photos/seed/normalite/800/600',
     hint: 'academic excellence',
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Tailwind', 'Render'],
+    tech: ['React', 'ExpressJS', 'Node.js', 'PostgreSQL', 'REST API', 'TailwindCSS', 'Render', 'Vercel'],
     link: 'https://normalite-edge.vercel.app/',
     type: 'demo'
   },
   {
     id: 'letreview',
-    title: 'LET Reviewer — Gamified Study App',
+    title: 'LETReview — Gamified Study App',
     category: 'Web Apps',
     featured: true,
     description: 'Designed and developed a responsive LET reviewer app and landing page to help aspiring teachers practice for licensure exams.',
     image: imageData.projects.find(p => p.id === 'letreview')?.url || 'https://picsum.photos/seed/let/800/600',
     hint: 'educational app',
-    tech: ['Next.js', 'Tailwind CSS', 'Vercel'],
+    tech: ['Next.js', 'Tailwind CSS', 'Vercel', 'Firebase', 'Firestore Auth', 'Firestore Database(NoSQL)'],
     link: 'https://sephus-let-review.vercel.app/',
     type: 'demo'
   },
@@ -51,8 +51,8 @@ const portfolioItems = [
     description: 'Official production system deployed at Bato National High School in Dec 2025. Utilized by administration for secure OTP-verified document requests and tracking.',
     image: imageData.projects.find(p => p.id === 'bnhs')?.url || 'https://picsum.photos/seed/bnhs/800/600',
     hint: 'school documents',
-    tech: ['Laravel', 'PostgreSQL', 'Tailwind', 'PHP'],
-    link: 'https://onhsedocumentrequest.onrender.com/',
+    tech: ['PHP Laravel', 'PostgreSQL', 'TailwindCSS', 'Laravel Livewire', 'Alpine.js', 'Render'],
+    link: 'https://bnhsedocumentrequest.onrender.com/',
     type: 'demo'
   },
   {
@@ -76,7 +76,7 @@ const portfolioItems = [
     image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
     hint: 'movie theater',
     tech: ['MySQL', 'PHP', 'HTML', 'CSS'],
-    link: 'https://github.com/baphus',
+    link: 'https://github.com/baphus/AbsoluteCinema',
     type: 'github'
   }
 ];
