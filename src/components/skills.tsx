@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -29,6 +30,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { IconCloud } from '@/components/ui/interactive-icon-cloud';
 
 const skills = [
   // Professional Skills
@@ -76,6 +78,30 @@ const categories = [
   { id: 'database', label: 'Database & Storage', icon: <Database className="h-4 w-4" /> },
   { id: 'tools', label: 'Tools & Technologies', icon: <Wrench className="h-4 w-4" /> },
   { id: 'professional', label: 'Professional Skills', icon: <Box className="h-4 w-4" /> },
+];
+
+const slugs = [
+  "typescript",
+  "javascript",
+  "php",
+  "mysql",
+  "postgresql",
+  "laravel",
+  "react",
+  "nextdotjs",
+  "tailwindcss",
+  "framer-motion",
+  "git",
+  "github",
+  "figma",
+  "supabase",
+  "firebase",
+  "nodedotjs",
+  "html5",
+  "css3",
+  "heroku",
+  "cloudinary",
+  "bootstrap"
 ];
 
 const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
@@ -142,22 +168,39 @@ export default function Skills() {
             Comprehensive expertise in modern web development and digital creation. Select a category to explore my stack.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-2 mt-8 mb-8 p-3 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-xl rounded-[2.5rem] border border-white/10 max-w-6xl">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={cn(
-                  "flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300",
-                  activeCategory === cat.id 
-                    ? "bg-primary text-white shadow-lg scale-105" 
-                    : "text-muted-foreground hover:bg-white/10 dark:hover:bg-neutral-800/40"
-                )}
-              >
-                {cat.icon}
-                {cat.label}
-              </button>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-12 items-center w-full mt-12">
+            <div className="flex flex-col space-y-8">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-2 p-3 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-xl rounded-[2.5rem] border border-white/10">
+                {categories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={cn(
+                      "flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300",
+                      activeCategory === cat.id 
+                        ? "bg-primary text-white shadow-lg scale-105" 
+                        : "text-muted-foreground hover:bg-white/10 dark:hover:bg-neutral-800/40"
+                    )}
+                  >
+                    {cat.icon}
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+              
+              <div className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md border border-white/20 shadow-xl hidden lg:block">
+                <p className="text-sm font-medium text-muted-foreground leading-relaxed italic text-center lg:text-left">
+                  "I specialize in building performant, accessible web applications and managing the complete system development life cycle with a focus on high-quality delivery and user satisfaction."
+                </p>
+              </div>
+            </div>
+
+            <div className="relative flex items-center justify-center p-4">
+              <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
+              <div className="w-full max-w-sm lg:max-w-md">
+                <IconCloud iconSlugs={slugs} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
