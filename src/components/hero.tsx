@@ -57,6 +57,22 @@ export default function Hero() {
 
   return (
     <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-background overflow-hidden border-b border-border/50">
+      {/* Architectural Grid Background */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.07] pointer-events-none" 
+        style={{ 
+          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+          backgroundSize: '40px 40px' 
+        }} 
+      />
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.04] pointer-events-none" 
+        style={{ 
+          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+          backgroundSize: '200px 200px' 
+        }} 
+      />
+
       <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           
@@ -144,7 +160,7 @@ export default function Hero() {
             >
               <Button asChild className="btn-aqua btn-aqua-primary h-12 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
                 <a href="#contact" className="flex items-center gap-2">
-                  <span className="flex items-center">Get In Touch <Send className="ml-2 h-4 w-4" /></span>
+                  <span className="flex items-center gap-2">Get In Touch <Send className="h-4 w-4" /></span>
                 </a>
               </Button>
               <Button asChild variant="outline" className="h-12 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent transition-all">
