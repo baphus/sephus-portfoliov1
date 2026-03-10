@@ -36,6 +36,7 @@ export default function Hero() {
     'Web Developer',
     'Full-Stack Developer',
     'Systems Designer',
+    'Self-Motivated Professional',
     'Digital Creator',
     'Problem Solver',
   ];

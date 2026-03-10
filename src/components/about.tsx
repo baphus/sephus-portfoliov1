@@ -17,7 +17,8 @@ import {
   GraduationCap,
   Target,
   Shield,
-  Search
+  Search,
+  UserCheck
 } from 'lucide-react';
 
 const skillLevels = [
@@ -39,6 +40,11 @@ const drivingValues = [
     title: "Detail-Oriented", 
     description: "I believe that the smallest details make the biggest difference in user experience and code quality.",
     icon: <Target className="h-6 w-6" /> 
+  },
+  { 
+    title: "Self-Motivated", 
+    description: "Highly autonomous and productive; capable of maintaining momentum and delivering results without constant supervision.",
+    icon: <UserCheck className="h-6 w-6" /> 
   },
   { 
     title: "Reliability", 
@@ -70,7 +76,7 @@ export default function About() {
       </div>
 
       {/* What Drives Me Section */}
-      <div className="grid md:grid-cols-3 gap-6 mb-16">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         {drivingValues.map((item, idx) => (
           <Card key={idx} className="rounded-3xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-8 flex flex-col items-center text-center space-y-4 group hover:bg-primary/5 transition-all duration-300 shadow-lg hover:shadow-xl">
             <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform shadow-inner">
