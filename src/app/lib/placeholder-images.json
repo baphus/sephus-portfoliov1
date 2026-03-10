@@ -3,38 +3,38 @@
   "projects": [
     {
       "id": "bnhs",
-      "url": "https://picsum.photos/seed/bnhs/800/600",
+      "url": "/projects/bnhs.jpg",
       "hint": "school documents"
     },
     {
+      "id": "normalite",
+      "url": "/projects/normalite.jpg",
+      "hint": "academic excellence"
+    },
+    {
+      "id": "letreview",
+      "url": "/projects/letreview.jpg",
+      "hint": "educational app"
+    },
+    {
       "id": "medicare",
-      "url": "https://picsum.photos/seed/medicare/800/600",
+      "url": "/projects/medicare.jpg",
       "hint": "medical clinic"
     },
     {
       "id": "jkbros",
-      "url": "https://picsum.photos/seed/food/800/600",
+      "url": "/projects/jkbros.jpg",
       "hint": "food branding"
     },
     {
       "id": "scihigh",
-      "url": "https://picsum.photos/seed/video/800/600",
+      "url": "/projects/scihigh.jpg",
       "hint": "video editing"
     },
     {
       "id": "cinema",
-      "url": "https://picsum.photos/seed/cinema/800/600",
+      "url": "/projects/cinema.jpg",
       "hint": "movie theater"
-    },
-    {
-      "id": "letreview",
-      "url": "https://picsum.photos/seed/study/800/600",
-      "hint": "educational app"
-    },
-    {
-      "id": "normalite",
-      "url": "https://picsum.photos/seed/excellence/800/600",
-      "hint": "academic success"
     }
   ]
 }
