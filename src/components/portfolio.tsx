@@ -15,56 +15,84 @@ import {
   Star 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import imageData from '@/app/lib/placeholder-images.json';
 
 const portfolioItems = [
   {
-    id: 'letreview',
-    title: 'LETReview — Gamified Licensure Exam Reviewer',
+    id: 'normalite',
+    title: 'Normalite EDGE — Guide to Excellence',
     category: 'Web Apps',
     featured: true,
-    description: 'A Next.js-based gamified platform for aspiring teachers, featuring real-time analytics and practice tests.',
-    image: 'https://picsum.photos/seed/let1/800/600',
-    tech: ['Next.js', 'React', 'Tailwind CSS', 'Firebase'],
-    link: 'https://studio--letreview.us-central1.hosted.app/',
+    description: 'A React-based web platform designed to guide students toward academic excellence through user-tested features and intuitive navigation.',
+    image: imageData.projects.find(p => p.id === 'normalite')?.url || '',
+    hint: imageData.projects.find(p => p.id === 'normalite')?.hint || '',
+    tech: ['React', 'Tailwind CSS', 'Vercel'],
+    link: 'https://normalite-edge.vercel.app/',
+  },
+  {
+    id: 'letreview',
+    title: 'LET Reviewer — Gamified Study App',
+    category: 'Web Apps',
+    featured: true,
+    description: 'Designed and developed a responsive LET reviewer app and landing page to help aspiring teachers practice for licensure exams.',
+    image: imageData.projects.find(p => p.id === 'letreview')?.url || '',
+    hint: imageData.projects.find(p => p.id === 'letreview')?.hint || '',
+    tech: ['Next.js', 'Tailwind CSS', 'Vercel'],
+    link: 'https://sephus-let-review.vercel.app/',
   },
   {
     id: 'bnhs',
     title: 'BNHS E-Document Request System',
     category: 'Web Apps',
     featured: true,
-    description: 'A production-ready system for school document management with OTP verification and real-time tracking.',
-    image: 'https://picsum.photos/seed/bnhs1/800/600',
-    tech: ['Laravel', 'PostgreSQL', 'Tailwind', 'PHPMailer'],
+    description: 'Production-ready system for school document requests featuring OTP verification, request tracking, and a comprehensive admin dashboard.',
+    image: imageData.projects.find(p => p.id === 'bnhs')?.url || '',
+    hint: imageData.projects.find(p => p.id === 'bnhs')?.hint || '',
+    tech: ['Laravel', 'PostgreSQL', 'Tailwind', 'PHP'],
     link: 'https://onhsedocumentrequest.onrender.com/',
-  },
-  {
-    id: 'normalite',
-    title: 'Normalite EDGE — Guide to Excellence',
-    category: 'Web Apps',
-    featured: true,
-    description: 'A React-based web platform designed to guide students toward academic excellence through user-tested features.',
-    image: 'https://picsum.photos/seed/norm1/800/600',
-    tech: ['React', 'Tailwind CSS', 'Vercel'],
-    link: 'https://normalite-edge.vercel.app/',
   },
   {
     id: 'medicare',
     title: 'Medicare Clinic System',
     category: 'Web Apps',
     featured: false,
-    description: 'A comprehensive clinic management system for patient records, appointments, and billing with Supabase integration.',
-    image: 'https://picsum.photos/seed/med1/800/600',
-    tech: ['PHP', 'Supabase', 'Cloudinary', 'Bootstrap'],
+    description: 'Comprehensive clinic management system designed to handle patient records, appointments, and billing with Supabase integration.',
+    image: imageData.projects.find(p => p.id === 'medicare')?.url || '',
+    hint: imageData.projects.find(p => p.id === 'medicare')?.hint || '',
+    tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary'],
     link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
+  },
+  {
+    id: 'jkbros',
+    title: 'JK Bros Combos Social Media',
+    category: 'Digital Media',
+    featured: false,
+    description: 'Managed a full social media campaign for a family food business, handling content creation, branding, and performance analysis.',
+    image: imageData.projects.find(p => p.id === 'jkbros')?.url || '',
+    hint: imageData.projects.find(p => p.id === 'jkbros')?.hint || '',
+    tech: ['Branding', 'Photography', 'Meta Ads', 'Design'],
+    link: '#',
+  },
+  {
+    id: 'scihigh',
+    title: 'Sci High Pi Video Ad',
+    category: 'Digital Media',
+    featured: false,
+    description: 'Produced a compelling video advertisement for a local snack bar using professional editing techniques to boost online engagement.',
+    image: imageData.projects.find(p => p.id === 'scihigh')?.url || '',
+    hint: imageData.projects.find(p => p.id === 'scihigh')?.hint || '',
+    tech: ['Video Production', 'Editing', 'Storytelling'],
+    link: '#',
   },
   {
     id: 'cinema',
     title: 'Absolute Cinema Ticketing',
     category: 'Web Apps',
     featured: false,
-    description: 'Full-stack ticketing system with seat selection and admin panel for movie management.',
-    image: 'https://picsum.photos/seed/cinema1/800/600',
-    tech: ['PHP', 'MySQL', 'HTML', 'CSS'],
+    description: 'Full-stack cinema ticket booking system with user authentication, movie browsing, and seat selection.',
+    image: imageData.projects.find(p => p.id === 'cinema')?.url || '',
+    hint: imageData.projects.find(p => p.id === 'cinema')?.hint || '',
+    tech: ['MySQL', 'PHP', 'HTML', 'CSS'],
     link: '#',
   }
 ];
@@ -73,6 +101,7 @@ const categories = [
   { id: 'featured', label: 'Featured', count: portfolioItems.filter(i => i.featured).length },
   { id: 'all', label: 'All Projects', count: portfolioItems.length },
   { id: 'web', label: 'Web Apps', count: portfolioItems.filter(i => i.category === 'Web Apps').length },
+  { id: 'media', label: 'Digital Media', count: portfolioItems.filter(i => i.category === 'Digital Media').length },
 ];
 
 export default function Portfolio() {
@@ -82,6 +111,7 @@ export default function Portfolio() {
     if (activeFilter === 'featured') return item.featured;
     if (activeFilter === 'all') return true;
     if (activeFilter === 'web') return item.category === 'Web Apps';
+    if (activeFilter === 'media') return item.category === 'Digital Media';
     return false;
   });
 
@@ -92,7 +122,7 @@ export default function Portfolio() {
           <Code2 className="h-4 w-4" />
           <span>Portfolio</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline text-foreground">
           Personal <span className="text-primary">Projects</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
@@ -100,7 +130,6 @@ export default function Portfolio() {
         </p>
       </div>
 
-      {/* Filter Tabs */}
       <div className="flex flex-wrap justify-center gap-3 mb-12">
         {categories.map((cat) => (
           <button
@@ -124,7 +153,6 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence mode="popLayout">
           {filteredItems.map((item) => (
@@ -143,7 +171,7 @@ export default function Portfolio() {
                     alt={item.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    data-ai-hint="project screenshot"
+                    data-ai-hint={item.hint}
                   />
                   {item.featured && (
                     <div className="absolute top-4 right-4 z-10">
@@ -155,15 +183,15 @@ export default function Portfolio() {
                   )}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                     <Button variant="secondary" className="rounded-full gap-2 shadow-xl" asChild>
-                      <a href={item.link} target="_blank" rel="noopener noreferrer">
-                        View Project <ExternalLink className="h-4 w-4" />
+                      <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
+                        {item.link !== '#' ? 'View Project' : 'Coming Soon'} <ExternalLink className="h-4 w-4" />
                       </a>
                     </Button>
                   </div>
                 </div>
 
                 <CardContent className="p-8 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold font-headline mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold font-headline mb-3 group-hover:text-primary transition-colors text-foreground">
                     {item.title}
                   </h3>
                   <p className="text-muted-foreground text-sm line-clamp-3 mb-6 leading-relaxed">
@@ -182,9 +210,9 @@ export default function Portfolio() {
                       </div>
                     </div>
                     
-                    <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl">
-                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                        <span>Visit Demo</span>
+                    <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl" disabled={item.link === '#'}>
+                      <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer" className="flex items-center gap-2">
+                        <span>{item.link !== '#' ? 'Visit Demo' : 'Under Review'}</span>
                         <ArrowUpRight className="h-4 w-4" />
                       </a>
                     </Button>
