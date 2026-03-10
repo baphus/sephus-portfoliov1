@@ -5,6 +5,7 @@ import * as z from 'zod';
 const formSchema = z.object({
   name: z.string(),
   email: z.string().email(),
+  subject: z.string().optional(),
   message: z.string(),
 });
 
@@ -15,7 +16,7 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
   console.log('Contact form submitted with values:', values);
 
   // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 1500));
 
   // For this example, we'll just return a success message.
   return {
