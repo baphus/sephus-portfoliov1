@@ -19,7 +19,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
       <body className="font-body antialiased">
-        <Providers attribute="class" defaultTheme="light" enableSystem>
+        <Providers attribute="class" defaultTheme="dark" enableSystem>
           {children}
           <Toaster />
         </Providers>

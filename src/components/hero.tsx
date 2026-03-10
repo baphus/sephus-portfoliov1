@@ -73,7 +73,7 @@ export default function Hero() {
         }} 
       />
 
-      <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-24">
+      <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           
           {/* Left Content Section */}
@@ -158,12 +158,12 @@ export default function Hero() {
               initial="hidden"
               animate={fadeInControls}
             >
-              <Button asChild className="btn-aqua btn-aqua-primary min-w-[200px] h-12 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
+              <Button asChild className="btn-aqua btn-aqua-primary min-w-[220px] h-14 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
                 <a href="#contact" className="flex items-center justify-center gap-2">
                   <span className="flex items-center gap-2">Get In Touch <Send className="h-4 w-4" /></span>
                 </a>
               </Button>
-              <Button asChild variant="outline" className="h-12 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-white transition-all">
+              <Button asChild variant="outline" className="h-14 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-white transition-all">
                 <a href="/Josephus_Sarsonas_Resume.pdf" download>
                   Download Resume
                 </a>
@@ -239,22 +239,21 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-
-            {/* Scroll Indicator */}
-            <motion.div 
-              className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-1">
-                <motion.div className="w-1.5 h-1.5 bg-primary rounded-full" />
-              </div>
-              <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Scroll</span>
-            </motion.div>
           </motion.div>
-
         </div>
       </div>
+
+      {/* Scroll Indicator - Centered relative to screen */}
+      <motion.div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-1">
+          <motion.div className="w-1.5 h-1.5 bg-primary rounded-full" />
+        </div>
+        <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Scroll</span>
+      </motion.div>
     </section>
   );
 }
