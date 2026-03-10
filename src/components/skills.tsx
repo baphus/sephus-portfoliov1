@@ -34,6 +34,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconCloud } from '@/components/ui/interactive-icon-cloud';
+import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 
 const skills = [
   // Professional Skills
@@ -91,30 +92,34 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
     : null;
 
   return (
-    <div className="flex-shrink-0 relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-6 rounded-[2rem] border border-white/20 shadow-lg transition-all duration-300 overflow-hidden flex flex-col gap-4 w-[340px] mx-4 cursor-default group hover:bg-white/80 dark:hover:bg-neutral-800/80">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
-      
-      <div className="flex items-center gap-4">
-        <div className="p-3 rounded-2xl bg-background/50 shadow-inner group-hover:scale-110 transition-transform border border-white/10 flex items-center justify-center h-12 w-12">
-          {brandIconUrl ? (
-            <img src={brandIconUrl} alt={skill.title} className="h-7 w-7 object-contain" />
-          ) : (
-            <div className="text-primary">{skill.icon}</div>
-          )}
-        </div>
-        <div className="flex-1 overflow-hidden">
-          <h4 className="text-lg font-bold font-headline text-foreground truncate">{skill.title}</h4>
-          <div className="flex gap-1.5 mt-1">
-            <Badge variant="secondary" className="text-[8px] uppercase font-black rounded-md bg-primary/5 text-primary border-primary/10">
-              {skill.category}
-            </Badge>
+    <div className="flex-shrink-0 mx-4 w-[340px] group/card">
+      <InteractiveCardWrapper className="rounded-[2.5rem] h-full shadow-lg">
+        <div className="relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-6 rounded-[2.5rem] border border-white/20 h-full flex flex-col gap-4 transition-all duration-300 group-hover:bg-white/80 dark:group-hover:bg-neutral-800/80">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity" />
+          
+          <div className="flex items-center gap-4">
+            <div className="p-3 rounded-2xl bg-background/50 shadow-inner group-hover/card:scale-110 transition-transform border border-white/10 flex items-center justify-center h-12 w-12">
+              {brandIconUrl ? (
+                <img src={brandIconUrl} alt={skill.title} className="h-7 w-7 object-contain" />
+              ) : (
+                <div className="text-primary">{skill.icon}</div>
+              )}
+            </div>
+            <div className="flex-1 overflow-hidden">
+              <h4 className="text-lg font-bold font-headline text-foreground truncate">{skill.title}</h4>
+              <div className="flex gap-1.5 mt-1">
+                <Badge variant="secondary" className="text-[8px] uppercase font-black rounded-md bg-primary/5 text-primary border-primary/10">
+                  {skill.category}
+                </Badge>
+              </div>
+            </div>
           </div>
+          
+          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 font-medium group-hover/card:text-foreground transition-colors">
+            {skill.description}
+          </p>
         </div>
-      </div>
-      
-      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 font-medium group-hover:text-foreground transition-colors">
-        {skill.description}
-      </p>
+      </InteractiveCardWrapper>
     </div>
   );
 };
@@ -211,10 +216,10 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="relative w-full space-y-10 group/marquees">
+      <div className="relative w-full group/marquees">
         {marqueeItems.length > 0 ? (
-          <div className="flex flex-col gap-10">
-            <div className="flex overflow-hidden select-none">
+          <div className="flex flex-col gap-6">
+            <div className="flex overflow-hidden select-none py-6 -my-6">
               <div 
                 className="flex animate-marquee shrink-0 group-hover/marquees:[animation-play-state:paused]"
                 style={{ animationDuration: `${duration}s` }}
@@ -234,7 +239,7 @@ export default function Skills() {
               </div>
             </div>
 
-            <div className="flex overflow-hidden select-none">
+            <div className="flex overflow-hidden select-none py-6 -my-6">
               <div 
                 className="flex animate-marquee-reverse shrink-0 group-hover/marquees:[animation-play-state:paused]"
                 style={{ animationDuration: `${duration * 1.2}s` }}
