@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -7,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import { 
   ArrowUpRight, 
   ExternalLink, 
@@ -161,80 +161,82 @@ export default function Portfolio() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="group h-full overflow-hidden border-border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 rounded-[2rem] flex flex-col">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      data-ai-hint={item.hint}
-                    />
-                    {item.featured && (
-                      <div className="absolute top-4 right-4 z-10">
-                        <Badge className="bg-emerald-500/90 hover:bg-emerald-500 text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
-                          <Star className="h-3 w-3 fill-white" />
-                          Featured
-                        </Badge>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <Button variant="secondary" className="rounded-full gap-2 shadow-xl" asChild>
-                        <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
-                          {item.type === 'github' ? 'View Repo' : (item.link !== '#' ? 'View Project' : 'Coming Soon')} 
-                          {item.type === 'github' ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-
-                  <CardContent className="p-8 flex flex-col flex-1">
-                    <h3 className="text-xl font-bold font-headline mb-3 group-hover:text-primary transition-colors text-foreground">
-                      {item.title}
-                    </h3>
-                    
-                    <div className="mb-6">
-                      <p className={cn(
-                        "text-muted-foreground text-sm leading-relaxed transition-all duration-300",
-                        isExpanded ? "" : "line-clamp-3"
-                      )}>
-                        {item.description}
-                      </p>
-                      {item.description.length > 150 && (
-                        <button 
-                          onClick={() => toggleExpand(item.id)}
-                          className="mt-2 text-primary text-xs font-bold flex items-center gap-1 hover:underline transition-all"
-                        >
-                          {isExpanded ? (
-                            <>Show Less <ChevronUp className="h-3 w-3" /></>
-                          ) : (
-                            <>Read More <ChevronDown className="h-3 w-3" /></>
-                          )}
-                        </button>
-                      )}
-                    </div>
-                    
-                    <div className="mt-auto space-y-6">
-                      <div className="space-y-2">
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tech Stack</p>
-                        <div className="flex flex-wrap gap-2">
-                          {item.tech.map((t) => (
-                            <Badge key={t} variant="secondary" className="text-[10px] px-2 py-0.5 rounded-md bg-primary/5 text-primary border-primary/10">
-                              {t}
-                            </Badge>
-                          ))}
+                <InteractiveCardWrapper className="rounded-[2rem] h-full">
+                  <Card className="group h-full overflow-hidden border-border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 rounded-[2rem] flex flex-col">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        data-ai-hint={item.hint}
+                      />
+                      {item.featured && (
+                        <div className="absolute top-4 right-4 z-10">
+                          <Badge className="bg-emerald-500/90 hover:bg-emerald-500 text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
+                            <Star className="h-3 w-3 fill-white" />
+                            Featured
+                          </Badge>
                         </div>
+                      )}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <Button variant="secondary" className="rounded-full gap-2 shadow-xl" asChild>
+                          <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
+                            {item.type === 'github' ? 'View Repo' : (item.link !== '#' ? 'View Project' : 'Coming Soon')} 
+                            {item.type === 'github' ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+
+                    <CardContent className="p-8 flex flex-col flex-1">
+                      <h3 className="text-xl font-bold font-headline mb-3 group-hover:text-primary transition-colors text-foreground">
+                        {item.title}
+                      </h3>
+                      
+                      <div className="mb-6">
+                        <p className={cn(
+                          "text-muted-foreground text-sm leading-relaxed transition-all duration-300",
+                          isExpanded ? "" : "line-clamp-3"
+                        )}>
+                          {item.description}
+                        </p>
+                        {item.description.length > 150 && (
+                          <button 
+                            onClick={() => toggleExpand(item.id)}
+                            className="mt-2 text-primary text-xs font-bold flex items-center gap-1 hover:underline transition-all"
+                          >
+                            {isExpanded ? (
+                              <>Show Less <ChevronUp className="h-3 w-3" /></>
+                            ) : (
+                              <>Read More <ChevronDown className="h-3 w-3" /></>
+                            )}
+                          </button>
+                        )}
                       </div>
                       
-                      <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl" disabled={item.link === '#'}>
-                        <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer" className="flex items-center gap-2">
-                          <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Visit Demo' : 'Under Review')}</span>
-                          {item.type === 'github' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
-                        </a>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <div className="mt-auto space-y-6">
+                        <div className="space-y-2">
+                          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tech Stack</p>
+                          <div className="flex flex-wrap gap-2">
+                            {item.tech.map((t) => (
+                              <Badge key={t} variant="secondary" className="text-[10px] px-2 py-0.5 rounded-md bg-primary/5 text-primary border-primary/10">
+                                {t}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl" disabled={item.link === '#'}>
+                          <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer" className="flex items-center gap-2">
+                            <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Visit Demo' : 'Under Review')}</span>
+                            {item.type === 'github' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
+                          </a>
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </InteractiveCardWrapper>
               </motion.div>
             );
           })}

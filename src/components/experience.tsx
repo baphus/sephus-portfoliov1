@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -21,6 +20,7 @@ import {
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import Link from 'next/link';
 
 const experiences = [
@@ -104,63 +104,63 @@ export default function Experience() {
                 <div className="absolute h-3 w-3 rounded-full bg-primary border-4 border-background" />
               </div>
 
-              <Card className="rounded-[2.5rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                <div className="flex flex-col gap-6">
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-2xl font-black font-headline text-foreground group-hover:text-primary transition-colors">
-                          {exp.role}
-                        </h3>
-                        <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 text-[10px] font-bold rounded-full px-3 py-0.5">
-                          <span className="flex items-center gap-1.5">
-                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            {exp.status}
-                          </span>
-                        </Badge>
-                        <Badge variant="outline" className="border-primary/20 text-primary text-[10px] font-bold rounded-full px-3">
-                          {exp.type}
-                        </Badge>
-                      </div>
+              <InteractiveCardWrapper className="rounded-[2.5rem]">
+                <Card className="h-full rounded-[2.5rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                      <div className="space-y-3">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="text-2xl font-black font-headline text-foreground group-hover:text-primary transition-colors">
+                            {exp.role}
+                          </h3>
+                          <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 text-[10px] font-bold rounded-full px-3 py-0.5">
+                            <span className="flex items-center gap-1.5">
+                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                              {exp.status}
+                            </span>
+                          </Badge>
+                          <Badge variant="outline" className="border-primary/20 text-primary text-[10px] font-bold rounded-full px-3">
+                            {exp.type}
+                          </Badge>
+                        </div>
 
-                      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <Briefcase className="h-3.5 w-3.5 text-primary" />
-                          {exp.company}
+                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                          <div className="flex items-center gap-2">
+                            <Briefcase className="h-3.5 w-3.5 text-primary" />
+                            {exp.company}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="h-3.5 w-3.5 text-primary" />
+                            {exp.location}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Calendar className="h-3.5 w-3.5 text-primary" />
+                            {exp.period}
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="h-3.5 w-3.5 text-primary" />
-                          {exp.location}
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-3.5 w-3.5 text-primary" />
-                          {exp.period}
-                        </div>
+                      </div>
+                    </div>
+
+                    <p className="text-muted-foreground leading-relaxed text-base font-medium">
+                      {exp.description}
+                    </p>
+
+                    <div className="space-y-4 pt-4 border-t border-border/50">
+                      <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                        <Code2 className="h-4 w-4" />
+                        <span>Tech Stack</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.tech.map((t, i) => (
+                          <Badge key={i} variant="secondary" className="bg-white/50 dark:bg-white/[0.02] border border-border text-[9px] font-bold px-3 py-1 rounded-md text-foreground group-hover:border-primary/30 transition-colors">
+                            {t}
+                          </Badge>
+                        ))}
                       </div>
                     </div>
                   </div>
-
-                  <p className="text-muted-foreground leading-relaxed text-base font-medium">
-                    {exp.description}
-                  </p>
-
-                  <div className="space-y-4 pt-4 border-t border-border/50">
-                    <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                      <Code2 className="h-4 w-4" />
-                      <span>Tech Stack</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tech.map((t, i) => (
-                        <Badge key={i} variant="secondary" className="bg-white/50 dark:bg-white/[0.02] border border-border text-[9px] font-bold px-3 py-1 rounded-md text-foreground group-hover:border-primary/30 transition-colors">
-                          {t}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </InteractiveCardWrapper>
             </motion.div>
           ))}
         </div>
