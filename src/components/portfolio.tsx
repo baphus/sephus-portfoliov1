@@ -35,8 +35,8 @@ const portfolioItems = [
     category: 'Web Apps',
     featured: true,
     description: 'Designed and developed a responsive LET reviewer app and landing page to help aspiring teachers practice for licensure exams.',
-    image: imageData.projects.find(p => p.id === 'letreview')?.url || '',
-    hint: imageData.projects.find(p => p.id === 'letreview')?.hint || '',
+    image: imageData.projects.find(p => p.id === 'letreview')?.url || 'https://picsum.photos/seed/let/800/600',
+    hint: 'educational app',
     tech: ['Next.js', 'Tailwind CSS', 'Vercel'],
     link: 'https://sephus-let-review.vercel.app/',
   },
@@ -46,8 +46,8 @@ const portfolioItems = [
     category: 'Web Apps',
     featured: true,
     description: 'Official production system deployed at Bato National High School in Dec 2025. Utilized by administration for secure OTP-verified document requests and tracking.',
-    image: imageData.projects.find(p => p.id === 'bnhs')?.url || '',
-    hint: imageData.projects.find(p => p.id === 'bnhs')?.hint || '',
+    image: imageData.projects.find(p => p.id === 'bnhs')?.url || 'https://picsum.photos/seed/bnhs/800/600',
+    hint: 'school documents',
     tech: ['Laravel', 'PostgreSQL', 'Tailwind', 'PHP'],
     link: 'https://onhsedocumentrequest.onrender.com/',
   },
@@ -57,32 +57,10 @@ const portfolioItems = [
     category: 'Web Apps',
     featured: false,
     description: 'Comprehensive clinic management system designed to handle patient records, appointments, and billing with Supabase integration.',
-    image: imageData.projects.find(p => p.id === 'medicare')?.url || '',
-    hint: imageData.projects.find(p => p.id === 'medicare')?.hint || '',
+    image: imageData.projects.find(p => p.id === 'medicare')?.url || 'https://picsum.photos/seed/medicare/800/600',
+    hint: 'medical clinic',
     tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary'],
     link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
-  },
-  {
-    id: 'jkbros',
-    title: 'JK Bros Combos Social Media',
-    category: 'Digital Media',
-    featured: false,
-    description: 'Managed a full social media campaign for a family food business, handling content creation, branding, and performance analysis.',
-    image: imageData.projects.find(p => p.id === 'jkbros')?.url || '',
-    hint: imageData.projects.find(p => p.id === 'jkbros')?.hint || '',
-    tech: ['Branding', 'Photography', 'Meta Ads', 'Design'],
-    link: '#',
-  },
-  {
-    id: 'scihigh',
-    title: 'Sci High Pi Video Ad',
-    category: 'Digital Media',
-    featured: false,
-    description: 'Produced a compelling video advertisement for a local snack bar using professional editing techniques to boost online engagement.',
-    image: imageData.projects.find(p => p.id === 'scihigh')?.url || '',
-    hint: imageData.projects.find(p => p.id === 'scihigh')?.hint || '',
-    tech: ['Video Production', 'Editing', 'Storytelling'],
-    link: '#',
   },
   {
     id: 'cinema',
@@ -90,8 +68,8 @@ const portfolioItems = [
     category: 'Web Apps',
     featured: false,
     description: 'Full-stack cinema ticket booking system with user authentication, movie browsing, and seat selection.',
-    image: imageData.projects.find(p => p.id === 'cinema')?.url || '',
-    hint: imageData.projects.find(p => p.id === 'cinema')?.hint || '',
+    image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
+    hint: 'movie theater',
     tech: ['MySQL', 'PHP', 'HTML', 'CSS'],
     link: '#',
   }
@@ -101,7 +79,6 @@ const categories = [
   { id: 'featured', label: 'Featured', count: portfolioItems.filter(i => i.featured).length },
   { id: 'all', label: 'All Projects', count: portfolioItems.length },
   { id: 'web', label: 'Web Apps', count: portfolioItems.filter(i => i.category === 'Web Apps').length },
-  { id: 'media', label: 'Digital Media', count: portfolioItems.filter(i => i.category === 'Digital Media').length },
 ];
 
 export default function Portfolio() {
@@ -111,7 +88,6 @@ export default function Portfolio() {
     if (activeFilter === 'featured') return item.featured;
     if (activeFilter === 'all') return true;
     if (activeFilter === 'web') return item.category === 'Web Apps';
-    if (activeFilter === 'media') return item.category === 'Digital Media';
     return false;
   });
 

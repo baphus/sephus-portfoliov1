@@ -13,23 +13,13 @@
     },
     {
       "id": "letreview",
-      "url": "/projects/letreview.jpg",
+      "url": "/projects/let-review.jpg",
       "hint": "educational app"
     },
     {
       "id": "medicare",
       "url": "/projects/medicare.jpg",
       "hint": "medical clinic"
-    },
-    {
-      "id": "jkbros",
-      "url": "/projects/jkbros.jpg",
-      "hint": "food branding"
-    },
-    {
-      "id": "scihigh",
-      "url": "/projects/scihigh.jpg",
-      "hint": "video editing"
     },
     {
       "id": "cinema",
