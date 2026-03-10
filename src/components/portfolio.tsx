@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -10,8 +11,6 @@ import {
   ArrowUpRight, 
   ExternalLink, 
   Code2, 
-  Layout, 
-  Globe, 
   Layers, 
   Star 
 } from 'lucide-react';
@@ -58,15 +57,22 @@ const portfolioItems = [
     tech: ['PHP', 'Supabase', 'Cloudinary', 'Bootstrap'],
     link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
   },
+  {
+    id: 'cinema',
+    title: 'Absolute Cinema Ticketing',
+    category: 'Web Apps',
+    featured: false,
+    description: 'Full-stack ticketing system with seat selection and admin panel for movie management.',
+    image: 'https://picsum.photos/seed/cinema1/800/600',
+    tech: ['PHP', 'MySQL', 'HTML', 'CSS'],
+    link: '#',
+  }
 ];
 
 const categories = [
-  { id: 'featured', label: 'Featured', count: 3 },
-  { id: 'all', label: 'All Projects', count: 4 },
-  { id: 'web', label: 'Web Apps', count: 4 },
-  { id: 'mobile', label: 'Mobile', count: 0 },
-  { id: 'apis', label: 'APIs', count: 0 },
-  { id: 'others', label: 'Others', count: 0 },
+  { id: 'featured', label: 'Featured', count: portfolioItems.filter(i => i.featured).length },
+  { id: 'all', label: 'All Projects', count: portfolioItems.length },
+  { id: 'web', label: 'Web Apps', count: portfolioItems.filter(i => i.category === 'Web Apps').length },
 ];
 
 export default function Portfolio() {
@@ -90,7 +96,7 @@ export default function Portfolio() {
           Personal <span className="text-primary">Projects</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
-          A showcase of my personal and portfolio-owned work. Client contributions and academic projects are featured here with full details on my technical role.
+          A showcase of my production-ready work and academic projects. Each project represents a commitment to high-quality code and user experience.
         </p>
       </div>
 
@@ -104,10 +110,10 @@ export default function Portfolio() {
               "group flex items-center gap-2 px-6 py-2.5 rounded-full transition-all duration-300 border shadow-sm",
               activeFilter === cat.id 
                 ? "bg-primary text-white border-primary shadow-primary/20" 
-                : "bg-background hover:bg-muted border-border text-muted-foreground"
+                : "bg-background/50 backdrop-blur-sm hover:bg-muted border-border text-muted-foreground"
             )}
           >
-            <span className="font-semibold text-sm">{cat.label}</span>
+            <span className="font-bold text-sm">{cat.label}</span>
             <span className={cn(
               "text-[10px] flex items-center justify-center w-5 h-5 rounded-full font-bold",
               activeFilter === cat.id ? "bg-white text-primary" : "bg-muted text-muted-foreground"
@@ -130,13 +136,14 @@ export default function Portfolio() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="group h-full overflow-hidden border-border bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 rounded-2xl flex flex-col">
+              <Card className="group h-full overflow-hidden border-border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 rounded-[2rem] flex flex-col">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    data-ai-hint="project screenshot"
                   />
                   {item.featured && (
                     <div className="absolute top-4 right-4 z-10">
@@ -155,15 +162,15 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <CardContent className="p-6 flex flex-col flex-1">
+                <CardContent className="p-8 flex flex-col flex-1">
                   <h3 className="text-xl font-bold font-headline mb-3 group-hover:text-primary transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3 mb-6">
+                  <p className="text-muted-foreground text-sm line-clamp-3 mb-6 leading-relaxed">
                     {item.description}
                   </p>
                   
-                  <div className="mt-auto space-y-4">
+                  <div className="mt-auto space-y-6">
                     <div className="space-y-2">
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tech Stack</p>
                       <div className="flex flex-wrap gap-2">
@@ -175,7 +182,7 @@ export default function Portfolio() {
                       </div>
                     </div>
                     
-                    <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none">
+                    <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl">
                       <a href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                         <span>Visit Demo</span>
                         <ArrowUpRight className="h-4 w-4" />
@@ -190,7 +197,7 @@ export default function Portfolio() {
       </div>
 
       {filteredItems.length === 0 && (
-        <div className="text-center py-20 bg-muted/20 rounded-3xl border border-dashed border-border mt-8">
+        <div className="text-center py-20 bg-muted/10 rounded-3xl border border-dashed border-border mt-8">
           <Layers className="h-12 w-12 mx-auto text-muted-foreground/30 mb-4" />
           <p className="text-muted-foreground font-medium">No projects found in this category yet.</p>
         </div>
