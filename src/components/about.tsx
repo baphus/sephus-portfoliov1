@@ -2,15 +2,15 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Cpu, Briefcase, Mic, Users, Rocket, Lightbulb, Wrench, ShieldCheck } from 'lucide-react';
+import { Cpu, Briefcase, Mic, Users, Rocket, Lightbulb, Wrench, ShieldCheck, Code2 } from 'lucide-react';
 
 const professionalAttributes = [
-    { label: 'Technical Troubleshooting', icon: <Wrench className="mr-2 h-4 w-4" /> },
+    { label: 'Detail-Oriented', icon: <ShieldCheck className="mr-2 h-4 w-4" /> },
     { label: 'Reliable & Adaptable', icon: <Briefcase className="mr-2 h-4 w-4" /> },
     { label: 'Strong Communicator', icon: <Mic className="mr-2 h-4 w-4" /> },
-    { label: 'Customer-Focused', icon: <Users className="mr-2 h-4 w-4" /> },
+    { label: 'Problem Solver', icon: <Wrench className="mr-2 h-4 w-4" /> },
     { label: 'Research-Driven', icon: <Lightbulb className="mr-2 h-4 w-4" /> },
-    { label: 'Detail-Oriented', icon: <ShieldCheck className="mr-2 h-4 w-4" /> },
+    { label: 'Fast Learner', icon: <Rocket className="mr-2 h-4 w-4" /> },
 ];
 
 export default function About() {
@@ -34,19 +34,19 @@ export default function About() {
         </div>
         <div className="md:col-span-3 space-y-8">
           <div className="space-y-4 text-center md:text-left">
-            <h3 className="text-2xl font-semibold font-headline">Technical Support Intern Candidate</h3>
+            <h3 className="text-2xl font-semibold font-headline">Web Developer & Systems Designer</h3>
             <p className="text-lg text-muted-foreground">
-              I am an Information Systems student with hands-on experience developing, deploying, and supporting production web applications used by real clients and users. 
+              I am an Information Systems student with a passion for building intuitive, performant, and reliable web applications that solve real-world problems.
             </p>
             <p className="text-muted-foreground">
-              I specialize in diagnosing technical issues, troubleshooting web platforms, and assisting users in understanding complex system functionality. My background combines front-end expertise (React, Next.js) with robust backend logic (PHP Laravel, Node.js) and cloud-hosted environments.
+              With experience in both frontend (React, Next.js) and backend (Laravel, PHP, Node.js) development, I enjoy the entire lifecycle of a project—from gathering requirements and designing architectures to deployment and ongoing technical support.
             </p>
             <p className="text-muted-foreground">
-              I am known for my fast learning ability and a customer-focused approach to solving technical problems. Whether it's debugging a database query or explaining DNS concepts to a non-technical user, I strive for clarity and excellence.
+              My technical journey is driven by curiosity and a commitment to high-quality code. I am particularly interested in systems maintenance, cloud-hosted environments, and delivering impactful digital experiences.
             </p>
           </div>
           <div className="text-center md:text-left">
-            <h3 className="text-xl font-semibold mb-4 font-headline">Core Strengths</h3>
+            <h3 className="text-xl font-semibold mb-4 font-headline">Professional Attributes</h3>
             <div className="flex flex-wrap gap-2 justify-center md:justify-start">
               {professionalAttributes.map((attr) => (
                 <Badge key={attr.label} variant="secondary" className="px-3 py-1.5 text-sm flex items-center bg-primary/10 text-primary hover:bg-primary/20 transition-colors">

@@ -72,11 +72,11 @@ export default function Hero() {
   const cardRotateY = useTransform(scrollYProgress, [0, 0.5], [180, 0]);
 
   const roles = [
-    'Technical Support Candidate',
     'Web Developer',
-    'Systems Analyst',
-    'Problem Solver',
+    'Full-Stack Developer',
+    'Systems Designer',
     'Digital Creator',
+    'Problem Solver',
     'Tech Enthusiast',
   ];
 
@@ -95,7 +95,7 @@ export default function Hero() {
           className="object-cover" 
           data-ai-hint="sky clouds"
         />
-        <div className="absolute inset-0 bg-black/50 dark:bg-black/70" />
+        <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
       </motion.div>
        <motion.div
         variants={fadeIn}
