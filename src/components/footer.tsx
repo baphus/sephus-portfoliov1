@@ -2,7 +2,6 @@
 "use client";
 
 import React from 'react';
-import { Button } from './ui/button';
 import { 
   ArrowUp, 
   Github, 
@@ -11,10 +10,10 @@ import {
   Mail, 
   MapPin, 
   CheckCircle2,
-  ExternalLink,
   MessageSquare
 } from 'lucide-react';
 import Logo from './logo';
+import { Badge } from '@/components/ui/badge';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -149,6 +148,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

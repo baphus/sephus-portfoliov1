@@ -1,11 +1,12 @@
+
 "use client";
 
-import React, { useState, useTransition } from 'react';
+import React, { useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -22,7 +23,6 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { cn } from '@/lib/utils';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -179,7 +179,7 @@ export default function Contact() {
                   {isPending ? (
                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                   ) : (
-                    <span className="flex items-center gap-2 text-base">
+                    <span className="flex items-center gap-2 text-base px-4">
                       Send Message <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </span>
                   )}

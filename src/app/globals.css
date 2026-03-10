@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -50,7 +51,7 @@
 
 @layer base {
   :root {
-    --background: 210 20% 94%; /* Slightly darker background for better contrast */
+    --background: 210 20% 94%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -151,22 +152,22 @@
   }
 
   .btn-aqua {
-    height: 2.5em;
+    height: 2.75em;
     padding: 0 2.5em;
-    min-width: 10em;
+    min-width: 12em;
     border-radius: 1000px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     outline: none;
     font-family: "myriad-pro", system-ui;
-    font-weight: 700;
+    font-weight: 800;
     color: black;
     border: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .btn-aqua-primary {
@@ -216,7 +217,8 @@
     position: relative;
     top: -1px;
     z-index: 1;  
-    letter-spacing: 0.0375em;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.05em;
+    font-weight: 800;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 }
