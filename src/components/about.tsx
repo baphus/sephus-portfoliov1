@@ -14,7 +14,10 @@ import {
   Rocket, 
   Coffee, 
   BookOpen, 
-  GraduationCap 
+  GraduationCap,
+  Target,
+  Shield,
+  Search
 } from 'lucide-react';
 
 const skillLevels = [
@@ -31,11 +34,29 @@ const stats = [
   { label: 'Learning Mode', value: '24/7', icon: <BookOpen className="h-5 w-5" /> },
 ];
 
+const drivingValues = [
+  { 
+    title: "Detail-Oriented", 
+    description: "I believe that the smallest details make the biggest difference in user experience and code quality.",
+    icon: <Target className="h-6 w-6" /> 
+  },
+  { 
+    title: "Reliability", 
+    description: "Committed to delivering high-quality, stable, and production-ready solutions that users can trust.",
+    icon: <Shield className="h-6 w-6" /> 
+  },
+  { 
+    title: "Research-Driven", 
+    description: "Always exploring new technologies and modern methodologies to solve complex technical problems.",
+    icon: <Search className="h-6 w-6" /> 
+  },
+];
+
 export default function About() {
   return (
     <div className="container mx-auto px-4 md:px-6">
       {/* Header Section */}
-      <div className="flex flex-col items-center text-center space-y-4 mb-16">
+      <div className="flex flex-col items-center text-center space-y-4 mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
           <GraduationCap className="h-4 w-4" />
           <span>About Me</span>
@@ -44,14 +65,27 @@ export default function About() {
           Get to Know <span className="text-primary">Me</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
-          Behind every great application is a passionate developer who believes in creating meaningful solutions. Let me share my journey.
+          Behind every great application is a passionate developer who believes in creating meaningful solutions.
         </p>
+      </div>
+
+      {/* What Drives Me Section */}
+      <div className="grid md:grid-cols-3 gap-6 mb-16">
+        {drivingValues.map((item, idx) => (
+          <Card key={idx} className="rounded-3xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-8 flex flex-col items-center text-center space-y-4 group hover:bg-primary/5 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform shadow-inner">
+              {item.icon}
+            </div>
+            <h4 className="text-xl font-bold font-headline">{item.title}</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+          </Card>
+        ))}
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 items-start">
         {/* Left Column: My Story */}
         <div className="space-y-6">
-          <Card className="rounded-[2rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden group">
+          <Card className="rounded-[2.5rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden group">
             {/* Glossy overlay effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
             
@@ -79,7 +113,7 @@ export default function About() {
           </Card>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Card className="rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02]">
+            <Card className="rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
               <div className="p-3 rounded-xl bg-primary/10 text-primary">
                 <MapPin className="h-5 w-5" />
               </div>
@@ -88,7 +122,7 @@ export default function About() {
                 <p className="text-sm font-semibold">Cebu, Philippines</p>
               </div>
             </Card>
-            <Card className="rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02]">
+            <Card className="rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
               <div className="p-3 rounded-xl bg-primary/10 text-primary">
                 <Briefcase className="h-5 w-5" />
               </div>
@@ -102,7 +136,7 @@ export default function About() {
 
         {/* Right Column: Skills & Stats */}
         <div className="space-y-6">
-          <Card className="rounded-[2rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden">
+          <Card className="rounded-[2.5rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden">
              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
              
              <div className="flex items-center gap-4 mb-8">
