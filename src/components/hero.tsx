@@ -41,15 +41,15 @@ export default function Hero() {
 
   const techStack = [
     'Next.js & React',
+    'Node.js & Postgres',
     'Laravel & PHP',
     'Tailwind CSS',
     'JavaScript',
-    'PostgreSQL',
-    'Supabase',
+    'Vercel & Render',
   ];
 
   const stats = [
-    { label: 'Projects', value: '10+' },
+    { label: 'Projects', value: '15+' },
     { label: 'Years Exp', value: '2+' },
     { label: 'Satisfaction', value: '100%' },
     { label: 'Support', value: '24/7' },
@@ -60,7 +60,6 @@ export default function Hero() {
       <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           
-          {/* Left Content Section */}
           <div className="flex flex-col space-y-8 z-10 text-left">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -179,7 +178,6 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Profile Card Section */}
           <motion.div 
             className="relative flex justify-center lg:justify-end z-10"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -214,7 +212,7 @@ export default function Hero() {
                 <p className="text-xs text-center text-muted-foreground font-medium uppercase tracking-wider">Currently working on</p>
                 <div className="flex items-center justify-center gap-2 p-3 bg-primary/5 border border-primary/10 rounded-xl group cursor-default transition-all hover:bg-primary/10">
                   <span className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-sm font-semibold">Normalite EDGE</span>
+                  <span className="text-sm font-semibold">Normalite EDGE (CNU)</span>
                   <ExternalLink className="h-3 w-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>

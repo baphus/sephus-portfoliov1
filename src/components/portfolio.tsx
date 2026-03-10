@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -20,13 +19,13 @@ import imageData from '@/app/lib/placeholder-images.json';
 const portfolioItems = [
   {
     id: 'normalite',
-    title: 'Normalite EDGE — Guide to Excellence',
+    title: 'Normalite EDGE — CNU Student Hub',
     category: 'Web Apps',
     featured: true,
-    description: 'A React-based web platform designed to guide students toward academic excellence through user-tested features and intuitive navigation.',
-    image: imageData.projects.find(p => p.id === 'normalite')?.url || '',
-    hint: imageData.projects.find(p => p.id === 'normalite')?.hint || '',
-    tech: ['React', 'Tailwind CSS', 'Vercel'],
+    description: 'A React-based web platform designed for Cebu Normal University students, guiding them toward academic excellence through user-tested features. Powered by Node.js and PostgreSQL.',
+    image: imageData.projects.find(p => p.id === 'normalite')?.url || 'https://picsum.photos/seed/normalite/800/600',
+    hint: 'academic excellence',
+    tech: ['React', 'Node.js', 'PostgreSQL', 'Tailwind', 'Render'],
     link: 'https://normalite-edge.vercel.app/',
   },
   {
@@ -123,7 +122,7 @@ export default function Portfolio() {
           <span>Portfolio</span>
         </div>
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline text-foreground">
-          Personal <span className="text-primary">Projects</span>
+          Featured <span className="text-primary">Works</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
           A showcase of my production-ready work and academic projects. Each project represents a commitment to high-quality code and user experience.

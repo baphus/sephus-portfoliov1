@@ -7,7 +7,6 @@ import {
   MapPin, 
   Calendar, 
   Code2, 
-  ExternalLink, 
   ChevronDown, 
   CheckCircle2,
   Rocket,
@@ -21,20 +20,30 @@ import {
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const experiences = [
   {
+    role: 'Full-Stack Developer',
+    company: 'Cebu Normal University (Normalite EDGE)',
+    location: 'Cebu City, Philippines',
+    period: '2024 - Present',
+    status: 'Current',
+    type: 'Project-based',
+    description: 'Leading the development of a comprehensive web application for CNU students. Built with a modern stack focusing on high performance, secure data management, and an intuitive user interface for academic guidance.',
+    tech: ['React', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Render', 'Vercel'],
+    icon: <Globe className="h-5 w-5" />
+  },
+  {
     role: 'Full-Stack Developer (Academic Project)',
     company: 'BNHS E-Document Request System',
     location: 'Remote (Cebu City, Philippines)',
-    period: '2024 - Present',
-    status: 'Current',
+    period: '2024',
+    status: 'Completed',
     type: 'Full-time',
     description: 'Developed and deployed a production-ready web application for school document management. Implemented secure OTP verification, request tracking, and a comprehensive admin dashboard for registrar staff.',
     tech: ['Laravel', 'PHP', 'Tailwind CSS', 'Alpine.js', 'PostgreSQL', 'Heroku'],
-    icon: <Globe className="h-5 w-5" />
+    icon: <Database className="h-5 w-5" />
   },
   {
     role: 'Full-Stack Developer (Academic Project)',
@@ -45,7 +54,7 @@ const experiences = [
     type: 'Full-time',
     description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized OOP principles and custom MVC routing for a modular codebase.',
     tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Bootstrap', 'REST API'],
-    icon: <Database className="h-5 w-5" />
+    icon: <Cpu className="h-5 w-5" />
   },
   {
     role: 'Developer & UI/UX Designer (Personal Project)',
@@ -57,24 +66,12 @@ const experiences = [
     description: 'Built a responsive practice test platform for licensure exam candidates. Focused on high-performance server rendering and intuitive user experience design.',
     tech: ['Next.js', 'React', 'Tailwind CSS', 'Vercel', 'Framer Motion'],
     icon: <Layout className="h-5 w-5" />
-  },
-  {
-    role: 'Social Media Manager & Creative Designer',
-    company: 'JK Bros Combos Social Media',
-    location: 'Cebu City, Philippines',
-    period: '2023',
-    status: 'Freelance',
-    type: 'Part-time',
-    description: 'Managed full brand development and content strategy for a family business. Handled food photography, graphic design, and meta ads performance analysis.',
-    tech: ['Branding', 'Meta Ads', 'Design', 'Photography', 'Strategy'],
-    icon: <Search className="h-5 w-5" />
   }
 ];
 
 export default function Experience() {
   return (
     <div className="container mx-auto px-4 md:px-6">
-      {/* Header Section */}
       <div className="flex flex-col items-center text-center space-y-4 mb-16">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20">
           <Briefcase className="h-3 w-3" />
@@ -89,7 +86,6 @@ export default function Experience() {
       </div>
 
       <div className="max-w-4xl mx-auto relative mb-32">
-        {/* Vertical Timeline Line */}
         <div className="absolute left-0 md:left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full opacity-30" />
 
         <div className="space-y-12">
@@ -102,7 +98,6 @@ export default function Experience() {
               transition={{ delay: index * 0.1 }}
               className="relative pl-8 md:pl-24"
             >
-              {/* Timeline Dot */}
               <div className="absolute left-[-6px] md:left-[26px] top-10 flex h-4 w-4 items-center justify-center z-10">
                 <div className="h-full w-full rounded-full bg-primary animate-ping opacity-20" />
                 <div className="absolute h-3 w-3 rounded-full bg-primary border-4 border-background" />
@@ -112,7 +107,6 @@ export default function Experience() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
                 
                 <div className="flex flex-col gap-6">
-                  {/* Card Header */}
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                     <div className="space-y-3">
                       <div className="flex flex-wrap items-center gap-2">
@@ -145,20 +139,12 @@ export default function Experience() {
                         </div>
                       </div>
                     </div>
-
-                    <div className="hidden md:flex items-center gap-2">
-                      <Button variant="ghost" size="sm" className="rounded-full gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary">
-                        Show More <ChevronDown className="h-4 w-4" />
-                      </Button>
-                    </div>
                   </div>
 
-                  {/* Description */}
                   <p className="text-muted-foreground leading-relaxed text-base font-medium">
                     {exp.description}
                   </p>
 
-                  {/* Tech Stack section from image */}
                   <div className="space-y-4 pt-4 border-t border-border/50">
                     <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
                       <Code2 className="h-4 w-4" />
@@ -177,15 +163,8 @@ export default function Experience() {
             </motion.div>
           ))}
         </div>
-
-        <div className="mt-16 flex justify-center">
-          <Button variant="outline" className="rounded-full h-12 px-8 border-border hover:bg-muted font-bold text-sm">
-            Show More (2 more)
-          </Button>
-        </div>
       </div>
 
-      {/* CTA Section from image */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -201,7 +180,7 @@ export default function Experience() {
           Looking for Proven Delivery <span className="text-primary">Experience?</span>
         </h2>
         <p className="text-muted-foreground max-w-xl text-base font-medium leading-relaxed px-4">
-          I&apos;ve shipped features across agency, product, and client environments with a focus on reliability and speed.
+          I&apos;ve shipped features across academic, freelance, and client environments with a focus on reliability and speed.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <Button asChild className="btn-aqua btn-aqua-primary h-14 px-10 rounded-2xl shadow-xl group">
