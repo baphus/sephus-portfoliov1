@@ -1,47 +1,223 @@
+"use client";
 
-const experienceData = [
+import React from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Briefcase, 
+  MapPin, 
+  Calendar, 
+  Code2, 
+  ExternalLink, 
+  ChevronDown, 
+  CheckCircle2,
+  Rocket,
+  MessageSquare,
+  Layout,
+  Globe,
+  Database,
+  Search,
+  Cpu
+} from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+
+const experiences = [
   {
-    role: 'Technical Support & Systems Experience',
-    company: 'Deployed Web Applications — Client and Academic Systems',
-    period: 'Ongoing',
-    description: 'Diagnosed and resolved technical issues in production environments. Identified, reproduced, and debugged problems related to authentication, database queries, and frontend behavior. Assisted users in resolving platform-related issues.',
+    role: 'Full-Stack Developer (Academic Project)',
+    company: 'BNHS E-Document Request System',
+    location: 'Remote (Cebu City, Philippines)',
+    period: '2024 - Present',
+    status: 'Current',
+    type: 'Full-time',
+    description: 'Developed and deployed a production-ready web application for school document management. Implemented secure OTP verification, request tracking, and a comprehensive admin dashboard for registrar staff.',
+    tech: ['Laravel', 'PHP', 'Tailwind CSS', 'Alpine.js', 'PostgreSQL', 'Heroku'],
+    icon: <Globe className="h-5 w-5" />
   },
   {
-    role: 'Technical Systems Maintenance',
-    company: 'Firebase, Render, Vercel & Supabase Monitoring',
-    period: 'Ongoing',
-    description: 'Maintained cloud-hosted systems to ensure reliability. Configured backend services including email notifications, database integrations, and cloud storage systems. Documented fixes and system behavior.',
+    role: 'Full-Stack Developer (Academic Project)',
+    company: 'Medicare Clinic System',
+    location: 'Remote (Cebu City, Philippines)',
+    period: '2023 - 2024',
+    status: 'Completed',
+    type: 'Full-time',
+    description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized OOP principles and custom MVC routing for a modular codebase.',
+    tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Bootstrap', 'REST API'],
+    icon: <Database className="h-5 w-5" />
   },
   {
-    role: 'Client Liaison & Requirements Gathering',
-    company: 'Cebu Technological University Projects',
-    period: '2023 - Present',
-    description: 'Gathered system requirements and explained technical concepts to non-technical clients. Assured clarity on solution functionality and supported user onboarding after system deployment.',
+    role: 'Developer & UI/UX Designer (Personal Project)',
+    company: 'LET Reviewer Gamified App',
+    location: 'Cebu, Philippines',
+    period: '2023',
+    status: 'Completed',
+    type: 'Personal',
+    description: 'Built a responsive practice test platform for licensure exam candidates. Focused on high-performance server rendering and intuitive user experience design.',
+    tech: ['Next.js', 'React', 'Tailwind CSS', 'Vercel', 'Framer Motion'],
+    icon: <Layout className="h-5 w-5" />
   },
+  {
+    role: 'Social Media Manager & Creative Designer',
+    company: 'JK Bros Combos Social Media',
+    location: 'Cebu City, Philippines',
+    period: '2023',
+    status: 'Freelance',
+    type: 'Part-time',
+    description: 'Managed full brand development and content strategy for a family business. Handled food photography, graphic design, and meta ads performance analysis.',
+    tech: ['Branding', 'Meta Ads', 'Design', 'Photography', 'Strategy'],
+    icon: <Search className="h-5 w-5" />
+  }
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="w-full py-16 md:py-24 bg-transparent">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl font-headline">Technical Support & Systems Experience</h2>
-        <div className="relative mt-12 max-w-3xl mx-auto">
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
-          {experienceData.map((item, index) => (
-            <div key={index} className="relative mb-8">
-              <div className="absolute left-1/2 top-1 w-4 h-4 bg-primary rounded-full border-4 border-secondary -translate-x-1/2"></div>
-              <div className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                <div className={`w-full md:w-5/12 p-4 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                  <p className="text-sm text-muted-foreground">{item.period}</p>
-                  <h3 className="text-xl font-bold font-headline">{item.role}</h3>
-                  <p className="font-semibold text-primary">{item.company}</p>
-                  <p className="mt-2 text-foreground/80 text-sm">{item.description}</p>
-                </div>
+    <div className="container mx-auto px-4 md:px-6">
+      {/* Header Section */}
+      <div className="flex flex-col items-center text-center space-y-4 mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20">
+          <Briefcase className="h-3 w-3" />
+          <span>Professional Experience</span>
+        </div>
+        <h2 className="text-4xl md:text-6xl font-black font-headline text-foreground">
+          My <span className="text-primary">Journey</span>
+        </h2>
+        <p className="text-muted-foreground max-w-2xl leading-relaxed text-base font-medium">
+          Explore the roles and achievements that have shaped my journey as a full-stack developer and digital professional.
+        </p>
+      </div>
+
+      <div className="max-w-4xl mx-auto relative mb-32">
+        {/* Vertical Timeline Line */}
+        <div className="absolute left-0 md:left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full opacity-30" />
+
+        <div className="space-y-12">
+          {experiences.map((exp, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="relative pl-8 md:pl-24"
+            >
+              {/* Timeline Dot */}
+              <div className="absolute left-[-6px] md:left-[26px] top-10 flex h-4 w-4 items-center justify-center z-10">
+                <div className="h-full w-full rounded-full bg-primary animate-ping opacity-20" />
+                <div className="absolute h-3 w-3 rounded-full bg-primary border-4 border-background" />
               </div>
-            </div>
+
+              <Card className="rounded-[2.5rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                <div className="flex flex-col gap-6">
+                  {/* Card Header */}
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-2xl font-black font-headline text-foreground group-hover:text-primary transition-colors">
+                          {exp.role}
+                        </h3>
+                        <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 text-[10px] font-bold rounded-full px-3 py-0.5">
+                          <span className="flex items-center gap-1.5">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            {exp.status}
+                          </span>
+                        </Badge>
+                        <Badge variant="outline" className="border-primary/20 text-primary text-[10px] font-bold rounded-full px-3">
+                          {exp.type}
+                        </Badge>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                        <div className="flex items-center gap-2">
+                          <Briefcase className="h-3.5 w-3.5 text-primary" />
+                          {exp.company}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <MapPin className="h-3.5 w-3.5 text-primary" />
+                          {exp.location}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Calendar className="h-3.5 w-3.5 text-primary" />
+                          {exp.period}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="hidden md:flex items-center gap-2">
+                      <Button variant="ghost" size="sm" className="rounded-full gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary">
+                        Show More <ChevronDown className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground leading-relaxed text-base font-medium">
+                    {exp.description}
+                  </p>
+
+                  {/* Tech Stack section from image */}
+                  <div className="space-y-4 pt-4 border-t border-border/50">
+                    <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                      <Code2 className="h-4 w-4" />
+                      <span>Tech Stack</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.tech.map((t, i) => (
+                        <Badge key={i} variant="secondary" className="bg-white/50 dark:bg-white/[0.02] border border-border text-[9px] font-bold px-3 py-1 rounded-md text-foreground group-hover:border-primary/30 transition-colors">
+                          {t}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
           ))}
         </div>
+
+        <div className="mt-16 flex justify-center">
+          <Button variant="outline" className="rounded-full h-12 px-8 border-border hover:bg-muted font-bold text-sm">
+            Show More (2 more)
+          </Button>
+        </div>
       </div>
-    </section>
+
+      {/* CTA Section from image */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex flex-col items-center text-center space-y-8 py-20 bg-primary/5 rounded-[4rem] border border-primary/10 relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/40 dark:bg-neutral-900/40 text-muted-foreground text-[10px] font-bold uppercase tracking-widest border border-border/50">
+          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
+          <span>Production-Tested Experience</span>
+        </div>
+        <h2 className="text-3xl md:text-6xl font-black font-headline text-foreground leading-tight max-w-4xl px-4">
+          Looking for Proven Delivery <span className="text-primary">Experience?</span>
+        </h2>
+        <p className="text-muted-foreground max-w-xl text-base font-medium leading-relaxed px-4">
+          I&apos;ve shipped features across agency, product, and client environments with a focus on reliability and speed.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <Button asChild className="btn-aqua btn-aqua-primary h-14 px-10 rounded-2xl shadow-xl group">
+            <Link href="/contact" className="flex items-center gap-3">
+              <MessageSquare className="h-5 w-5" />
+              <span>Talk About Your Needs</span>
+            </Link>
+          </Button>
+          <Button asChild variant="outline" className="h-14 px-10 rounded-2xl border-border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md font-bold text-sm">
+            <Link href="/portfolio" className="flex items-center gap-3">
+              <Rocket className="h-5 w-5" />
+              <span>Review My Work</span>
+            </Link>
+          </Button>
+        </div>
+      </motion.div>
+    </div>
   );
 }

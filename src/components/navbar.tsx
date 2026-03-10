@@ -9,9 +9,9 @@ import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Home', iconSrc: '/nav-icons/home.png' },
-  { href: '/about', label: 'About', iconSrc: '/nav-icons/about.png' },
-  { href: '/skills', label: 'Skills', iconSrc: '/nav-icons/skills.png' },
   { href: '/portfolio', label: 'Portfolio', iconSrc: '/nav-icons/portfolio.png' },
+  { href: '/about', label: 'Experience', iconSrc: '/nav-icons/about.png' },
+  { href: '/skills', label: 'Skills', iconSrc: '/nav-icons/skills.png' },
   { href: '/education', label: 'Education', iconSrc: '/nav-icons/education.png' },
   { href: '/contact', label: 'Contact', iconSrc: '/nav-icons/contact.png' },
 ];
