@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -40,7 +41,7 @@ const skills = [
   { title: 'Project Management', category: 'professional', slug: 'jira', description: 'Leading development teams and managing project timelines for quality delivery.', icon: <Briefcase className="h-6 w-6" />, isFeatured: true },
   { title: 'Agile Methodology', category: 'professional', slug: 'scrumalliance', description: 'Implementing iterative development processes like Scrum for team collaboration.', icon: <InfinityIcon className="h-6 w-6" />, isFeatured: true },
   { title: 'SDLC', category: 'professional', slug: 'git', description: 'Managing the complete software development life cycle from planning to maintenance.', icon: <Box className="h-6 w-6" />, isFeatured: true },
-  { title: 'Problem Solving', category: 'professional', description: 'Diagnosing complex technical issues and architecting efficient solutions.', icon: <Lightbulb className="h-6 w-6" />, isFeatured: true },
+  { title: 'Problem Solving', category: 'professional', slug: 'adventofcode', description: 'Diagnosing complex technical issues and architecting efficient solutions.', icon: <Lightbulb className="h-6 w-6" />, isFeatured: true },
   { title: 'API Integration', category: 'professional', slug: 'postman', description: 'Connecting diverse services via RESTful APIs and secure data synchronization.', icon: <LinkIcon className="h-6 w-6" />, isFeatured: true },
   
   // Frontend
@@ -94,9 +95,9 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
       
       <div className="flex items-center gap-4">
-        <div className="p-3 rounded-2xl bg-background/50 shadow-inner group-hover:scale-110 transition-transform border border-white/10 flex items-center justify-center">
+        <div className="p-3 rounded-2xl bg-background/50 shadow-inner group-hover:scale-110 transition-transform border border-white/10 flex items-center justify-center h-12 w-12">
           {brandIconUrl ? (
-            <img src={brandIconUrl} alt={skill.title} className="h-6 w-6 object-contain" />
+            <img src={brandIconUrl} alt={skill.title} className="h-7 w-7 object-contain" />
           ) : (
             <div className="text-primary">{skill.icon}</div>
           )}
@@ -134,14 +135,13 @@ export default function Skills() {
 
   const marqueeItems = useMemo(() => {
     if (filteredSkills.length === 0) return [];
-    // Ensure we have enough items for a smooth marquee loop
     const minItems = 15;
     const repeats = Math.ceil(minItems / filteredSkills.length);
     return Array(repeats).fill(filteredSkills).flat();
   }, [filteredSkills]);
 
   const duration = useMemo(() => {
-    return Math.max(30, filteredSkills.length * 5);
+    return Math.max(40, filteredSkills.length * 6);
   }, [filteredSkills.length]);
 
   const activeSlugs = useMemo(() => {
@@ -199,7 +199,12 @@ export default function Skills() {
             <div className="relative flex items-center justify-center p-4 min-h-[400px]">
               <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
               <div className="w-full max-w-sm lg:max-w-md">
-                {mounted && <IconCloud iconSlugs={activeSlugs.length > 0 ? activeSlugs : ['javascript', 'typescript', 'react', 'nextdotjs']} />}
+                {mounted && (
+                  <IconCloud 
+                    key={activeCategory}
+                    iconSlugs={activeSlugs.length > 0 ? activeSlugs : ['javascript', 'typescript', 'react', 'nextdotjs']} 
+                  />
+                )}
               </div>
             </div>
           </div>

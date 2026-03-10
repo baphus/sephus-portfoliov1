@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useState, useEffect } from 'react';
@@ -222,14 +223,22 @@ export default function Hero() {
       </div>
 
       <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 inset-x-0 flex flex-col items-center gap-2 z-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ 
+          opacity: { duration: 1, delay: 1 },
+          y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+        }}
       >
         <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-1">
-          <motion.div className="w-1.5 h-1.5 bg-primary rounded-full" />
+          <motion.div 
+            className="w-1.5 h-1.5 bg-primary rounded-full" 
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
         </div>
-        <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Scroll</span>
+        <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-black">Scroll</span>
       </motion.div>
     </section>
   );
