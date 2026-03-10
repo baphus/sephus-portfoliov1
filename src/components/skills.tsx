@@ -1,8 +1,8 @@
 
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Code2, 
   Layout, 
@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 const Lightbulb = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
@@ -59,6 +60,14 @@ const skills = [
   { title: 'MySQL', category: 'database', icon: <Database className="h-6 w-6 text-blue-600" /> },
 ];
 
+const categories = [
+  { id: 'all', label: 'All', icon: <Layers className="h-4 w-4" /> },
+  { id: 'professional', label: 'Professional', icon: <Briefcase className="h-4 w-4" /> },
+  { id: 'frontend', label: 'Frontend', icon: <Layout className="h-4 w-4" /> },
+  { id: 'backend', label: 'Backend', icon: <Server className="h-4 w-4" /> },
+  { id: 'database', label: 'Database', icon: <Database className="h-4 w-4" /> },
+];
+
 const stats = [
   { label: 'Technologies', value: '37+' },
   { label: 'Categories', value: '6' },
@@ -72,7 +81,7 @@ const values = [
 ];
 
 const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
-  <div className="flex-shrink-0 group relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-5 rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex items-center gap-4 min-w-[240px] mx-3">
+  <div className="flex-shrink-0 group relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-5 rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex items-center gap-4 min-w-[240px] mx-3 cursor-default">
     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
     <div className="relative z-10 p-3 rounded-xl bg-background/50 shadow-inner group-hover:scale-110 transition-transform">
       {skill.icon}
@@ -87,8 +96,30 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
 );
 
 export default function Skills() {
-  const marqueeRow1 = [...skills.slice(0, 9), ...skills.slice(0, 9)];
-  const marqueeRow2 = [...skills.slice(9), ...skills.slice(9)];
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const filteredSkills = useMemo(() => {
+    if (activeCategory === 'all') return skills;
+    return skills.filter(s => s.category === activeCategory);
+  }, [activeCategory]);
+
+  // Create repeated rows for seamless scrolling
+  const row1Items = useMemo(() => {
+    const half = Math.ceil(filteredSkills.length / 2);
+    const set = filteredSkills.slice(0, half);
+    if (set.length === 0) return [];
+    // Ensure at least 15 items per row for a smooth loop on wide screens
+    const repeats = Math.max(2, Math.ceil(15 / set.length));
+    return Array(repeats).fill(set).flat();
+  }, [filteredSkills]);
+
+  const row2Items = useMemo(() => {
+    const half = Math.ceil(filteredSkills.length / 2);
+    const set = filteredSkills.slice(half);
+    if (set.length === 0) return Array(Math.ceil(15 / filteredSkills.length)).fill(filteredSkills).flat();
+    const repeats = Math.max(2, Math.ceil(15 / set.length));
+    return Array(repeats).fill(set).flat();
+  }, [filteredSkills]);
 
   return (
     <div className="space-y-20 py-10 overflow-hidden">
@@ -103,16 +134,35 @@ export default function Skills() {
             Skills & <span className="text-primary">Technologies</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl leading-relaxed text-base">
-            Comprehensive expertise in modern web technologies and professional development, showcased through high-performance dynamic marquees.
+            Comprehensive expertise in modern web technologies and professional development, organized for dynamic exploration.
           </p>
           
           {/* Stats Dashboard */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl mt-8 mb-12">
             {stats.map((stat) => (
               <div key={stat.label} className="bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-6 rounded-3xl border border-white/20 shadow-sm">
                 <p className="text-3xl font-black text-foreground">{stat.value}</p>
                 <p className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">{stat.label}</p>
               </div>
+            ))}
+          </div>
+
+          {/* Category Selector Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8 p-2 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-xl rounded-[2rem] border border-white/10">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={cn(
+                  "flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300",
+                  activeCategory === cat.id 
+                    ? "bg-primary text-white shadow-[0_0_15px_rgba(var(--primary),0.3)] scale-105" 
+                    : "text-muted-foreground hover:bg-white/10 dark:hover:bg-neutral-800/40"
+                )}
+              >
+                {cat.icon}
+                {cat.label}
+              </button>
             ))}
           </div>
         </div>
@@ -121,29 +171,31 @@ export default function Skills() {
       {/* Infinite Scrolling Marquees */}
       <div className="relative space-y-6 w-full">
         {/* Row 1: Moving Right to Left */}
-        <div className="flex overflow-hidden group">
+        <div className="flex overflow-hidden">
           <motion.div 
+            key={`${activeCategory}-row1`}
             className="flex whitespace-nowrap"
-            animate={{ x: [0, -1000] }}
-            transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 30, ease: "linear" } }}
+            animate={{ x: [0, -2000] }}
+            transition={{ x: { repeat: Infinity, repeatType: "loop", duration: activeCategory === 'all' ? 40 : 25, ease: "linear" } }}
           >
-            {marqueeRow1.map((skill, idx) => (
-              <SkillCard key={`row1-${idx}`} skill={skill} />
+            {row1Items.map((skill, idx) => (
+              <SkillCard key={`row1-${skill.title}-${idx}`} skill={skill} />
             ))}
           </motion.div>
         </div>
 
         {/* Row 2: Moving Left to Right */}
-        <div className="flex overflow-hidden group">
+        <div className="flex overflow-hidden">
           <motion.div 
+            key={`${activeCategory}-row2`}
             className="flex whitespace-nowrap"
-            initial={{ x: -1000 }}
-            animate={{ x: [0, -1000] }}
-            transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 35, ease: "linear" } }}
+            initial={{ x: -2000 }}
+            animate={{ x: [0, -2000] }}
+            transition={{ x: { repeat: Infinity, repeatType: "loop", duration: activeCategory === 'all' ? 45 : 30, ease: "linear" } }}
             style={{ flexDirection: 'row-reverse' }}
           >
-            {marqueeRow2.map((skill, idx) => (
-              <SkillCard key={`row2-${idx}`} skill={skill} />
+            {row2Items.map((skill, idx) => (
+              <SkillCard key={`row2-${skill.title}-${idx}`} skill={skill} />
             ))}
           </motion.div>
         </div>
