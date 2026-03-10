@@ -25,7 +25,11 @@ import {
   Cloud,
   Smartphone,
   Wrench,
-  Monitor
+  Monitor,
+  Fingerprint,
+  Box,
+  Infinity,
+  Sparkles
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -37,41 +41,65 @@ const Lightbulb = ({ className }: { className?: string }) => (
 
 const skills = [
   // Professional Skills
-  { title: 'Problem Solving', category: 'professional', icon: <Lightbulb className="h-6 w-6 text-amber-500" /> },
-  { title: 'API Integration', category: 'professional', icon: <Activity className="h-6 w-6 text-emerald-500" /> },
+  { title: 'Problem Solving', category: 'professional', icon: <Lightbulb className="h-6 w-6 text-amber-500" />, isFeatured: true },
+  { title: 'API Integration', category: 'professional', icon: <Activity className="h-6 w-6 text-emerald-500" />, isFeatured: true },
   { title: 'System Development', category: 'professional', icon: <Terminal className="h-6 w-6 text-sky-500" /> },
   { title: 'Data Analysis', category: 'professional', icon: <Search className="h-6 w-6 text-indigo-500" /> },
-  { title: 'Full Stack', category: 'professional', icon: <Layers className="h-6 w-6 text-purple-500" /> },
+  { title: 'Full Stack', category: 'professional', icon: <Layers className="h-6 w-6 text-purple-500" />, isFeatured: true },
   { title: 'Research-based', category: 'professional', icon: <Search className="h-6 w-6 text-rose-500" /> },
   { title: 'Communication', category: 'professional', icon: <MessageSquare className="h-6 w-6 text-cyan-500" /> },
   { title: 'Productivity', category: 'professional', icon: <ShieldCheck className="h-6 w-6 text-blue-500" /> },
+  
   // Frontend
-  { title: 'Next.js', category: 'frontend', icon: <Globe className="h-6 w-6 text-foreground" /> },
-  { title: 'React', category: 'frontend', icon: <Layout className="h-6 w-6 text-sky-400" /> },
-  { title: 'Tailwind CSS', category: 'frontend', icon: <Monitor className="h-6 w-6 text-cyan-400" /> },
-  { title: 'TypeScript', category: 'frontend', icon: <Code2 className="h-6 w-6 text-blue-500" /> },
+  { title: 'Next.js', category: 'frontend', icon: <Globe className="h-6 w-6 text-foreground" />, isFeatured: true },
+  { title: 'React', category: 'frontend', icon: <Layout className="h-6 w-6 text-sky-400" />, isFeatured: true },
+  { title: 'Tailwind CSS', category: 'frontend', icon: <Monitor className="h-6 w-6 text-cyan-400" />, isFeatured: true },
+  { title: 'TypeScript', category: 'frontend', icon: <Code2 className="h-6 w-6 text-blue-500" />, isFeatured: true },
+  { title: 'HTML5/CSS3', category: 'frontend', icon: <Layout className="h-6 w-6 text-orange-500" /> },
+  { title: 'JavaScript', category: 'frontend', icon: <Code2 className="h-6 w-6 text-yellow-400" />, isFeatured: true },
+  
   // Backend
-  { title: 'Laravel', category: 'backend', icon: <Server className="h-6 w-6 text-red-500" /> },
+  { title: 'Laravel', category: 'backend', icon: <Server className="h-6 w-6 text-red-500" />, isFeatured: true },
   { title: 'Node.js', category: 'backend', icon: <Cpu className="h-6 w-6 text-emerald-600" /> },
   { title: 'PHP', category: 'backend', icon: <Code2 className="h-6 w-6 text-indigo-400" /> },
+  { title: 'Express', category: 'backend', icon: <Terminal className="h-6 w-6 text-gray-400" /> },
+  
+  // Mobile
+  { title: 'React Native', category: 'mobile', icon: <Smartphone className="h-6 w-6 text-sky-400" /> },
+  { title: 'Responsive UI', category: 'mobile', icon: <Monitor className="h-6 w-6 text-primary" />, isFeatured: true },
+  { title: 'PWA', category: 'mobile', icon: <Globe className="h-6 w-6 text-emerald-400" /> },
+  
   // Database
-  { title: 'Supabase', category: 'database', icon: <Database className="h-6 w-6 text-emerald-500" /> },
-  { title: 'Firebase', category: 'database', icon: <Cloud className="h-6 w-6 text-orange-500" /> },
+  { title: 'Supabase', category: 'database', icon: <Database className="h-6 w-6 text-emerald-500" />, isFeatured: true },
+  { title: 'Firebase', category: 'database', icon: <Cloud className="h-6 w-6 text-orange-500" />, isFeatured: true },
   { title: 'MySQL', category: 'database', icon: <Database className="h-6 w-6 text-blue-600" /> },
+  { title: 'PostgreSQL', category: 'database', icon: <Database className="h-6 w-6 text-sky-600" />, isFeatured: true },
+  { title: 'Cloudinary', category: 'database', icon: <Cloud className="h-6 w-6 text-blue-400" /> },
+  
+  // Tools
+  { title: 'Git & GitHub', category: 'tools', icon: <Fingerprint className="h-6 w-6 text-foreground" />, isFeatured: true },
+  { title: 'Figma', category: 'tools', icon: <Monitor className="h-6 w-6 text-purple-400" /> },
+  { title: 'Vercel', category: 'tools', icon: <Cloud className="h-6 w-6 text-foreground" /> },
+  { title: 'Heroku', category: 'tools', icon: <Server className="h-6 w-6 text-purple-600" /> },
+  { title: 'Render', category: 'tools', icon: <Box className="h-6 w-6 text-emerald-500" /> },
+  { title: 'CapCut', category: 'tools', icon: <Smartphone className="h-6 w-6 text-sky-500" /> },
 ];
 
 const categories = [
-  { id: 'all', label: 'All', icon: <Layers className="h-4 w-4" /> },
-  { id: 'professional', label: 'Professional', icon: <Briefcase className="h-4 w-4" /> },
-  { id: 'frontend', label: 'Frontend', icon: <Layout className="h-4 w-4" /> },
-  { id: 'backend', label: 'Backend', icon: <Server className="h-4 w-4" /> },
-  { id: 'database', label: 'Database', icon: <Database className="h-4 w-4" /> },
+  { id: 'featured', label: 'Featured', icon: <Sparkles className="h-4 w-4" /> },
+  { id: 'all', label: 'All Skills', icon: <Infinity className="h-4 w-4" /> },
+  { id: 'frontend', label: 'Frontend Development', icon: <Layout className="h-4 w-4" /> },
+  { id: 'backend', label: 'Backend Development', icon: <Server className="h-4 w-4" /> },
+  { id: 'mobile', label: 'Mobile Development', icon: <Smartphone className="h-4 w-4" /> },
+  { id: 'database', label: 'Database & Storage', icon: <Database className="h-4 w-4" /> },
+  { id: 'tools', label: 'Tools & Technologies', icon: <Wrench className="h-4 w-4" /> },
+  { id: 'professional', label: 'Professional Skills', icon: <Briefcase className="h-4 w-4" /> },
 ];
 
 const stats = [
-  { label: 'Technologies', value: '37+' },
-  { label: 'Categories', value: '6' },
-  { label: 'Featured Skills', value: '14' },
+  { label: 'Technologies', value: '30+' },
+  { label: 'Categories', value: '8' },
+  { label: 'Featured Skills', value: '15' },
 ];
 
 const values = [
@@ -88,18 +116,26 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
     </div>
     <div className="relative z-10">
       <h4 className="text-base font-bold font-headline text-foreground">{skill.title}</h4>
-      <Badge variant="secondary" className="text-[8px] uppercase font-black rounded-md bg-primary/5 text-primary border-primary/10 mt-1">
-        {skill.category}
-      </Badge>
+      <div className="flex gap-1.5 mt-1">
+        <Badge variant="secondary" className="text-[8px] uppercase font-black rounded-md bg-primary/5 text-primary border-primary/10">
+          {skill.category}
+        </Badge>
+        {skill.isFeatured && (
+          <Badge variant="outline" className="text-[8px] uppercase font-black rounded-md border-emerald-500/30 text-emerald-500 bg-emerald-500/5">
+            Featured
+          </Badge>
+        )}
+      </div>
     </div>
   </div>
 );
 
 export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [activeCategory, setActiveCategory] = useState('featured');
 
   const filteredSkills = useMemo(() => {
     if (activeCategory === 'all') return skills;
+    if (activeCategory === 'featured') return skills.filter(s => s.isFeatured);
     return skills.filter(s => s.category === activeCategory);
   }, [activeCategory]);
 
@@ -108,16 +144,18 @@ export default function Skills() {
     const half = Math.ceil(filteredSkills.length / 2);
     const set = filteredSkills.slice(0, half);
     if (set.length === 0) return [];
-    // Ensure at least 15 items per row for a smooth loop on wide screens
-    const repeats = Math.max(2, Math.ceil(15 / set.length));
+    const repeats = Math.max(4, Math.ceil(20 / set.length));
     return Array(repeats).fill(set).flat();
   }, [filteredSkills]);
 
   const row2Items = useMemo(() => {
     const half = Math.ceil(filteredSkills.length / 2);
     const set = filteredSkills.slice(half);
-    if (set.length === 0) return Array(Math.ceil(15 / filteredSkills.length)).fill(filteredSkills).flat();
-    const repeats = Math.max(2, Math.ceil(15 / set.length));
+    if (set.length === 0) {
+      const allRepeats = Math.max(4, Math.ceil(20 / filteredSkills.length));
+      return Array(allRepeats).fill(filteredSkills).flat();
+    }
+    const repeats = Math.max(4, Math.ceil(20 / set.length));
     return Array(repeats).fill(set).flat();
   }, [filteredSkills]);
 
@@ -148,13 +186,13 @@ export default function Skills() {
           </div>
 
           {/* Category Selector Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8 p-2 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-xl rounded-[2rem] border border-white/10">
+          <div className="flex flex-wrap justify-center gap-2 mb-8 p-3 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-xl rounded-[2.5rem] border border-white/10 max-w-5xl">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 className={cn(
-                  "flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300",
+                  "flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300",
                   activeCategory === cat.id 
                     ? "bg-primary text-white shadow-[0_0_15px_rgba(var(--primary),0.3)] scale-105" 
                     : "text-muted-foreground hover:bg-white/10 dark:hover:bg-neutral-800/40"
@@ -176,7 +214,7 @@ export default function Skills() {
             key={`${activeCategory}-row1`}
             className="flex whitespace-nowrap"
             animate={{ x: [0, -2000] }}
-            transition={{ x: { repeat: Infinity, repeatType: "loop", duration: activeCategory === 'all' ? 40 : 25, ease: "linear" } }}
+            transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 40, ease: "linear" } }}
           >
             {row1Items.map((skill, idx) => (
               <SkillCard key={`row1-${skill.title}-${idx}`} skill={skill} />
@@ -191,7 +229,7 @@ export default function Skills() {
             className="flex whitespace-nowrap"
             initial={{ x: -2000 }}
             animate={{ x: [0, -2000] }}
-            transition={{ x: { repeat: Infinity, repeatType: "loop", duration: activeCategory === 'all' ? 45 : 30, ease: "linear" } }}
+            transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 45, ease: "linear" } }}
             style={{ flexDirection: 'row-reverse' }}
           >
             {row2Items.map((skill, idx) => (
@@ -201,9 +239,9 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 mt-16">
         {/* Professional Values Row */}
-        <div className="bg-primary/5 border border-primary/10 backdrop-blur-xl rounded-[3rem] p-10 mb-20">
+        <div className="bg-primary/5 border border-primary/10 backdrop-blur-xl rounded-[3rem] p-10 mb-20 shadow-inner">
           <div className="grid md:grid-cols-3 gap-12 text-center">
             {values.map((item, idx) => (
               <div key={idx} className="space-y-4 group">
