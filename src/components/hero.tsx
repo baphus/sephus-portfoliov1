@@ -72,15 +72,12 @@ export default function Hero() {
   const cardRotateY = useTransform(scrollYProgress, [0, 0.5], [180, 0]);
 
   const roles = [
+    'Technical Support Candidate',
     'Web Developer',
-    'Data Analyst',
     'Systems Analyst',
-    'Systems Designer',
-    'Database Administrator',
-    'Video Editor',
     'Problem Solver',
-    'Team Player',
-    'Creative Thinker',
+    'Digital Creator',
+    'Tech Enthusiast',
   ];
 
   return (
@@ -92,11 +89,11 @@ export default function Hero() {
         animate={headlineFinished ? "visible" : "hidden"}
       >
         <Image 
-          src="/clouds.jpg" 
+          src="https://picsum.photos/seed/sky1/1920/1080" 
           alt="Clouds background" 
           fill 
           className="object-cover" 
-          data-ai-hint="clouds sky"
+          data-ai-hint="sky clouds"
         />
         <div className="absolute inset-0 bg-black/50 dark:bg-black/70" />
       </motion.div>

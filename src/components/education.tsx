@@ -1,23 +1,27 @@
-import { GraduationCap, Trophy, Medal } from 'lucide-react';
+
+import { GraduationCap, Trophy, Medal, BookOpen } from 'lucide-react';
 
 const educationData = [
   {
-    institution: 'Cebu Technological University - Main Campus',
+    institution: 'Cebu Technological University',
     degree: 'Bachelor of Science in Information Systems',
-    period: '2022 - Present',
+    period: 'Aug 2023 - Present',
     details: [
-      'Passed the DOST (Department of Science and Technology) exam to become an OWWA (Overseas Workers Welfare Administration) scholar.',
+      'Passed the DOST (Department of Science and Technology) examination, qualifying as an OWWA (Overseas Workers Welfare Administration) scholar.',
+      'Gathered system requirements and presented web-based solutions to project clients.',
+      'Learned networking concepts (IP, DNS, DHCP, LAN) and technical troubleshooting.',
+      'Developed functional websites using HTML, PHP, CSS, and JavaScript.',
     ],
     icon: <GraduationCap />,
   },
   {
     institution: 'Toledo City Science Highschool',
     degree: 'High School Diploma, With Honors',
-    period: 'Graduated 2022',
+    period: 'Aug 2017 - May 2023',
     details: [
-      'Graduated with honors, ranking 12th in my class.',
-      'As a member of the TOLEDO Robotics Team, achieved 1st place in the Division Science Fair for Robotics (2019).',
-      'Secured 2nd, 4th, and 6th place across different Sumobot categories at the Regional Science & Technology Fair (2019).',
+      'Graduated with Honors, ranking 12th in class.',
+      'Robotics Team Member: 1st Place (Division Science Fair 2019).',
+      'Regional Science Fair: 2nd, 4th, and 6th place in Sumo Bot robotics categories.',
     ],
     icon: <Trophy />,
   },
@@ -39,7 +43,7 @@ export default function Education() {
                   {item.icon} {item.institution}
                 </h3>
                 <p className="font-semibold text-primary">{item.degree}</p>
-                <ul className="mt-2 text-foreground/80 list-disc list-inside">
+                <ul className="mt-2 text-foreground/80 list-disc list-inside text-sm space-y-1">
                   {item.details.map((detail, i) => (
                     <li key={i}>{detail}</li>
                   ))}
