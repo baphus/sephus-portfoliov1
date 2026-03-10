@@ -56,10 +56,10 @@ export default function Hero() {
   ];
 
   return (
-    <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-background overflow-hidden border-b border-border/50">
+    <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-transparent overflow-hidden border-b border-border/50">
       {/* Architectural Grid Background */}
       <div 
-        className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.07] pointer-events-none" 
+        className="absolute inset-0 z-0 opacity-[0.05] dark:opacity-[0.1] pointer-events-none" 
         style={{ 
           backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
           backgroundSize: '40px 40px' 
@@ -158,12 +158,12 @@ export default function Hero() {
               initial="hidden"
               animate={fadeInControls}
             >
-              <Button asChild className="btn-aqua btn-aqua-primary h-12 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
-                <a href="#contact" className="flex items-center gap-2">
+              <Button asChild className="btn-aqua btn-aqua-primary min-w-[200px] h-12 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
+                <a href="#contact" className="flex items-center justify-center gap-2">
                   <span className="flex items-center gap-2">Get In Touch <Send className="h-4 w-4" /></span>
                 </a>
               </Button>
-              <Button asChild variant="outline" className="h-12 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent transition-all">
+              <Button asChild variant="outline" className="h-12 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-white transition-all">
                 <a href="/Josephus_Sarsonas_Resume.pdf" download>
                   Download Resume
                 </a>

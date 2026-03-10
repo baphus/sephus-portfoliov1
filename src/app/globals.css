@@ -50,26 +50,26 @@
 
 @layer base {
   :root {
-    --background: 210 20% 96%; /* Softer, Frutiger Aero Gray */
+    --background: 210 20% 94%; /* Slightly darker background for better contrast */
     --foreground: 222.2 84% 4.9%;
-    --card: 210 20% 96%; /* Softer, Frutiger Aero Gray */
+    --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 207 90% 54%; /* Frutiger Aero Sky Blue */
+    --primary: 207 90% 54%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 15% 90%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 15% 90%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 207 80% 48%; /* Slightly Deeper Blue */
+    --muted: 210 15% 88%;
+    --muted-foreground: 215.4 16.3% 40.9%;
+    --accent: 207 80% 48%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 210 10% 80%;
     --input: 210 10% 85%;
     --ring: 207 90% 54%;
-    --radius: 0.8rem; /* Larger radius for bubbly feel */
+    --radius: 0.8rem;
   }
  
   .dark {
@@ -79,7 +79,7 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
+    --primary: 207 90% 54%;
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -101,8 +101,8 @@
   }
   body {
     @apply bg-background text-foreground;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   body::-webkit-scrollbar {
     display: none;
@@ -110,7 +110,6 @@
 }
 
 @layer components {
-  /* Frutiger Aero Navbar / MacOS Dock Style */
   .frutiger-aero-navbar {
     background: repeating-linear-gradient(
       to bottom,
@@ -151,19 +150,22 @@
     box-shadow: 0 0 4px hsl(var(--primary));
   }
 
-  /* Aqua Buttons */
   .btn-aqua {
-    height: 1.75em;
-    padding: 0 2em;
-    min-width: 6em;
+    height: 2.5em;
+    padding: 0 2.5em;
+    min-width: 10em;
     border-radius: 1000px;
     position: relative;
     overflow: hidden;
-    cursor: default;
+    cursor: pointer;
     outline: none;
     font-family: "myriad-pro", system-ui;
     color: black;
     border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
   }
 
   .btn-aqua-primary {
