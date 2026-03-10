@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -117,6 +118,7 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => (
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('featured');
+  const [isPaused, setIsPaused] = useState(false);
 
   const filteredSkills = useMemo(() => {
     if (activeCategory === 'all') return skills;
@@ -126,10 +128,14 @@ export default function Skills() {
 
   const marqueeItems = useMemo(() => {
     if (filteredSkills.length === 0) return [];
-    // Ensure we have enough items to span the width and animate
-    const multiplier = Math.max(4, Math.ceil(20 / filteredSkills.length));
+    // Increase multiplier to ensure enough items for infinite scroll
+    const multiplier = Math.max(4, Math.ceil(30 / filteredSkills.length));
     return Array(multiplier).fill(filteredSkills).flat();
   }, [filteredSkills]);
+
+  // Dynamic speed: duration based on item count to maintain consistent visual speed
+  const baseDuration = filteredSkills.length * 4;
+  const duration = Math.max(20, Math.min(60, baseDuration));
 
   return (
     <div className="space-y-20 py-10 overflow-hidden">
@@ -146,7 +152,6 @@ export default function Skills() {
             Comprehensive expertise in modern web development and digital creation, organized for exploring my full technical stack.
           </p>
 
-          {/* Category Selector Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mt-8 mb-8 p-3 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-xl rounded-[2.5rem] border border-white/10 max-w-6xl">
             {categories.map((cat) => (
               <button
@@ -167,24 +172,26 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* Infinite Scrolling Marquee */}
       <div className="relative w-full overflow-hidden">
         {marqueeItems.length > 0 ? (
-          <div className="flex flex-col gap-8">
+          <div 
+            className="flex flex-col gap-8"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             {/* Row 1 */}
-            <div className="flex w-fit group">
+            <div className="flex w-fit">
               <motion.div 
                 className="flex"
-                animate={{ x: ["0%", "-50%"] }}
+                animate={isPaused ? {} : { x: ["0%", "-50%"] }}
                 transition={{ 
                   x: { 
                     repeat: Infinity, 
                     repeatType: "loop", 
-                    duration: 30, 
+                    duration: duration, 
                     ease: "linear" 
                   } 
                 }}
-                whileHover={{ animationPlayState: 'paused' }}
               >
                 {marqueeItems.map((skill, idx) => (
                   <SkillCard key={`row1-${skill.title}-${idx}`} skill={skill} />
@@ -193,19 +200,18 @@ export default function Skills() {
             </div>
 
             {/* Row 2 (Reverse Direction) */}
-            <div className="flex w-fit group">
+            <div className="flex w-fit">
               <motion.div 
                 className="flex"
-                animate={{ x: ["-50%", "0%"] }}
+                animate={isPaused ? {} : { x: ["-50%", "0%"] }}
                 transition={{ 
                   x: { 
                     repeat: Infinity, 
                     repeatType: "loop", 
-                    duration: 35, 
+                    duration: duration * 1.2, 
                     ease: "linear" 
                   } 
                 }}
-                whileHover={{ animationPlayState: 'paused' }}
               >
                 {marqueeItems.map((skill, idx) => (
                   <SkillCard key={`row2-${skill.title}-${idx}`} skill={skill} />
