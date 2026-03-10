@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -22,7 +23,10 @@ import {
   Box, 
   Infinity as InfinityIcon, 
   Sparkles,
-  Lightbulb
+  Lightbulb,
+  Briefcase,
+  CheckCircle2,
+  Rocket
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -30,6 +34,10 @@ import { cn } from '@/lib/utils';
 
 const skills = [
   // Professional Skills
+  { title: 'System Analysis & Design', category: 'professional', description: 'Analyzing complex business requirements and designing robust system architectures for scalability.', icon: <Monitor className="h-6 w-6 text-blue-500" />, isFeatured: true },
+  { title: 'Project Management', category: 'professional', description: 'Leading development teams and managing project timelines to ensure high-quality delivery.', icon: <Briefcase className="h-6 w-6 text-emerald-500" />, isFeatured: true },
+  { title: 'Agile Methodology', category: 'professional', description: 'Implementing iterative development processes like Scrum and Kanban for efficient team collaboration.', icon: <InfinityIcon className="h-6 w-6 text-purple-500" /> },
+  { title: 'SDLC', category: 'professional', description: 'Managing the complete software development life cycle from planning and analysis to deployment and maintenance.', icon: <Box className="h-6 w-6 text-orange-500" /> },
   { title: 'Problem Solving', category: 'professional', description: 'Diagnosing complex technical issues and architecting efficient, scalable solutions.', icon: <Lightbulb className="h-6 w-6 text-amber-500" />, isFeatured: true },
   { title: 'API Integration', category: 'professional', description: 'Connecting diverse services via RESTful APIs and secure data synchronization.', icon: <Activity className="h-6 w-6 text-emerald-500" />, isFeatured: true },
   { title: 'System Development', category: 'professional', description: 'Building full-scale academic and production-ready applications from scratch.', icon: <Terminal className="h-6 w-6 text-sky-500" /> },
