@@ -100,10 +100,26 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground min-h-screen relative;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    background-image: 
+      linear-gradient(to right, hsla(210, 10%, 50%, 0.05) 1px, transparent 1px), 
+      linear-gradient(to bottom, hsla(210, 10%, 50%, 0.05) 1px, transparent 1px),
+      linear-gradient(to right, hsla(210, 10%, 50%, 0.02) 1px, transparent 1px), 
+      linear-gradient(to bottom, hsla(210, 10%, 50%, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px;
+    background-attachment: fixed;
   }
+  
+  .dark body {
+    background-image: 
+      linear-gradient(to right, hsla(210, 10%, 90%, 0.08) 1px, transparent 1px), 
+      linear-gradient(to bottom, hsla(210, 10%, 90%, 0.08) 1px, transparent 1px),
+      linear-gradient(to right, hsla(210, 10%, 90%, 0.03) 1px, transparent 1px), 
+      linear-gradient(to bottom, hsla(210, 10%, 90%, 0.03) 1px, transparent 1px);
+  }
+
   body::-webkit-scrollbar {
     display: none;
   }

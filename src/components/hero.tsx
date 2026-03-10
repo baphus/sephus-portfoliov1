@@ -56,23 +56,9 @@ export default function Hero() {
   ];
 
   return (
-    <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-transparent overflow-hidden border-b border-border/50">
-      {/* Architectural Grid Background */}
-      <div 
-        className="absolute inset-0 z-0 opacity-[0.05] dark:opacity-[0.1] pointer-events-none" 
-        style={{ 
-          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-          backgroundSize: '40px 40px' 
-        }} 
-      />
-      <div 
-        className="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.04] pointer-events-none" 
-        style={{ 
-          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-          backgroundSize: '200px 200px' 
-        }} 
-      />
-
+    <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-transparent overflow-hidden">
+      {/* Background is now global in globals.css */}
+      
       <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           
