@@ -48,21 +48,23 @@ I am driven by a desire to solve problems and deliver high-quality, impactful wo
 
 ### 1. Normalite EDGE — CNU Student Hub
 - **Context:** Leading development of a comprehensive web app for Cebu Normal University.
-- **Stack:** React, Node.js, PostgreSQL, Tailwind, Render.
+- **Stack:** React, Node.js, PostgreSQL, Tailwind, Vercel.
+- **Timeline:** Feb 2026 - Current.
 
-### 2. BNHS E-Document Request System
+### 2. LETReview — Gamified Study App
+- **Context:** Personal project built for my girlfriend that went viral with 3,000 visits and 300+ users in hours. Deployed Jan 2026.
+- **Stack:** Next.js, Tailwind CSS, Firebase, Framer Motion.
+- **Status:** Viral Launch / Ongoing Development.
+
+### 3. BNHS E-Document Request System
 - **Context:** Official production system deployed at **Bato National High School** administration in **December 2025**.
 - **Role:** Lead Full-Stack Developer
-- **Technologies:** Laravel 12, PHP 8.2+, PostgreSQL, Tailwind CSS, Alpine.js, Heroku
-- **Status:** Deployed and actively used by administration for managing document requests.
+- **Technologies:** Laravel, PHP, PostgreSQL, Tailwind CSS, Alpine.js, Heroku.
+- **Status:** Deployed and actively used by administration.
 
-### 3. Medicare Clinic System
-- **Status:** Completed Academic Project
+### 4. Medicare Clinic System
+- **Status:** Completed Academic Project (2023 - 2024)
 - **Stack:** PHP, Supabase, Cloudinary, Bootstrap.
-
-### 4. LET Reviewer
-- **Status:** Completed Personal Project
-- **Stack:** Next.js, Tailwind CSS.
 
 ---
 

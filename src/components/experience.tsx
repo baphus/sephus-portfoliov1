@@ -28,7 +28,7 @@ const experiences = [
     role: 'Full-Stack Developer',
     company: 'Cebu Normal University (Normalite EDGE)',
     location: 'Cebu City, Philippines',
-    period: '2024 - Present',
+    period: 'Feb 2026 - Present',
     status: 'Current',
     type: 'Project-based',
     description: 'Leading the development of a comprehensive web application for CNU students. Built with a modern stack focusing on high performance, secure data management, and an intuitive user interface for academic guidance.',
@@ -47,6 +47,17 @@ const experiences = [
     icon: <Database className="h-5 w-5" />
   },
   {
+    role: 'Full-Stack Developer (Personal Project)',
+    company: 'LETReview Gamified App',
+    location: 'Cebu, Philippines',
+    period: 'Jan 2026',
+    status: 'Viral Launch',
+    type: 'Founder',
+    description: 'Built a gamified practice test platform for licensure exam candidates. Originally a personal project for my girlfriend, it gained 3,000 visits and 300+ signups within hours of launch. Focused on motivation through rewards and progress tracking.',
+    tech: ['Next.js', 'React', 'Tailwind CSS', 'Firebase', 'Framer Motion'],
+    icon: <Layout className="h-5 w-5" />
+  },
+  {
     role: 'Full-Stack Developer (Academic Project)',
     company: 'Medicare Clinic System',
     location: 'Remote (Cebu City, Philippines)',
@@ -56,17 +67,6 @@ const experiences = [
     description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized OOP principles and custom MVC routing for a modular codebase.',
     tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Bootstrap', 'REST API'],
     icon: <Cpu className="h-5 w-5" />
-  },
-  {
-    role: 'Developer & UI/UX Designer (Personal Project)',
-    company: 'LET Reviewer Gamified App',
-    location: 'Cebu, Philippines',
-    period: '2023',
-    status: 'Completed',
-    type: 'Personal',
-    description: 'Built a responsive practice test platform for licensure exam candidates. Focused on high-performance server rendering and intuitive user experience design.',
-    tech: ['Next.js', 'React', 'Tailwind CSS', 'Vercel', 'Framer Motion'],
-    icon: <Layout className="h-5 w-5" />
   }
 ];
 
@@ -181,7 +181,7 @@ export default function Experience() {
           Looking for Proven Delivery <span className="text-primary">Experience?</span>
         </h2>
         <p className="text-muted-foreground max-w-xl text-base font-medium leading-relaxed px-4">
-          I&apos;ve shipped features across academic, freelance, and client environments with a focus on reliability and speed.
+          I&apos;ve shipped features across academic, viral, and client environments with a focus on reliability and speed.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <Button asChild className="btn-aqua btn-aqua-primary h-14 px-10 rounded-2xl shadow-xl group">

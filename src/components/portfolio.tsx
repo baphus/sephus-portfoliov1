@@ -20,27 +20,27 @@ import imageData from '@/app/lib/placeholder-images.json';
 
 const portfolioItems = [
   {
-    id: 'normalite',
-    title: 'Normalite EDGE — Every Day Guide to Excellence',
-    category: 'Web Apps',
-    featured: true,
-    description: 'A React-based web platform designed for Cebu Normal University students, guiding them toward academic excellence through user-tested features. Powered by Node.js and PostgreSQL.',
-    image: imageData.projects.find(p => p.id === 'normalite')?.url || 'https://picsum.photos/seed/normalite/800/600',
-    hint: 'academic excellence',
-    tech: ['React', 'ExpressJS', 'Node.js', 'PostgreSQL', 'REST API', 'TailwindCSS', 'Render', 'Vercel'],
-    link: 'https://normalite-edge.vercel.app/',
-    type: 'demo'
-  },
-  {
     id: 'letreview',
     title: 'LETReview — Gamified Study App',
     category: 'Web Apps',
     featured: true,
-    description: 'Designed and developed a responsive LET reviewer app and landing page to help aspiring teachers practice for licensure exams.',
+    description: 'A gamified reviewer built for my girlfriend that went viral, gaining 3,000 visits and 300+ users in hours. Features reward systems and progress tracking to solve student burnout. Deployed Jan 2026.',
     image: imageData.projects.find(p => p.id === 'letreview')?.url || 'https://picsum.photos/seed/let/800/600',
     hint: 'educational app',
-    tech: ['Next.js', 'Tailwind CSS', 'Vercel', 'Firebase', 'Firestore Auth', 'Firestore Database(NoSQL)'],
+    tech: ['Next.js', 'Tailwind CSS', 'Vercel', 'Firebase', 'Framer Motion'],
     link: 'https://sephus-let-review.vercel.app/',
+    type: 'demo'
+  },
+  {
+    id: 'normalite',
+    title: 'Normalite EDGE — Every Day Guide to Excellence',
+    category: 'Web Apps',
+    featured: true,
+    description: 'A React-based web platform designed for Cebu Normal University students, guiding them toward academic excellence through user-tested features. Deployed Feb 2026.',
+    image: imageData.projects.find(p => p.id === 'normalite')?.url || 'https://picsum.photos/seed/normalite/800/600',
+    hint: 'academic excellence',
+    tech: ['React', 'ExpressJS', 'Node.js', 'PostgreSQL', 'TailwindCSS', 'Vercel'],
+    link: 'https://normalite-edge.vercel.app/',
     type: 'demo'
   },
   {
@@ -108,7 +108,7 @@ export default function Portfolio() {
           Featured <span className="text-primary">Works</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
-          A showcase of my production-ready work and academic projects. Each project represents a commitment to high-quality code and user experience.
+          A showcase of my production-ready work and personal ventures. Each project represents a commitment to high-quality code and solving real-world needs.
         </p>
       </div>
 
