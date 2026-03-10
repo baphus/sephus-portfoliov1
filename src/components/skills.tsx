@@ -271,12 +271,12 @@ export default function Skills() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <Button asChild className="btn-aqua btn-aqua-primary h-14 px-12 rounded-2xl shadow-lg group w-full sm:w-auto">
-                <a href="#contact" className="flex items-center gap-2">
+                <a href="/contact" className="flex items-center gap-2">
                   <span>Discuss Your Stack</span> <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
               <Button asChild variant="outline" className="h-14 px-8 rounded-2xl border-border bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-white transition-all w-full sm:w-auto font-bold">
-                <a href="#portfolio" className="flex items-center gap-2">
+                <a href="/portfolio" className="flex items-center gap-2">
                   <span>See My Projects</span> <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
