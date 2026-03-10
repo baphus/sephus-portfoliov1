@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo } from 'react';
@@ -46,12 +45,14 @@ const skills = [
   // Frontend
   { title: 'Next.js', category: 'frontend', slug: 'nextdotjs', description: 'Building high-performance, SEO-friendly React applications with App Router.', icon: <Globe className="h-6 w-6" />, isFeatured: true },
   { title: 'React', category: 'frontend', slug: 'react', description: 'Creating interactive, reusable UI components using hooks and modern patterns.', icon: <Layout className="h-6 w-6" />, isFeatured: true },
+  { title: 'Vue.js', category: 'frontend', slug: 'vuedotjs', description: 'Building interactive web interfaces with a progressive JavaScript framework.', icon: <Layout className="h-6 w-6" />, isFeatured: true },
   { title: 'Tailwind CSS', category: 'frontend', slug: 'tailwindcss', description: 'Rapidly styling responsive, accessible interfaces with utility-first CSS.', icon: <Monitor className="h-6 w-6" />, isFeatured: true },
   { title: 'TypeScript', category: 'frontend', slug: 'typescript', description: 'Ensuring code quality and scalability with static typing and advanced interfaces.', icon: <Code2 className="h-6 w-6" />, isFeatured: true },
   { title: 'Framer Motion', category: 'frontend', slug: 'framer', description: 'Adding fluid animations and micro-interactions for an engaging user experience.', icon: <Sparkles className="h-6 w-6" /> },
   
   // Backend
   { title: 'Laravel', category: 'backend', slug: 'laravel', description: 'Building secure, robust PHP applications with MVC architecture and Eloquent.', icon: <Server className="h-6 w-6" />, isFeatured: true },
+  { title: 'Livewire', category: 'backend', slug: 'livewire', description: 'Full-stack development for Laravel that makes building dynamic interfaces simple.', icon: <Server className="h-6 w-6" />, isFeatured: true },
   { title: 'PHP', category: 'backend', slug: 'php', description: 'Implementing server-side logic and database interactions for diverse systems.', icon: <Code2 className="h-6 w-6" /> },
   { title: 'Node.js', category: 'backend', slug: 'nodedotjs', description: 'Developing scalable, event-driven backend services and real-time features.', icon: <Cpu className="h-6 w-6" /> },
   
@@ -130,7 +131,7 @@ export default function Skills() {
 
   // Slower duration for readability
   const duration = useMemo(() => {
-    return Math.max(60, filteredSkills.length * 12);
+    return Math.max(40, filteredSkills.length * 8);
   }, [filteredSkills.length]);
 
   // Slugs for the Icon Cloud - filtered by category
@@ -199,13 +200,13 @@ export default function Skills() {
       </div>
 
       {/* Marquees */}
-      <div className="relative w-full space-y-10">
+      <div className="relative w-full space-y-10 pause-on-hover">
         {marqueeItems.length > 0 ? (
           <div className="flex flex-col gap-10">
             {/* Forward Row */}
             <div className="flex overflow-hidden select-none">
               <div 
-                className="flex animate-marquee shrink-0 hover:[animation-play-state:paused]"
+                className="flex animate-marquee shrink-0"
                 style={{ animationDuration: `${duration}s` }}
               >
                 {marqueeItems.map((skill, idx) => (
@@ -213,7 +214,7 @@ export default function Skills() {
                 ))}
               </div>
               <div 
-                className="flex animate-marquee shrink-0 hover:[animation-play-state:paused]"
+                className="flex animate-marquee shrink-0"
                 style={{ animationDuration: `${duration}s` }}
                 aria-hidden="true"
               >
@@ -226,7 +227,7 @@ export default function Skills() {
             {/* Reverse Row */}
             <div className="flex overflow-hidden select-none">
               <div 
-                className="flex animate-marquee-reverse shrink-0 hover:[animation-play-state:paused]"
+                className="flex animate-marquee-reverse shrink-0"
                 style={{ animationDuration: `${duration * 1.2}s` }}
               >
                 {marqueeItems.map((skill, idx) => (
@@ -234,7 +235,7 @@ export default function Skills() {
                 ))}
               </div>
               <div 
-                className="flex animate-marquee-reverse shrink-0 hover:[animation-play-state:paused]"
+                className="flex animate-marquee-reverse shrink-0"
                 style={{ animationDuration: `${duration * 1.2}s` }}
                 aria-hidden="true"
               >
