@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -44,7 +45,7 @@ const portfolioItems = [
     title: 'BNHS E-Document Request System',
     category: 'Web Apps',
     featured: true,
-    description: 'Production-ready system for school document requests featuring OTP verification, request tracking, and a comprehensive admin dashboard.',
+    description: 'Official production system deployed at Bato National High School in Dec 2025. Utilized by administration for secure OTP-verified document requests and tracking.',
     image: imageData.projects.find(p => p.id === 'bnhs')?.url || '',
     hint: imageData.projects.find(p => p.id === 'bnhs')?.hint || '',
     tech: ['Laravel', 'PostgreSQL', 'Tailwind', 'PHP'],

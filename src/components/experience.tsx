@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -35,13 +36,13 @@ const experiences = [
     icon: <Globe className="h-5 w-5" />
   },
   {
-    role: 'Full-Stack Developer (Academic Project)',
-    company: 'BNHS E-Document Request System',
-    location: 'Remote (Cebu City, Philippines)',
-    period: '2024',
-    status: 'Completed',
-    type: 'Full-time',
-    description: 'Developed and deployed a production-ready web application for school document management. Implemented secure OTP verification, request tracking, and a comprehensive admin dashboard for registrar staff.',
+    role: 'Full-Stack Developer (Production Project)',
+    company: 'Bato National High School (BNHS)',
+    location: 'Toledo City, Philippines',
+    period: '2024 - Dec 2025',
+    status: 'Deployed',
+    type: 'Official Implementation',
+    description: 'Developed and officially deployed a production-ready e-document request system for Bato National High School administration. Implemented secure OTP verification, automated request workflows, and full audit logging.',
     tech: ['Laravel', 'PHP', 'Tailwind CSS', 'Alpine.js', 'PostgreSQL', 'Heroku'],
     icon: <Database className="h-5 w-5" />
   },
@@ -51,7 +52,7 @@ const experiences = [
     location: 'Remote (Cebu City, Philippines)',
     period: '2023 - 2024',
     status: 'Completed',
-    type: 'Full-time',
+    type: 'Academic',
     description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized OOP principles and custom MVC routing for a modular codebase.',
     tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Bootstrap', 'REST API'],
     icon: <Cpu className="h-5 w-5" />
