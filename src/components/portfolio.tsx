@@ -30,7 +30,7 @@ const portfolioItems = [
     image: imageData.projects.find(p => p.id === 'letreview')?.url || 'https://picsum.photos/seed/let/800/600',
     hint: 'educational app',
     tech: ['Next.js', 'Tailwind CSS', 'Vercel', 'Firebase', 'Framer Motion'],
-    link: 'https://sephus-let-review.vercel.app/',
+    link: 'https://studio--letreview.us-central1.hosted.app/',
     type: 'demo'
   },
   {
