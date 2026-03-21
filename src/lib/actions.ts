@@ -1,4 +1,3 @@
-
 'use server';
 
 import nodemailer from 'nodemailer';
@@ -9,15 +8,6 @@ const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   subject: z.string().min(2, "Subject is too short"),
   message: z.string().min(10, "Message is too short"),
-});
-
-// Create a transporter using Gmail SMTP
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
-  },
 });
 
 export async function submitContactForm(values: z.infer<typeof formSchema>) {
@@ -33,18 +23,29 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
 
     const { name, email, subject, message } = validatedFields.data;
 
-    // Check if credentials exist
+    // Check if credentials exist in environment
     if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-      console.error('Missing GMAIL_USER or GMAIL_APP_PASSWORD environment variables.');
+      console.error('Email configuration missing: GMAIL_USER or GMAIL_APP_PASSWORD');
       return {
         success: false,
-        message: 'Email service is currently misconfigured. Please try again later.'
+        message: 'Email service is currently misconfigured. Please check environment variables.'
       };
     }
 
+    // Create a transporter using Gmail SMTP
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
+
     // Send email using Nodemailer
+    // Note: Gmail SMTP forces the 'from' address to the authenticated account.
+    // We use 'replyTo' so you can respond directly to the sender's email.
     await transporter.sendMail({
-      from: `"${name}" <${process.env.GMAIL_USER}>`, // Gmail often overrides the 'from' address to the authenticated user
+      from: `"${name}" <${process.env.GMAIL_USER}>`,
       to: 'sarsonasjosephuskim@gmail.com',
       replyTo: email,
       subject: subject || `New Inquiry from ${name}`,
@@ -60,13 +61,12 @@ ${message}
       `,
       html: `
         <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h2 style="color: #3b82f6;">New Portfolio Inquiry</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
+          <h2 style="color: #3b82f6; margin-top: 0;">New Portfolio Inquiry</h2>
+          <p><strong>From:</strong> ${name} (${email})</p>
           <p><strong>Subject:</strong> ${subject}</p>
           <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
           <p><strong>Message:</strong></p>
-          <p style="white-space: pre-wrap; line-height: 1.6;">${message}</p>
+          <p style="white-space: pre-wrap; line-height: 1.6; color: #333;">${message}</p>
         </div>
       `,
     });

@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen bg-background">
-        <Providers attribute="class" defaultTheme="light" enableSystem>
+        <Providers attribute="class" defaultTheme="light" enableSystem={false}>
           <main className="flex-1">
             {children}
           </main>
