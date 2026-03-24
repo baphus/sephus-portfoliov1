@@ -215,7 +215,7 @@ export default function Hero() {
                 <p className="text-xs text-center text-muted-foreground font-medium uppercase tracking-wider">Currently working on</p>
                 <div className="flex items-center justify-center gap-2 p-3 bg-primary/5 border border-primary/10 rounded-xl group cursor-default transition-all hover:bg-primary/10">
                   <span className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-sm font-semibold">Normalite EDGE (CNU)</span>
+                  <span className="text-sm font-semibold">Bayanihan One Window (Region VII)</span>
                   <ExternalLink className="h-3 w-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
