@@ -46,23 +46,28 @@ I am driven by a desire to solve problems and deliver high-quality, impactful wo
 
 ## Portfolio Projects
 
-### 1. Normalite EDGE — CNU Student Hub
+### 1. Bayanihan One Window: OFW Referral System
+- **Context:** An Inter-Agency Referral and Tracking System for Distressed OFWs in Region VII. Single-entry intake system managing cases across multiple government agencies.
+- **Stack:** Next.js, TypeScript, PostgreSQL, Node.js, Tailwind CSS.
+- **Timeline:** Jan 2026 - Present.
+
+### 2. Normalite EDGE — CNU Student Hub
 - **Context:** Leading development of a comprehensive web app for Cebu Normal University.
 - **Stack:** React, Node.js, PostgreSQL, Tailwind, Vercel.
-- **Timeline:** Feb 2026 - Current.
+- **Timeline:** Feb 2026 - Present.
 
-### 2. LETReview — Gamified Study App
+### 3. LETReview — Gamified Study App
 - **Context:** Personal project built for my girlfriend that went viral with 3,000 visits and 300+ users in hours. Deployed Jan 2026.
 - **Stack:** Next.js, Tailwind CSS, Firebase, Framer Motion.
 - **Status:** Viral Launch / Ongoing Development.
 
-### 3. BNHS E-Document Request System
+### 4. BNHS E-Document Request System
 - **Context:** Official production system deployed at **Bato National High School** administration in **December 2025**.
 - **Role:** Lead Full-Stack Developer
 - **Technologies:** Laravel, PHP, PostgreSQL, Tailwind CSS, Alpine.js, Heroku.
 - **Status:** Deployed and actively used by administration.
 
-### 4. Medicare Clinic System
+### 5. Medicare Clinic System
 - **Status:** Completed Academic Project (2023 - 2024)
 - **Stack:** PHP, Supabase, Cloudinary, Bootstrap.
 

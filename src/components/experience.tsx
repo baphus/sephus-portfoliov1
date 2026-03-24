@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -15,7 +16,8 @@ import {
   Globe,
   Database,
   Search,
-  Cpu
+  Cpu,
+  ShieldAlert
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -24,6 +26,17 @@ import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import Link from 'next/link';
 
 const experiences = [
+  {
+    role: 'Lead Developer / Systems Architect',
+    company: 'Bayanihan One Window (Region VII)',
+    location: 'Cebu City, Philippines',
+    period: 'Jan 2026 - Present',
+    status: 'In Development',
+    type: 'Inter-Agency System',
+    description: 'Spearheading the architecture and development of an inter-agency referral system for distressed OFWs. Implementing a single-entry intake system managed by the DMW, featuring a Unified Master Case File to coordinate multiple government agencies and ensure accountable service delivery.',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Node.js', 'Tailwind CSS', 'Vercel'],
+    icon: <ShieldAlert className="h-5 w-5" />
+  },
   {
     role: 'Full-Stack Developer',
     company: 'Cebu Normal University (Normalite EDGE)',

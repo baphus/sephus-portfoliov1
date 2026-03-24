@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -21,6 +22,18 @@ import { cn } from '@/lib/utils';
 import imageData from '@/app/lib/placeholder-images.json';
 
 const portfolioItems = [
+  {
+    id: 'bayanihan',
+    title: 'Bayanihan One Window',
+    category: 'Web Apps',
+    featured: true,
+    description: "An Inter-Agency Referral and Tracking System for Distressed OFWs in Region VII. Designed to streamline assistance through a single-entry intake system managed by the Department of Migrant Workers (DMW). It features a Unified Master Case File that coordinates multiple government agencies, enabling real-time collaboration, digital referrals, and faster service delivery for OFWs.",
+    image: imageData.projects.find(p => p.id === 'bayanihan')?.url || 'https://picsum.photos/seed/bayanihan/800/600',
+    hint: 'government system',
+    tech: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+    link: '#',
+    type: 'internal'
+  },
   {
     id: 'letreview',
     title: 'LETReview — Gamified Study App',
@@ -182,7 +195,7 @@ export default function Portfolio() {
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                         <Button variant="secondary" className="rounded-full gap-2 shadow-xl" asChild>
                           <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
-                            {item.type === 'github' ? 'View Repo' : (item.link !== '#' ? 'View Project' : 'Coming Soon')} 
+                            {item.type === 'github' ? 'View Repo' : (item.link !== '#' ? 'View Project' : 'Under Development')} 
                             {item.type === 'github' ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
                           </a>
                         </Button>
@@ -229,7 +242,7 @@ export default function Portfolio() {
                         
                         <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl" disabled={item.link === '#'}>
                           <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer" className="flex items-center gap-2">
-                            <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Visit Demo' : 'Under Review')}</span>
+                            <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Visit Demo' : 'Coming Soon')}</span>
                             {item.type === 'github' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
                           </a>
                         </Button>
