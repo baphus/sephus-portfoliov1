@@ -3,7 +3,7 @@
   "projects": [
     {
       "id": "bayanihan",
-      "url": "https://picsum.photos/seed/bayanihan/800/600",
+      "url": "https://res.cloudinary.com/dzjshue6h/image/upload/q_auto/f_auto/v1776400253/aaaaaasdasdonewind_o2my5k.png",
       "hint": "government system"
     },
     {
@@ -23,7 +23,7 @@
     },
     {
       "id": "medicare",
-      "url": "/portfolio/medicare/medicare.png",
+      "url": "/portfolio/medicare-clinic/dashboard.png",
       "hint": "medical booking system"
     },
     {
