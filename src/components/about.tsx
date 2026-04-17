@@ -21,7 +21,9 @@ import {
   Calendar,
   MessageSquare,
   Zap,
-  GitBranch
+  GitBranch,
+  Music,
+  Play
 } from 'lucide-react';
 
 const skillLevels = [
@@ -167,43 +169,97 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+            className="space-y-4"
           >
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <motion.div variants={itemVariants}>
+                <InteractiveCardWrapper className="rounded-2xl">
+                  <Card className="h-full rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
+                    <div className="p-3 rounded-xl bg-red-500/10 text-red-500">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Location</p>
+                      <p className="text-xs font-semibold">Toledo, Cebu</p>
+                    </div>
+                  </Card>
+                </InteractiveCardWrapper>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <InteractiveCardWrapper className="rounded-2xl">
+                  <Card className="h-full rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
+                    <div className="p-3 rounded-xl bg-blue-500/10 text-blue-500">
+                      <Calendar className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Birthday</p>
+                      <p className="text-xs font-semibold">Aug 20, 2004</p>
+                    </div>
+                  </Card>
+                </InteractiveCardWrapper>
+              </motion.div>
+              <motion.div variants={itemVariants}>
+                <InteractiveCardWrapper className="rounded-2xl">
+                  <Card className="h-full rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
+                    <div className="p-3 rounded-xl bg-amber-600/10 text-amber-600">
+                      <Briefcase className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Seeking</p>
+                      <p className="text-xs font-semibold">Internship</p>
+                    </div>
+                  </Card>
+                </InteractiveCardWrapper>
+              </motion.div>
+            </div>
+
             <motion.div variants={itemVariants}>
-              <InteractiveCardWrapper className="rounded-2xl">
-                <Card className="h-full rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
-                  <div className="p-3 rounded-xl bg-red-500/10 text-red-500">
-                    <MapPin className="h-5 w-5" />
+              <InteractiveCardWrapper className="rounded-3xl">
+                <Card className="rounded-3xl border-white/20 bg-[#1DB954]/5 dark:bg-[#1DB954]/10 backdrop-blur-md p-6 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group">
+                  <div className="absolute -right-10 -top-10 opacity-5 group-hover:rotate-12 transition-transform duration-700">
+                    <Music className="h-40 w-40 text-[#1DB954]" />
                   </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Location</p>
-                    <p className="text-xs font-semibold">Toledo, Cebu</p>
+                  
+                  <div className="flex items-center gap-5 z-10">
+                    <div className="relative h-14 w-14 rounded-xl overflow-hidden shadow-lg border-2 border-[#1DB954]/30">
+                      <img 
+                        src="https://picsum.photos/seed/spotify/200/200" 
+                        alt="Current Album" 
+                        className="object-cover h-full w-full"
+                      />
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Play className="h-6 w-6 text-white fill-white" />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-[2px] items-end h-3">
+                          {[0, 1, 2, 3].map((i) => (
+                            <motion.div
+                              key={i}
+                              animate={{ height: ["20%", "100%", "40%", "80%", "20%"] }}
+                              transition={{ 
+                                duration: 1 + i * 0.2, 
+                                repeat: Infinity, 
+                                ease: "easeInOut" 
+                              }}
+                              className="w-[3px] bg-[#1DB954] rounded-full"
+                            />
+                          ))}
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-[#1DB954]">Listening Now</span>
+                      </div>
+                      <h4 className="text-base font-bold font-headline truncate max-w-[200px]">Sunset Chill Mix</h4>
+                      <p className="text-xs text-muted-foreground font-medium">Lofi Beats • Spotify</p>
+                    </div>
                   </div>
-                </Card>
-              </InteractiveCardWrapper>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <InteractiveCardWrapper className="rounded-2xl">
-                <Card className="h-full rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
-                  <div className="p-3 rounded-xl bg-blue-500/10 text-blue-500">
-                    <Calendar className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Birthday</p>
-                    <p className="text-xs font-semibold">Aug 20, 2004</p>
-                  </div>
-                </Card>
-              </InteractiveCardWrapper>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <InteractiveCardWrapper className="rounded-2xl">
-                <Card className="h-full rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
-                  <div className="p-3 rounded-xl bg-amber-600/10 text-amber-600">
-                    <Briefcase className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Seeking</p>
-                    <p className="text-xs font-semibold">Internship</p>
+
+                  <div className="z-10 bg-white/20 dark:bg-black/20 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm group-hover:scale-105 transition-transform cursor-default">
+                    <div className="flex items-center gap-2">
+                      <Music className="h-4 w-4 text-[#1DB954]" />
+                      <span className="text-[10px] font-bold text-foreground">Open Spotify</span>
+                    </div>
                   </div>
                 </Card>
               </InteractiveCardWrapper>
