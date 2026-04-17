@@ -30,7 +30,8 @@ import {
   Palette,
   Link as LinkIcon,
   FileType,
-  Wrench as ToolIcon
+  Wrench as ToolIcon,
+  Rocket
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -39,7 +40,7 @@ import { IconCloud } from '@/components/ui/interactive-icon-cloud';
 import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 
 const skills = [
-  // Professional Skills
+  // Methodology & Professional
   { title: 'System Analysis & Design', category: 'professional', slug: 'enterprise', description: 'Analyzing complex business requirements and designing robust system architectures.', icon: <Monitor className="h-6 w-6" />, isFeatured: true },
   { title: 'MVC Architecture', category: 'professional', slug: 'laravel', description: 'Implementing clean, modular code following the Model-View-Controller pattern.', icon: <Layers className="h-6 w-6" />, isFeatured: true },
   { title: 'SDLC Specialist', category: 'professional', slug: 'git', description: 'Managing the complete software development life cycle from planning to maintenance.', icon: <Box className="h-6 w-6" />, isFeatured: true },
@@ -58,6 +59,7 @@ const skills = [
   { title: 'Node.js', category: 'backend', slug: 'nodedotjs', description: 'Developing scalable, event-driven backend services and real-time features.', icon: <Cpu className="h-6 w-6" />, isFeatured: true },
   { title: 'PHP', category: 'backend', slug: 'php', description: 'Server-side scripting for building dynamic web applications and systems.', icon: <Code2 className="h-6 w-6" />, isFeatured: true },
   { title: 'Python', category: 'backend', slug: 'python', description: 'Scripting and data analysis for diverse technical solutions.', icon: <Code2 className="h-6 w-6" /> },
+  { title: 'Livewire', category: 'backend', slug: 'livewire', description: 'Building dynamic interfaces for Laravel using full-stack Laravel components.', icon: <Zap className="h-4 w-4" /> },
   
   // Database & Tools
   { title: 'PostgreSQL', category: 'database', slug: 'postgresql', description: 'Advanced relational database management with focus on data integrity.', icon: <Database className="h-6 w-6" />, isFeatured: true },
@@ -65,8 +67,10 @@ const skills = [
   { title: 'Prisma ORM', category: 'database', slug: 'prisma', description: 'Type-safe database access for modern JavaScript and TypeScript backends.', icon: <FileType className="h-6 w-6" />, isFeatured: true },
   { title: 'Docker', category: 'tools', slug: 'docker', description: 'Containerizing applications for consistent development and deployment.', icon: <Box className="h-6 w-6" />, isFeatured: true },
   { title: 'Supabase', category: 'database', slug: 'supabase', description: 'Leveraging open-source Firebase alternatives for real-time databases and Auth.', icon: <Database className="h-6 w-6" /> },
+  { title: 'Cloudinary', category: 'tools', slug: 'cloudinary', description: 'Cloud-based image and video management for web applications.', icon: <Cloud className="h-6 w-6" /> },
   { title: 'Composer & NPM', category: 'tools', slug: 'composer', description: 'Dependency management for PHP and JavaScript ecosystems.', icon: <ToolIcon className="h-6 w-6" /> },
-  { title: 'Laragon & XAMPP', category: 'tools', slug: 'xampp', description: 'Local development environments for PHP and MySQL projects.', icon: <Monitor className="h-6 w-6" /> },
+  { title: 'Vercel & Render', category: 'tools', slug: 'vercel', description: 'Modern cloud platforms for static and dynamic site hosting and deployment.', icon: <Rocket className="h-6 w-6" /> },
+  { title: 'XAMPP & Laragon', category: 'tools', slug: 'xampp', description: 'Local development environments for PHP and MySQL projects.', icon: <Monitor className="h-6 w-6" /> },
 ];
 
 const categories = [

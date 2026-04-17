@@ -28,7 +28,7 @@
     },
     {
       "id": "cinema",
-      "url": "/portfolio/absolute-cinema/absolute.png",
+      "url": "https://picsum.photos/seed/cinema/800/600",
       "hint": "movie theater"
     }
   ]

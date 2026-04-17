@@ -16,7 +16,6 @@ import {
   Database,
   Cpu,
   ShieldAlert,
-  Star,
   Film
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
@@ -27,13 +26,13 @@ import Link from 'next/link';
 
 const experiences = [
   {
-    role: 'Full-Stack Developer (Project-based)',
+    role: 'Full-Stack Developer (Normalite EDGE)',
     company: 'Cebu Normal University (BLEPT Department)',
     location: 'Cebu City, Philippines',
     period: 'Feb 2026 - Present',
-    status: 'Proposed System',
-    type: 'Normalite EDGE',
-    description: 'Developing a web-based reviewer system for Cebu Normal University. Built features including mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing deadlines and study schedules. Translated client requirements into functional features following the SDLC.',
+    status: 'In Development',
+    type: 'Academic Project',
+    description: 'Developed a web-based reviewer system for Cebu Normal University. Built features including mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing study schedules and translated client requirements into system workflows following the SDLC.',
     tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
     icon: <Globe className="h-5 w-5" />
   },
@@ -49,14 +48,14 @@ const experiences = [
     icon: <ShieldAlert className="h-5 w-5" />
   },
   {
-    role: 'Full-Stack Developer',
-    company: 'LETReview (Personal Project)',
+    role: 'Full-Stack Developer (Personal Project)',
+    company: 'LETReview (PWA)',
     location: 'Cebu, Philippines',
     period: 'Jan 2026 - Present',
     status: 'Live',
-    type: 'PWA',
+    type: 'Personal Project',
     description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days of launch.',
-    tech: ['Typescript', 'Next.js', 'React', 'Firebase', 'Tailwind CSS', 'ShadCN/UI', 'Lucide React'],
+    tech: ['Typescript', 'Next.js App Router', 'React', 'Firebase', 'Tailwind CSS', 'ShadCN/UI'],
     icon: <Layout className="h-5 w-5" />
   },
   {
@@ -76,7 +75,7 @@ const experiences = [
     location: 'Remote (Cebu City)',
     period: '2023 - 2024',
     status: 'Completed',
-    type: 'Management System',
+    type: 'Academic Project',
     description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized custom MVC routing and Supabase for real-time data handling.',
     tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Bootstrap', 'REST API'],
     icon: <Cpu className="h-5 w-5" />
@@ -87,8 +86,8 @@ const experiences = [
     location: 'Cebu City, Philippines',
     period: '2023',
     status: 'Completed',
-    type: 'Ticketing System',
-    description: 'Taught myself PHP and MySQL from scratch to build a movie ticket booking system. Developed full admin dashboard features for managing movies, screens, and bookings beyond basic course requirements.',
+    type: 'Academic Project',
+    description: 'Taught myself PHP and MySQL from scratch to build a movie ticket booking system. Developed full admin dashboard features for managing movies, screens, and bookings, solving issues like scheduling conflicts and double bookings.',
     tech: ['PHP', 'MySQL', 'JavaScript', 'HTML', 'CSS'],
     icon: <Film className="h-5 w-5" />
   }

@@ -12,7 +12,6 @@ import {
   ArrowUpRight, 
   ExternalLink, 
   Code2, 
-  Layers, 
   Star,
   Github,
   ChevronDown,
@@ -30,7 +29,7 @@ const portfolioItems = [
     description: "An Inter-Agency Referral and Tracking System for Distressed OFWs in Region VII. Designed to streamline assistance through a single-entry intake system managed by the Department of Migrant Workers (DMW). It features a Unified Master Case File that coordinates multiple government agencies, enabling real-time collaboration, digital referrals, and faster service delivery for OFWs.",
     image: imageData.projects.find(p => p.id === 'bayanihan')?.url || 'https://picsum.photos/seed/bayanihan/800/600',
     hint: 'government system',
-    tech: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+    tech: ['Laravel', 'Vue.js', 'PostgreSQL', 'Composer', 'Node.js', 'Tailwind CSS'],
     link: '#',
     type: 'internal'
   },
@@ -51,7 +50,7 @@ const portfolioItems = [
     title: 'Normalite EDGE — CNU Student Hub',
     category: 'Web Apps',
     featured: true,
-    description: 'A comprehensive web-based reviewer system for Cebu Normal University (BLEPT Department). Built mock exams, flashcards, and score analytics. Implemented a calendar system for managing deadlines and virtual meeting scheduling. Translated client requirements into system workflows and features.',
+    description: 'A comprehensive web-based reviewer system for Cebu Normal University (BLEPT Department). Built features including mock exams, flashcards, and score analytics. Implemented a calendar system for managing deadlines and virtual meeting scheduling. Translated client requirements into system workflows and features.',
     image: imageData.projects.find(p => p.id === 'normalite')?.url || 'https://picsum.photos/seed/normalite/800/600',
     hint: 'academic excellence',
     tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL'],
@@ -71,6 +70,18 @@ const portfolioItems = [
     type: 'demo'
   },
   {
+    id: 'cinema',
+    title: 'Absolute Cinema Ticketing',
+    category: 'Web Apps',
+    featured: false,
+    description: 'A web-based movie ticket booking system developed for CTU to solve issues like double bookings and scheduling conflicts. Taught myself PHP and MySQL from scratch to build this complete system, going beyond course requirements to include a full admin dashboard for managing movies, screens, showtimes, and user data. Features include seat availability checks and booking history.',
+    image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
+    hint: 'movie theater',
+    tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
+    link: 'https://github.com/baphus/AbsoluteCinema',
+    type: 'github'
+  },
+  {
     id: 'medicare',
     title: 'Medicare Clinic System',
     category: 'Web Apps',
@@ -81,18 +92,6 @@ const portfolioItems = [
     tech: ['PHP', 'Supabase', 'Cloudinary', 'Bootstrap'],
     link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
     type: 'demo'
-  },
-  {
-    id: 'cinema',
-    title: 'Absolute Cinema Ticketing',
-    category: 'Web Apps',
-    featured: false,
-    description: 'A web-based movie ticket booking system developed for CTU. This project was a significant milestone where I taught myself PHP and MySQL from scratch. It features registration, seat selection, and a full admin dashboard for managing movies and showtimes. I went beyond the basic requirements to create a robust system with full admin control and functional user flows.',
-    image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
-    hint: 'movie theater',
-    tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
-    link: 'https://github.com/baphus/AbsoluteCinema',
-    type: 'github'
   }
 ];
 
