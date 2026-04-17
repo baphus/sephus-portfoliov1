@@ -13,6 +13,7 @@ import {
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
+import { cn } from '@/lib/utils';
 
 const educationData = [
   {
