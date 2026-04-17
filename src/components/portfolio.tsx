@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -97,6 +96,26 @@ const portfolioItems = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 30 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('featured');
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
@@ -128,7 +147,12 @@ export default function Portfolio() {
 
   return (
     <div className="container mx-auto px-4 md:px-6">
-      <div className="flex flex-col items-center text-center space-y-4 mb-16">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex flex-col items-center text-center space-y-4 mb-16"
+      >
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
           <Code2 className="h-4 w-4" />
           <span>Portfolio</span>
@@ -139,9 +163,14 @@ export default function Portfolio() {
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
           I've shipped scalable solutions across academic, viral, and production environments with a focus on ownership and performance.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-wrap justify-center gap-3 mb-12">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex flex-wrap justify-center gap-3 mb-12"
+      >
         {categories.map((cat) => (
           <button
             key={cat.id}
@@ -162,9 +191,15 @@ export default function Portfolio() {
             </span>
           </button>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
         <AnimatePresence mode="popLayout">
           {filteredItems.map((item) => {
             const isExpanded = expandedItems.has(item.id);
@@ -174,10 +209,8 @@ export default function Portfolio() {
               <motion.div
                 layout
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                variants={cardVariants}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
               >
                 <InteractiveCardWrapper className="rounded-[2rem] h-full">
                   <Card className="group h-full overflow-hidden border-border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 rounded-[2rem] flex flex-col">
@@ -265,7 +298,7 @@ export default function Portfolio() {
             );
           })}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   );
 }
