@@ -34,7 +34,7 @@ const experiences = [
     type: 'Capstone Project',
     description: 'Spearheading the architecture and development of an inter-agency referral system for distressed OFWs. Implementing a single-entry intake system managed by the DMW, featuring a Unified Master Case File to coordinate multiple government agencies and ensure accountable service delivery.',
     tech: ['Laravel', 'Vue.js', 'PostgreSQL', 'Composer', 'Node.js', 'Tailwind CSS'],
-    icon: <ShieldAlert className="h-5 w-5" />
+    icon: <ShieldAlert className="h-5 w-5 text-red-500" />
   },
   {
     role: 'Freelance Web Developer',
@@ -45,7 +45,7 @@ const experiences = [
     type: 'Proposed System',
     description: 'Developed a web-based reviewer system for Cebu Normal University. Built features including mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing study schedules and translated client requirements into system workflows following the SDLC.',
     tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
-    icon: <Globe className="h-5 w-5" />
+    icon: <Globe className="h-5 w-5 text-blue-500" />
   },
   {
     role: 'Fullstack Developer / System Analyst',
@@ -56,7 +56,7 @@ const experiences = [
     type: 'Client Project',
     description: 'Developed the backend using Laravel MVC and designed the PostgreSQL database. Built authentication and email notifications with queue workers. Analyzed requirements from school administration and maintained the application on Render.',
     tech: ['Vite', 'Laravel', 'Tailwind CSS', 'PostCSS', 'Axios', 'Node.js', 'Cloudinary', 'PostgreSQL'],
-    icon: <Database className="h-5 w-5" />
+    icon: <Database className="h-5 w-5 text-cyan-600" />
   },
   {
     role: 'Fullstack Developer / System Analyst',
@@ -67,7 +67,7 @@ const experiences = [
     type: 'Academic Project',
     description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized custom MVC routing and Supabase for real-time data handling.',
     tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Tailwind CSS'],
-    icon: <Cpu className="h-5 w-5" />
+    icon: <Cpu className="h-5 w-5 text-purple-500" />
   },
   {
     role: 'Freelance Web Developer',
@@ -78,7 +78,7 @@ const experiences = [
     type: 'Personal Project',
     description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days of launch.',
     tech: ['Typescript', 'Next.js App Router', 'React', 'Firebase', 'Tailwind CSS', 'ShadCN/UI'],
-    icon: <Layout className="h-5 w-5" />
+    icon: <Layout className="h-5 w-5 text-indigo-500" />
   },
   {
     role: 'Fullstack Developer / System Analyst',
@@ -89,7 +89,7 @@ const experiences = [
     type: 'Academic Project',
     description: 'Taught myself PHP and MySQL from scratch to build a movie ticket booking system. Developed full admin dashboard features for managing movies, screens, and bookings, solving issues like scheduling conflicts and double bookings.',
     tech: ['PHP', 'MySQL', 'JavaScript', 'HTML', 'CSS'],
-    icon: <Film className="h-5 w-5" />
+    icon: <Film className="h-5 w-5 text-rose-500" />
   }
 ];
 
@@ -97,7 +97,7 @@ export default function Experience() {
   return (
     <div className="container mx-auto px-4 md:px-6">
       <div className="flex flex-col items-center text-center space-y-4 mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-widest border border-amber-500/20">
           <Briefcase className="h-3 w-3" />
           <span>Professional Experience</span>
         </div>
@@ -136,28 +136,28 @@ export default function Experience() {
                           <h3 className="text-2xl font-black font-headline text-foreground group-hover:text-primary transition-colors">
                             {exp.role}
                           </h3>
-                          <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 text-[10px] font-bold rounded-full px-3 py-0.5">
+                          <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 text-[10px] font-bold rounded-full px-3 py-0.5">
                             <span className="flex items-center gap-1.5">
                               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                               {exp.status}
                             </span>
                           </Badge>
-                          <Badge variant="outline" className="border-primary/20 text-primary text-[10px] font-bold rounded-full px-3">
+                          <Badge variant="outline" className="border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold rounded-full px-3">
                             {exp.type}
                           </Badge>
                         </div>
 
                         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
                           <div className="flex items-center gap-2">
-                            <Briefcase className="h-3.5 w-3.5 text-primary" />
+                            <Briefcase className="h-3.5 w-3.5 text-amber-600" />
                             {exp.company}
                           </div>
                           <div className="flex items-center gap-2">
-                            <MapPin className="h-3.5 w-3.5 text-primary" />
+                            <MapPin className="h-3.5 w-3.5 text-red-500" />
                             {exp.location}
                           </div>
                           <div className="flex items-center gap-2">
-                            <Calendar className="h-3.5 w-3.5 text-primary" />
+                            <Calendar className="h-3.5 w-3.5 text-blue-500" />
                             {exp.period}
                           </div>
                         </div>
@@ -181,6 +181,9 @@ export default function Experience() {
                         ))}
                       </div>
                     </div>
+                  </div>
+                  <div className="absolute top-8 right-8 hidden md:block opacity-20 group-hover:opacity-100 transition-opacity">
+                    {exp.icon}
                   </div>
                 </Card>
               </InteractiveCardWrapper>
@@ -215,7 +218,7 @@ export default function Experience() {
           </Button>
           <Button asChild variant="outline" className="h-14 px-10 rounded-2xl border-border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md font-bold text-sm">
             <Link href="/portfolio" className="flex items-center gap-3">
-              <Rocket className="h-5 w-5" />
+              <Rocket className="h-5 w-5 text-orange-500" />
               <span>Review My Work</span>
             </Link>
           </Button>

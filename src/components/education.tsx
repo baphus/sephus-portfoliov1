@@ -27,7 +27,7 @@ const educationData = [
       'Focus on SDLC & Web Solutions',
       'Stakeholder Collaboration'
     ],
-    icon: <GraduationCap className="h-6 w-6" />,
+    icon: <GraduationCap className="h-6 w-6 text-indigo-600" />,
   },
   {
     institution: 'Toledo City Science Highschool',
@@ -41,7 +41,7 @@ const educationData = [
       '1st Place - Division Science Fair 2019',
       'Multiple Regional Sumo Bot Placements'
     ],
-    icon: <Trophy className="h-6 w-6" />,
+    icon: <Trophy className="h-6 w-6 text-amber-500" />,
   },
 ];
 
@@ -49,7 +49,7 @@ export default function Education() {
   return (
     <div className="container mx-auto px-4 md:px-6">
       <div className="flex flex-col items-center text-center space-y-4 mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-medium border border-indigo-500/20">
           <GraduationCap className="h-4 w-4" />
           <span>Education</span>
         </div>
@@ -80,7 +80,10 @@ export default function Education() {
                         <h3 className="text-2xl font-bold font-headline group-hover:text-primary transition-colors">
                           {item.degree}
                         </h3>
-                        <Badge variant={item.status === 'Completed' ? 'secondary' : 'default'} className="rounded-full px-3">
+                        <Badge variant={item.status === 'Completed' ? 'secondary' : 'default'} className={cn(
+                          "rounded-full px-3",
+                          item.status === 'Completed' ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" : "bg-primary text-white"
+                        )}>
                           <span className="flex items-center gap-1 text-[10px]">
                             <span className={`h-1 w-1 rounded-full ${item.status === 'Completed' ? 'bg-emerald-500' : 'bg-white'} animate-pulse`} />
                             {item.status}
@@ -90,15 +93,15 @@ export default function Education() {
 
                       <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm font-medium text-muted-foreground">
                         <div className="flex items-center gap-2">
-                          <BookOpen className="h-4 w-4 text-primary" />
+                          <BookOpen className="h-4 w-4 text-blue-500" />
                           {item.institution}
                         </div>
                         <div className="flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-primary" />
+                          <MapPin className="h-4 w-4 text-red-500" />
                           {item.location}
                         </div>
                         <div className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4 text-primary" />
+                          <Calendar className="h-4 w-4 text-blue-500" />
                           {item.period}
                         </div>
                       </div>
@@ -109,15 +112,15 @@ export default function Education() {
 
                       <div className="flex flex-wrap gap-2 pt-2">
                         {item.highlights.map((highlight, i) => (
-                          <div key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg bg-primary/5 border border-primary/10 text-[11px] font-bold text-primary uppercase tracking-wider">
-                            <Award className="h-3 w-3" />
+                          <div key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg bg-muted/50 border border-border text-[11px] font-bold text-muted-foreground uppercase tracking-wider group-hover:border-primary/20 group-hover:text-primary transition-colors">
+                            <Award className="h-3 w-3 text-amber-500" />
                             {highlight}
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="hidden md:flex p-4 rounded-3xl bg-primary/10 text-primary shadow-inner">
+                    <div className="hidden md:flex p-4 rounded-3xl bg-muted/50 shadow-inner group-hover:bg-primary/5 transition-colors">
                       {item.icon}
                     </div>
                   </div>

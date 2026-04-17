@@ -191,14 +191,14 @@ export default function Portfolio() {
                       />
                       <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
                         {isCapstone && (
-                          <Badge className="bg-primary/90 hover:bg-primary text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
-                            <Award className="h-3 w-3 fill-white" />
+                          <Badge className="bg-indigo-600/90 hover:bg-indigo-600 text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
+                            <Award className="h-3 w-3 fill-white text-amber-400" />
                             Capstone Project
                           </Badge>
                         )}
                         {item.featured && (
                           <Badge className="bg-emerald-500/90 hover:bg-emerald-500 text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
-                            <Star className="h-3 w-3 fill-white" />
+                            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                             Featured
                           </Badge>
                         )}
@@ -244,7 +244,7 @@ export default function Portfolio() {
                           <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tech Stack</p>
                           <div className="flex flex-wrap gap-2">
                             {item.tech.map((t) => (
-                              <Badge key={t} variant="secondary" className="text-[10px] px-2 py-0.5 rounded-md bg-primary/5 text-primary border-primary/10">
+                              <Badge key={t} variant="secondary" className="text-[10px] px-2 py-0.5 rounded-md bg-muted text-muted-foreground border-border">
                                 {t}
                               </Badge>
                             ))}
