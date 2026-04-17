@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import { 
@@ -21,10 +21,7 @@ import {
   Calendar,
   MessageSquare,
   Zap,
-  GitBranch,
-  Music,
-  Play,
-  ExternalLink
+  GitBranch
 } from 'lucide-react';
 
 const skillLevels = [
@@ -89,36 +86,6 @@ const itemVariants = {
 };
 
 export default function About() {
-  const [nowPlaying, setNowPlaying] = useState({
-    title: "Not Listening",
-    artist: "Spotify",
-    albumArt: "https://picsum.photos/seed/spotify-chill/200/200",
-    isPlaying: false,
-    songUrl: "https://open.spotify.com"
-  });
-
-  useEffect(() => {
-    const fetchNowPlaying = async () => {
-      try {
-        const res = await fetch('/api/now-playing');
-        if (res.ok) {
-          const data = await res.json();
-          if (data.title) {
-            setNowPlaying(data);
-          } else {
-            setNowPlaying(prev => ({ ...prev, isPlaying: false, title: "Not Listening" }));
-          }
-        }
-      } catch (error) {
-        console.error('Failed to fetch Spotify data');
-      }
-    };
-
-    fetchNowPlaying();
-    const interval = setInterval(fetchNowPlaying, 30000); // Poll every 30 seconds
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="container mx-auto px-4 md:px-6">
       <motion.div 
@@ -243,74 +210,6 @@ export default function About() {
                 </InteractiveCardWrapper>
               </motion.div>
             </div>
-
-            <motion.div variants={itemVariants}>
-              <InteractiveCardWrapper className="rounded-3xl">
-                <a 
-                  href={nowPlaying.songUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block group"
-                >
-                  <Card className="rounded-3xl border-white/20 bg-[#1DB954]/5 dark:bg-[#1DB954]/10 backdrop-blur-md p-6 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group transition-all duration-500 hover:bg-[#1DB954]/15">
-                    <div className="absolute -right-10 -top-10 opacity-5 group-hover:rotate-12 transition-transform duration-700">
-                      <Music className="h-40 w-40 text-[#1DB954]" />
-                    </div>
-                    
-                    <div className="flex items-center gap-5 z-10">
-                      <div className="relative h-16 w-16 rounded-xl overflow-hidden shadow-lg border-2 border-[#1DB954]/30">
-                        <img 
-                          src={nowPlaying.albumArt} 
-                          alt="Album Art" 
-                          className="object-cover h-full w-full group-hover:scale-110 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Play className="h-6 w-6 text-white fill-white" />
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
-                          <div className="flex gap-[2px] items-end h-3">
-                            {nowPlaying.isPlaying ? (
-                              [0, 1, 2, 3].map((i) => (
-                                <motion.div
-                                  key={i}
-                                  animate={{ height: ["20%", "100%", "40%", "80%", "20%"] }}
-                                  transition={{ 
-                                    duration: 1 + i * 0.2, 
-                                    repeat: Infinity, 
-                                    ease: "easeInOut" 
-                                  }}
-                                  className="w-[3px] bg-[#1DB954] rounded-full"
-                                />
-                              ))
-                            ) : (
-                              <div className="w-[3px] h-full bg-muted-foreground rounded-full" />
-                            )}
-                          </div>
-                          <span className="text-[10px] font-black uppercase tracking-widest text-[#1DB954]">
-                            {nowPlaying.isPlaying ? "Listening Now" : "Last Played"}
-                          </span>
-                        </div>
-                        <h4 className="text-base font-bold font-headline truncate max-w-[200px] text-foreground group-hover:text-[#1DB954] transition-colors">
-                          {nowPlaying.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground font-medium">
-                          {nowPlaying.artist} • Spotify
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="z-10 bg-white/20 dark:bg-black/20 px-4 py-2.5 rounded-full border border-white/10 backdrop-blur-sm group-hover:scale-105 transition-all flex items-center gap-2 shadow-sm">
-                      <Music className="h-4 w-4 text-[#1DB954]" />
-                      <span className="text-[10px] font-bold text-foreground">View on Spotify</span>
-                      <ExternalLink className="h-3 w-3 text-muted-foreground" />
-                    </div>
-                  </Card>
-                </a>
-              </InteractiveCardWrapper>
-            </motion.div>
           </motion.div>
         </motion.div>
 
