@@ -87,7 +87,7 @@ const portfolioItems = [
     title: 'Absolute Cinema Ticketing',
     category: 'Web Apps',
     featured: false,
-    description: 'A full-stack cinema ticketing system featuring user authentication, seat selection, and movie catalog. Focused on backend architecture and relational database design.',
+    description: 'A web-based movie ticket booking system developed for CTU. This project was a significant milestone where I taught myself PHP and MySQL from scratch. It features registration, seat selection, and a full admin dashboard for managing movies and showtimes. I went beyond the basic requirements to create a robust system with full admin control and functional user flows.',
     image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
     hint: 'movie theater',
     tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
