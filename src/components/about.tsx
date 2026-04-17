@@ -34,7 +34,7 @@ const skillLevels = [
 const stats = [
   { label: 'Experience', value: '2+ yrs', icon: <Rocket className="h-5 w-5 text-orange-500" /> },
   { label: 'Projects Built', value: '15+', icon: <Layout className="h-5 w-5 text-indigo-500" /> },
-  { label: 'LETReview Hits', value: '4K+', icon: <Coffee className="h-5 w-5 text-amber-700" /> },
+  { label: 'Cups of Coffee', value: 'Unlimited', icon: <Coffee className="h-5 w-5 text-amber-700" /> },
   { label: 'Learning Mode', value: '24/7', icon: <BookOpen className="h-5 w-5 text-blue-500" /> },
 ];
 
