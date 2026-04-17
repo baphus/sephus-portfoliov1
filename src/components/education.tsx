@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -17,14 +18,14 @@ const educationData = [
   {
     institution: 'Cebu Technological University',
     degree: 'Bachelor of Science in Information Systems',
-    period: '2023 - Present',
+    period: 'Aug 2023 - Present',
     location: 'Cebu City, Philippines',
     status: 'In Progress',
-    description: 'Specializing in systems analysis, database management, and modern web development. Maintaining a high academic standing as a DOST-OWWA scholar while actively developing production-ready applications for academic and client projects.',
+    description: 'Specializing in systems analysis and design. Gathering and analyzing business requirements through direct collaboration with stakeholders and client representatives. OWWA scholar.',
     highlights: [
-      'DOST-OWWA Scholar',
-      'Focus on Cloud Systems & DevOps',
-      'Technical Support Lead for student projects'
+      'OWWA Scholar',
+      'Focus on SDLC & Web Solutions',
+      'Stakeholder Collaboration'
     ],
     icon: <GraduationCap className="h-6 w-6" />,
   },
@@ -34,11 +35,11 @@ const educationData = [
     period: '2017 - 2023',
     location: 'Toledo City, Philippines',
     status: 'Completed',
-    description: 'Graduated in the top of the class (Ranked 12th). Actively involved in the Robotics Team, representing the school in regional and division-level competitions, focusing on autonomous systems and hardware troubleshooting.',
+    description: 'Graduated With Honors (Rank 12). Member of the TCSHS Robotics Team, specializing in autonomous systems.',
     highlights: [
-      'Graduated With Honors',
-      '1st Place - Division Science Fair (Robotics)',
-      'Regional Sumobot Competitor (Multiple Awards)'
+      'Graduated With Honors (Rank 12)',
+      '1st Place - Division Science Fair 2019',
+      'Multiple Regional Sumo Bot Placements'
     ],
     icon: <Trophy className="h-6 w-6" />,
   },
@@ -53,10 +54,10 @@ export default function Education() {
           <span>Education</span>
         </div>
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline">
-          Academic <span className="text-primary">Journey</span>
+          Academic <span className="text-primary">Background</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
-          Committed to continuous learning and professional development through formal education and hands-on technical exploration.
+          Committed to academic excellence and technical mastery through scientific education.
         </p>
       </div>
 

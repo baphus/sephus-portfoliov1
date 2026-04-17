@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -11,6 +12,7 @@ import {
   MapPin, 
   MessageSquare,
   CheckCircle2,
+  Phone
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
@@ -28,7 +30,7 @@ export default function Footer() {
   const socialLinks = [
     { label: 'GitHub', handle: '@baphus', icon: <Github className="h-4 w-4" />, href: 'https://github.com/baphus' },
     { label: 'LinkedIn', handle: 'Josephus Kim Sarsonas', icon: <Linkedin className="h-4 w-4" />, href: 'https://www.linkedin.com/in/josephus-kim-sarsonas-1b5191260/' },
-    { label: 'Facebook', handle: 'Josephus Sarsonas', icon: <Facebook className="h-4 w-4" />, href: '#' },
+    { label: 'Phone', handle: '(+63) 9918630201', icon: <Phone className="h-4 w-4" />, href: 'tel:+639918630201' },
     { label: 'Email', handle: 'sarsonasjosephuskim@gmail.com', icon: <Mail className="h-4 w-4" />, href: 'mailto:sarsonasjosephuskim@gmail.com' },
   ];
 
@@ -54,20 +56,20 @@ export default function Footer() {
                 <div className="p-1.5 rounded-lg bg-primary/10 text-primary">
                   <MapPin className="h-4 w-4" />
                 </div>
-                Cebu City, Philippines
+                Toledo City, Cebu
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground font-medium">
                 <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-500">
                   <CheckCircle2 className="h-4 w-4" />
                 </div>
-                Open to work & collaborations
+                Available for Internship
               </div>
             </div>
 
             <div className="bg-white/5 dark:bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-3xl p-6">
               <p className="text-[10px] font-black text-primary uppercase tracking-widest mb-3">Professional Philosophy</p>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Detail-oriented developer driven by a desire to translate user needs into functional, high-quality digital experiences.
+                Autonomous developer delivering scalable solutions across the SDLC using MVC architecture and modern tech.
               </p>
             </div>
           </div>
@@ -125,7 +127,7 @@ export default function Footer() {
             <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground">Status</h4>
             <div className="bg-white/5 dark:bg-white/[0.02] backdrop-blur-2xl rounded-[2.5rem] border border-white/10 p-8 space-y-6">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Currently an Information Systems student & DOST-OWWA Scholar.
+                Available to start a remote internship in May 2026.
               </p>
               
               <div className="space-y-4">
@@ -139,14 +141,14 @@ export default function Footer() {
                   <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500">
                     <MessageSquare className="h-4 w-4" />
                   </div>
-                  <span className="text-muted-foreground font-medium text-xs">Ready for new projects</span>
+                  <span className="text-muted-foreground font-medium text-xs">Seeking May Internship</span>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-border/50">
-                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3">Expertise</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-3">Core Stack</p>
                 <div className="flex flex-wrap gap-1.5">
-                  {['React', 'Next.js', 'Laravel', 'PHP', 'Tailwind'].map(s => (
+                  {['Next.js', 'Laravel', 'Express', 'Typescript', 'SQL'].map(s => (
                     <Badge key={s} variant="secondary" className="text-[9px] px-2 py-0.5 rounded-md bg-primary/5 text-primary border-primary/10 font-bold">
                       {s}
                     </Badge>

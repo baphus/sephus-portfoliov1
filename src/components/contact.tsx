@@ -20,7 +20,8 @@ import {
   Facebook, 
   MapPin, 
   MessageSquare,
-  ArrowRight
+  ArrowRight,
+  Phone
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -67,6 +68,12 @@ export default function Contact() {
       href: 'mailto:sarsonasjosephuskim@gmail.com' 
     },
     { 
+      label: 'Phone', 
+      value: '(+63) 9918630201', 
+      icon: <Phone className="h-5 w-5" />, 
+      href: 'tel:+639918630201' 
+    },
+    { 
       label: 'GitHub', 
       value: '@baphus', 
       icon: <Github className="h-5 w-5" />, 
@@ -79,14 +86,8 @@ export default function Contact() {
       href: 'https://www.linkedin.com/in/josephus-kim-sarsonas-1b5191260/' 
     },
     { 
-      label: 'Facebook', 
-      value: 'Josephus Sarsonas', 
-      icon: <Facebook className="h-5 w-5" />, 
-      href: '#' 
-    },
-    { 
       label: 'Location', 
-      value: 'Cebu City, Philippines', 
+      value: 'Matab-ang, Toledo City, Cebu', 
       icon: <MapPin className="h-5 w-5" />, 
       href: '#' 
     },
@@ -94,7 +95,6 @@ export default function Contact() {
 
   return (
     <div className="container mx-auto px-4 md:px-6">
-      {/* Header Section */}
       <div className="flex flex-col items-center text-center space-y-4 mb-16">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
           <MessageSquare className="h-4 w-4" />
@@ -104,12 +104,11 @@ export default function Contact() {
           Get In <span className="text-primary">Touch</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
-          Let&apos;s discuss your next project. I&apos;m always excited to work on something amazing together.
+          Available for remote internship opportunities starting in May. Let&apos;s build something great.
         </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
-        {/* Left Column: Form */}
         <Card className="rounded-[2.5rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
           
@@ -189,7 +188,6 @@ export default function Contact() {
           </div>
         </Card>
 
-        {/* Right Column: Contact Info */}
         <div className="space-y-6">
           <Card className="rounded-[2.5rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-8 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
@@ -219,14 +217,6 @@ export default function Contact() {
               </div>
             </div>
           </Card>
-
-          {/* Chat Floating Action Button Tip */}
-          <div className="hidden lg:flex justify-end pr-4">
-            <div className="flex items-center gap-3 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl text-emerald-600 text-xs font-bold animate-bounce">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
-              Quick Response Guaranteed
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -36,13 +36,13 @@ const portfolioItems = [
   },
   {
     id: 'letreview',
-    title: 'LETReview — Gamified Study App',
+    title: 'LETReview - Licensure Reviewer (PWA)',
     category: 'Web Apps',
     featured: true,
-    description: "Originally built as a personal solution for my girlfriend to help her stay consistent while reviewing for the Licensure Examination for Teachers (LET). After launching and sharing it on a school Facebook page, the response was viral—exceeding 3,000 visits and 300+ signups within just hours. It's a gamified practice platform focusing on motivation, structure, and consistency to solve student burnout. Deployed Jan 2026.",
+    description: "Full-stack Progressive Web App for licensure exam preparation. Features quiz mode, flashcards, and gamification elements (daily streaks, achievements, virtual pets). Achieved 120+ users and 4,000+ visits within 14 days of launch. Integrated secure authentication and real-time NoSQL database using Firebase.",
     image: imageData.projects.find(p => p.id === 'letreview')?.url || 'https://picsum.photos/seed/let/800/600',
     hint: 'educational app',
-    tech: ['Next.js', 'Tailwind CSS', 'Vercel', 'Firebase', 'Framer Motion'],
+    tech: ['Next.js', 'Typescript', 'Firebase', 'Tailwind CSS', 'PWA'],
     link: 'https://studio--letreview.us-central1.hosted.app/',
     type: 'demo'
   },
@@ -51,22 +51,22 @@ const portfolioItems = [
     title: 'Normalite EDGE — CNU Student Hub',
     category: 'Web Apps',
     featured: true,
-    description: 'Leading the development of a comprehensive web platform for Cebu Normal University students. This lead role involves building a performant, secure, and user-tested guide to academic excellence. Built with React and Node.js, and deployed using modern CI/CD practices. Timeline: Feb 2026 - Present.',
+    description: 'A comprehensive web-based reviewer system for Cebu Normal University (BLEPT Department). Built mock exams, flashcards, and score analytics. Implemented a calendar system for managing deadlines and virtual meeting scheduling. Translated client requirements into system workflows and features.',
     image: imageData.projects.find(p => p.id === 'normalite')?.url || 'https://picsum.photos/seed/normalite/800/600',
     hint: 'academic excellence',
-    tech: ['React', 'Node.js', 'PostgreSQL', 'TailwindCSS', 'Vercel', 'Render'],
+    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL'],
     link: 'https://normalite-edge.vercel.app/',
     type: 'demo'
   },
   {
     id: 'bnhs',
-    title: 'BNHS E-Document Request System',
+    title: 'BNHS eDocument System',
     category: 'Web Apps',
     featured: true,
-    description: 'An official production system deployed at Bato National High School in Dec 2025. This full-stack application is actively used by school administration for secure, OTP-verified document requests and automated tracking workflows.',
+    description: 'An official production system for Bato National High School. Developed the backend using Laravel MVC, applying core system logic and PostgreSQL design. Built authentication and email notifications with queue workers. Gathered requirements directly from school administration stakeholders.',
     image: imageData.projects.find(p => p.id === 'bnhs')?.url || 'https://picsum.photos/seed/bnhs/800/600',
     hint: 'school documents',
-    tech: ['Laravel', 'PostgreSQL', 'TailwindCSS', 'Livewire', 'Alpine.js', 'Render'],
+    tech: ['Laravel', 'PHP', 'PostgreSQL', 'Node.js', 'Cloudinary', 'MVC'],
     link: 'https://bnhsedocumentrequest.onrender.com/',
     type: 'demo'
   },
@@ -75,10 +75,10 @@ const portfolioItems = [
     title: 'Medicare Clinic System',
     category: 'Web Apps',
     featured: false,
-    description: 'A comprehensive academic project (2023-2024) designed to manage patient records, clinical appointments, and billing. Implemented with custom MVC routing and Supabase integration for real-time data handling.',
+    description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized custom MVC routing and Supabase for real-time data handling.',
     image: imageData.projects.find(p => p.id === 'medicare')?.url || 'https://picsum.photos/seed/medicare/800/600',
     hint: 'medical clinic',
-    tech: ['PHP', 'Supabase', 'Cloudinary', 'Bootstrap', 'Heroku'],
+    tech: ['PHP', 'Supabase', 'Cloudinary', 'Bootstrap'],
     link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
     type: 'demo'
   },
@@ -87,10 +87,10 @@ const portfolioItems = [
     title: 'Absolute Cinema Ticketing',
     category: 'Web Apps',
     featured: false,
-    description: 'A full-stack cinema ticketing system featuring user authentication, seat selection, and a movie catalog. This project served as a foundational exploration of backend architecture and relational database design.',
+    description: 'A full-stack cinema ticketing system featuring user authentication, seat selection, and movie catalog. Focused on backend architecture and relational database design.',
     image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
     hint: 'movie theater',
-    tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
+    tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
     link: 'https://github.com/baphus/AbsoluteCinema',
     type: 'github'
   }
@@ -131,10 +131,10 @@ export default function Portfolio() {
           <span>Portfolio</span>
         </div>
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline text-foreground">
-          Featured <span className="text-primary">Works</span>
+          Recent <span className="text-primary">Deliverables</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
-          A showcase of my production-ready work and personal ventures. Each project represents a commitment to high-quality code and solving real-world needs.
+          I've shipped scalable solutions across academic, viral, and production environments with a focus on ownership and performance.
         </p>
       </div>
 
@@ -255,13 +255,6 @@ export default function Portfolio() {
           })}
         </AnimatePresence>
       </div>
-
-      {filteredItems.length === 0 && (
-        <div className="text-center py-20 bg-muted/10 rounded-3xl border border-dashed border-border mt-8">
-          <Layers className="h-12 w-12 mx-auto text-muted-foreground/30 mb-4" />
-          <p className="text-muted-foreground font-medium">No projects found in this category yet.</p>
-        </div>
-      )}
     </div>
   );
 }

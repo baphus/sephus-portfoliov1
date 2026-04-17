@@ -1,75 +1,48 @@
 
 # Josephus Kim L. Sarsonas
 
-*Dynamic and versatile digital professional with expertise spanning web development, data analytics, systems design, and creative media production.*
-
----
-
-## About Me
-
-Hey, I'm Josephus! I'm a web developer from Cebu, Philippines, with a passion for building intuitive and performant web applications. My goal is to translate user needs into functional and engaging digital experiences.
-
-I specialize in front-end technologies like React and Next.js, and I am **highly autonomous**, capable of delivering high-quality, production-ready work independently and efficiently without constant monitoring.
-
-I am driven by a desire to solve problems and deliver high-quality, impactful work. When I'm not coding, you can find me exploring new technologies or playing my guitar.
+*Autonomous and self-driven Information Systems student with hands-on experience in full-stack web development and system analysis.*
 
 ---
 
 ## Contact Information
 
 - **Email:** [sarsonasjosephuskim@gmail.com](mailto:sarsonasjosephuskim@gmail.com)
+- **Phone:** (+63) 9918630201
 - **LinkedIn:** [linkedin.com/in/josephus-kim-sarsonas-1b5191260](https://www.linkedin.com/in/josephus-kim-sarsonas-1b5191260/)
 - **GitHub:** [github.com/baphus](https://github.com/baphus)
-- **Location:** Cebu City, Philippines
+- **Location:** Matab-ang, Toledo City, Cebu, Philippines (6038)
 
 ---
 
-## Professional Attributes
+## Profile
 
-- **Highly Autonomous & Self-Motivated**
-- Detail-Oriented
-- Reliable
-- Strong Communicator
-- Adaptable
-- Research-Driven
+Proficient in PHP, PostgreSQL, MySQL, NoSQL, JavaScript, and TypeScript, with experience in modern frameworks including Laravel, Express, React, Next.js, and Vue.js, as well as Tailwind CSS for responsive UI development. Demonstrates strong ownership of tasks and the ability to deliver scalable solutions across the Software Development Life Cycle (SDLC) using MVC architecture. Seeking a remote internship opportunity. Available to start in May.
 
 ---
 
 ## Technical Skills
 
-- **Frontend:** Next.js, React, TypeScript, Vue.js, Tailwind CSS, Framer Motion
-- **Backend:** Laravel, PHP, Node.js, Livewire
-- **Database:** PostgreSQL, Firestore, MongoDB, MySQL, Neon
-- **Tools:** Git & GitHub, Vercel, Render, Railway, Heroku, Cloudinary, Figma
+- **Languages:** PHP, JavaScript, TypeScript, Python
+- **Frameworks & Libraries:** Laravel, Livewire, React, Next.js, Vue.js, Express
+- **Backend & APIs:** Model-View-Controller, Node.js, RESTFUL, MySQL, PostgreSQL, NoSQL, Prisma ORM, Render, JSON Web Tokens
+- **Tools & Platforms:** Git, Docker, NPM, Vercel, Render, Heroku, Supabase, Cloudinary, XAMPP, Laragon, Laravel Herd, Composer
 
 ---
 
 ## Portfolio Projects
 
-### 1. Bayanihan One Window: OFW Referral System
-- **Context:** An Inter-Agency Referral and Tracking System for Distressed OFWs in Region VII. Single-entry intake system managing cases across multiple government agencies.
-- **Stack:** Next.js, TypeScript, PostgreSQL, Node.js, Tailwind CSS.
-- **Timeline:** Jan 2026 - Present.
+### 1. LETReview - Web-Based Licensure Exam Reviewer (PWA)
+- **Stack:** Typescript, Next.js App Router, React, Firebase (Auth & Firestore), Tailwind CSS, ShadCN/UI.
+- **Highlights:** 120+ users and 4,000+ visits within 14 days of launch. Features quiz mode, flashcards, and gamification (daily streaks, achievements, virtual pets).
 
 ### 2. Normalite EDGE — CNU Student Hub
-- **Context:** Leading development of a comprehensive web app for Cebu Normal University.
-- **Stack:** React, Node.js, PostgreSQL, Tailwind, Vercel.
-- **Timeline:** Feb 2026 - Present.
+- **Stack:** React, TypeScript, Node.js, Express, Prisma ORM, PostgreSQL, REST, JWT.
+- **Highlights:** Built mock exams, flashcards, score analytics, and virtual meeting scheduling for Cebu Normal University (BLEPT Department).
 
-### 3. LETReview — Gamified Study App
-- **Context:** Personal project built for my girlfriend that went viral with 3,000 visits and 300+ users in hours. Deployed Jan 2026.
-- **Stack:** Next.js, Tailwind CSS, Firebase, Framer Motion.
-- **Status:** Viral Launch / Ongoing Development.
-
-### 4. BNHS E-Document Request System
-- **Context:** Official production system deployed at **Bato National High School** administration in **December 2025**.
-- **Role:** Lead Full-Stack Developer
-- **Technologies:** Laravel, PHP, PostgreSQL, Tailwind CSS, Alpine.js, Heroku.
-- **Status:** Deployed and actively used by administration.
-
-### 5. Medicare Clinic System
-- **Status:** Completed Academic Project (2023 - 2024)
-- **Stack:** PHP, Supabase, Cloudinary, Bootstrap.
+### 3. BNHS eDocument Request System
+- **Stack:** Laravel, PostgreSQL, Tailwind CSS, Axios, Node.js, Cloudinary.
+- **Highlights:** Developed backend using Laravel MVC, OTP/email notifications with queue workers, and deployed on Render.
 
 ---
 
@@ -77,8 +50,9 @@ I am driven by a desire to solve problems and deliver high-quality, impactful wo
 
 ### Cebu Technological University - Main Campus
 - **Degree:** Bachelor of Science in Information Systems
-- **Status:** 2022 - Present (DOST-OWWA Scholar)
+- **Status:** Aug 2023 - Present (DOST-OWWA Scholar)
 
 ### Toledo City Science Highschool
 - **Degree:** High School Diploma, With Honors
-- **Status:** Graduated 2022 (Ranked 12th)
+- **Status:** Graduated 2023 (Ranked 12th)
+- **Highlights:** Robotics Team member; 1st Place - Division Science Fair 2019.

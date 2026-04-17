@@ -28,7 +28,8 @@ import {
   Target,
   Zap,
   Palette,
-  Link as LinkIcon
+  Link as LinkIcon,
+  FileType
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -39,51 +40,39 @@ import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 const skills = [
   // Professional Skills
   { title: 'System Analysis & Design', category: 'professional', slug: 'enterprise', description: 'Analyzing complex business requirements and designing robust system architectures.', icon: <Monitor className="h-6 w-6" />, isFeatured: true },
-  { title: 'Project Management', category: 'professional', slug: 'jira', description: 'Leading development teams and managing project timelines for quality delivery.', icon: <Briefcase className="h-6 w-6" />, isFeatured: true },
-  { title: 'Agile Methodology', category: 'professional', slug: 'scrumalliance', description: 'Implementing iterative development processes like Scrum for team collaboration.', icon: <InfinityIcon className="h-6 w-6" />, isFeatured: true },
+  { title: 'MVC Architecture', category: 'professional', slug: 'laravel', description: 'Implementing clean, modular code following the Model-View-Controller pattern.', icon: <Layers className="h-6 w-6" />, isFeatured: true },
   { title: 'SDLC', category: 'professional', slug: 'git', description: 'Managing the complete software development life cycle from planning to maintenance.', icon: <Box className="h-6 w-6" />, isFeatured: true },
-  { title: 'Problem Solving', category: 'professional', slug: 'adventofcode', description: 'Diagnosing complex technical issues and architecting efficient solutions.', icon: <Lightbulb className="h-6 w-6" />, isFeatured: true },
-  { title: 'API Integration', category: 'professional', slug: 'postman', description: 'Connecting diverse services via RESTful APIs and secure data synchronization.', icon: <LinkIcon className="h-6 w-6" />, isFeatured: true },
+  { title: 'RESTful APIs', category: 'professional', slug: 'postman', description: 'Designing and integrating secure, performant APIs with Node.js and Laravel.', icon: <LinkIcon className="h-6 w-6" />, isFeatured: true },
   
   // Frontend
   { title: 'Next.js', category: 'frontend', slug: 'nextdotjs', description: 'Building high-performance, SEO-friendly React applications with App Router.', icon: <Zap className="h-4 w-4" />, isFeatured: true },
   { title: 'React', category: 'frontend', slug: 'react', description: 'Creating interactive, reusable UI components using hooks and modern patterns.', icon: <Layout className="h-6 w-6" />, isFeatured: true },
-  { title: 'JavaScript', category: 'frontend', slug: 'javascript', description: 'Developing complex client-side logic and interactive components with modern ES6+.', icon: <Code2 className="h-6 w-6" />, isFeatured: true },
-  { title: 'Vue.js', category: 'frontend', slug: 'vuedotjs', description: 'Building interactive web interfaces with a progressive JavaScript framework.', icon: <Layout className="h-6 w-6" />, isFeatured: true },
   { title: 'TypeScript', category: 'frontend', slug: 'typescript', description: 'Ensuring code quality and scalability with static typing and advanced interfaces.', icon: <ShieldCheck className="h-6 w-6" />, isFeatured: true },
   { title: 'Tailwind CSS', category: 'frontend', slug: 'tailwindcss', description: 'Rapidly styling responsive, accessible interfaces with utility-first CSS.', icon: <Palette className="h-6 w-6" />, isFeatured: true },
-  { title: 'Framer Motion', category: 'frontend', slug: 'framer', description: 'Adding fluid animations and micro-interactions for an engaging user experience.', icon: <Sparkles className="h-6 w-6" /> },
+  { title: 'Vue.js', category: 'frontend', slug: 'vuedotjs', description: 'Building interactive web interfaces with a progressive JavaScript framework.', icon: <Layout className="h-6 w-6" /> },
   
   // Backend
   { title: 'Laravel', category: 'backend', slug: 'laravel', description: 'Building secure, robust PHP applications with MVC architecture and Eloquent.', icon: <Server className="h-6 w-6" />, isFeatured: true },
-  { title: 'Livewire', category: 'backend', slug: 'livewire', description: 'Full-stack development for Laravel that makes building dynamic interfaces simple.', icon: <Activity className="h-6 w-6" />, isFeatured: true },
-  { title: 'PHP', category: 'backend', slug: 'php', description: 'Implementing server-side logic and database interactions for diverse systems.', icon: <Terminal className="h-6 w-6" /> },
-  { title: 'Node.js', category: 'backend', slug: 'nodedotjs', description: 'Developing scalable, event-driven backend services and real-time features.', icon: <Cpu className="h-6 w-6" /> },
+  { title: 'Express.js', category: 'backend', slug: 'express', description: 'Developing fast, minimalist web applications and APIs with Node.js.', icon: <Terminal className="h-6 w-6" />, isFeatured: true },
+  { title: 'Node.js', category: 'backend', slug: 'nodedotjs', description: 'Developing scalable, event-driven backend services and real-time features.', icon: <Cpu className="h-6 w-6" />, isFeatured: true },
+  { title: 'Python', category: 'backend', slug: 'python', description: 'Scripting and data analysis for diverse technical solutions.', icon: <Code2 className="h-6 w-6" /> },
   
-  // Database
-  { title: 'Firestore', category: 'database', slug: 'firebase', description: 'Building real-time, scalable NoSQL databases with Firebase cloud infrastructure.', icon: <Database className="h-6 w-6" />, isFeatured: true },
-  { title: 'Supabase', category: 'database', slug: 'supabase', description: 'Leveraging open-source Firebase alternatives for real-time databases and Auth.', icon: <Database className="h-6 w-6" />, isFeatured: true },
+  // Database & Tools
   { title: 'PostgreSQL', category: 'database', slug: 'postgresql', description: 'Advanced relational database management with focus on data integrity.', icon: <Database className="h-6 w-6" />, isFeatured: true },
-  { title: 'MongoDB', category: 'database', slug: 'mongodb', description: 'Architecting flexible, document-based data models for high-performance applications.', icon: <Database className="h-6 w-6" /> },
-  { title: 'Neon', category: 'database', slug: 'neon', description: 'Deploying serverless Postgres with instant branching and bottomless storage.', icon: <Database className="h-6 w-6" /> },
-  { title: 'MySQL', category: 'database', slug: 'mysql', description: 'Designing and managing relational databases for high-traffic applications.', icon: <Database className="h-6 w-6" /> },
-
-  // Tools
-  { title: 'Vercel', category: 'tools', slug: 'vercel', description: 'Deploying and scaling modern web applications with seamless CI/CD.', icon: <Cloud className="h-6 w-6" />, isFeatured: true },
-  { title: 'Railway', category: 'tools', slug: 'railway', description: 'Provisioning and scaling cloud infrastructure for full-stack deployments.', icon: <Cloud className="h-6 w-6" />, isFeatured: true },
+  { title: 'Prisma ORM', category: 'database', slug: 'prisma', description: 'Type-safe database access for modern JavaScript and TypeScript backends.', icon: <FileType className="h-6 w-6" />, isFeatured: true },
+  { title: 'Docker', category: 'tools', slug: 'docker', description: 'Containerizing applications for consistent development and deployment.', icon: <Box className="h-6 w-6" />, isFeatured: true },
   { title: 'Git & GitHub', category: 'tools', slug: 'github', description: 'Managing code versions and collaborating efficiently within development teams.', icon: <Fingerprint className="h-6 w-6" />, isFeatured: true },
-  { title: 'Figma', category: 'tools', slug: 'figma', description: 'Prototyping and designing high-fidelity user interfaces and visual assets.', icon: <Monitor className="h-6 w-6" /> },
-  { title: 'Heroku', category: 'tools', slug: 'heroku', description: 'Managing application deployment and cloud infrastructure for production.', icon: <Server className="h-6 w-6" /> },
+  { title: 'Vercel & Render', category: 'tools', slug: 'vercel', description: 'Deploying and scaling modern web applications with seamless CI/CD.', icon: <Cloud className="h-6 w-6" />, isFeatured: true },
+  { title: 'Supabase', category: 'database', slug: 'supabase', description: 'Leveraging open-source Firebase alternatives for real-time databases and Auth.', icon: <Database className="h-6 w-6" /> },
 ];
 
 const categories = [
   { id: 'featured', label: 'Featured', icon: <Sparkles className="h-4 w-4" /> },
   { id: 'all', label: 'All Skills', icon: <InfinityIcon className="h-4 w-4" /> },
-  { id: 'professional', label: 'Professional Skills', icon: <Box className="h-4 w-4" /> },
+  { id: 'professional', label: 'Methodology', icon: <Box className="h-4 w-4" /> },
   { id: 'frontend', label: 'Frontend', icon: <Layout className="h-4 w-4" /> },
   { id: 'backend', label: 'Backend', icon: <Server className="h-4 w-4" /> },
-  { id: 'database', label: 'Database', icon: <Database className="h-4 w-4" /> },
-  { id: 'tools', label: 'Tools', icon: <Wrench className="h-4 w-4" /> },
+  { id: 'database', label: 'Database & Tools', icon: <Database className="h-4 w-4" /> },
 ];
 
 const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
@@ -135,6 +124,7 @@ export default function Skills() {
   const filteredSkills = useMemo(() => {
     if (activeCategory === 'all') return skills;
     if (activeCategory === 'featured') return skills.filter(s => s.isFeatured);
+    if (activeCategory === 'database') return skills.filter(s => s.category === 'database' || s.category === 'tools');
     return skills.filter(s => s.category === activeCategory);
   }, [activeCategory]);
 
@@ -165,7 +155,7 @@ export default function Skills() {
             Skills & <span className="text-primary">Technologies</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl leading-relaxed text-base font-medium">
-            A comprehensive overview of my technical stack and professional methodologies.
+            Proficient in modern web technologies and scalable system architectures.
           </p>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center w-full mt-12">
@@ -195,7 +185,7 @@ export default function Skills() {
                     <span className="text-xs font-black uppercase tracking-widest text-foreground">Core Competency</span>
                   </div>
                   <p className="text-sm font-medium text-muted-foreground leading-relaxed italic">
-                    "I specialize in architecting performant systems using the latest web technologies, ensuring every solution is scalable, maintainable, and built with industry best practices."
+                    "Seeking a remote internship opportunity. I demonstrate strong ownership of tasks and the ability to deliver scalable solutions using modern frameworks like Next.js and Laravel."
                   </p>
                 </div>
               </div>
@@ -207,7 +197,7 @@ export default function Skills() {
                 {mounted && (
                   <IconCloud 
                     key={activeCategory}
-                    iconSlugs={activeSlugs.length > 0 ? activeSlugs : ['javascript', 'typescript', 'react', 'nextdotjs']} 
+                    iconSlugs={activeSlugs.length > 0 ? activeSlugs : ['javascript', 'typescript', 'react', 'nextdotjs', 'laravel', 'php', 'python', 'docker']} 
                   />
                 )}
               </div>

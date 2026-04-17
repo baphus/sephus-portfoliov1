@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -18,42 +19,43 @@ import {
   Target,
   Shield,
   Search,
-  UserCheck
+  UserCheck,
+  Calendar
 } from 'lucide-react';
 
 const skillLevels = [
   { label: 'Frontend Development', value: 90, icon: <Layout className="h-4 w-4" /> },
-  { label: 'Backend Development', value: 85, icon: <Code2 className="h-4 w-4" /> },
-  { label: 'Database Design', value: 80, icon: <Database className="h-4 w-4" /> },
-  { label: 'Problem Solving', value: 95, icon: <Lightbulb className="h-4 w-4" /> },
+  { label: 'Backend (Laravel/Node)', value: 85, icon: <Code2 className="h-4 w-4" /> },
+  { label: 'Database & ORM', value: 80, icon: <Database className="h-4 w-4" /> },
+  { label: 'System Analysis', value: 95, icon: <Lightbulb className="h-4 w-4" /> },
 ];
 
 const stats = [
-  { label: 'Years Experience', value: '2+', icon: <Rocket className="h-5 w-5" /> },
+  { label: 'Experience', value: '2+ yrs', icon: <Rocket className="h-5 w-5" /> },
   { label: 'Projects Built', value: '15+', icon: <Layout className="h-5 w-5" /> },
-  { label: 'Cups of Coffee', value: '∞', icon: <Coffee className="h-5 w-5" /> },
+  { label: 'LETReview Hits', value: '4K+', icon: <Coffee className="h-5 w-5" /> },
   { label: 'Learning Mode', value: '24/7', icon: <BookOpen className="h-5 w-5" /> },
 ];
 
 const drivingValues = [
   { 
-    title: "Detail-Oriented", 
-    description: "I believe that the smallest details make the biggest difference in user experience and code quality.",
-    icon: <Target className="h-6 w-6" /> 
-  },
-  { 
-    title: "Self-Motivated", 
-    description: "Highly autonomous and productive; capable of maintaining momentum and delivering results without constant supervision.",
+    title: "Autonomous", 
+    description: "Demonstrates strong ownership of tasks and the ability to deliver scalable solutions independently.",
     icon: <UserCheck className="h-6 w-6" /> 
   },
   { 
+    title: "SDLC Specialist", 
+    description: "Experienced in the complete Software Development Life Cycle, from requirements gathering to maintenance.",
+    icon: <Target className="h-6 w-6" /> 
+  },
+  { 
     title: "Reliability", 
-    description: "Committed to delivering high-quality, stable, and production-ready solutions that users can trust.",
+    description: "Committed to delivering high-quality, stable, and production-ready solutions using MVC architecture.",
     icon: <Shield className="h-6 w-6" /> 
   },
   { 
     title: "Research-Driven", 
-    description: "Always exploring new technologies and modern methodologies to solve complex technical problems.",
+    description: "Always exploring modern technologies like Prisma, Docker, and Next.js to solve complex problems.",
     icon: <Search className="h-6 w-6" /> 
   },
 ];
@@ -70,7 +72,7 @@ export default function About() {
           Get to Know <span className="text-primary">Me</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
-          Behind every great application is a passionate developer who believes in creating meaningful solutions.
+          Autonomous and self-driven Information Systems student with a passion for full-stack excellence.
         </p>
       </div>
 
@@ -101,30 +103,38 @@ export default function About() {
               
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Hi, I'm <strong className="text-foreground">Josephus Kim L. Sarsonas</strong>, a passionate full-stack web developer and systems designer based in the <strong className="text-foreground">Philippines</strong>.
+                  I'm <strong className="text-foreground">Josephus Kim L. Sarsonas</strong>, a full-stack developer and Information Systems student at Cebu Technological University. I specialize in turning business requirements into functional, scalable web solutions.
                 </p>
                 <p>
-                  With hands-on experience in building, deploying, and supporting production web applications, I specialize in creating scalable and user-friendly digital experiences. I enjoy the entire lifecycle of a project—from gathering requirements to ongoing technical support.
+                  I have a strong foundation in <strong className="text-foreground">MVC architecture</strong> and modern stacks including Laravel, React, and Next.js. My experience spans the entire <strong className="text-foreground">SDLC</strong>, from gathering requirements to deploying production systems like the BNHS eDocument system.
                 </p>
                 <p>
-                  I am <strong className="text-foreground">highly autonomous</strong> and capable of delivering high-quality, production-ready work independently and efficiently without constant monitoring.
-                </p>
-                <p>
-                  Currently, I am an <strong className="text-foreground">Information Systems student</strong> at Cebu Technological University, where I focus on diagnosing technical issues and optimizing system performance across various cloud platforms.
+                  Currently, I am <strong className="text-foreground">seeking a remote internship opportunity</strong> starting in May. I am highly autonomous and thrive in environments where I can take ownership of technical challenges.
                 </p>
               </div>
             </Card>
           </InteractiveCardWrapper>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <InteractiveCardWrapper className="rounded-2xl">
               <Card className="h-full rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Based in</p>
-                  <p className="text-sm font-semibold">Cebu, Philippines</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Location</p>
+                  <p className="text-xs font-semibold">Toledo, Cebu</p>
+                </div>
+              </Card>
+            </InteractiveCardWrapper>
+            <InteractiveCardWrapper className="rounded-2xl">
+              <Card className="h-full rounded-2xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-4 flex items-center gap-4 transition-transform hover:scale-[1.02] shadow-sm">
+                <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                  <Calendar className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Birthday</p>
+                  <p className="text-xs font-semibold">Aug 20, 2004</p>
                 </div>
               </Card>
             </InteractiveCardWrapper>
@@ -134,8 +144,8 @@ export default function About() {
                   <Briefcase className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Current Role</p>
-                  <p className="text-sm font-semibold">Full-Stack Dev</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Seeking</p>
+                  <p className="text-xs font-semibold">Internship</p>
                 </div>
               </Card>
             </InteractiveCardWrapper>
@@ -149,7 +159,7 @@ export default function About() {
                 <div className="p-3 rounded-2xl bg-primary/10 text-primary">
                   <Code2 className="h-6 w-6" />
                 </div>
-                <h3 className="text-2xl font-bold font-headline">Technical Skills</h3>
+                <h3 className="text-2xl font-bold font-headline">Core Proficiencies</h3>
               </div>
 
               <div className="space-y-8">
