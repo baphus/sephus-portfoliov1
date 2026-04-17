@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import { 
@@ -23,7 +23,8 @@ import {
   Zap,
   GitBranch,
   Music,
-  Play
+  Play,
+  ExternalLink
 } from 'lucide-react';
 
 const skillLevels = [
@@ -88,6 +89,23 @@ const itemVariants = {
 };
 
 export default function About() {
+  // Simulating Spotify Data State
+  const [nowPlaying, setNowPlaying] = useState({
+    title: "Sunset Chill Mix",
+    artist: "Lofi Beats",
+    albumArt: "https://picsum.photos/seed/spotify-chill/200/200",
+    isPlaying: true,
+    link: "https://open.spotify.com"
+  });
+
+  // Example effect to show how you would "fetch" live data
+  useEffect(() => {
+    // In a real app, you would fetch from your API route here:
+    // fetch('/api/spotify/now-playing').then(res => res.json()).then(data => setNowPlaying(data));
+    
+    // For now, we'll just keep the placeholder but ensure it looks "Live"
+  }, []);
+
   return (
     <div className="container mx-auto px-4 md:px-6">
       <motion.div 
@@ -215,53 +233,69 @@ export default function About() {
 
             <motion.div variants={itemVariants}>
               <InteractiveCardWrapper className="rounded-3xl">
-                <Card className="rounded-3xl border-white/20 bg-[#1DB954]/5 dark:bg-[#1DB954]/10 backdrop-blur-md p-6 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group">
-                  <div className="absolute -right-10 -top-10 opacity-5 group-hover:rotate-12 transition-transform duration-700">
-                    <Music className="h-40 w-40 text-[#1DB954]" />
-                  </div>
-                  
-                  <div className="flex items-center gap-5 z-10">
-                    <div className="relative h-14 w-14 rounded-xl overflow-hidden shadow-lg border-2 border-[#1DB954]/30">
-                      <img 
-                        src="https://picsum.photos/seed/spotify/200/200" 
-                        alt="Current Album" 
-                        className="object-cover h-full w-full"
-                      />
-                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Play className="h-6 w-6 text-white fill-white" />
-                      </div>
+                <a 
+                  href={nowPlaying.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block group"
+                >
+                  <Card className="rounded-3xl border-white/20 bg-[#1DB954]/5 dark:bg-[#1DB954]/10 backdrop-blur-md p-6 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group transition-all duration-500 hover:bg-[#1DB954]/15">
+                    <div className="absolute -right-10 -top-10 opacity-5 group-hover:rotate-12 transition-transform duration-700">
+                      <Music className="h-40 w-40 text-[#1DB954]" />
                     </div>
                     
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <div className="flex gap-[2px] items-end h-3">
-                          {[0, 1, 2, 3].map((i) => (
-                            <motion.div
-                              key={i}
-                              animate={{ height: ["20%", "100%", "40%", "80%", "20%"] }}
-                              transition={{ 
-                                duration: 1 + i * 0.2, 
-                                repeat: Infinity, 
-                                ease: "easeInOut" 
-                              }}
-                              className="w-[3px] bg-[#1DB954] rounded-full"
-                            />
-                          ))}
+                    <div className="flex items-center gap-5 z-10">
+                      <div className="relative h-16 w-16 rounded-xl overflow-hidden shadow-lg border-2 border-[#1DB954]/30">
+                        <img 
+                          src={nowPlaying.albumArt} 
+                          alt="Album Art" 
+                          className="object-cover h-full w-full group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                          <Play className="h-6 w-6 text-white fill-white" />
                         </div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-[#1DB954]">Listening Now</span>
                       </div>
-                      <h4 className="text-base font-bold font-headline truncate max-w-[200px]">Sunset Chill Mix</h4>
-                      <p className="text-xs text-muted-foreground font-medium">Lofi Beats • Spotify</p>
+                      
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <div className="flex gap-[2px] items-end h-3">
+                            {nowPlaying.isPlaying ? (
+                              [0, 1, 2, 3].map((i) => (
+                                <motion.div
+                                  key={i}
+                                  animate={{ height: ["20%", "100%", "40%", "80%", "20%"] }}
+                                  transition={{ 
+                                    duration: 1 + i * 0.2, 
+                                    repeat: Infinity, 
+                                    ease: "easeInOut" 
+                                  }}
+                                  className="w-[3px] bg-[#1DB954] rounded-full"
+                                />
+                              ))
+                            ) : (
+                              <div className="w-[3px] h-full bg-muted-foreground rounded-full" />
+                            )}
+                          </div>
+                          <span className="text-[10px] font-black uppercase tracking-widest text-[#1DB954]">
+                            {nowPlaying.isPlaying ? "Listening Now" : "Last Played"}
+                          </span>
+                        </div>
+                        <h4 className="text-base font-bold font-headline truncate max-w-[200px] text-foreground group-hover:text-[#1DB954] transition-colors">
+                          {nowPlaying.title}
+                        </h4>
+                        <p className="text-xs text-muted-foreground font-medium">
+                          {nowPlaying.artist} • Spotify
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="z-10 bg-white/20 dark:bg-black/20 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm group-hover:scale-105 transition-transform cursor-default">
-                    <div className="flex items-center gap-2">
+                    <div className="z-10 bg-white/20 dark:bg-black/20 px-4 py-2.5 rounded-full border border-white/10 backdrop-blur-sm group-hover:scale-105 transition-all flex items-center gap-2 shadow-sm">
                       <Music className="h-4 w-4 text-[#1DB954]" />
-                      <span className="text-[10px] font-bold text-foreground">Open Spotify</span>
+                      <span className="text-[10px] font-bold text-foreground">View on Spotify</span>
+                      <ExternalLink className="h-3 w-3 text-muted-foreground" />
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </a>
               </InteractiveCardWrapper>
             </motion.div>
           </motion.div>
