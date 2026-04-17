@@ -31,5 +31,17 @@
       "url": "https://github.com/baphus/AbsoluteCinema/blob/main/images/banner.jpg?raw=true",
       "hint": "movie theater"
     }
+  ],
+  "education": [
+    {
+      "id": "ctu",
+      "url": "https://picsum.photos/seed/ctu-seal/200/200",
+      "hint": "university seal"
+    },
+    {
+      "id": "tcshs",
+      "url": "https://picsum.photos/seed/tcshs-crest/200/200",
+      "hint": "school crest"
+    }
   ]
 }

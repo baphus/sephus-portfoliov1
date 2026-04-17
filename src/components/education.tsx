@@ -14,6 +14,8 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import eduLogos from '@/app/lib/placeholder-images.json';
 
 const educationData = [
   {
@@ -28,6 +30,7 @@ const educationData = [
       'Focus on SDLC & Web Solutions',
       'Stakeholder Collaboration'
     ],
+    logo: eduLogos.education.find(e => e.id === 'ctu'),
     icon: <GraduationCap className="h-6 w-6 text-indigo-600" />,
   },
   {
@@ -42,6 +45,7 @@ const educationData = [
       '1st Place - Division Science Fair 2019',
       'Multiple Regional Sumo Bot Placements'
     ],
+    logo: eduLogos.education.find(e => e.id === 'tcshs'),
     icon: <Trophy className="h-6 w-6 text-amber-500" />,
   },
 ];
@@ -121,8 +125,21 @@ export default function Education() {
                       </div>
                     </div>
 
-                    <div className="hidden md:flex p-4 rounded-3xl bg-muted/50 shadow-inner group-hover:bg-primary/5 transition-colors">
-                      {item.icon}
+                    <div className="flex flex-col items-center gap-4">
+                      {item.logo && (
+                        <div className="relative h-20 w-20 rounded-2xl overflow-hidden border border-white/20 bg-white/50 dark:bg-neutral-800/50 p-2 shadow-inner">
+                          <Image 
+                            src={item.logo.url} 
+                            alt={`${item.institution} logo`} 
+                            fill 
+                            className="object-contain p-1"
+                            data-ai-hint={item.logo.hint}
+                          />
+                        </div>
+                      )}
+                      <div className="hidden md:flex p-4 rounded-3xl bg-muted/50 shadow-inner group-hover:bg-primary/5 transition-colors">
+                        {item.icon}
+                      </div>
                     </div>
                   </div>
                 </Card>
