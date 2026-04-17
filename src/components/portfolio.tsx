@@ -15,7 +15,8 @@ import {
   Star,
   Github,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Award
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import imageData from '@/app/lib/placeholder-images.json';
@@ -25,7 +26,8 @@ const portfolioItems = [
     id: 'bayanihan',
     title: 'Bayanihan One Window',
     category: 'Web Apps',
-    featured: false,
+    featured: true,
+    isCapstone: true,
     description: "An Inter-Agency Referral and Tracking System for Distressed OFWs in Region VII. Designed to streamline assistance through a single-entry intake system managed by the Department of Migrant Workers (DMW). It features a Unified Master Case File that coordinates multiple government agencies, enabling real-time collaboration, digital referrals, and faster service delivery for OFWs.",
     image: imageData.projects.find(p => p.id === 'bayanihan')?.url || 'https://picsum.photos/seed/bayanihan/800/600',
     hint: 'government system',
@@ -87,7 +89,7 @@ const portfolioItems = [
     category: 'Academic Deliverables',
     featured: true,
     description: 'A web-based movie ticket booking system developed for CTU to solve issues like double bookings and scheduling conflicts. Taught myself PHP and MySQL from scratch to build this complete system, going beyond course requirements to include a full admin dashboard for managing movies, screens, showtimes, and user data.',
-    image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
+    image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://github.com/baphus/AbsoluteCinema/blob/main/images/banner.jpg?raw=true',
     hint: 'movie theater',
     tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
     link: 'https://github.com/baphus/AbsoluteCinema',
@@ -166,6 +168,8 @@ export default function Portfolio() {
         <AnimatePresence mode="popLayout">
           {filteredItems.map((item) => {
             const isExpanded = expandedItems.has(item.id);
+            const isCapstone = 'isCapstone' in item && item.isCapstone;
+            
             return (
               <motion.div
                 layout
@@ -185,14 +189,20 @@ export default function Portfolio() {
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                         data-ai-hint={item.hint}
                       />
-                      {item.featured && (
-                        <div className="absolute top-4 right-4 z-10">
+                      <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
+                        {isCapstone && (
+                          <Badge className="bg-primary/90 hover:bg-primary text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
+                            <Award className="h-3 w-3 fill-white" />
+                            Capstone Project
+                          </Badge>
+                        )}
+                        {item.featured && (
                           <Badge className="bg-emerald-500/90 hover:bg-emerald-500 text-white border-none backdrop-blur-md px-3 py-1 flex items-center gap-1 shadow-lg">
                             <Star className="h-3 w-3 fill-white" />
                             Featured
                           </Badge>
-                        </div>
-                      )}
+                        )}
+                      </div>
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                         <Button variant="secondary" className="rounded-full gap-2 shadow-xl" asChild>
                           <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
