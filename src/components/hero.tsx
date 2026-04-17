@@ -77,12 +77,11 @@ export default function Hero() {
             </motion.div>
 
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground font-headline">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-foreground font-headline">
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString("Hi, I'm ")
-                      .typeString('<span class="text-primary whitespace-nowrap">Josephus 👋</span>')
+                      .typeString('<span class="whitespace-nowrap">Hi, I\'m <span class="text-primary">Josephus 👋</span></span>')
                       .callFunction(() => {
                         setHeadlineFinished(true);
                       })
@@ -95,7 +94,7 @@ export default function Hero() {
                 />
               </h1>
               
-              <div className="h-10 text-2xl md:text-3xl font-semibold text-muted-foreground flex items-center">
+              <div className="h-10 text-xl md:text-3xl font-semibold text-muted-foreground flex items-center">
                 {headlineFinished && (
                   <Typewriter
                     options={{
@@ -129,7 +128,7 @@ export default function Hero() {
               <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Specializing in</p>
               <div className="flex flex-wrap gap-2">
                 {techStack.map((tech) => (
-                  <Badge key={tech} variant="outline" className="bg-background/50 backdrop-blur-sm border-border hover:border-primary/50 transition-colors px-3 py-1 rounded-full">
+                  <Badge key={tech} variant="outline" className="bg-background/50 backdrop-blur-sm border-border hover:border-primary/50 transition-colors px-3 py-1 rounded-full text-[10px] md:text-xs">
                     {tech}
                   </Badge>
                 ))}
@@ -144,7 +143,7 @@ export default function Hero() {
             >
               <Button asChild className="btn-aqua btn-aqua-primary min-w-[220px] h-14 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
                 <Link href="/contact" className="flex items-center justify-center gap-2">
-                  <span className="flex items-center gap-2">Get In Touch <Send className="h-4 w-4" /></span>
+                  <span className="flex items-center gap-2 text-white">Get In Touch <Send className="h-4 w-4" /></span>
                 </Link>
               </Button>
               <Button asChild variant="outline" className="h-14 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent transition-all font-bold">
