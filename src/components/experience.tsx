@@ -16,7 +16,8 @@ import {
   Database,
   Cpu,
   ShieldAlert,
-  Star
+  Star,
+  Film
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -32,7 +33,7 @@ const experiences = [
     period: 'Feb 2026 - Present',
     status: 'Proposed System',
     type: 'Normalite EDGE',
-    description: 'Developing a web-based reviewer system for Cebu Normal University. Built mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing deadlines and study schedules. Translated client requirements into functional features following the SDLC.',
+    description: 'Developing a web-based reviewer system for Cebu Normal University. Built features including mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing deadlines and study schedules. Translated client requirements into functional features following the SDLC.',
     tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
     icon: <Globe className="h-5 w-5" />
   },
@@ -44,7 +45,7 @@ const experiences = [
     status: 'In Development',
     type: 'Capstone Project',
     description: 'Spearheading the architecture and development of an inter-agency referral system for distressed OFWs. Implementing a single-entry intake system managed by the DMW, featuring a Unified Master Case File to coordinate multiple government agencies and ensure accountable service delivery.',
-    tech: ['Laravel', 'Vue.js', 'PostgreSQL', 'Composer', 'Node.js (NPM)', 'Tailwind CSS'],
+    tech: ['Laravel', 'Vue.js', 'PostgreSQL', 'Composer', 'Node.js', 'Tailwind CSS'],
     icon: <ShieldAlert className="h-5 w-5" />
   },
   {
@@ -54,8 +55,8 @@ const experiences = [
     period: 'Jan 2026 - Present',
     status: 'Live',
     type: 'PWA',
-    description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days.',
-    tech: ['Typescript', 'Next.js App Router', 'React', 'Firebase (Auth & Firestore)', 'Tailwind CSS', 'ShadCN/UI', 'Lucide React'],
+    description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days of launch.',
+    tech: ['Typescript', 'Next.js', 'React', 'Firebase', 'Tailwind CSS', 'ShadCN/UI', 'Lucide React'],
     icon: <Layout className="h-5 w-5" />
   },
   {
@@ -66,7 +67,7 @@ const experiences = [
     status: 'Deployed',
     type: 'eDocument System',
     description: 'Developed the backend using Laravel MVC and designed the PostgreSQL database. Built authentication and email notifications with queue workers. Analyzed requirements from school administration and maintained the application on Render.',
-    tech: ['Vite', 'Laravel Vite Plugin', 'Tailwind CSS', 'PostCSS', 'Axios', 'Node.js', 'Cloudinary', 'PostgreSQL'],
+    tech: ['Vite', 'Laravel', 'Tailwind CSS', 'PostCSS', 'Axios', 'Node.js', 'Cloudinary', 'PostgreSQL'],
     icon: <Database className="h-5 w-5" />
   },
   {
@@ -79,6 +80,17 @@ const experiences = [
     description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized custom MVC routing and Supabase for real-time data handling.',
     tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Bootstrap', 'REST API'],
     icon: <Cpu className="h-5 w-5" />
+  },
+  {
+    role: 'Full-Stack Developer (Academic)',
+    company: 'AbsoluteCinema (CTU Final Project)',
+    location: 'Cebu City, Philippines',
+    period: '2023',
+    status: 'Completed',
+    type: 'Ticketing System',
+    description: 'Taught myself PHP and MySQL from scratch to build a movie ticket booking system. Developed full admin dashboard features for managing movies, screens, and bookings beyond basic course requirements.',
+    tech: ['PHP', 'MySQL', 'JavaScript', 'HTML', 'CSS'],
+    icon: <Film className="h-5 w-5" />
   }
 ];
 

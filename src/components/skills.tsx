@@ -29,7 +29,8 @@ import {
   Zap,
   Palette,
   Link as LinkIcon,
-  FileType
+  FileType,
+  Wrench as ToolIcon
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -41,7 +42,7 @@ const skills = [
   // Professional Skills
   { title: 'System Analysis & Design', category: 'professional', slug: 'enterprise', description: 'Analyzing complex business requirements and designing robust system architectures.', icon: <Monitor className="h-6 w-6" />, isFeatured: true },
   { title: 'MVC Architecture', category: 'professional', slug: 'laravel', description: 'Implementing clean, modular code following the Model-View-Controller pattern.', icon: <Layers className="h-6 w-6" />, isFeatured: true },
-  { title: 'SDLC', category: 'professional', slug: 'git', description: 'Managing the complete software development life cycle from planning to maintenance.', icon: <Box className="h-6 w-6" />, isFeatured: true },
+  { title: 'SDLC Specialist', category: 'professional', slug: 'git', description: 'Managing the complete software development life cycle from planning to maintenance.', icon: <Box className="h-6 w-6" />, isFeatured: true },
   { title: 'RESTful APIs', category: 'professional', slug: 'postman', description: 'Designing and integrating secure, performant APIs with Node.js and Laravel.', icon: <LinkIcon className="h-6 w-6" />, isFeatured: true },
   
   // Frontend
@@ -55,15 +56,17 @@ const skills = [
   { title: 'Laravel', category: 'backend', slug: 'laravel', description: 'Building secure, robust PHP applications with MVC architecture and Eloquent.', icon: <Server className="h-6 w-6" />, isFeatured: true },
   { title: 'Express.js', category: 'backend', slug: 'express', description: 'Developing fast, minimalist web applications and APIs with Node.js.', icon: <Terminal className="h-6 w-6" />, isFeatured: true },
   { title: 'Node.js', category: 'backend', slug: 'nodedotjs', description: 'Developing scalable, event-driven backend services and real-time features.', icon: <Cpu className="h-6 w-6" />, isFeatured: true },
+  { title: 'PHP', category: 'backend', slug: 'php', description: 'Server-side scripting for building dynamic web applications and systems.', icon: <Code2 className="h-6 w-6" />, isFeatured: true },
   { title: 'Python', category: 'backend', slug: 'python', description: 'Scripting and data analysis for diverse technical solutions.', icon: <Code2 className="h-6 w-6" /> },
   
   // Database & Tools
   { title: 'PostgreSQL', category: 'database', slug: 'postgresql', description: 'Advanced relational database management with focus on data integrity.', icon: <Database className="h-6 w-6" />, isFeatured: true },
+  { title: 'MySQL', category: 'database', slug: 'mysql', description: 'Popular open-source relational database for web applications.', icon: <Database className="h-6 w-6" />, isFeatured: true },
   { title: 'Prisma ORM', category: 'database', slug: 'prisma', description: 'Type-safe database access for modern JavaScript and TypeScript backends.', icon: <FileType className="h-6 w-6" />, isFeatured: true },
   { title: 'Docker', category: 'tools', slug: 'docker', description: 'Containerizing applications for consistent development and deployment.', icon: <Box className="h-6 w-6" />, isFeatured: true },
-  { title: 'Git & GitHub', category: 'tools', slug: 'github', description: 'Managing code versions and collaborating efficiently within development teams.', icon: <Fingerprint className="h-6 w-6" />, isFeatured: true },
-  { title: 'Vercel & Render', category: 'tools', slug: 'vercel', description: 'Deploying and scaling modern web applications with seamless CI/CD.', icon: <Cloud className="h-6 w-6" />, isFeatured: true },
   { title: 'Supabase', category: 'database', slug: 'supabase', description: 'Leveraging open-source Firebase alternatives for real-time databases and Auth.', icon: <Database className="h-6 w-6" /> },
+  { title: 'Composer & NPM', category: 'tools', slug: 'composer', description: 'Dependency management for PHP and JavaScript ecosystems.', icon: <ToolIcon className="h-6 w-6" /> },
+  { title: 'Laragon & XAMPP', category: 'tools', slug: 'xampp', description: 'Local development environments for PHP and MySQL projects.', icon: <Monitor className="h-6 w-6" /> },
 ];
 
 const categories = [
@@ -81,7 +84,7 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
     : null;
 
   return (
-    <div className="flex-shrink-0 mx-4 w-[340px] group/card">
+    <div className="flex-shrink-0 mx-4 w-[340px] group/card h-full py-4">
       <InteractiveCardWrapper className="rounded-[2.5rem] h-full shadow-lg">
         <div className="relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-6 rounded-[2.5rem] border border-white/20 h-full flex flex-col gap-4 transition-all duration-300 group-hover:bg-white/80 dark:group-hover:bg-neutral-800/80">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity" />
