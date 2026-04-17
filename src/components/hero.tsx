@@ -34,25 +34,23 @@ export default function Hero() {
   }, [headlineFinished, fadeInControls]);
 
   const roles = [
-    'Web Developer',
-    'Full-Stack Developer',
-    'Systems Designer',
-    'Self-Motivated Professional',
-    'Digital Creator',
+    'Full-Stack Web Developer',
+    'Systems Analyst & Designer',
+    'Self-Driven & Highly Autonomous',
     'Problem Solver',
+    'Communicator'
   ];
 
   const techStack = [
-    'Next.js & React',
-    'Node.js & Postgres',
-    'Laravel & PHP',
-    'Tailwind CSS',
-    'JavaScript',
+    'Next.js, React & Prisma ORM',
+    'PHP Laravel & PostgreSQL',
+    'Tailwind CSS, ShadCN/UI',
+    'PHP, JavaScript & Typescript',
     'Vercel & Render',
   ];
 
   const stats = [
-    { label: 'Projects', value: '15+' },
+    { label: 'Projects', value: '10+' },
     { label: 'Years Exp', value: '2+' },
     { label: 'Satisfaction', value: '100%' },
     { label: 'Support', value: '24/7' },
