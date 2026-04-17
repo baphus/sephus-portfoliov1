@@ -73,7 +73,7 @@ const portfolioItems = [
     id: 'medicare',
     title: 'MediCare Clinic Booking System',
     category: 'Academic Deliverables',
-    featured: false,
+    featured: true,
     description: 'It is a comprehensive web-based clinic management and appointment booking system developed as part of an academic project. The system supports multiple user roles including administrators, staff, doctors, and patients. It includes features such as appointment scheduling, medical records management, payment tracking, and role-based dashboards, designed to streamline clinic operations and improve patient experience.',
     image: imageData.projects.find(p => p.id === 'medicare')?.url || 'https://picsum.photos/seed/medicare/800/600',
     hint: 'medical booking system',

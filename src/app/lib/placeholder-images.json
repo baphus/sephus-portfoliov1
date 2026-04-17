@@ -23,12 +23,12 @@
     },
     {
       "id": "medicare",
-      "url": "https://picsum.photos/seed/medicare/800/600",
+      "url": "/portfolio/medicare/medicare.png",
       "hint": "medical booking system"
     },
     {
       "id": "cinema",
-      "url": "https://picsum.photos/seed/cinema/800/600",
+      "url": "https://github.com/baphus/AbsoluteCinema/blob/main/images/banner.jpg?raw=true",
       "hint": "movie theater"
     }
   ]
