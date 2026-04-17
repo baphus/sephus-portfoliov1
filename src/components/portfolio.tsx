@@ -60,7 +60,7 @@ const portfolioItems = [
   {
     id: 'bnhs',
     title: 'BNHS eDocument System',
-    category: 'Web Apps',
+    category: 'Academic Deliverables',
     featured: true,
     description: 'An official production system for Bato National High School. Developed the backend using Laravel MVC, applying core system logic and PostgreSQL design. Built authentication and email notifications with queue workers. Gathered requirements directly from school administration stakeholders.',
     image: imageData.projects.find(p => p.id === 'bnhs')?.url || 'https://picsum.photos/seed/bnhs/800/600',
@@ -72,7 +72,7 @@ const portfolioItems = [
   {
     id: 'medicare',
     title: 'Medicare Clinic System',
-    category: 'Web Apps',
+    category: 'Academic Deliverables',
     featured: false,
     description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized custom MVC routing and Supabase for real-time data handling.',
     image: imageData.projects.find(p => p.id === 'medicare')?.url || 'https://picsum.photos/seed/medicare/800/600',
@@ -84,7 +84,7 @@ const portfolioItems = [
   {
     id: 'cinema',
     title: 'Absolute Cinema Ticketing',
-    category: 'Web Apps',
+    category: 'Academic Deliverables',
     featured: false,
     description: 'A web-based movie ticket booking system developed for CTU to solve issues like double bookings and scheduling conflicts. Taught myself PHP and MySQL from scratch to build this complete system, going beyond course requirements to include a full admin dashboard for managing movies, screens, showtimes, and user data. Features include seat availability checks and booking history.',
     image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
@@ -95,15 +95,16 @@ const portfolioItems = [
   }
 ];
 
-const categories = [
-  { id: 'featured', label: 'Featured', count: portfolioItems.filter(i => i.featured).length },
-  { id: 'all', label: 'All Projects', count: portfolioItems.length },
-  { id: 'web', label: 'Web Apps', count: portfolioItems.filter(i => i.category === 'Web Apps').length },
-];
-
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('featured');
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+
+  const categories = [
+    { id: 'featured', label: 'Featured', count: portfolioItems.filter(i => i.featured).length },
+    { id: 'all', label: 'All Projects', count: portfolioItems.length },
+    { id: 'web', label: 'Web Apps', count: portfolioItems.filter(i => i.category === 'Web Apps').length },
+    { id: 'academic', label: 'Academic Deliverables', count: portfolioItems.filter(i => i.category === 'Academic Deliverables').length },
+  ];
 
   const toggleExpand = (id: string) => {
     const newSet = new Set(expandedItems);
@@ -119,6 +120,7 @@ export default function Portfolio() {
     if (activeFilter === 'featured') return item.featured;
     if (activeFilter === 'all') return true;
     if (activeFilter === 'web') return item.category === 'Web Apps';
+    if (activeFilter === 'academic') return item.category === 'Academic Deliverables';
     return false;
   });
 
