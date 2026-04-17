@@ -25,12 +25,11 @@ import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import Link from 'next/link';
 
 const experiences = [
-  // Fullstack Developer / System Analyst Group
   {
     role: 'Fullstack Developer / System Analyst',
     company: 'Bayanihan One Window (Region VII)',
     location: 'Cebu City, Philippines',
-    period: 'Jan 2026 - Present',
+    period: 'March 2026 - Present',
     status: 'In Development',
     type: 'Capstone Project',
     description: 'Spearheading the architecture and development of an inter-agency referral system for distressed OFWs. Implementing a single-entry intake system managed by the DMW, featuring a Unified Master Case File to coordinate multiple government agencies and ensure accountable service delivery.',
@@ -38,12 +37,23 @@ const experiences = [
     icon: <ShieldAlert className="h-5 w-5" />
   },
   {
+    role: 'Freelance Web Developer',
+    company: 'Normalite EDGE',
+    location: 'Cebu City, Philippines',
+    period: 'Feb 2026 - Present',
+    status: 'In Development',
+    type: 'Proposed System',
+    description: 'Developed a web-based reviewer system for Cebu Normal University. Built features including mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing study schedules and translated client requirements into system workflows following the SDLC.',
+    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
+    icon: <Globe className="h-5 w-5" />
+  },
+  {
     role: 'Fullstack Developer / System Analyst',
-    company: 'Bato National High School (BNHS)',
+    company: 'Bato National High School',
     location: 'Toledo City, Philippines',
-    period: '2024 - Dec 2025',
+    period: 'September 2025 - March 2026',
     status: 'Deployed',
-    type: 'eDocument System',
+    type: 'Client Project',
     description: 'Developed the backend using Laravel MVC and designed the PostgreSQL database. Built authentication and email notifications with queue workers. Analyzed requirements from school administration and maintained the application on Render.',
     tech: ['Vite', 'Laravel', 'Tailwind CSS', 'PostCSS', 'Axios', 'Node.js', 'Cloudinary', 'PostgreSQL'],
     icon: <Database className="h-5 w-5" />
@@ -51,47 +61,35 @@ const experiences = [
   {
     role: 'Fullstack Developer / System Analyst',
     company: 'Medicare Clinic System',
-    location: 'Remote (Cebu City)',
-    period: '2023 - 2024',
-    status: 'Completed',
+    location: 'Cebu Technological University',
+    period: 'September 2025 - October 2025',
+    status: 'School Requirement',
     type: 'Academic Project',
     description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized custom MVC routing and Supabase for real-time data handling.',
-    tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Bootstrap', 'REST API'],
+    tech: ['PHP', 'PDO', 'Supabase', 'Cloudinary', 'Tailwind CSS'],
     icon: <Cpu className="h-5 w-5" />
   },
   {
+    role: 'Freelance Web Developer',
+    company: 'LETReview',
+    location: 'Cebu, Philippines',
+    period: 'Feb 2025 - Jan 2026',
+    status: 'Deployed',
+    type: 'Personal Project',
+    description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days of launch.',
+    tech: ['Typescript', 'Next.js App Router', 'React', 'Firebase', 'Tailwind CSS', 'ShadCN/UI'],
+    icon: <Layout className="h-5 w-5" />
+  },
+  {
     role: 'Fullstack Developer / System Analyst',
-    company: 'AbsoluteCinema (CTU Final Project)',
-    location: 'Cebu City, Philippines',
-    period: '2023',
+    company: 'AbsoluteCinema',
+    location: 'Cebu Technological University',
+    period: 'September 2024',
     status: 'Completed',
     type: 'Academic Project',
     description: 'Taught myself PHP and MySQL from scratch to build a movie ticket booking system. Developed full admin dashboard features for managing movies, screens, and bookings, solving issues like scheduling conflicts and double bookings.',
     tech: ['PHP', 'MySQL', 'JavaScript', 'HTML', 'CSS'],
     icon: <Film className="h-5 w-5" />
-  },
-  // Freelance Web Developer Group
-  {
-    role: 'Freelance Web Developer',
-    company: 'Normalite EDGE',
-    location: 'Cebu City, Philippines',
-    period: 'Feb 2026 - Present',
-    status: 'In Development',
-    type: 'Academic Project',
-    description: 'Developed a web-based reviewer system for Cebu Normal University. Built features including mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing study schedules and translated client requirements into system workflows following the SDLC.',
-    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
-    icon: <Globe className="h-5 w-5" />
-  },
-  {
-    role: 'Freelance Web Developer',
-    company: 'LETReview (PWA)',
-    location: 'Cebu, Philippines',
-    period: 'Jan 2026 - Present',
-    status: 'Live',
-    type: 'Personal Project',
-    description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days of launch.',
-    tech: ['Typescript', 'Next.js App Router', 'React', 'Firebase', 'Tailwind CSS', 'ShadCN/UI'],
-    icon: <Layout className="h-5 w-5" />
   }
 ];
 
