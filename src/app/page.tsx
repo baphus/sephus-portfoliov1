@@ -1,5 +1,6 @@
 import Hero from '@/components/hero';
 import About from '@/components/about';
+import Skills from '@/components/skills';
 import SectionWrapper from '@/components/section-wrapper';
 
 export default function Home() {
@@ -8,6 +9,9 @@ export default function Home() {
       <Hero />
       <SectionWrapper id="about">
         <About />
+      </SectionWrapper>
+      <SectionWrapper id="skills">
+        <Skills />
       </SectionWrapper>
     </div>
   );
