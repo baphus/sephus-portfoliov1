@@ -71,15 +71,15 @@ const portfolioItems = [
   },
   {
     id: 'medicare',
-    title: 'Medicare Clinic System',
+    title: 'MediCare Clinic Booking System',
     category: 'Academic Deliverables',
-    featured: true,
-    description: 'Designed a comprehensive clinic management system handling patient records, appointments, and billing. Utilized custom MVC routing and Supabase for real-time data handling.',
+    featured: false,
+    description: 'It is a comprehensive web-based clinic management and appointment booking system developed as part of an academic project. The system supports multiple user roles including administrators, staff, doctors, and patients. It includes features such as appointment scheduling, medical records management, payment tracking, and role-based dashboards, designed to streamline clinic operations and improve patient experience.',
     image: imageData.projects.find(p => p.id === 'medicare')?.url || 'https://picsum.photos/seed/medicare/800/600',
-    hint: 'medical clinic',
-    tech: ['PHP', 'Supabase', 'Cloudinary', 'Bootstrap'],
-    link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
-    type: 'demo'
+    hint: 'medical booking system',
+    tech: ['PHP', 'Tailwind CSS', 'Supabase PostgreSQL', 'Cloudinary', 'Heroku'],
+    link: 'https://github.com/baphus/Medi-Care-AP3-Project',
+    type: 'github'
   },
   {
     id: 'cinema',

@@ -23,8 +23,8 @@
     },
     {
       "id": "medicare",
-      "url": "/portfolio/medicare-clinic/dashboard.png",
-      "hint": "medical clinic"
+      "url": "https://picsum.photos/seed/medicare/800/600",
+      "hint": "medical booking system"
     },
     {
       "id": "cinema",
