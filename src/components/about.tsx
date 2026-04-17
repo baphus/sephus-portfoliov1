@@ -89,21 +89,34 @@ const itemVariants = {
 };
 
 export default function About() {
-  // Simulating Spotify Data State
   const [nowPlaying, setNowPlaying] = useState({
-    title: "Sunset Chill Mix",
-    artist: "Lofi Beats",
+    title: "Not Listening",
+    artist: "Spotify",
     albumArt: "https://picsum.photos/seed/spotify-chill/200/200",
-    isPlaying: true,
-    link: "https://open.spotify.com"
+    isPlaying: false,
+    songUrl: "https://open.spotify.com"
   });
 
-  // Example effect to show how you would "fetch" live data
   useEffect(() => {
-    // In a real app, you would fetch from your API route here:
-    // fetch('/api/spotify/now-playing').then(res => res.json()).then(data => setNowPlaying(data));
-    
-    // For now, we'll just keep the placeholder but ensure it looks "Live"
+    const fetchNowPlaying = async () => {
+      try {
+        const res = await fetch('/api/now-playing');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.title) {
+            setNowPlaying(data);
+          } else {
+            setNowPlaying(prev => ({ ...prev, isPlaying: false, title: "Not Listening" }));
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch Spotify data');
+      }
+    };
+
+    fetchNowPlaying();
+    const interval = setInterval(fetchNowPlaying, 30000); // Poll every 30 seconds
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -234,7 +247,7 @@ export default function About() {
             <motion.div variants={itemVariants}>
               <InteractiveCardWrapper className="rounded-3xl">
                 <a 
-                  href={nowPlaying.link} 
+                  href={nowPlaying.songUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block group"
