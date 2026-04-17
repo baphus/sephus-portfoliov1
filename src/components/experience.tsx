@@ -15,7 +15,8 @@ import {
   Globe,
   Database,
   Cpu,
-  ShieldAlert
+  ShieldAlert,
+  Star
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -24,6 +25,17 @@ import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import Link from 'next/link';
 
 const experiences = [
+  {
+    role: 'Full-Stack Developer (Project-based)',
+    company: 'Cebu Normal University (BLEPT Department)',
+    location: 'Cebu City, Philippines',
+    period: 'Feb 2026 - Present',
+    status: 'Proposed System',
+    type: 'Normalite EDGE',
+    description: 'Developing a web-based reviewer system for Cebu Normal University. Built mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing deadlines and study schedules. Translated client requirements into functional features following the SDLC.',
+    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
+    icon: <Globe className="h-5 w-5" />
+  },
   {
     role: 'Lead Developer / Systems Architect',
     company: 'Bayanihan One Window (Region VII)',
@@ -36,37 +48,26 @@ const experiences = [
     icon: <ShieldAlert className="h-5 w-5" />
   },
   {
-    role: 'Full-Stack Developer (Project-based)',
-    company: 'Cebu Normal University (BLEPT Department)',
-    location: 'Cebu City, Philippines',
-    period: 'Feb 2026 - Present',
-    status: 'Current',
-    type: 'Normalite EDGE',
-    description: 'Developing a web-based reviewer system for CNU. Built mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing deadlines and study schedules. Translated client requirements into functional features following the SDLC.',
-    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
-    icon: <Globe className="h-5 w-5" />
+    role: 'Full-Stack Developer',
+    company: 'LETReview (Personal Project)',
+    location: 'Cebu, Philippines',
+    period: 'Jan 2026 - Present',
+    status: 'Live',
+    type: 'PWA',
+    description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days.',
+    tech: ['Typescript', 'Next.js App Router', 'React', 'Firebase (Auth & Firestore)', 'Tailwind CSS', 'ShadCN/UI', 'Lucide React'],
+    icon: <Layout className="h-5 w-5" />
   },
   {
-    role: 'Full-Stack Developer (Production Project)',
+    role: 'Full-Stack Developer (School Project)',
     company: 'Bato National High School (BNHS)',
     location: 'Toledo City, Philippines',
     period: '2024 - Dec 2025',
     status: 'Deployed',
     type: 'eDocument System',
     description: 'Developed the backend using Laravel MVC and designed the PostgreSQL database. Built authentication and email notifications with queue workers. Analyzed requirements from school administration and maintained the application on Render.',
-    tech: ['Laravel', 'Vite', 'Tailwind CSS', 'PostCSS', 'Axios', 'Node.js', 'Cloudinary', 'PostgreSQL'],
+    tech: ['Vite', 'Laravel Vite Plugin', 'Tailwind CSS', 'PostCSS', 'Axios', 'Node.js', 'Cloudinary', 'PostgreSQL'],
     icon: <Database className="h-5 w-5" />
-  },
-  {
-    role: 'Full-Stack Developer (Founder)',
-    company: 'LETReview Gamified App',
-    location: 'Cebu, Philippines',
-    period: 'Jan 2026',
-    status: 'Viral Launch',
-    type: 'Personal Project',
-    description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days.',
-    tech: ['Next.js App Router', 'TypeScript', 'React', 'Firebase (Auth & Firestore)', 'Tailwind CSS', 'ShadCN/UI', 'Lucide React'],
-    icon: <Layout className="h-5 w-5" />
   },
   {
     role: 'Full-Stack Developer (Academic)',
