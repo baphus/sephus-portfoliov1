@@ -79,9 +79,27 @@ export default function Education() {
 
               <InteractiveCardWrapper className="rounded-[2rem]">
                 <Card className="h-full rounded-[2rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-6 md:p-8 relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                    <div className="space-y-4 flex-1">
-                      <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+                    {/* Logo on the left */}
+                    {item.logo && (
+                      <div className="flex-shrink-0 flex flex-col items-center gap-4">
+                        <div className="relative h-24 w-24 overflow-hidden rounded-2xl">
+                          <Image 
+                            src={item.logo.url} 
+                            alt={`${item.institution} logo`} 
+                            fill 
+                            className="object-contain"
+                            data-ai-hint={item.logo.hint}
+                          />
+                        </div>
+                        <div className="hidden md:flex p-3 rounded-2xl bg-muted/30 shadow-inner group-hover:bg-primary/5 transition-colors">
+                          {item.icon}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="space-y-4 flex-1 text-center md:text-left">
+                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
                         <h3 className="text-2xl font-bold font-headline group-hover:text-primary transition-colors">
                           {item.degree}
                         </h3>
@@ -96,7 +114,7 @@ export default function Education() {
                         </Badge>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm font-medium text-muted-foreground">
+                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-2 gap-x-6 text-sm font-medium text-muted-foreground">
                         <div className="flex items-center gap-2">
                           <BookOpen className="h-4 w-4 text-blue-500" />
                           {item.institution}
@@ -115,30 +133,13 @@ export default function Education() {
                         {item.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 pt-2">
+                      <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-2">
                         {item.highlights.map((highlight, i) => (
                           <div key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg bg-muted/50 border border-border text-[11px] font-bold text-muted-foreground uppercase tracking-wider group-hover:border-primary/20 group-hover:text-primary transition-colors">
                             <Award className="h-3 w-3 text-amber-500" />
                             {highlight}
                           </div>
                         ))}
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col items-center gap-4">
-                      {item.logo && (
-                        <div className="relative h-20 w-20 rounded-2xl overflow-hidden border border-white/20 bg-white/50 dark:bg-neutral-800/50 p-2 shadow-inner">
-                          <Image 
-                            src={item.logo.url} 
-                            alt={`${item.institution} logo`} 
-                            fill 
-                            className="object-contain p-1"
-                            data-ai-hint={item.logo.hint}
-                          />
-                        </div>
-                      )}
-                      <div className="hidden md:flex p-4 rounded-3xl bg-muted/50 shadow-inner group-hover:bg-primary/5 transition-colors">
-                        {item.icon}
                       </div>
                     </div>
                   </div>
