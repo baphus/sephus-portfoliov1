@@ -17,10 +17,11 @@ import {
   BookOpen, 
   GraduationCap,
   Target,
-  Shield,
-  Search,
   UserCheck,
-  Calendar
+  Calendar,
+  MessageSquare,
+  Zap,
+  GitBranch
 } from 'lucide-react';
 
 const skillLevels = [
@@ -40,24 +41,29 @@ const stats = [
 const drivingValues = [
   { 
     title: "Autonomous", 
-    description: "Demonstrates strong ownership of tasks and the ability to deliver scalable solutions independently.",
-    icon: <UserCheck className="h-6 w-6" /> 
+    description: "Self-driven and capable of independently designing, building, and deploying full-stack applications.",
+    icon: <UserCheck className="h-5 w-5" /> 
   },
   { 
-    title: "SDLC Specialist", 
-    description: "Experienced in the complete Software Development Life Cycle, from requirements gathering to maintenance.",
-    icon: <Target className="h-6 w-6" /> 
+    title: "Communication", 
+    description: "Effectively communicates with stakeholders to translate business requirements into system solutions.",
+    icon: <MessageSquare className="h-5 w-5" /> 
   },
   { 
-    title: "Reliability", 
-    description: "Committed to delivering high-quality, stable, and production-ready solutions using MVC architecture.",
-    icon: <Shield className="h-6 w-6" /> 
+    title: "Systems Thinking", 
+    description: "Designs scalable system architectures and database structures based on real-world requirements.",
+    icon: <Target className="h-5 w-5" /> 
   },
   { 
-    title: "Research-Driven", 
-    description: "Always exploring modern technologies like Prisma, Docker, and Next.js to solve complex problems.",
-    icon: <Search className="h-6 w-6" /> 
+    title: "Optimization", 
+    description: "Builds systems that streamline processes, improve efficiency, and reduce manual work.",
+    icon: <Zap className="h-5 w-5" /> 
   },
+  { 
+    title: "SDLC Execution", 
+    description: "Experienced across the full development lifecycle—from requirements gathering to deployment.",
+    icon: <GitBranch className="h-5 w-5" /> 
+  }
 ];
 
 export default function About() {
@@ -76,15 +82,17 @@ export default function About() {
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
         {drivingValues.map((item, idx) => (
           <InteractiveCardWrapper key={idx} className="rounded-3xl">
-            <Card className="h-full rounded-3xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-8 flex flex-col items-center text-center space-y-4 group transition-all duration-300 shadow-lg hover:shadow-xl hover:bg-primary/5">
-              <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform shadow-inner">
+            <Card className="h-full rounded-3xl border-white/20 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md p-6 flex flex-col items-center text-center space-y-4 group transition-all duration-300 shadow-lg hover:shadow-xl hover:bg-primary/5">
+              <div className="p-3.5 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform shadow-inner">
                 {item.icon}
               </div>
-              <h4 className="text-xl font-bold font-headline">{item.title}</h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              <div className="space-y-2">
+                <h4 className="text-base font-bold font-headline leading-tight">{item.title}</h4>
+                <p className="text-[11px] text-muted-foreground leading-relaxed font-medium">{item.description}</p>
+              </div>
             </Card>
           </InteractiveCardWrapper>
         ))}
