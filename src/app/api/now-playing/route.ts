@@ -31,7 +31,7 @@ export async function GET() {
       title,
     });
   } catch (error) {
-    console.error('Error fetching Spotify data:', error);
-    return NextResponse.json({ isPlaying: false }, { status: 500 });
+    // Return a graceful "Not Playing" state instead of a 500 error during setup
+    return NextResponse.json({ isPlaying: false });
   }
 }
