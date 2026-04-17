@@ -35,12 +35,12 @@
   "education": [
     {
       "id": "ctu",
-      "url": "https://picsum.photos/seed/ctu-seal/200/200",
+      "url": "https://res.cloudinary.com/dzjshue6h/image/upload/q_auto/f_auto/v1776403834/Cebu_Technological_University_Logo_nm5ng2.png",
       "hint": "university seal"
     },
     {
       "id": "tcshs",
-      "url": "https://picsum.photos/seed/tcshs-crest/200/200",
+      "url": "https://res.cloudinary.com/dzjshue6h/image/upload/q_auto/f_auto/v1776403921/Untitled_design_15_cecxob.png",
       "hint": "school crest"
     }
   ]
