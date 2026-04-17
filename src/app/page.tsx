@@ -1,4 +1,3 @@
-
 import Hero from '@/components/hero';
 import About from '@/components/about';
 import TechMarquee from '@/components/tech-marquee';
@@ -11,7 +10,7 @@ export default function Home() {
       <SectionWrapper id="about">
         <About />
       </SectionWrapper>
-      <div className="py-16 md:py-24">
+      <div className="pb-16 md:pb-24">
         <TechMarquee />
       </div>
     </div>
