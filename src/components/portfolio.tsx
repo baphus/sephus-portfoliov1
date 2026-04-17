@@ -34,18 +34,6 @@ const portfolioItems = [
     type: 'internal'
   },
   {
-    id: 'letreview',
-    title: 'LETReview - Licensure Reviewer (PWA)',
-    category: 'Web Apps',
-    featured: true,
-    description: "Full-stack Progressive Web App for licensure exam preparation. Features quiz mode, flashcards, and gamification elements (daily streaks, achievements, virtual pets). Achieved 120+ users and 4,000+ visits within 14 days of launch. Integrated secure authentication and real-time NoSQL database using Firebase.",
-    image: imageData.projects.find(p => p.id === 'letreview')?.url || 'https://picsum.photos/seed/let/800/600',
-    hint: 'educational app',
-    tech: ['Next.js', 'Typescript', 'Firebase', 'Tailwind CSS', 'PWA'],
-    link: 'https://studio--letreview.us-central1.hosted.app/',
-    type: 'demo'
-  },
-  {
     id: 'normalite',
     title: 'Normalite EDGE — CNU Student Hub',
     category: 'Web Apps',
@@ -55,6 +43,18 @@ const portfolioItems = [
     hint: 'academic excellence',
     tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL'],
     link: 'https://normalite-edge.vercel.app/',
+    type: 'demo'
+  },
+  {
+    id: 'letreview',
+    title: 'LETReview - Licensure Reviewer (PWA)',
+    category: 'Web Apps',
+    featured: true,
+    description: "Full-stack Progressive Web App for licensure exam preparation. Features quiz mode, flashcards, and gamification elements (daily streaks, achievements, virtual pets). Achieved 120+ users and 4,000+ visits within 14 days of launch. Integrated secure authentication and real-time NoSQL database using Firebase.",
+    image: imageData.projects.find(p => p.id === 'letreview')?.url || 'https://picsum.photos/seed/let/800/600',
+    hint: 'educational app',
+    tech: ['Next.js', 'Typescript', 'Firebase', 'Tailwind CSS', 'PWA'],
+    link: 'https://studio--letreview.us-central1.hosted.app/',
     type: 'demo'
   },
   {
@@ -70,18 +70,6 @@ const portfolioItems = [
     type: 'demo'
   },
   {
-    id: 'cinema',
-    title: 'Absolute Cinema Ticketing',
-    category: 'Web Apps',
-    featured: false,
-    description: 'A web-based movie ticket booking system developed for CTU to solve issues like double bookings and scheduling conflicts. Taught myself PHP and MySQL from scratch to build this complete system, going beyond course requirements to include a full admin dashboard for managing movies, screens, showtimes, and user data. Features include seat availability checks and booking history.',
-    image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
-    hint: 'movie theater',
-    tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
-    link: 'https://github.com/baphus/AbsoluteCinema',
-    type: 'github'
-  },
-  {
     id: 'medicare',
     title: 'Medicare Clinic System',
     category: 'Web Apps',
@@ -92,6 +80,18 @@ const portfolioItems = [
     tech: ['PHP', 'Supabase', 'Cloudinary', 'Bootstrap'],
     link: 'https://medicare-clinic-18889ef8f83d.herokuapp.com/',
     type: 'demo'
+  },
+  {
+    id: 'cinema',
+    title: 'Absolute Cinema Ticketing',
+    category: 'Web Apps',
+    featured: false,
+    description: 'A web-based movie ticket booking system developed for CTU to solve issues like double bookings and scheduling conflicts. Taught myself PHP and MySQL from scratch to build this complete system, going beyond course requirements to include a full admin dashboard for managing movies, screens, showtimes, and user data. Features include seat availability checks and booking history.',
+    image: imageData.projects.find(p => p.id === 'cinema')?.url || 'https://picsum.photos/seed/cinema/800/600',
+    hint: 'movie theater',
+    tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
+    link: 'https://github.com/baphus/AbsoluteCinema',
+    type: 'github'
   }
 ];
 
