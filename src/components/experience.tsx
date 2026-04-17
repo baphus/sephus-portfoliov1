@@ -25,19 +25,9 @@ import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import Link from 'next/link';
 
 const experiences = [
+  // Fullstack Developer / System Analyst Group
   {
-    role: 'Full-Stack Developer (Normalite EDGE)',
-    company: 'Cebu Normal University (BLEPT Department)',
-    location: 'Cebu City, Philippines',
-    period: 'Feb 2026 - Present',
-    status: 'In Development',
-    type: 'Academic Project',
-    description: 'Developed a web-based reviewer system for Cebu Normal University. Built features including mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing study schedules and translated client requirements into system workflows following the SDLC.',
-    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
-    icon: <Globe className="h-5 w-5" />
-  },
-  {
-    role: 'Lead Developer / Systems Architect',
+    role: 'Fullstack Developer / System Analyst',
     company: 'Bayanihan One Window (Region VII)',
     location: 'Cebu City, Philippines',
     period: 'Jan 2026 - Present',
@@ -48,18 +38,7 @@ const experiences = [
     icon: <ShieldAlert className="h-5 w-5" />
   },
   {
-    role: 'Full-Stack Developer (Personal Project)',
-    company: 'LETReview (PWA)',
-    location: 'Cebu, Philippines',
-    period: 'Jan 2026 - Present',
-    status: 'Live',
-    type: 'Personal Project',
-    description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days of launch.',
-    tech: ['Typescript', 'Next.js App Router', 'React', 'Firebase', 'Tailwind CSS', 'ShadCN/UI'],
-    icon: <Layout className="h-5 w-5" />
-  },
-  {
-    role: 'Full-Stack Developer (School Project)',
+    role: 'Fullstack Developer / System Analyst',
     company: 'Bato National High School (BNHS)',
     location: 'Toledo City, Philippines',
     period: '2024 - Dec 2025',
@@ -70,7 +49,7 @@ const experiences = [
     icon: <Database className="h-5 w-5" />
   },
   {
-    role: 'Full-Stack Developer (Academic)',
+    role: 'Fullstack Developer / System Analyst',
     company: 'Medicare Clinic System',
     location: 'Remote (Cebu City)',
     period: '2023 - 2024',
@@ -81,7 +60,7 @@ const experiences = [
     icon: <Cpu className="h-5 w-5" />
   },
   {
-    role: 'Full-Stack Developer (Academic)',
+    role: 'Fullstack Developer / System Analyst',
     company: 'AbsoluteCinema (CTU Final Project)',
     location: 'Cebu City, Philippines',
     period: '2023',
@@ -90,6 +69,29 @@ const experiences = [
     description: 'Taught myself PHP and MySQL from scratch to build a movie ticket booking system. Developed full admin dashboard features for managing movies, screens, and bookings, solving issues like scheduling conflicts and double bookings.',
     tech: ['PHP', 'MySQL', 'JavaScript', 'HTML', 'CSS'],
     icon: <Film className="h-5 w-5" />
+  },
+  // Freelance Web Developer Group
+  {
+    role: 'Freelance Web Developer',
+    company: 'Normalite EDGE',
+    location: 'Cebu City, Philippines',
+    period: 'Feb 2026 - Present',
+    status: 'In Development',
+    type: 'Academic Project',
+    description: 'Developed a web-based reviewer system for Cebu Normal University. Built features including mock exams, flashcards, score analytics, and virtual meeting scheduling. Implemented a calendar system for managing study schedules and translated client requirements into system workflows following the SDLC.',
+    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'REST', 'JWT'],
+    icon: <Globe className="h-5 w-5" />
+  },
+  {
+    role: 'Freelance Web Developer',
+    company: 'LETReview (PWA)',
+    location: 'Cebu, Philippines',
+    period: 'Jan 2026 - Present',
+    status: 'Live',
+    type: 'Personal Project',
+    description: 'Developed a gamified PWA for licensure exam preparation. Features quiz mode, flashcards, daily streaks, achievements, and virtual pets. Integrated secure Auth and Firestore. Achieved 120+ users and 4,000+ visits within 14 days of launch.',
+    tech: ['Typescript', 'Next.js App Router', 'React', 'Firebase', 'Tailwind CSS', 'ShadCN/UI'],
+    icon: <Layout className="h-5 w-5" />
   }
 ];
 

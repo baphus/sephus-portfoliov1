@@ -71,6 +71,7 @@ const skills = [
   { title: 'Composer & NPM', category: 'tools', slug: 'composer', description: 'Dependency management for PHP and JavaScript ecosystems.', icon: <ToolIcon className="h-6 w-6" /> },
   { title: 'Vercel & Render', category: 'tools', slug: 'vercel', description: 'Modern cloud platforms for static and dynamic site hosting and deployment.', icon: <Rocket className="h-6 w-6" /> },
   { title: 'XAMPP & Laragon', category: 'tools', slug: 'xampp', description: 'Local development environments for PHP and MySQL projects.', icon: <Monitor className="h-6 w-6" /> },
+  { title: 'Laravel Herd', category: 'tools', slug: 'laravel', description: 'Zero-config local development environment for Laravel.', icon: <Server className="h-6 w-6" /> },
 ];
 
 const categories = [
@@ -147,7 +148,10 @@ export default function Skills() {
   }, [filteredSkills.length]);
 
   const activeSlugs = useMemo(() => {
-    return filteredSkills.filter(s => s.slug).map(s => s.slug as string);
+    const slugs = filteredSkills.filter(s => s.slug).map(s => s.slug as string);
+    // Add additional slugs for the cloud if it's too empty
+    if (slugs.length < 5) return [...slugs, 'javascript', 'typescript', 'react', 'nextdotjs', 'laravel', 'php', 'python', 'docker'];
+    return slugs;
   }, [filteredSkills]);
 
   return (
@@ -204,7 +208,7 @@ export default function Skills() {
                 {mounted && (
                   <IconCloud 
                     key={activeCategory}
-                    iconSlugs={activeSlugs.length > 0 ? activeSlugs : ['javascript', 'typescript', 'react', 'nextdotjs', 'laravel', 'php', 'python', 'docker']} 
+                    iconSlugs={activeSlugs} 
                   />
                 )}
               </div>
