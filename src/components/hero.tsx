@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef, useState, useEffect } from 'react';
@@ -11,20 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Global flag to track if the hero section has already completed its intro sequence
-// This survives client-side navigation but resets on a hard browser refresh.
 let hasHeroAnimated = false;
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  },
-};
 
 export default function Hero() {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -32,15 +18,13 @@ export default function Hero() {
   const fadeInControls = useAnimation();
 
   useEffect(() => {
-    // If we've already animated in this session, jump to the finished state immediately
     if (hasHeroAnimated) {
-      fadeInControls.set("visible");
+      // If revisited, trigger a quick fluid entrance
+      fadeInControls.start("visible");
     }
   }, [fadeInControls]);
 
   useEffect(() => {
-    // When the typewriter finishes (or if it's already done from a previous visit), 
-    // trigger the entrance animations for the rest of the UI
     if (headlineFinished && !hasHeroAnimated) {
       fadeInControls.start("visible");
       hasHeroAnimated = true;
@@ -72,7 +56,10 @@ export default function Hero() {
 
   const resumeLink = "https://drive.google.com/file/d/1DuSx0NbhRIhrQStPamOgR52aI2DZD75D/view?usp=sharing";
 
-  const skipTransition = { duration: 0 };
+  // Fast, fluid transition for revisits
+  const fluidTransition = { duration: 0.4, ease: "easeOut" };
+  // Cinematic transition for first visit
+  const cinematicTransition = { duration: 0.8, ease: "easeOut" };
 
   return (
     <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-transparent overflow-hidden">
@@ -81,9 +68,9 @@ export default function Hero() {
           
           <div className="flex flex-col space-y-8 z-10 text-left">
             <motion.div
-              initial={hasHeroAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={hasHeroAnimated ? skipTransition : { delay: 0.2 }}
+              transition={hasHeroAnimated ? fluidTransition : { delay: 0.2 }}
             >
               <Badge variant="secondary" className="px-3 py-1 bg-primary/10 text-primary border-primary/20 flex items-center gap-2 w-fit rounded-full shadow-sm backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
@@ -134,14 +121,14 @@ export default function Hero() {
               <motion.p 
                 className="text-lg text-muted-foreground max-w-xl leading-relaxed"
                 variants={{
-                  hidden: { opacity: 0, y: 20 },
+                  hidden: { opacity: 0, y: 15 },
                   visible: { 
                     opacity: 1,
                     y: 0,
-                    transition: hasHeroAnimated ? skipTransition : { duration: 0.6, ease: "easeOut" }
+                    transition: hasHeroAnimated ? fluidTransition : cinematicTransition
                   }
                 }}
-                initial={hasHeroAnimated ? "visible" : "hidden"}
+                initial="hidden"
                 animate={fadeInControls}
               >
                 Passionate developer crafting scalable, user-friendly applications with modern web technologies. I turn complex problems into elegant solutions.
@@ -151,14 +138,14 @@ export default function Hero() {
             <motion.div 
               className="space-y-4"
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { opacity: 0, y: 15 },
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: hasHeroAnimated ? skipTransition : { duration: 0.6, ease: "easeOut" }
+                  transition: hasHeroAnimated ? fluidTransition : cinematicTransition
                 }
               }}
-              initial={hasHeroAnimated ? "visible" : "hidden"}
+              initial="hidden"
               animate={fadeInControls}
             >
               <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Specializing in</p>
@@ -174,14 +161,14 @@ export default function Hero() {
             <motion.div
               className="flex flex-col sm:flex-row items-center gap-4 pt-4"
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { opacity: 0, y: 15 },
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: hasHeroAnimated ? skipTransition : { duration: 0.6, ease: "easeOut" }
+                  transition: hasHeroAnimated ? fluidTransition : cinematicTransition
                 }
               }}
-              initial={hasHeroAnimated ? "visible" : "hidden"}
+              initial="hidden"
               animate={fadeInControls}
             >
               <Button asChild className="btn-aqua btn-aqua-primary min-w-[220px] h-14 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
@@ -199,14 +186,14 @@ export default function Hero() {
             <motion.div 
               className="flex items-center gap-4 pt-4"
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { opacity: 0, y: 15 },
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: hasHeroAnimated ? skipTransition : { duration: 0.6, ease: "easeOut" }
+                  transition: hasHeroAnimated ? fluidTransition : cinematicTransition
                 }
               }}
-              initial={hasHeroAnimated ? "visible" : "hidden"}
+              initial="hidden"
               animate={fadeInControls}
             >
               {[
@@ -230,9 +217,9 @@ export default function Hero() {
 
           <motion.div 
             className="relative flex justify-center lg:justify-end z-10"
-            initial={hasHeroAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={hasHeroAnimated ? { opacity: 1, scale: 1 } : (headlineFinished ? { opacity: 1, scale: 1 } : {})}
-            transition={hasHeroAnimated ? skipTransition : { duration: 0.8, ease: "easeOut" }}
+            transition={hasHeroAnimated ? fluidTransition : { duration: 0.8, ease: "easeOut" }}
           >
             <div className="w-full max-w-md bg-white/60 dark:bg-neutral-900/60 backdrop-blur-md rounded-3xl border border-white/20 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-8 space-y-8">
               <div className="relative mx-auto w-40 h-40">
