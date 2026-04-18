@@ -83,6 +83,15 @@ const categories = [
   { id: 'database', label: 'Database & Tools', icon: <Database className="h-4 w-4 text-indigo-500" /> },
 ];
 
+const categoryInsights: Record<string, string> = {
+  featured: "Seeking a remote internship opportunity. I demonstrate strong ownership of tasks and the ability to deliver scalable solutions using modern frameworks like Next.js and Laravel.",
+  all: "A versatile full-stack developer with a deep understanding of the entire SDLC, from requirement gathering to production deployment.",
+  professional: "Expertise in system analysis, design patterns, and MVC architecture. I bridge the gap between business needs and technical implementation.",
+  frontend: "Crafting responsive, high-performance user interfaces with modern React frameworks, ensuring accessibility and a premium user experience.",
+  backend: "Building secure, scalable server-side applications and RESTful APIs using robust frameworks like Laravel and Node.js.",
+  database: "Managing data integrity and performance through advanced relational database design and modern ORM tools like Prisma."
+};
+
 const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
   const brandIconUrl = skill.slug 
     ? `https://cdn.simpleicons.org/${skill.slug}`
@@ -195,7 +204,7 @@ export default function Skills() {
                     <span className="text-xs font-black uppercase tracking-widest text-foreground">Core Competency</span>
                   </div>
                   <p className="text-sm font-medium text-muted-foreground leading-relaxed italic">
-                    "Seeking a remote internship opportunity. I demonstrate strong ownership of tasks and the ability to deliver scalable solutions using modern frameworks like Next.js and Laravel."
+                    "{categoryInsights[activeCategory]}"
                   </p>
                 </div>
               </div>
