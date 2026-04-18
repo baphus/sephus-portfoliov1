@@ -193,16 +193,16 @@ export default function Skills() {
                 ))}
               </div>
               
-              <div className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md border border-white/20 shadow-xl hidden lg:block text-left min-h-[180px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeCategory}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="space-y-4"
-                  >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCategory}
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md border border-white/20 shadow-xl hidden lg:block text-left min-h-[180px] overflow-hidden"
+                >
+                  <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <Target className="h-5 w-5 text-rose-500" />
                       <span className="text-xs font-black uppercase tracking-widest text-foreground">
@@ -212,20 +212,29 @@ export default function Skills() {
                     <p className="text-sm font-medium text-muted-foreground leading-relaxed italic">
                       "{categoryInsights[activeCategory]}"
                     </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             <div className="relative flex items-center justify-center p-4 min-h-[400px]">
               <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
               <div className="w-full max-w-sm lg:max-w-md">
-                {mounted && (
-                  <IconCloud 
+                <AnimatePresence mode="wait">
+                  <motion.div
                     key={activeCategory}
-                    iconSlugs={activeSlugs} 
-                  />
-                )}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                  >
+                    {mounted && (
+                      <IconCloud 
+                        iconSlugs={activeSlugs} 
+                      />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </div>
