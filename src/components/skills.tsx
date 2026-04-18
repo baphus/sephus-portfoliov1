@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -30,6 +29,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconCloud } from '@/components/ui/interactive-icon-cloud';
 import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const skills = [
   // Methodology & Professional
@@ -193,18 +193,27 @@ export default function Skills() {
                 ))}
               </div>
               
-              <div className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md border border-white/20 shadow-xl hidden lg:block text-left">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Target className="h-5 w-5 text-rose-500" />
-                    <span className="text-xs font-black uppercase tracking-widest text-foreground">
-                      {activeCategoryLabel} Competency
-                    </span>
-                  </div>
-                  <p className="text-sm font-medium text-muted-foreground leading-relaxed italic">
-                    "{categoryInsights[activeCategory]}"
-                  </p>
-                </div>
+              <div className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md border border-white/20 shadow-xl hidden lg:block text-left min-h-[180px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeCategory}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="space-y-4"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Target className="h-5 w-5 text-rose-500" />
+                      <span className="text-xs font-black uppercase tracking-widest text-foreground">
+                        {activeCategoryLabel} Competency
+                      </span>
+                    </div>
+                    <p className="text-sm font-medium text-muted-foreground leading-relaxed italic">
+                      "{categoryInsights[activeCategory]}"
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
 
