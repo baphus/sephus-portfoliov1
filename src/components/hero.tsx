@@ -58,11 +58,11 @@ export default function Hero() {
 
   const resumeLink = "https://drive.google.com/file/d/1DuSx0NbhRIhrQStPamOgR52aI2DZD75D/view?usp=sharing";
 
-  // Aligned with SectionWrapper timing
+  // Unified transition settings to match SectionWrapper
   const fluidTransition = { duration: 0.4, ease: [0.22, 1, 0.36, 1] };
   const cinematicTransition = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
-
-  // Aligned with SectionWrapper offsets
+  
+  const activeTransition = isFirstReveal ? cinematicTransition : fluidTransition;
   const yOffset = isFirstReveal ? 40 : 10;
 
   return (
@@ -86,7 +86,12 @@ export default function Hero() {
             </motion.div>
 
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-foreground font-headline">
+              <motion.h1 
+                className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-foreground font-headline"
+                initial={{ opacity: 0, y: yOffset }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={activeTransition}
+              >
                 {hasHeroAnimated ? (
                   <span className="whitespace-nowrap">Hi, I'm <span className="text-primary">Josephus 👋</span></span>
                 ) : (
@@ -105,9 +110,14 @@ export default function Hero() {
                     }}
                   />
                 )}
-              </h1>
+              </motion.h1>
               
-              <div className="h-10 text-xl md:text-3xl font-semibold text-muted-foreground flex items-center">
+              <motion.div 
+                className="h-10 text-xl md:text-3xl font-semibold text-muted-foreground flex items-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: isFirstReveal ? 1 : 0.2, ...activeTransition }}
+              >
                 {headlineFinished && (
                   <Typewriter
                     options={{
@@ -120,7 +130,7 @@ export default function Hero() {
                     }}
                   />
                 )}
-              </div>
+              </motion.div>
 
               <motion.p 
                 className="text-lg text-muted-foreground max-w-xl leading-relaxed"
@@ -129,7 +139,7 @@ export default function Hero() {
                   visible: { 
                     opacity: 1,
                     y: 0,
-                    transition: isFirstReveal ? cinematicTransition : fluidTransition
+                    transition: activeTransition
                   }
                 }}
                 initial="hidden"
@@ -146,7 +156,7 @@ export default function Hero() {
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: isFirstReveal ? cinematicTransition : fluidTransition
+                  transition: activeTransition
                 }
               }}
               initial="hidden"
@@ -169,7 +179,7 @@ export default function Hero() {
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: isFirstReveal ? cinematicTransition : fluidTransition
+                  transition: activeTransition
                 }
               }}
               initial="hidden"
@@ -194,7 +204,7 @@ export default function Hero() {
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: isFirstReveal ? cinematicTransition : fluidTransition
+                  transition: activeTransition
                 }
               }}
               initial="hidden"
@@ -223,7 +233,7 @@ export default function Hero() {
             className="relative flex justify-center lg:justify-end z-10"
             initial={{ opacity: 0, scale: 0.95, y: yOffset }}
             animate={hasHeroAnimated ? { opacity: 1, scale: 1, y: 0 } : (headlineFinished ? { opacity: 1, scale: 1, y: 0 } : {})}
-            transition={isFirstReveal ? cinematicTransition : fluidTransition}
+            transition={activeTransition}
           >
             <div className="w-full max-w-md bg-white/60 dark:bg-neutral-900/60 backdrop-blur-md rounded-3xl border border-white/20 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-8 space-y-8">
               <div className="relative mx-auto w-40 h-40">
