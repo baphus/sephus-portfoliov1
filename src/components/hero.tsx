@@ -5,7 +5,7 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Github, Linkedin, Mail, Facebook, Send, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail, Facebook, Download, ExternalLink } from 'lucide-react';
 import Typewriter from 'typewriter-effect';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -142,9 +142,9 @@ export default function Hero() {
               animate={fadeInControls}
             >
               <Button asChild className="btn-aqua btn-aqua-primary min-w-[220px] h-14 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
-                <Link href="/contact" className="flex items-center justify-center gap-2">
-                  <span className="flex items-center gap-2 text-white">Get In Touch <Send className="h-4 w-4" /></span>
-                </Link>
+                <a href="/Josephus_Sarsonas_Resume.pdf" download className="flex items-center justify-center gap-2">
+                  <span className="flex items-center gap-2 text-white">Download Resume <Download className="h-4 w-4" /></span>
+                </a>
               </Button>
               <Button asChild variant="outline" className="h-14 px-8 rounded-full border-border bg-background/50 backdrop-blur-sm hover:bg-accent transition-all font-bold">
                 <Link href="/portfolio">
