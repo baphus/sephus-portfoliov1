@@ -56,6 +56,8 @@ export default function Hero() {
     { label: 'Support', value: '24/7' },
   ];
 
+  const resumeLink = "https://drive.google.com/file/d/1DuSx0NbhRIhrQStPamOgR52aI2DZD75D/view?usp=sharing";
+
   return (
     <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-transparent overflow-hidden">
       <div className="relative flex-1 container mx-auto px-4 md:px-6 flex items-center pt-24 pb-32">
@@ -142,7 +144,7 @@ export default function Hero() {
               animate={fadeInControls}
             >
               <Button asChild className="btn-aqua btn-aqua-primary min-w-[220px] h-14 px-8 rounded-full shadow-lg hover:scale-105 transition-transform group">
-                <a href="/Josephus_Sarsonas_Resume.pdf" download className="flex items-center justify-center gap-2">
+                <a href={resumeLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                   <span className="flex items-center gap-2 text-white">Download Resume <Download className="h-4 w-4" /></span>
                 </a>
               </Button>
