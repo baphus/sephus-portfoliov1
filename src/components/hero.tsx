@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useState, useEffect } from 'react';
@@ -15,11 +16,11 @@ let hasHeroAnimated = false;
 export default function Hero() {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const [headlineFinished, setHeadlineFinished] = useState(hasHeroAnimated);
+  const [isFirstReveal, setIsFirstReveal] = useState(!hasHeroAnimated);
   const fadeInControls = useAnimation();
 
   useEffect(() => {
     if (hasHeroAnimated) {
-      // If revisited, trigger a quick fluid entrance
       fadeInControls.start("visible");
     }
   }, [fadeInControls]);
@@ -28,6 +29,7 @@ export default function Hero() {
     if (headlineFinished && !hasHeroAnimated) {
       fadeInControls.start("visible");
       hasHeroAnimated = true;
+      setIsFirstReveal(false);
     }
   }, [headlineFinished, fadeInControls]);
 
@@ -56,10 +58,12 @@ export default function Hero() {
 
   const resumeLink = "https://drive.google.com/file/d/1DuSx0NbhRIhrQStPamOgR52aI2DZD75D/view?usp=sharing";
 
-  // Fast, fluid transition for revisits
-  const fluidTransition = { duration: 0.4, ease: "easeOut" };
-  // Cinematic transition for first visit
-  const cinematicTransition = { duration: 0.8, ease: "easeOut" };
+  // Aligned with SectionWrapper timing
+  const fluidTransition = { duration: 0.4, ease: [0.22, 1, 0.36, 1] };
+  const cinematicTransition = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
+
+  // Aligned with SectionWrapper offsets
+  const yOffset = isFirstReveal ? 40 : 10;
 
   return (
     <section ref={targetRef} id="home" className="relative min-h-screen flex flex-col bg-transparent overflow-hidden">
@@ -68,9 +72,9 @@ export default function Hero() {
           
           <div className="flex flex-col space-y-8 z-10 text-left">
             <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={hasHeroAnimated ? fluidTransition : { delay: 0.2 }}
+              initial={{ opacity: 0, y: yOffset }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={isFirstReveal ? { delay: 0.2, ...cinematicTransition } : fluidTransition}
             >
               <Badge variant="secondary" className="px-3 py-1 bg-primary/10 text-primary border-primary/20 flex items-center gap-2 w-fit rounded-full shadow-sm backdrop-blur-sm">
                 <span className="relative flex h-2 w-2">
@@ -121,11 +125,11 @@ export default function Hero() {
               <motion.p 
                 className="text-lg text-muted-foreground max-w-xl leading-relaxed"
                 variants={{
-                  hidden: { opacity: 0, y: 15 },
+                  hidden: { opacity: 0, y: yOffset },
                   visible: { 
                     opacity: 1,
                     y: 0,
-                    transition: hasHeroAnimated ? fluidTransition : cinematicTransition
+                    transition: isFirstReveal ? cinematicTransition : fluidTransition
                   }
                 }}
                 initial="hidden"
@@ -138,11 +142,11 @@ export default function Hero() {
             <motion.div 
               className="space-y-4"
               variants={{
-                hidden: { opacity: 0, y: 15 },
+                hidden: { opacity: 0, y: yOffset },
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: hasHeroAnimated ? fluidTransition : cinematicTransition
+                  transition: isFirstReveal ? cinematicTransition : fluidTransition
                 }
               }}
               initial="hidden"
@@ -161,11 +165,11 @@ export default function Hero() {
             <motion.div
               className="flex flex-col sm:flex-row items-center gap-4 pt-4"
               variants={{
-                hidden: { opacity: 0, y: 15 },
+                hidden: { opacity: 0, y: yOffset },
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: hasHeroAnimated ? fluidTransition : cinematicTransition
+                  transition: isFirstReveal ? cinematicTransition : fluidTransition
                 }
               }}
               initial="hidden"
@@ -186,11 +190,11 @@ export default function Hero() {
             <motion.div 
               className="flex items-center gap-4 pt-4"
               variants={{
-                hidden: { opacity: 0, y: 15 },
+                hidden: { opacity: 0, y: yOffset },
                 visible: { 
                   opacity: 1,
                   y: 0,
-                  transition: hasHeroAnimated ? fluidTransition : cinematicTransition
+                  transition: isFirstReveal ? cinematicTransition : fluidTransition
                 }
               }}
               initial="hidden"
@@ -217,9 +221,9 @@ export default function Hero() {
 
           <motion.div 
             className="relative flex justify-center lg:justify-end z-10"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={hasHeroAnimated ? { opacity: 1, scale: 1 } : (headlineFinished ? { opacity: 1, scale: 1 } : {})}
-            transition={hasHeroAnimated ? fluidTransition : { duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.95, y: yOffset }}
+            animate={hasHeroAnimated ? { opacity: 1, scale: 1, y: 0 } : (headlineFinished ? { opacity: 1, scale: 1, y: 0 } : {})}
+            transition={isFirstReveal ? cinematicTransition : fluidTransition}
           >
             <div className="w-full max-w-md bg-white/60 dark:bg-neutral-900/60 backdrop-blur-md rounded-3xl border border-white/20 dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-8 space-y-8">
               <div className="relative mx-auto w-40 h-40">

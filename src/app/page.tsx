@@ -1,3 +1,4 @@
+
 import Hero from '@/components/hero';
 import About from '@/components/about';
 import TechMarquee from '@/components/tech-marquee';
@@ -10,9 +11,9 @@ export default function Home() {
       <SectionWrapper id="about">
         <About />
       </SectionWrapper>
-      <div className="pb-16 md:pb-24">
+      <SectionWrapper id="technologies" className="pb-16 md:pb-24 py-0">
         <TechMarquee />
-      </div>
+      </SectionWrapper>
     </div>
   );
 }
