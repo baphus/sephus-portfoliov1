@@ -9,29 +9,21 @@ import {
   Server, 
   Layers, 
   Cpu, 
-  Globe, 
-  Smartphone, 
-  Wrench, 
   Monitor, 
   Terminal, 
-  Activity, 
   ShieldCheck, 
-  Search, 
-  MessageSquare, 
   Cloud, 
-  Fingerprint, 
   Box, 
   Infinity as InfinityIcon, 
   Sparkles,
-  Lightbulb,
-  Briefcase,
   Target,
   Zap,
   Palette,
   Link as LinkIcon,
   FileType,
   Wrench as ToolIcon,
-  Rocket
+  Rocket,
+  MessageSquare
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -145,6 +137,10 @@ export default function Skills() {
     return skills.filter(s => s.category === activeCategory);
   }, [activeCategory]);
 
+  const activeCategoryLabel = useMemo(() => {
+    return categories.find(c => c.id === activeCategory)?.label || 'Core';
+  }, [activeCategory]);
+
   const marqueeItems = useMemo(() => {
     if (filteredSkills.length === 0) return [];
     const minItems = 15;
@@ -201,7 +197,9 @@ export default function Skills() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Target className="h-5 w-5 text-rose-500" />
-                    <span className="text-xs font-black uppercase tracking-widest text-foreground">Core Competency</span>
+                    <span className="text-xs font-black uppercase tracking-widest text-foreground">
+                      {activeCategoryLabel} Competency
+                    </span>
                   </div>
                   <p className="text-sm font-medium text-muted-foreground leading-relaxed italic">
                     "{categoryInsights[activeCategory]}"
