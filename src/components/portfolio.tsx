@@ -31,8 +31,8 @@ const portfolioItems = [
     image: imageData.projects.find(p => p.id === 'bayanihan')?.url || 'https://picsum.photos/seed/bayanihan/800/600',
     hint: 'government system',
     tech: ['Laravel', 'Vue.js', 'PostgreSQL', 'Composer', 'Node.js', 'Tailwind CSS'],
-    link: '#',
-    type: 'internal'
+    link: 'https://drive.google.com/file/d/1PeUUWOHFMD1ZtMT7HRSR3fYeU11StZSy/view?usp=sharing',
+    type: 'demo'
   },
   {
     id: 'normalite',
@@ -286,7 +286,7 @@ export default function Portfolio() {
                         
                         <Button asChild className="w-full btn-aqua btn-aqua-primary mt-4 py-6 shadow-none rounded-2xl" disabled={item.link === '#'}>
                           <a href={item.link} target={item.link !== '#' ? "_blank" : "_self"} rel="noopener noreferrer" className="flex items-center gap-2">
-                            <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Visit Demo' : 'Coming Soon')}</span>
+                            <span>{item.type === 'github' ? 'View on GitHub' : (item.link !== '#' ? 'Click to View Demo' : 'Coming Soon')}</span>
                             {item.type === 'github' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
                           </a>
                         </Button>

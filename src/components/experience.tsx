@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -30,7 +29,7 @@ const experiences = [
     company: 'Bayanihan One Window (Region VII)',
     location: 'Cebu City, Philippines',
     period: 'March 2026 - Present',
-    status: 'In Development',
+    status: 'Demo Available',
     type: 'Capstone Project',
     description: 'Spearheading the architecture and development of an inter-agency referral system for distressed OFWs. Implementing a single-entry intake system managed by the DMW, featuring a Unified Master Case File to coordinate multiple government agencies and ensure accountable service delivery.',
     tech: ['Laravel', 'Vue.js', 'PostgreSQL', 'Composer', 'Node.js', 'Tailwind CSS'],
