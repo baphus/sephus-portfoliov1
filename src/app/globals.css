@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Fonts. Lucida Grande is the Mac OS X system face and carries all UI text.
+   Gill Sans is reserved for display headlines.
+   --------------------------------------------------------------------------- */
+
 @font-face {
   font-family: 'Lucida Grande';
   src: url('/fonts/LucidaGrande.ttf') format('truetype');
@@ -28,14 +33,6 @@
 
 @font-face {
   font-family: 'Gill Sans';
-  src: url('/fonts/GillSans-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gill Sans';
   src: url('/fonts/GillSansBold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
@@ -48,205 +45,699 @@
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Tokens
+   --------------------------------------------------------------------------- */
+
 @layer base {
   :root {
-    --background: 210 20% 94%;
-    --foreground: 222.2 84% 4.9%;
+    /* Aqua radius scale. Windows are 10px, not 40px. */
+    --radius: 0.625rem;
+    --radius-window: 10px;
+    --radius-control: 6px;
+
+    /* One accent, plus graphite. Saturated colour is reserved for real state,
+       which in practice means the traffic lights and nothing else. */
+    --aqua-blue: 212 84% 52%;
+    --aqua-blue-deep: 214 76% 42%;
+    --aqua-graphite: 220 6% 46%;
+
+    --aqua-window-bg: 0 0% 100%;
+    --aqua-window-alpha: 0.94;
+    --aqua-titlebar-top: 0 0% 99%;
+    --aqua-titlebar-bottom: 0 0% 87%;
+    --aqua-titlebar-text: 220 8% 24%;
+    --aqua-hairline: 220 12% 38%;
+    --aqua-hairline-alpha: 0.42;
+    --aqua-highlight: 0 0% 100%;
+    --aqua-pinstripe: 220 20% 20%;
+    --aqua-pinstripe-alpha: 0.035;
+    --aqua-row-stripe: 212 58% 96%;
+
+    --background: 210 32% 90%;
+    --foreground: 220 14% 16%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 14% 16%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 207 90% 54%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 15% 90%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 15% 88%;
-    --muted-foreground: 215.4 16.3% 40.9%;
-    --accent: 207 80% 48%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 210 10% 80%;
-    --input: 210 10% 85%;
-    --ring: 207 90% 54%;
-    --radius: 0.8rem;
+    --popover-foreground: 220 14% 16%;
+    --primary: 212 84% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 16% 88%;
+    --secondary-foreground: 220 14% 20%;
+    --muted: 210 14% 86%;
+    --muted-foreground: 220 8% 38%;
+    --accent: 212 76% 46%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 4 74% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 12% 74%;
+    --input: 220 12% 72%;
+    --ring: 212 84% 52%;
   }
- 
+
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 207 90% 54%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 210 40% 98%;
+    /* Graphite. The 10.3 alternate appearance, not a generic dark mode. */
+    --aqua-blue: 212 88% 62%;
+    --aqua-blue-deep: 214 80% 48%;
+    --aqua-graphite: 220 5% 62%;
+
+    --aqua-window-bg: 220 7% 13%;
+    --aqua-window-alpha: 0.94;
+    --aqua-titlebar-top: 220 7% 26%;
+    --aqua-titlebar-bottom: 220 8% 18%;
+    --aqua-titlebar-text: 220 10% 84%;
+    --aqua-hairline: 0 0% 0%;
+    --aqua-hairline-alpha: 0.62;
+    --aqua-highlight: 0 0% 100%;
+    --aqua-pinstripe: 0 0% 100%;
+    --aqua-pinstripe-alpha: 0.03;
+    --aqua-row-stripe: 220 8% 18%;
+
+    --background: 220 9% 11%;
+    --foreground: 210 16% 92%;
+    --card: 220 7% 13%;
+    --card-foreground: 210 16% 92%;
+    --popover: 220 7% 15%;
+    --popover-foreground: 210 16% 92%;
+    --primary: 212 88% 62%;
+    --primary-foreground: 220 20% 10%;
+    --secondary: 220 7% 20%;
+    --secondary-foreground: 210 16% 92%;
+    --muted: 220 7% 19%;
+    --muted-foreground: 220 8% 66%;
+    --accent: 212 84% 58%;
+    --accent-foreground: 220 20% 10%;
+    --destructive: 4 62% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 7% 26%;
+    --input: 220 7% 28%;
+    --ring: 212 88% 62%;
   }
 }
- 
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+
 @layer base {
   * {
     @apply border-border;
-    transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
-  }
-  body {
-    @apply bg-background text-foreground min-h-screen relative;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    background-image: 
-      linear-gradient(to right, hsla(210, 10%, 50%, 0.05) 1px, transparent 1px), 
-      linear-gradient(to bottom, hsla(210, 10%, 50%, 0.05) 1px, transparent 1px),
-      linear-gradient(to right, hsla(210, 10%, 50%, 0.02) 1px, transparent 1px), 
-      linear-gradient(to bottom, hsla(210, 10%, 50%, 0.02) 1px, transparent 1px);
-    background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px;
-    background-attachment: fixed;
-  }
-  
-  .dark body {
-    background-image: 
-      linear-gradient(to right, hsla(210, 10%, 90%, 0.08) 1px, transparent 1px), 
-      linear-gradient(to bottom, hsla(210, 10%, 90%, 0.08) 1px, transparent 1px),
-      linear-gradient(to right, hsla(210, 10%, 90%, 0.03) 1px, transparent 1px), 
-      linear-gradient(to bottom, hsla(210, 10%, 90%, 0.03) 1px, transparent 1px);
   }
 
-  body::-webkit-scrollbar {
-    display: none;
+  /* Theme crossfade only. Transitioning box-shadow and opacity on every
+     element made hover feel laggy. */
+  *,
+  *::before,
+  *::after {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Interactive elements answer immediately. Aqua controls were not sluggish. */
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role='tab'],
+  .aqua-row {
+    transition-duration: 0.12s;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-screen relative;
+    /* The Aqua Blue desktop: a soft lit sky, brighter at upper centre. */
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        hsl(var(--aqua-pinstripe) / 0.02) 0 1px,
+        transparent 1px 4px
+      ),
+      radial-gradient(
+        135% 100% at 50% -12%,
+        hsl(205 68% 94%) 0%,
+        hsl(208 52% 86%) 38%,
+        hsl(212 40% 78%) 72%,
+        hsl(214 32% 71%) 100%
+      );
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        hsl(0 0% 100% / 0.014) 0 1px,
+        transparent 1px 4px
+      ),
+      radial-gradient(
+        135% 100% at 50% -12%,
+        hsl(220 9% 20%) 0%,
+        hsl(220 10% 15%) 42%,
+        hsl(220 11% 10%) 100%
+      );
+  }
+
+  /* Aqua scrollbars are part of the look. Hiding them worked against the theme. */
+  html {
+    scrollbar-color: hsl(var(--aqua-blue)) hsl(210 16% 84%);
+  }
+
+  html.dark {
+    scrollbar-color: hsl(var(--aqua-graphite)) hsl(220 8% 16%);
+  }
+
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(210 16% 86%);
+    box-shadow: inset 1px 0 0 hsl(220 12% 74%);
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: hsl(220 8% 15%);
+    box-shadow: inset 1px 0 0 hsl(220 8% 24%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 1px solid hsl(var(--aqua-blue-deep) / 0.7);
+    border-radius: 8px;
+    background: linear-gradient(
+      to right,
+      hsl(var(--aqua-blue) / 0.95),
+      hsl(var(--aqua-blue-deep))
+    );
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.55),
+      inset 0 -2px 3px hsl(var(--aqua-blue-deep) / 0.6);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.08);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    border-color: hsl(0 0% 0% / 0.6);
+    background: linear-gradient(to right, hsl(220 6% 52%), hsl(220 7% 38%));
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: hsl(210 16% 86%);
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Aqua windows
+   --------------------------------------------------------------------------- */
+
 @layer components {
-  .frutiger-aero-navbar {
-    background: repeating-linear-gradient(
-      to bottom,
-      hsla(210, 70%, 80%, 0.1),
-      hsla(210, 70%, 80%, 0.1) 1px,
-      transparent 1px,
-      transparent 4px
-    ), linear-gradient(to bottom, rgba(208, 228, 248, 0.4) 0%, rgba(255, 255, 255, 0.3) 100%);
-    backdrop-filter: blur(12px);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 
-      inset 0 1px 1px rgba(255, 255, 255, 0.7), 
-      0 10px 25px -5px rgba(0,0,0,0.1),
-      0 8px 10px -6px rgba(0,0,0,0.1);
-  }
-  
-  .dark .frutiger-aero-navbar {
-    background: linear-gradient(to bottom, rgba(40, 40, 40, 0.4) 0%, rgba(20, 20, 20, 0.4) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .frutiger-aero-navbar-active-link {
+  .aqua-window {
     position: relative;
-    transition: all 0.2s ease-out;
+    border-radius: var(--radius-window);
+    border: 1px solid hsl(var(--aqua-hairline) / var(--aqua-hairline-alpha));
+    background: hsl(var(--aqua-window-bg) / var(--aqua-window-alpha));
+    box-shadow:
+      inset 0 1px 0 hsl(var(--aqua-highlight) / 0.72),
+      0 1px 2px hsl(220 20% 10% / 0.14),
+      0 12px 28px -10px hsl(220 24% 12% / 0.3);
   }
 
-  .frutiger-aero-navbar-active-link::after {
+  .dark .aqua-window {
+    box-shadow:
+      inset 0 1px 0 hsl(var(--aqua-highlight) / 0.1),
+      0 1px 2px hsl(0 0% 0% / 0.5),
+      0 14px 30px -12px hsl(0 0% 0% / 0.65);
+  }
+
+  /* The authentic 10.0–10.2 texture: 1px horizontal lines on a 4px pitch. */
+  .aqua-pinstripe::before {
     content: '';
     position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    background-color: hsl(var(--primary));
-    border-radius: 50%;
-    box-shadow: 0 0 4px hsl(var(--primary));
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      hsl(var(--aqua-pinstripe) / var(--aqua-pinstripe-alpha)) 0 1px,
+      transparent 1px 4px
+    );
   }
 
-  .btn-aqua {
-    height: 2.75em;
-    padding: 0 2.5em;
-    min-width: 12em;
-    border-radius: 1000px;
+  .aqua-titlebar {
     position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    outline: none;
-    font-family: "myriad-pro", system-ui;
-    font-weight: 800;
-    color: black;
-    border: none;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 10px;
+    border-bottom: 1px solid hsl(var(--aqua-hairline) / 0.34);
+    border-radius: calc(var(--radius-window) - 1px) calc(var(--radius-window) - 1px) 0 0;
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--aqua-titlebar-top)),
+      hsl(var(--aqua-titlebar-bottom))
+    );
+    box-shadow: inset 0 1px 0 hsl(var(--aqua-highlight) / 0.9);
+  }
+
+  .dark .aqua-titlebar {
+    box-shadow: inset 0 1px 0 hsl(var(--aqua-highlight) / 0.12);
+  }
+
+  .aqua-titlebar-title {
+    font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.01em;
+    color: hsl(var(--aqua-titlebar-text));
+    text-shadow: 0 1px 0 hsl(0 0% 100% / 0.7);
+  }
+
+  .dark .aqua-titlebar-title {
+    text-shadow: 0 -1px 0 hsl(0 0% 0% / 0.55);
+  }
+
+  /* Traffic lights. Decorative and aria-hidden with no hover affordance — they
+     must not imply controls that do nothing. */
+  .aqua-light {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid hsl(0 0% 0% / 0.28);
+    box-shadow:
+      inset 0 -1px 2px hsl(0 0% 0% / 0.24),
+      inset 0 1px 1px hsl(0 0% 100% / 0.55);
+  }
+
+  .aqua-light::after {
+    content: '';
+    position: absolute;
+    top: 1.5px;
+    left: 2.5px;
+    width: 6px;
+    height: 4px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, hsl(0 0% 100% / 0.95), hsl(0 0% 100% / 0.1));
+  }
+
+  .aqua-light-close {
+    background: linear-gradient(to bottom, #ff8a80, #e0443e);
+  }
+  .aqua-light-min {
+    background: linear-gradient(to bottom, #ffd479, #dea123);
+  }
+  .aqua-light-zoom {
+    background: linear-gradient(to bottom, #8ee98e, #29a03b);
+  }
+
+  .aqua-statusbar {
+    display: flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 10px;
+    border-top: 1px solid hsl(var(--aqua-hairline) / 0.28);
+    border-radius: 0 0 calc(var(--radius-window) - 1px) calc(var(--radius-window) - 1px);
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--aqua-titlebar-bottom) / 0.6),
+      hsl(var(--aqua-titlebar-bottom) / 0.9)
+    );
+    font-size: 11px;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Aqua hover: the hairline brightens and the surface lifts a little.
+     Nothing follows the cursor. */
+  .aqua-hoverable {
+    transition: border-color 0.14s ease, box-shadow 0.14s ease, background-color 0.14s ease;
+  }
+
+  .aqua-hoverable:hover {
+    border-color: hsl(var(--aqua-blue) / 0.55);
+    box-shadow:
+      inset 0 1px 0 hsl(var(--aqua-highlight) / 0.85),
+      0 1px 2px hsl(220 20% 10% / 0.16),
+      0 16px 32px -12px hsl(var(--aqua-blue-deep) / 0.28);
+  }
+
+  .dark .aqua-hoverable:hover {
+    box-shadow:
+      inset 0 1px 0 hsl(var(--aqua-highlight) / 0.14),
+      0 1px 2px hsl(0 0% 0% / 0.5),
+      0 16px 32px -12px hsl(var(--aqua-blue-deep) / 0.45);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Aqua list view — alternating blue rows, as in Finder and Mail
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .aqua-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 12px;
+    border-bottom: 1px solid hsl(var(--aqua-hairline) / 0.14);
+  }
+
+  .aqua-row:nth-child(odd) {
+    background: hsl(var(--aqua-row-stripe));
+  }
+
+  .aqua-row:last-child {
+    border-bottom: 0;
+  }
+
+  a.aqua-row:hover {
+    background: hsl(var(--aqua-blue) / 0.16);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Aqua controls
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  /* Glossy jelly capsule. Lighter than a four-layer inset stack; the gloss
+     does the work. */
+  .btn-aqua {
+    position: relative;
+    isolation: isolate;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .btn-aqua-primary {
-    background: linear-gradient(rgba(0, 65, 184, 0.625), rgba(45, 115, 199, 0.625), rgba(33, 160, 196, 0.625));
-    box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.3), 
-                0 0.125em 0.125em rgba(0, 78, 187, 0.5), 
-                inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),
-                inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75);
-  }
-
-  .btn-aqua-secondary {
-    background: linear-gradient(rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
-    box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.2), 
-                0 0.125em 0.125em rgba(0, 0, 0, 0.3),  
-                inset 0 0.25em 0.25em rgba(0, 0, 0, 0.4),
-                inset 0 0.375em 0.5em 0.25em #BBBBBB;
+    height: 2.5em;
+    padding: 0 1.75em;
+    border-radius: 999px;
+    border: 1px solid hsl(0 0% 0% / 0.24);
+    font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    transition: filter 0.14s ease, transform 0.07s ease, box-shadow 0.14s ease;
   }
 
   .btn-aqua::before {
     content: '';
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 33%;
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
-    width: calc(100% - 0.875em);
-    border-radius: 2em 2em 0.5em 0.5em;
-    top: 5%;
-    filter: blur(1px);
-    z-index: 2;
+    inset: 1px 1px auto 1px;
+    height: 48%;
+    border-radius: 999px 999px 45% 45%;
+    background: linear-gradient(to bottom, hsl(0 0% 100% / 0.9), hsl(0 0% 100% / 0.28));
+    pointer-events: none;
+    z-index: 0;
   }
 
   .btn-aqua::after {
     content: '';
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 33%;
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgb(255, 255, 255, 0.5));
-    width: calc(100% - 1.25em);
-    border-radius: 0.75em;
-    bottom: 10%;
-    filter: blur(3px);
+    left: 14%;
+    right: 14%;
+    bottom: 2px;
+    height: 34%;
+    border-radius: 999px;
+    background: radial-gradient(ellipse at 50% 100%, hsl(0 0% 100% / 0.5), transparent 72%);
+    filter: blur(2px);
+    pointer-events: none;
+    z-index: 0;
   }
 
-  .btn-aqua span {
+  .btn-aqua > * {
     position: relative;
-    top: -1px;
-    z-index: 1;  
-    letter-spacing: 0.05em;
-    font-weight: 800;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    z-index: 1;
+  }
+
+  .btn-aqua:hover {
+    filter: brightness(1.07);
+  }
+
+  .btn-aqua:focus-visible {
+    box-shadow: 0 0 0 3px hsl(var(--aqua-blue) / 0.45);
+  }
+
+  .btn-aqua:active {
+    transform: translateY(1px);
+  }
+
+  .btn-aqua:active::before {
+    opacity: 0.62;
+  }
+
+  .btn-aqua-primary {
+    background: linear-gradient(
+      to bottom,
+      hsl(207 88% 68%),
+      hsl(212 82% 54%) 48%,
+      hsl(214 84% 48%) 52%,
+      hsl(216 80% 41%)
+    );
+    color: #fff;
+    text-shadow: 0 -1px 0 hsl(216 80% 26% / 0.55);
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.45),
+      0 1px 2px hsl(216 60% 20% / 0.4);
+  }
+
+  .btn-aqua-secondary {
+    background: linear-gradient(
+      to bottom,
+      hsl(0 0% 100%),
+      hsl(0 0% 95%) 48%,
+      hsl(0 0% 91%) 52%,
+      hsl(0 0% 83%)
+    );
+    color: hsl(220 12% 22%);
+    text-shadow: 0 1px 0 hsl(0 0% 100% / 0.8);
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.9),
+      0 1px 2px hsl(220 20% 20% / 0.24);
+  }
+
+  .dark .btn-aqua-secondary {
+    background: linear-gradient(
+      to bottom,
+      hsl(220 6% 40%),
+      hsl(220 7% 32%) 48%,
+      hsl(220 7% 28%) 52%,
+      hsl(220 8% 22%)
+    );
+    color: hsl(210 16% 92%);
+    text-shadow: 0 -1px 0 hsl(0 0% 0% / 0.5);
+  }
+
+  .btn-aqua:disabled,
+  .btn-aqua[aria-disabled='true'] {
+    filter: saturate(0.25) brightness(1.04);
+    cursor: default;
+  }
+
+  /* Aqua text field: recessed, with the blue focus glow. */
+  .aqua-field {
+    border-radius: var(--radius-control);
+    border: 1px solid hsl(var(--aqua-hairline) / 0.4);
+    background: hsl(var(--aqua-window-bg));
+    box-shadow:
+      inset 0 2px 3px hsl(220 20% 20% / 0.13),
+      inset 0 -1px 0 hsl(0 0% 100% / 0.6);
+  }
+
+  .dark .aqua-field {
+    box-shadow:
+      inset 0 2px 3px hsl(0 0% 0% / 0.45),
+      inset 0 -1px 0 hsl(0 0% 100% / 0.06);
+  }
+
+  .aqua-field:focus,
+  .aqua-field:focus-visible {
+    outline: none;
+    border-color: hsl(var(--aqua-blue) / 0.85);
+    box-shadow:
+      inset 0 2px 3px hsl(220 20% 20% / 0.1),
+      0 0 0 3px hsl(var(--aqua-blue) / 0.34);
+  }
+
+  /* Segmented control: one capsule, divided. */
+  .aqua-segment-group {
+    display: inline-flex;
+    padding: 2px;
+    border-radius: 999px;
+    border: 1px solid hsl(var(--aqua-hairline) / 0.34);
+    background: linear-gradient(to bottom, hsl(220 12% 84% / 0.8), hsl(220 12% 92% / 0.8));
+    box-shadow: inset 0 1px 3px hsl(220 20% 20% / 0.16);
+  }
+
+  .dark .aqua-segment-group {
+    background: linear-gradient(to bottom, hsl(220 8% 16% / 0.9), hsl(220 8% 22% / 0.9));
+    box-shadow: inset 0 1px 3px hsl(0 0% 0% / 0.5);
+  }
+
+  .aqua-segment {
+    position: relative;
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: hsl(var(--muted-foreground));
+    transition: color 0.12s ease, background 0.12s ease;
+  }
+
+  .aqua-segment:hover {
+    color: hsl(var(--foreground));
+  }
+
+  .aqua-segment[aria-selected='true'] {
+    color: #fff;
+    text-shadow: 0 -1px 0 hsl(216 80% 26% / 0.5);
+    background: linear-gradient(
+      to bottom,
+      hsl(207 88% 66%),
+      hsl(212 82% 53%) 48%,
+      hsl(214 84% 47%) 52%,
+      hsl(216 80% 41%)
+    );
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.42),
+      0 1px 2px hsl(216 60% 20% / 0.34);
+  }
+
+  .aqua-segment:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px hsl(var(--aqua-blue) / 0.45);
+  }
+
+  /* Disclosure triangle, as used for expandable rows throughout Mac OS X. */
+  .aqua-disclosure {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: bold;
+    color: hsl(var(--aqua-blue));
+  }
+
+  .aqua-disclosure svg {
+    transition: transform 0.16s ease;
+  }
+
+  .aqua-disclosure[aria-expanded='true'] svg {
+    transform: rotate(90deg);
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Dock. The shelf is deliberately unchanged — it is the owner's favourite
+   element. Only the indicator, separator and help tag are new.
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .frutiger-aero-navbar {
+    background: repeating-linear-gradient(
+        to bottom,
+        hsla(210, 70%, 80%, 0.1),
+        hsla(210, 70%, 80%, 0.1) 1px,
+        transparent 1px,
+        transparent 4px
+      ),
+      linear-gradient(to bottom, rgba(208, 228, 248, 0.4) 0%, rgba(255, 255, 255, 0.3) 100%);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.7),
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .frutiger-aero-navbar {
+    background: linear-gradient(to bottom, rgba(40, 40, 40, 0.4) 0%, rgba(20, 20, 20, 0.4) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Running-application indicator: the small triangle from 10.0–10.4. */
+  .dock-indicator {
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid hsl(220 14% 26% / 0.85);
+    filter: drop-shadow(0 1px 0 hsl(0 0% 100% / 0.6));
+  }
+
+  .dark .dock-indicator {
+    border-bottom-color: hsl(0 0% 100% / 0.8);
+    filter: drop-shadow(0 -1px 0 hsl(0 0% 0% / 0.5));
+  }
+
+  .dock-separator {
+    width: 1px;
+    align-self: stretch;
+    margin: 0.35rem 0.25rem;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      hsl(220 20% 30% / 0.22) 20%,
+      hsl(220 20% 30% / 0.22) 80%,
+      transparent
+    );
+    box-shadow: 1px 0 0 hsl(0 0% 100% / 0.4);
+  }
+
+  .dark .dock-separator {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      hsl(0 0% 100% / 0.16) 20%,
+      hsl(0 0% 100% / 0.16) 80%,
+      transparent
+    );
+    box-shadow: 1px 0 0 hsl(0 0% 0% / 0.3);
+  }
+
+  /* Aqua help tag: cream and hairlined, not a black chip. */
+  .aqua-help-tag {
+    font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+    font-size: 11px;
+    line-height: 1;
+    padding: 5px 8px;
+    color: hsl(45 32% 14%);
+    background: linear-gradient(to bottom, hsl(52 100% 92%), hsl(48 92% 84%));
+    border: 1px solid hsl(45 40% 52% / 0.7);
+    border-radius: 4px;
+    box-shadow: 0 2px 5px hsl(220 20% 10% / 0.28);
+    white-space: nowrap;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Marquee
+   --------------------------------------------------------------------------- */
+
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes marquee-reverse {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .animate-marquee {
@@ -260,4 +751,11 @@
 .pause-on-hover:hover .animate-marquee,
 .pause-on-hover:hover .animate-marquee-reverse {
   animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none;
+  }
 }

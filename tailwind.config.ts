@@ -48,6 +48,14 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        aqua: {
+          blue: 'hsl(var(--aqua-blue))',
+          deep: 'hsl(var(--aqua-blue-deep))',
+          graphite: 'hsl(var(--aqua-graphite))',
+          hairline: 'hsl(var(--aqua-hairline) / var(--aqua-hairline-alpha))',
+          title: 'hsl(var(--aqua-titlebar-text))',
+          stripe: 'hsl(var(--aqua-row-stripe))',
+        },
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
@@ -70,6 +78,10 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        // Aqua scale. Windows are 10px; controls are 6px; capsules are for
+        // jelly buttons and segmented controls only.
+        window: 'var(--radius-window)',
+        control: 'var(--radius-control)',
       },
       keyframes: {
         'accordion-down': {

@@ -1,11 +1,11 @@
 
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from 'framer-motion';
 import { ThemeToggle } from './theme-toggle';
-import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
 const navLinks = [
@@ -17,48 +17,124 @@ const navLinks = [
   { href: '/contact', label: 'Contact', iconSrc: '/nav-icons/contact.png' },
 ];
 
+/**
+ * Magnification falloff. One icon pitch is roughly 52px, so the stops land on
+ * the hovered icon, then its immediate neighbour, then the one after that.
+ */
+const PITCH = 52;
+const FALLOFF_DISTANCE = [-3 * PITCH, -2 * PITCH, -PITCH, 0, PITCH, 2 * PITCH, 3 * PITCH];
+const FALLOFF_SCALE = [1, 1.08, 1.25, 1.55, 1.25, 1.08, 1];
+
+interface DockIconProps {
+  href: string;
+  label: string;
+  iconSrc: string;
+  isActive: boolean;
+  pointerX: MotionValue<number>;
+}
+
+function DockIcon({ href, label, iconSrc, isActive, pointerX }: DockIconProps) {
+  const iconRef = useRef<HTMLDivElement>(null);
+
+  const distance = useTransform(pointerX, (x) => {
+    const bounds = iconRef.current?.getBoundingClientRect();
+    if (!bounds) return Number.POSITIVE_INFINITY;
+    return x - (bounds.left + bounds.width / 2);
+  });
+
+  const targetScale = useTransform(distance, FALLOFF_DISTANCE, FALLOFF_SCALE, {
+    clamp: true,
+  });
+
+  const scale = useSpring(targetScale, { mass: 0.12, stiffness: 190, damping: 14 });
+
+  // The help tag rides above the icon, so it has to clear however far the icon
+  // has grown. The dock does the same thing.
+  const tagLift = useTransform(scale, (value) => -(value - 1) * 40 - 10);
+
+  return (
+    <Link
+      href={href}
+      aria-label={label}
+      aria-current={isActive ? 'page' : undefined}
+      className="group relative flex items-end p-1.5 sm:p-2"
+    >
+      <motion.div
+        ref={iconRef}
+        style={{ scale, transformOrigin: 'bottom center' }}
+        className="relative h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10"
+      >
+        <Image src={iconSrc} alt="" fill sizes="40px" className="object-contain" />
+      </motion.div>
+
+      {isActive && <span className="dock-indicator" aria-hidden="true" />}
+
+      <motion.span
+        style={{ x: '-50%', y: tagLift }}
+        className="aqua-help-tag pointer-events-none absolute bottom-full left-1/2 opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+      >
+        {label}
+      </motion.span>
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const [magnify, setMagnify] = useState(false);
 
-  // Prevent hydration mismatch by only rendering active states after mount
+  const pointerX = useMotionValue(Number.POSITIVE_INFINITY);
+
+  // Prevent hydration mismatch by only rendering active states after mount.
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Magnification needs a real pointer to track, and it is motion the user may
+  // have asked not to see.
+  useEffect(() => {
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const sync = () => setMagnify(finePointer.matches && !reducedMotion.matches);
+    sync();
+
+    finePointer.addEventListener('change', sync);
+    reducedMotion.addEventListener('change', sync);
+    return () => {
+      finePointer.removeEventListener('change', sync);
+      reducedMotion.removeEventListener('change', sync);
+    };
   }, []);
 
   return (
     <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-[100] w-auto max-w-[95vw]">
       <header className="frutiger-aero-navbar flex h-14 sm:h-16 items-center gap-1 sm:gap-2 px-2 sm:px-3 py-2">
-        <div className="hidden md:flex items-center space-x-1 px-2 border-r border-white/20 mr-1 sm:mr-2">
+        <div className="hidden md:flex items-center self-stretch px-1">
           <ThemeToggle />
+          <span className="dock-separator" aria-hidden="true" />
         </div>
-        
-        <nav className="flex items-center space-x-1 sm:space-x-2 md:space-x-3">
-          {navLinks.map(({ href, label, iconSrc }) => {
-            const isActive = mounted && pathname === href;
-            return (
-              <Link
-                key={href}
-                href={href}
-                aria-label={label}
-                className={cn(
-                  "relative p-1.5 sm:p-2 rounded-xl transition-all duration-300 hover:scale-110 active:scale-95 group",
-                  isActive ? "frutiger-aero-navbar-active-link" : ""
-                )}
-              >
-                <div className="relative h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 overflow-hidden">
-                  <Image src={iconSrc} alt={label} fill className="object-contain" />
-                </div>
-                {/* Tooltip - Adjusted for mobile */}
-                <span className="absolute -top-10 sm:-top-12 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[9px] sm:text-[10px] px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold">
-                  {label}
-                </span>
-              </Link>
-            )
-          })}
+
+        <nav
+          className="flex items-end gap-1 sm:gap-2 md:gap-3"
+          onMouseMove={magnify ? (event) => pointerX.set(event.clientX) : undefined}
+          onMouseLeave={magnify ? () => pointerX.set(Number.POSITIVE_INFINITY) : undefined}
+        >
+          {navLinks.map(({ href, label, iconSrc }) => (
+            <DockIcon
+              key={href}
+              href={href}
+              label={label}
+              iconSrc={iconSrc}
+              isActive={mounted && pathname === href}
+              pointerX={pointerX}
+            />
+          ))}
         </nav>
 
-        <div className="md:hidden flex items-center ml-1 border-l border-white/20 pl-1">
+        <div className="md:hidden flex items-center self-stretch">
+          <span className="dock-separator" aria-hidden="true" />
           <ThemeToggle />
         </div>
       </header>
