@@ -23,12 +23,15 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
 
     const { name, email, subject, message } = validatedFields.data;
 
-    // Check if credentials exist in environment
+    // Check if credentials exist in environment.
+    // The visitor is told the send failed; the reason stays in the server log.
+    // Naming the missing environment variables to the browser discloses
+    // internal configuration state to anyone who can reach the form.
     if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
       console.error('Email configuration missing: GMAIL_USER or GMAIL_APP_PASSWORD');
       return {
         success: false,
-        message: 'Email service is currently misconfigured. Please check environment variables.'
+        message: 'Your message could not be sent right now. Please email me directly instead.'
       };
     }
 

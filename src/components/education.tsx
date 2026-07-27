@@ -1,189 +1,110 @@
 "use client";
 
 import React from 'react';
-import { 
-  GraduationCap, 
-  MapPin, 
-  Calendar, 
-  BookOpen, 
-  Award, 
-  Trophy 
-} from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
-import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { MapPin, CalendarDays } from 'lucide-react';
+import AquaWindow from '@/components/ui/aqua-window';
+import { AquaList, AquaRow } from '@/components/ui/aqua-list';
 import eduLogos from '@/app/lib/placeholder-images.json';
 
-const educationData = [
+const logo = (id: string) => eduLogos.education.find((entry) => entry.id === id);
+
+const education = [
   {
     institution: 'Cebu Technological University',
-    degree: 'Bachelor of Science in Information Systems',
-    period: 'Aug 2023 - Present',
-    location: 'Cebu City, Philippines',
-    status: 'In Progress',
-    description: 'Specializing in systems analysis and design. Gathering and analyzing business requirements through direct collaboration with stakeholders and client representatives. OWWA scholar.',
-    highlights: [
-      'OWWA Scholar',
-      'Focus on SDLC & Web Solutions',
-      'Stakeholder Collaboration'
+    degree: 'BS Information Systems',
+    period: '2023 – 2027 (expected)',
+    location: 'Main Campus, Cebu City',
+    status: 'In progress',
+    description:
+      'Systems analysis and design, with the coursework built around gathering requirements from real stakeholders and turning them into working systems. My capstone, OWBAP, came out of this.',
+    facts: [
+      { label: 'GWA', value: '1.45' },
+      { label: 'Expected graduation', value: '2027' },
+      { label: 'Scholarship', value: 'OWWA scholar' },
     ],
-    logo: eduLogos.education.find(e => e.id === 'ctu'),
-    icon: <GraduationCap className="h-6 w-6 text-indigo-600" />,
+    logo: logo('ctu'),
   },
   {
-    institution: 'Toledo City Science Highschool',
+    institution: 'Toledo City Science High School',
     degree: 'High School Diploma, With Honors',
-    period: '2017 - 2023',
-    location: 'Toledo City, Philippines',
+    period: '2017 – 2023',
+    location: 'Toledo City, Cebu',
     status: 'Completed',
-    description: 'Graduated With Honors (Rank 12). Member of the TCSHS Robotics Team, specializing in autonomous systems.',
-    highlights: [
-      'Graduated With Honors (Rank 12)',
-      '1st Place - Division Science Fair 2019',
-      'Multiple Regional Sumo Bot Placements'
+    description:
+      'Graduated with honors at rank 12. I was on the robotics team, which is where I first built something that had to work without me driving it.',
+    facts: [
+      { label: 'Standing', value: 'With Honors, rank 12' },
+      { label: 'Division Science Fair 2019', value: '1st place' },
+      { label: 'Regional Sumo Bot', value: 'Multiple placements' },
     ],
-    logo: eduLogos.education.find(e => e.id === 'tcshs'),
-    icon: <Trophy className="h-6 w-6 text-amber-500" />,
+    logo: logo('tcshs'),
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -40 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-  }
-};
-
 export default function Education() {
   return (
-    <div className="container mx-auto px-4 md:px-6">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="flex flex-col items-center text-center space-y-4 mb-16"
-      >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-medium border border-indigo-500/20">
-          <GraduationCap className="h-4 w-4" />
-          <span>Education</span>
-        </div>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline">
-          Academic <span className="text-primary">Background</span>
-        </h2>
-        <p className="text-muted-foreground max-w-2xl leading-relaxed text-lg">
-          Committed to academic excellence and technical mastery through scientific education.
-        </p>
-      </motion.div>
-
-      <div className="max-w-4xl mx-auto relative">
-        <motion.div 
-          initial={{ height: 0 }}
-          whileInView={{ height: '100%' }}
+    <div className="container mx-auto max-w-4xl space-y-6 px-4 md:px-6">
+      {education.map((entry, index) => (
+        <motion.div
+          key={entry.institution}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          className="absolute left-0 md:left-8 top-0 w-1 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full opacity-20" 
-        />
-
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-12"
+          transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          {educationData.map((item, index) => (
-            <motion.div key={index} variants={itemVariants} className="relative pl-8 md:pl-20">
-              <div className="absolute left-[-5px] md:left-[27px] top-10 flex h-4 w-4 items-center justify-center">
-                <div className="h-full w-full rounded-full bg-primary animate-ping opacity-20" />
-                <div className="absolute h-3 w-3 rounded-full bg-primary border-4 border-background" />
-              </div>
+          <AquaWindow
+            title={entry.institution}
+            statusBar={<span>{entry.status}</span>}
+          >
+            <div className="p-6 md:p-8">
+              <div className="flex flex-col gap-6 sm:flex-row">
+                {entry.logo && (
+                  <div className="relative h-20 w-20 shrink-0 self-start overflow-hidden rounded-control border border-aqua-hairline/30 bg-white/80 p-1.5">
+                    <Image
+                      src={entry.logo.url}
+                      alt={`${entry.institution} crest`}
+                      fill
+                      sizes="80px"
+                      className="object-contain p-1.5"
+                      data-ai-hint={entry.logo.hint}
+                    />
+                  </div>
+                )}
 
-              <InteractiveCardWrapper className="rounded-[2rem]">
-                <Card className="h-full rounded-[2rem] border-white/20 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl shadow-xl p-6 md:p-8 relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
-                  <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-                    {item.logo && (
-                      <div className="flex-shrink-0 flex flex-col items-center gap-4">
-                        <div className="relative h-24 w-24 overflow-hidden rounded-2xl">
-                          <Image 
-                            src={item.logo.url} 
-                            alt={`${item.institution} logo`} 
-                            fill 
-                            className="object-contain"
-                            data-ai-hint={item.logo.hint}
-                          />
-                        </div>
-                        <div className="hidden md:flex p-3 rounded-2xl bg-muted/30 shadow-inner group-hover:bg-primary/5 transition-colors">
-                          {item.icon}
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="space-y-4 flex-1 text-center md:text-left">
-                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
-                        <h3 className="text-2xl font-bold font-headline group-hover:text-primary transition-colors">
-                          {item.degree}
-                        </h3>
-                        <Badge variant={item.status === 'Completed' ? 'secondary' : 'default'} className={cn(
-                          "rounded-full px-3",
-                          item.status === 'Completed' ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" : "bg-primary text-white"
-                        )}>
-                          <span className="flex items-center gap-1 text-[10px]">
-                            <span className={`h-1 w-1 rounded-full ${item.status === 'Completed' ? 'bg-emerald-500' : 'bg-white'} animate-pulse`} />
-                            {item.status}
-                          </span>
-                        </Badge>
-                      </div>
-
-                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-2 gap-x-6 text-sm font-medium text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <BookOpen className="h-4 w-4 text-blue-500" />
-                          {item.institution}
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-red-500" />
-                          {item.location}
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4 text-blue-500" />
-                          {item.period}
-                        </div>
-                      </div>
-
-                      <p className="text-muted-foreground leading-relaxed text-base">
-                        {item.description}
-                      </p>
-
-                      <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-2">
-                        {item.highlights.map((highlight, i) => (
-                          <div key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg bg-muted/50 border border-border text-[11px] font-bold text-muted-foreground uppercase tracking-wider group-hover:border-primary/20 group-hover:text-primary transition-colors">
-                            <Award className="h-3 w-3 text-amber-500" />
-                            {highlight}
-                          </div>
-                        ))}
-                      </div>
+                <div className="min-w-0 flex-1 space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="font-headline text-2xl font-bold text-foreground">
+                      {entry.degree}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-muted-foreground">
+                      <span className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-aqua-graphite" />
+                        {entry.location}
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <CalendarDays className="h-4 w-4 text-aqua-graphite" />
+                        {entry.period}
+                      </span>
                     </div>
                   </div>
-                </Card>
-              </InteractiveCardWrapper>
-            </motion.div>
-          ))}
+
+                  <p className="text-[15px] leading-relaxed text-muted-foreground">
+                    {entry.description}
+                  </p>
+
+                  <AquaList>
+                    {entry.facts.map((fact) => (
+                      <AquaRow key={fact.label} label={fact.label} value={fact.value} />
+                    ))}
+                  </AquaList>
+                </div>
+              </div>
+            </div>
+          </AquaWindow>
         </motion.div>
-      </div>
+      ))}
     </div>
   );
 }

@@ -6,8 +6,9 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: "Kim's Portfolio",
-  description: 'Dynamic and versatile digital professional with expertise spanning video editing, social media management, web development, and data analytics.',
+  title: 'Josephus Kim L. Sarsonas',
+  description:
+    'Full-stack developer and systems analyst in Cebu, Philippines. Laravel, Next.js and PostgreSQL. Full Stack Developer Trainee at Edufied Pte.',
 };
 
 export default function RootLayout({

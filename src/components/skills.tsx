@@ -1,303 +1,169 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { 
-  Code2, 
-  Layout, 
-  Database, 
-  Server, 
-  Layers, 
-  Cpu, 
-  Monitor, 
-  Terminal, 
-  ShieldCheck, 
-  Cloud, 
-  Box, 
-  Infinity as InfinityIcon, 
-  Sparkles,
-  Target,
-  Zap,
-  Palette,
-  Link as LinkIcon,
-  FileType,
-  Wrench as ToolIcon,
-  Rocket,
-  MessageSquare
-} from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { IconCloud } from '@/components/ui/interactive-icon-cloud';
-import InteractiveCardWrapper from '@/components/ui/interactive-card-wrapper';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const skills = [
-  // Methodology & Professional
-  { title: 'System Analysis & Design', category: 'professional', slug: 'enterprise', description: 'Analyzing complex business requirements and designing robust system architectures.', icon: <Monitor className="h-6 w-6 text-blue-500" />, isFeatured: true },
-  { title: 'MVC Architecture', category: 'professional', slug: 'laravel', description: 'Implementing clean, modular code following the Model-View-Controller pattern.', icon: <Layers className="h-6 w-6 text-emerald-600" />, isFeatured: true },
-  { title: 'SDLC Specialist', category: 'professional', slug: 'git', description: 'Managing the complete software development life cycle from planning to maintenance.', icon: <Box className="h-6 w-6 text-orange-600" />, isFeatured: true },
-  { title: 'RESTful APIs', category: 'professional', slug: 'postman', description: 'Designing and integrating secure, performant APIs with Node.js and Laravel.', icon: <LinkIcon className="h-6 w-6 text-orange-500" />, isFeatured: true },
-  
-  // Frontend
-  { title: 'Next.js', category: 'frontend', slug: 'nextdotjs', description: 'Building high-performance, SEO-friendly React applications with App Router.', icon: <Zap className="h-4 w-4 text-yellow-500" />, isFeatured: true },
-  { title: 'React', category: 'frontend', slug: 'react', description: 'Creating interactive, reusable UI components using hooks and modern patterns.', icon: <Layout className="h-6 w-6 text-sky-500" />, isFeatured: true },
-  { title: 'TypeScript', category: 'frontend', slug: 'typescript', description: 'Ensuring code quality and scalability with static typing and advanced interfaces.', icon: <ShieldCheck className="h-6 w-6 text-blue-600" />, isFeatured: true },
-  { title: 'Tailwind CSS', category: 'frontend', slug: 'tailwindcss', description: 'Rapidly styling responsive, accessible interfaces with utility-first CSS.', icon: <Palette className="h-6 w-6 text-teal-400" />, isFeatured: true },
-  { title: 'Vue.js', category: 'frontend', slug: 'vuedotjs', description: 'Building interactive web interfaces with a progressive JavaScript framework.', icon: <Layout className="h-6 w-6 text-emerald-500" /> },
-  
-  // Backend
-  { title: 'Laravel', category: 'backend', slug: 'laravel', description: 'Building secure, robust PHP applications with MVC architecture and Eloquent.', icon: <Server className="h-6 w-6 text-rose-600" />, isFeatured: true },
-  { title: 'Express.js', category: 'backend', slug: 'express', description: 'Developing fast, minimalist web applications and APIs with Node.js.', icon: <Terminal className="h-6 w-6 text-gray-700 dark:text-gray-300" />, isFeatured: true },
-  { title: 'Node.js', category: 'backend', slug: 'nodedotjs', description: 'Developing scalable, event-driven backend services and real-time features.', icon: <Cpu className="h-6 w-6 text-emerald-600" />, isFeatured: true },
-  { title: 'PHP', category: 'backend', slug: 'php', description: 'Server-side scripting for building dynamic web applications and systems.', icon: <Code2 className="h-6 w-6 text-indigo-500" />, isFeatured: true },
-  { title: 'Python', category: 'backend', slug: 'python', description: 'Scripting and data analysis for diverse technical solutions.', icon: <Code2 className="h-6 w-6 text-blue-500" /> },
-  { title: 'Livewire', category: 'backend', slug: 'livewire', description: 'Building dynamic interfaces for Laravel using full-stack Laravel components.', icon: <Zap className="h-4 w-4 text-pink-500" /> },
-  
-  // Database & Tools
-  { title: 'PostgreSQL', category: 'database', slug: 'postgresql', description: 'Advanced relational database management with focus on data integrity.', icon: <Database className="h-6 w-6 text-blue-500" />, isFeatured: true },
-  { title: 'MySQL', category: 'database', slug: 'mysql', description: 'Popular open-source relational database for web applications.', icon: <Database className="h-6 w-6 text-blue-700" />, isFeatured: true },
-  { title: 'Prisma ORM', category: 'database', slug: 'prisma', description: 'Type-safe database access for modern JavaScript and TypeScript backends.', icon: <FileType className="h-6 w-6 text-indigo-600" />, isFeatured: true },
-  { title: 'Docker', category: 'tools', slug: 'docker', description: 'Containerizing applications for consistent development and deployment.', icon: <Box className="h-6 w-6 text-blue-400" />, isFeatured: true },
-  { title: 'Supabase', category: 'database', slug: 'supabase', description: 'Leveraging open-source Firebase alternatives for real-time databases and Auth.', icon: <Database className="h-6 w-6 text-emerald-500" /> },
-  { title: 'Cloudinary', category: 'tools', slug: 'cloudinary', description: 'Cloud-based image and video management for web applications.', icon: <Cloud className="h-6 w-6 text-indigo-500" /> },
-  { title: 'Composer & NPM', category: 'tools', slug: 'composer', description: 'Dependency management for PHP and JavaScript ecosystems.', icon: <ToolIcon className="h-6 w-6 text-indigo-600" /> },
-  { title: 'Vercel & Render', category: 'tools', slug: 'vercel', description: 'Modern cloud platforms for static and dynamic site hosting and deployment.', icon: <Rocket className="h-6 w-6 text-black dark:text-white" /> },
-  { title: 'XAMPP & Laragon', category: 'tools', slug: 'xampp', description: 'Local development environments for PHP and MySQL projects.', icon: <Monitor className="h-6 w-6 text-orange-500" /> },
-  { title: 'Laravel Herd', category: 'tools', slug: 'laravel', description: 'Zero-config local development environment for Laravel.', icon: <Server className="h-6 w-6 text-rose-500" /> },
-];
-
-const categories = [
-  { id: 'featured', label: 'Featured', icon: <Sparkles className="h-4 w-4 text-yellow-500" /> },
-  { id: 'all', label: 'All Skills', icon: <InfinityIcon className="h-4 w-4 text-primary" /> },
-  { id: 'professional', label: 'Methodology', icon: <Box className="h-4 w-4 text-orange-500" /> },
-  { id: 'frontend', label: 'Frontend', icon: <Layout className="h-4 w-4 text-sky-500" /> },
-  { id: 'backend', label: 'Backend', icon: <Server className="h-4 w-4 text-rose-500" /> },
-  { id: 'database', label: 'Database & Tools', icon: <Database className="h-4 w-4 text-indigo-500" /> },
-];
-
-const categoryInsights: Record<string, string> = {
-  featured: "Seeking a remote internship opportunity. I demonstrate strong ownership of tasks and the ability to deliver scalable solutions using modern frameworks like Next.js and Laravel.",
-  all: "A versatile full-stack developer with a deep understanding of the entire SDLC, from requirement gathering to production deployment.",
-  professional: "Expertise in system analysis, design patterns, and MVC architecture. I bridge the gap between business needs and technical implementation.",
-  frontend: "Crafting responsive, high-performance user interfaces with modern React frameworks, ensuring accessibility and a premium user experience.",
-  backend: "Building secure, scalable server-side applications and RESTful APIs using robust frameworks like Laravel and Node.js.",
-  database: "Managing data integrity and performance through advanced relational database design and modern ORM tools like Prisma."
-};
-
-const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
-  const brandIconUrl = skill.slug 
-    ? `https://cdn.simpleicons.org/${skill.slug}`
-    : null;
-
-  return (
-    <div className="flex-shrink-0 mx-4 w-[340px] group/card h-full py-4">
-      <InteractiveCardWrapper className="rounded-[2.5rem] h-full shadow-lg">
-        <div className="relative bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl p-6 rounded-[2.5rem] border border-white/20 h-full flex flex-col gap-4 transition-all duration-300 group-hover:bg-white/80 dark:group-hover:bg-neutral-800/80">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity" />
-          
-          <div className="flex items-center gap-4">
-            <div className="p-3 rounded-2xl bg-background/50 shadow-inner group-hover/card:scale-110 transition-transform border border-white/10 flex items-center justify-center h-12 w-12">
-              {brandIconUrl ? (
-                <img src={brandIconUrl} alt={skill.title} className="h-7 w-7 object-contain" />
-              ) : (
-                <div className="text-primary">{skill.icon}</div>
-              )}
-            </div>
-            <div className="flex-1 overflow-hidden">
-              <h4 className="text-lg font-bold font-headline text-foreground truncate">{skill.title}</h4>
-              <div className="flex gap-1.5 mt-1">
-                <Badge variant="secondary" className="text-[8px] uppercase font-black rounded-md bg-muted text-muted-foreground border-border">
-                  {skill.category}
-                </Badge>
-              </div>
-            </div>
-          </div>
-          
-          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 font-medium group-hover/card:text-foreground transition-colors">
-            {skill.description}
-          </p>
-        </div>
-      </InteractiveCardWrapper>
-    </div>
-  );
-};
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { Mail } from 'lucide-react';
+import AquaWindow from '@/components/ui/aqua-window';
+import AquaSegmentedControl from '@/components/ui/aqua-segmented-control';
+import SkillTile from '@/components/ui/skill-tile';
+import { IconCloud } from '@/components/ui/interactive-icon-cloud';
+import { filterSkills, skillGroups, featuredSlugs } from '@/lib/skills-data';
 
 export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState('featured');
+  const [group, setGroup] = useState('featured');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const filteredSkills = useMemo(() => {
-    if (activeCategory === 'all') return skills;
-    if (activeCategory === 'featured') return skills.filter(s => s.isFeatured);
-    if (activeCategory === 'database') return skills.filter(s => s.category === 'database' || s.category === 'tools');
-    return skills.filter(s => s.category === activeCategory);
-  }, [activeCategory]);
+  const visible = useMemo(() => filterSkills(group), [group]);
 
-  const activeCategoryLabel = useMemo(() => {
-    return categories.find(c => c.id === activeCategory)?.label || 'Core';
-  }, [activeCategory]);
+  const activeGroup = useMemo(
+    () => skillGroups.find((entry) => entry.id === group) ?? skillGroups[0],
+    [group]
+  );
 
+  const segments = useMemo(
+    () =>
+      skillGroups.map((entry) => ({
+        id: entry.id,
+        label: entry.label,
+        count: filterSkills(entry.id).length,
+      })),
+    []
+  );
+
+  // The marquee needs enough tiles to fill a row before it can loop cleanly.
   const marqueeItems = useMemo(() => {
-    if (filteredSkills.length === 0) return [];
-    const minItems = 15;
-    const repeats = Math.ceil(minItems / filteredSkills.length);
-    return Array(repeats).fill(filteredSkills).flat();
-  }, [filteredSkills]);
+    if (visible.length === 0) return [];
+    const repeats = Math.ceil(15 / visible.length);
+    return Array(repeats).fill(visible).flat() as typeof visible;
+  }, [visible]);
 
-  const duration = useMemo(() => {
-    return Math.max(40, filteredSkills.length * 6);
-  }, [filteredSkills.length]);
+  const duration = useMemo(() => Math.max(40, visible.length * 6), [visible.length]);
 
-  const activeSlugs = useMemo(() => {
-    const slugs = filteredSkills.filter(s => s.slug).map(s => s.slug as string);
-    if (slugs.length < 5) return [...slugs, 'javascript', 'typescript', 'react', 'nextdotjs', 'laravel', 'php', 'python', 'docker'];
-    return slugs;
-  }, [filteredSkills]);
+  const cloudSlugs = useMemo(() => {
+    const slugs = visible.filter((skill) => skill.slug).map((skill) => skill.slug as string);
+    return slugs.length >= 5 ? slugs : featuredSlugs;
+  }, [visible]);
 
   return (
-    <div className="space-y-20 py-10 overflow-hidden">
+    <div className="space-y-10 overflow-hidden py-4">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20">
-            <Cpu className="h-3 w-3 text-emerald-500" />
-            <span>Technical Expertise</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black font-headline text-foreground">
-            Skills & <span className="text-primary">Technologies</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl leading-relaxed text-base font-medium">
-            Proficient in modern web technologies and scalable system architectures.
-          </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <AquaWindow title="Skills">
+            <div className="p-6 md:p-8">
+              <div className="grid items-start gap-8 lg:grid-cols-2">
+                <div className="space-y-6">
+                  <p className="text-[14px] leading-relaxed text-muted-foreground">
+                    Grouped by where each one sits in a project rather than by how well I claim
+                    to know it.
+                  </p>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center w-full mt-12">
-            <div className="flex flex-col space-y-8">
-              <div className="flex flex-wrap justify-center lg:justify-start gap-2 p-3 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-xl rounded-[2.5rem] border border-white/10">
-                {categories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                    className={cn(
-                      "flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300",
-                      activeCategory === cat.id 
-                        ? "bg-primary text-white shadow-lg scale-105" 
-                        : "text-muted-foreground hover:bg-white/10 dark:hover:bg-neutral-800/40"
-                    )}
-                  >
-                    {cat.icon}
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeCategory}
-                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="p-8 rounded-[2.5rem] bg-white/40 dark:bg-neutral-900/40 backdrop-blur-md border border-white/20 shadow-xl hidden lg:block text-left min-h-[180px] overflow-hidden"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Target className="h-5 w-5 text-rose-500" />
-                      <span className="text-xs font-black uppercase tracking-widest text-foreground">
-                        {activeCategoryLabel} Competency
-                      </span>
-                    </div>
-                    <p className="text-sm font-medium text-muted-foreground leading-relaxed italic">
-                      "{categoryInsights[activeCategory]}"
-                    </p>
+                  <AquaSegmentedControl
+                    segments={segments}
+                    value={group}
+                    onValueChange={setGroup}
+                    label="Filter skills"
+                  />
+
+                  {/* Get Info inspector: a description of the group, not a quote. */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={group}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                      className="rounded-control border border-aqua-hairline/35 bg-black/[0.02] p-4 dark:bg-white/[0.03]"
+                    >
+                      <p className="text-[11px] font-bold text-muted-foreground">
+                        {activeGroup.label} — {visible.length}{' '}
+                        {visible.length === 1 ? 'item' : 'items'}
+                      </p>
+                      <p className="mt-2 text-[14px] leading-relaxed text-foreground">
+                        {activeGroup.note}
+                      </p>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                <div className="flex min-h-[320px] items-center justify-center">
+                  <div className="w-full max-w-sm">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={group}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
+                      >
+                        {mounted && <IconCloud iconSlugs={cloudSlugs} />}
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              </div>
+            </div>
+          </AquaWindow>
+        </motion.div>
+      </div>
+
+      {marqueeItems.length > 0 && (
+        <div className="group/marquees relative w-full">
+          <div className="flex flex-col gap-5">
+            <div className="-my-4 flex select-none overflow-hidden py-4">
+              {[0, 1].map((copy) => (
+                <div
+                  key={copy}
+                  className="flex shrink-0 animate-marquee group-hover/marquees:[animation-play-state:paused]"
+                  style={{ animationDuration: `${duration}s` }}
+                  aria-hidden={copy === 1}
+                >
+                  {marqueeItems.map((skill, index) => (
+                    <div key={`a-${copy}-${skill.title}-${index}`} className="mx-3 w-[300px]">
+                      <SkillTile skill={skill} />
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
 
-            <div className="relative flex items-center justify-center p-4 min-h-[400px]">
-              <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
-              <div className="w-full max-w-sm lg:max-w-md">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeCategory}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                  >
-                    {mounted && (
-                      <IconCloud 
-                        iconSlugs={activeSlugs} 
-                      />
-                    )}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+            <div className="-my-4 flex select-none overflow-hidden py-4">
+              {[0, 1].map((copy) => (
+                <div
+                  key={copy}
+                  className="flex shrink-0 animate-marquee-reverse group-hover/marquees:[animation-play-state:paused]"
+                  style={{ animationDuration: `${duration * 1.2}s` }}
+                  aria-hidden={copy === 1}
+                >
+                  {marqueeItems.map((skill, index) => (
+                    <div key={`b-${copy}-${skill.title}-${index}`} className="mx-3 w-[300px]">
+                      <SkillTile skill={skill} />
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      )}
 
-      <div className="relative w-full group/marquees">
-        {marqueeItems.length > 0 ? (
-          <div className="flex flex-col gap-6">
-            <div className="flex overflow-hidden select-none py-6 -my-6">
-              <div 
-                className="flex animate-marquee shrink-0 group-hover/marquees:[animation-play-state:paused]"
-                style={{ animationDuration: `${duration}s` }}
-              >
-                {marqueeItems.map((skill, idx) => (
-                  <SkillCard key={`row1-${skill.title}-${idx}`} skill={skill} />
-                ))}
-              </div>
-              <div 
-                className="flex animate-marquee shrink-0 group-hover/marquees:[animation-play-state:paused]"
-                style={{ animationDuration: `${duration}s` }}
-                aria-hidden="true"
-              >
-                {marqueeItems.map((skill, idx) => (
-                  <SkillCard key={`row1-dup-${skill.title}-${idx}`} skill={skill} />
-                ))}
-              </div>
-            </div>
-
-            <div className="flex overflow-hidden select-none py-6 -my-6">
-              <div 
-                className="flex animate-marquee-reverse shrink-0 group-hover/marquees:[animation-play-state:paused]"
-                style={{ animationDuration: `${duration * 1.2}s` }}
-              >
-                {marqueeItems.map((skill, idx) => (
-                  <SkillCard key={`row2-${skill.title}-${idx}`} skill={skill} />
-                ))}
-              </div>
-              <div 
-                className="flex animate-marquee-reverse shrink-0 group-hover/marquees:[animation-play-state:paused]"
-                style={{ animationDuration: `${duration * 1.2}s` }}
-                aria-hidden="true"
-              >
-                {marqueeItems.map((skill, idx) => (
-                  <SkillCard key={`row2-dup-${skill.title}-${idx}`} skill={skill} />
-                ))}
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="text-center py-20 text-muted-foreground font-bold tracking-widest uppercase text-xs">
-            No items in this category.
-          </div>
-        )}
-      </div>
-
-      <div className="container mx-auto px-4 md:px-6 mt-16 text-center">
-        <Button asChild className="btn-aqua btn-aqua-primary h-16 px-16 rounded-[2rem] shadow-xl text-lg group">
-          <a href="/contact">
-            <span className="flex items-center gap-3">
-              Discuss Your Project <MessageSquare className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+      <div className="container mx-auto px-4 text-center md:px-6">
+        <Button asChild className="btn-aqua btn-aqua-primary h-12 px-8">
+          <Link href="/contact">
+            <span className="flex items-center gap-2">
+              Get in touch <Mail className="h-4 w-4" />
             </span>
-          </a>
+          </Link>
         </Button>
       </div>
     </div>
