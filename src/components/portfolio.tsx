@@ -91,7 +91,7 @@ const projects: Project[] = [
     image: image('letreview')?.url,
     hint: image('letreview')?.hint,
     tech: ['Next.js', 'TypeScript', 'React', 'Firebase', 'Tailwind CSS', 'PWA'],
-    link: 'https://studio--letreview.us-central1.hosted.app/',
+    link: 'https://letreview.vercel.app/',
     linkKind: 'demo',
   },
   {
