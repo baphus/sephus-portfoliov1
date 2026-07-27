@@ -53,7 +53,7 @@ export default function Hero() {
     { label: 'Location', value: 'Cebu, Philippines' },
   ];
 
-  const resumeLink = "https://drive.google.com/file/d/1DuSx0NbhRIhrQStPamOgR52aI2DZD75D/view?usp=sharing";
+  const resumeLink = "/resume.pdf";
 
   // Unified transition settings to match SectionWrapper
   const fluidTransition = { duration: 0.4, ease: [0.22, 1, 0.36, 1] };

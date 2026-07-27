@@ -3,7 +3,7 @@
   "projects": [
     {
       "id": "bayanihan",
-      "url": "https://res.cloudinary.com/dzjshue6h/image/upload/q_auto/f_auto/v1776400253/aaaaaasdasdonewind_o2my5k.png",
+      "url": "/portfolio/owbap/bayanihan.png",
       "hint": "government system"
     },
     {
@@ -28,19 +28,24 @@
     },
     {
       "id": "cinema",
-      "url": "https://github.com/baphus/AbsoluteCinema/blob/main/images/banner.jpg?raw=true",
+      "url": "/portfolio/absolute-cinema/banner.jpg",
       "hint": "movie theater"
+    },
+    {
+      "id": "oec-verify",
+      "url": "/portfolio/oec-verify/placeholder.png",
+      "hint": "verification platform"
     }
   ],
   "education": [
     {
       "id": "ctu",
-      "url": "https://res.cloudinary.com/dzjshue6h/image/upload/q_auto/f_auto/v1776403834/Cebu_Technological_University_Logo_nm5ng2.png",
+      "url": "/education/ctu.png",
       "hint": "university seal"
     },
     {
       "id": "tcshs",
-      "url": "https://res.cloudinary.com/dzjshue6h/image/upload/q_auto/f_auto/v1776403921/Untitled_design_15_cecxob.png",
+      "url": "/education/tcshs.png",
       "hint": "school crest"
     }
   ]

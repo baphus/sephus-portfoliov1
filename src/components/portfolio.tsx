@@ -46,7 +46,7 @@ const projects: Project[] = [
     image: image('bayanihan')?.url,
     hint: image('bayanihan')?.hint,
     tech: ['Laravel 13', 'React', 'Inertia.js', 'PostgreSQL', 'Redis', 'S3'],
-    link: 'https://drive.google.com/file/d/1PeUUWOHFMD1ZtMT7HRSR3fYeU11StZSy/view?usp=sharing',
+    link: 'https://dmw7.owbap.app/',
     linkKind: 'demo',
   },
   {
@@ -58,7 +58,11 @@ const projects: Project[] = [
     featured: true,
     description:
       'A verification platform for application intake and evaluator review. Access is enforced with role-based permissions and Postgres row-level security, and receipts carry encrypted tokens that verify by QR scan.',
+    image: image('oec-verify')?.url,
+    hint: image('oec-verify')?.hint,
     tech: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS'],
+    link: 'https://oec-verifier.vercel.app/',
+    linkKind: 'demo',
   },
   {
     id: 'normalite',

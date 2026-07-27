@@ -6,7 +6,7 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: 'Josephus Kim L. Sarsonas',
+  title: 'sephus.dev',
   description:
     'Full-stack developer and systems analyst in Cebu, Philippines. Laravel, Next.js and PostgreSQL. Full Stack Developer Trainee at Edufied Pte.',
 };
