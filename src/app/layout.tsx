@@ -6,7 +6,14 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: 'sephus.dev',
+  /**
+   * Every route used to show the same tab title, which made browser history
+   * unreadable. Sub-pages fill the template; home gets the default.
+   */
+  title: {
+    default: 'Sephus - Fullstack Developer',
+    template: '%s — Sephus',
+  },
   description:
     'Full-stack developer and systems analyst in Cebu, Philippines. Laravel, Next.js and PostgreSQL. Full Stack Developer Trainee at Edufied Pte.',
 };

@@ -253,6 +253,33 @@ export const skills: Skill[] = [
   },
 ];
 
+/**
+ * The Emphasis bars.
+ *
+ * These are deliberately NOT proficiency scores. A self-assigned "UI/UX: 74%
+ * skilled" is unfalsifiable and a reader discounts it; how much of your
+ * attention an area gets is a claim you can actually make. The section copy
+ * says so explicitly, so the numbers can't be misread as a self-assessment —
+ * and it keeps curiosity at 100% honest rather than a punchline undercutting
+ * the five bars above it.
+ *
+ * They are not shares of a whole and do not sum to 100.
+ */
+export interface EmphasisArea {
+  label: string;
+  /** 0–100. Intensity of attention, not proficiency and not share-of-time. */
+  value: number;
+}
+
+export const emphasisAreas: EmphasisArea[] = [
+  { label: 'Backend development & integration', value: 95 },
+  { label: 'Database design', value: 92 },
+  { label: 'UI/UX design', value: 88 },
+  { label: 'Project management', value: 84 },
+  { label: 'User research', value: 78 },
+  { label: 'Curiosity', value: 100 },
+];
+
 export interface SkillGroup {
   id: string;
   label: string;

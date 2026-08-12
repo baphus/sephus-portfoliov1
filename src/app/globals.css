@@ -614,6 +614,102 @@
     box-shadow: 0 0 0 3px hsl(var(--aqua-blue) / 0.45);
   }
 
+  /* Determinate progress bar, 10.2 style: a recessed gray trough with a blue
+     lozenge carrying diagonal candy-stripes that scroll leftward.
+     This is the determinate control, not the indeterminate barber pole — the
+     fill width means something. */
+  .aqua-progress-track {
+    position: relative;
+    height: 15px;
+    border-radius: 999px;
+    border: 1px solid hsl(var(--aqua-hairline) / 0.4);
+    background: linear-gradient(
+      to bottom,
+      hsl(220 10% 76%),
+      hsl(220 11% 86%) 45%,
+      hsl(220 10% 93%)
+    );
+    box-shadow:
+      inset 0 2px 3px hsl(220 20% 20% / 0.22),
+      inset 0 -1px 0 hsl(0 0% 100% / 0.7);
+    overflow: hidden;
+  }
+
+  .dark .aqua-progress-track {
+    background: linear-gradient(
+      to bottom,
+      hsl(220 8% 14%),
+      hsl(220 8% 19%) 45%,
+      hsl(220 7% 24%)
+    );
+    box-shadow:
+      inset 0 2px 3px hsl(0 0% 0% / 0.5),
+      inset 0 -1px 0 hsl(0 0% 100% / 0.06);
+  }
+
+  /* Three stacked layers: gloss, stripes, blue base. Only the stripe layer
+     moves, which is why each layer gets its own background-position. */
+  .aqua-progress-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    border-radius: 999px;
+    background-image:
+      linear-gradient(
+        to bottom,
+        hsl(0 0% 100% / 0.52),
+        hsl(0 0% 100% / 0.1) 46%,
+        hsl(0 0% 0% / 0.04) 54%,
+        hsl(0 0% 0% / 0.14)
+      ),
+      linear-gradient(
+        45deg,
+        hsl(0 0% 100% / 0.3) 25%,
+        transparent 25% 50%,
+        hsl(0 0% 100% / 0.3) 50% 75%,
+        transparent 75%
+      ),
+      linear-gradient(to bottom, hsl(var(--aqua-blue)), hsl(var(--aqua-blue-deep)));
+    /* The stripe tile is square, so shifting x by exactly one tile is seamless
+       at any angle. */
+    background-size: auto, 28px 28px, auto;
+    background-repeat: no-repeat, repeat, no-repeat;
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.5),
+      inset 0 -1px 2px hsl(var(--aqua-blue-deep) / 0.5);
+    animation: aqua-progress-stripes 0.9s linear infinite;
+  }
+
+  /* Interactive traffic lights. Only opted into inside a modal, where the red
+     light really does close the window — everywhere else the lights stay
+     decorative and aria-hidden. */
+  .aqua-light-button {
+    cursor: pointer;
+    outline: none;
+    transition: filter 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  .aqua-light-button:hover {
+    filter: brightness(1.12) saturate(1.15);
+  }
+
+  .aqua-light-button:active {
+    filter: brightness(0.88);
+  }
+
+  .aqua-light-button:focus-visible {
+    box-shadow: 0 0 0 3px hsl(var(--aqua-blue) / 0.55);
+  }
+
+  /* Modal backdrop. Aqua dimmed to a cool blue-gray, never to flat black. */
+  .aqua-overlay {
+    background: hsl(214 30% 34% / 0.44);
+    backdrop-filter: blur(3px) saturate(0.92);
+  }
+
+  .dark .aqua-overlay {
+    background: hsl(220 16% 3% / 0.66);
+  }
+
   /* Disclosure triangle, as used for expandable rows throughout Mac OS X. */
   .aqua-disclosure {
     display: inline-flex;
@@ -756,9 +852,23 @@
   animation-play-state: paused;
 }
 
+/* ---------------------------------------------------------------------------
+   Progress stripes
+   --------------------------------------------------------------------------- */
+
+@keyframes aqua-progress-stripes {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 0 0, -28px 0, 0 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .animate-marquee-reverse {
+  .animate-marquee-reverse,
+  .aqua-progress-fill {
     animation: none;
   }
 }

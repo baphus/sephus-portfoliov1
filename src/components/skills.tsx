@@ -8,8 +8,9 @@ import { Mail } from 'lucide-react';
 import AquaWindow from '@/components/ui/aqua-window';
 import AquaSegmentedControl from '@/components/ui/aqua-segmented-control';
 import SkillTile from '@/components/ui/skill-tile';
+import AquaProgress from '@/components/ui/aqua-progress';
 import { IconCloud } from '@/components/ui/interactive-icon-cloud';
-import { filterSkills, skillGroups, featuredSlugs } from '@/lib/skills-data';
+import { emphasisAreas, filterSkills, skillGroups, featuredSlugs } from '@/lib/skills-data';
 
 export default function Skills() {
   const [group, setGroup] = useState('featured');
@@ -94,10 +95,36 @@ export default function Skills() {
                       </p>
                     </motion.div>
                   </AnimatePresence>
+
+                  {/* Emphasis sits in the text column; the cloud keeps the
+                      right half to itself. */}
+                  <div className="border-t border-aqua-hairline/25 pt-5">
+                    <h3 className="font-headline text-[15px] font-bold text-foreground">
+                      Emphasis
+                    </h3>
+                    <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+                      How much of my attention each area gets.
+                    </p>
+
+                    <div className="mt-5 space-y-4">
+                      {emphasisAreas.map((area, index) => (
+                        <AquaProgress
+                          key={area.label}
+                          label={area.label}
+                          value={area.value}
+                          index={index}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex min-h-[320px] items-center justify-center">
-                  <div className="w-full max-w-sm">
+                {/* self-stretch fills the row height so items-center actually
+                    centres the cloud against the taller text column — the
+                    grid's items-start would otherwise size this cell to its own
+                    content and centre against nothing. */}
+                <div className="flex min-h-[360px] items-center justify-center lg:self-stretch">
+                  <div className="w-full max-w-md lg:max-w-lg">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={group}

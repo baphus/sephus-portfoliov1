@@ -17,7 +17,9 @@ export const cloudProps: Omit<ICloud, "children"> = {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      paddingTop: 40,
+      // No top padding: the cloud is vertically centred by its cell now, and a
+      // 40px offset here would push it off centre.
+      paddingTop: 0,
     },
   },
   options: {
@@ -47,7 +49,7 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
     bgHex,
     fallbackHex,
     minContrastRatio,
-    size: 42,
+    size: 52,
     aProps: {
       href: undefined,
       target: undefined,
@@ -88,9 +90,9 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
           display: "flex", 
           justifyContent: "center", 
           alignItems: "center", 
-          width: "100%", 
-          minHeight: "300px" 
-        }} 
+          width: "100%",
+          minHeight: "360px"
+        }}
       />
     )
   }
