@@ -43,6 +43,19 @@
   html {
     @apply scroll-smooth;
   }
+
+  html[data-animations='off'] {
+    scroll-behavior: auto;
+  }
+
+  html[data-animations='off'] *,
+  html[data-animations='off'] *::before,
+  html[data-animations='off'] *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -732,6 +745,231 @@
 }
 
 /* ---------------------------------------------------------------------------
+   Global menu bar. A compact 10.2-style command strip: current page and
+   commands on the left, appearance and local time on the right.
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .mac-menu-bar {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 120;
+    display: flex;
+    height: 28px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid hsl(220 14% 34% / 0.62);
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        hsl(220 14% 44% / 0.06) 0 1px,
+        transparent 1px 3px
+      ),
+      linear-gradient(to bottom, hsl(0 0% 100%), hsl(210 12% 88%));
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.95),
+      0 1px 4px hsl(220 24% 10% / 0.24);
+    color: hsl(220 16% 12%);
+    font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+  }
+
+  .dark .mac-menu-bar {
+    border-bottom-color: hsl(0 0% 0% / 0.72);
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        hsl(0 0% 100% / 0.025) 0 1px,
+        transparent 1px 3px
+      ),
+      linear-gradient(to bottom, hsl(220 7% 30%), hsl(220 8% 19%));
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.12),
+      0 1px 4px hsl(0 0% 0% / 0.55);
+    color: hsl(210 16% 94%);
+  }
+
+.mac-menu-bar .mac-menu-root {
+  height: 27px;
+  min-width: 0;
+  flex: 1;
+  gap: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 4px !important;
+}
+
+  .mac-menu-root > * + * {
+    margin-left: 0 !important;
+  }
+
+  .mac-menu-logo-trigger,
+  .mac-menu-trigger {
+    height: 27px;
+    border-radius: 0;
+    padding: 0 8px;
+    color: inherit;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1;
+  }
+
+  .mac-menu-logo-trigger {
+    width: 32px;
+    justify-content: center;
+    padding-inline: 7px;
+  }
+
+  .mac-menu-current {
+    max-width: 150px;
+    overflow: hidden;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mac-menu-logo-trigger:focus,
+  .mac-menu-logo-trigger[data-state='open'],
+  .mac-menu-trigger:focus,
+  .mac-menu-trigger[data-state='open'] {
+    background: linear-gradient(to bottom, hsl(211 88% 61%), hsl(216 78% 43%));
+    color: white;
+    text-shadow: 0 -1px 0 hsl(216 80% 25% / 0.55);
+  }
+
+  .mac-menu-content {
+    z-index: 130;
+    min-width: 220px;
+    border: 1px solid hsl(var(--aqua-hairline) / 0.55);
+    border-radius: 0 0 4px 4px;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        hsl(var(--aqua-pinstripe) / var(--aqua-pinstripe-alpha)) 0 1px,
+        transparent 1px 4px
+      ),
+      hsl(var(--aqua-window-bg));
+    padding: 3px;
+    color: hsl(var(--foreground));
+    box-shadow:
+      inset 0 1px 0 hsl(var(--aqua-highlight) / 0.74),
+      0 8px 18px hsl(220 24% 10% / 0.32);
+  }
+
+  .dark .mac-menu-content {
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.08),
+      0 10px 22px hsl(0 0% 0% / 0.65);
+  }
+
+  .mac-menu-item {
+    min-height: 25px;
+    border-radius: 2px;
+    padding: 4px 18px;
+    color: hsl(var(--foreground));
+    font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .mac-menu-item:focus,
+  .mac-menu-item[data-highlighted] {
+    background: linear-gradient(to bottom, hsl(211 88% 62%), hsl(216 78% 44%));
+    color: white;
+    text-shadow: 0 -1px 0 hsl(216 80% 25% / 0.5);
+  }
+
+  .mac-menu-checkbox {
+    padding-left: 30px;
+  }
+
+  .mac-menu-label {
+    padding: 5px 10px 4px;
+    color: hsl(var(--muted-foreground));
+    font-size: 11px;
+    font-weight: bold;
+  }
+
+  .mac-menu-separator {
+    margin: 3px 5px;
+    background: hsl(var(--aqua-hairline) / 0.3);
+  }
+
+  .mac-menu-status {
+    display: flex;
+    height: 27px;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 3px;
+    padding-right: 9px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .mac-menu-status-button {
+    display: inline-flex;
+    height: 25px;
+    width: 28px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    color: inherit;
+    outline: none;
+  }
+
+  .mac-menu-status-button:hover,
+  .mac-menu-status-button:focus-visible {
+    background: hsl(var(--aqua-blue) / 0.18);
+  }
+
+  .mac-menu-status-button:focus-visible {
+    box-shadow: inset 0 0 0 2px hsl(var(--aqua-blue) / 0.65);
+  }
+
+  .mac-menu-time {
+    min-width: 72px;
+    text-align: right;
+  }
+
+  @media (max-width: 639px) {
+    .mac-menu-bar {
+      height: 30px;
+    }
+
+    .mac-menu-root,
+    .mac-menu-logo-trigger,
+    .mac-menu-trigger,
+    .mac-menu-status {
+      height: 29px;
+    }
+
+    .mac-menu-root {
+      padding-left: 2px;
+    }
+
+    .mac-menu-current {
+      max-width: 102px;
+    }
+
+    .mac-menu-trigger {
+      padding-inline: 6px;
+      font-size: 12px;
+    }
+
+    .mac-menu-status {
+      padding-right: 6px;
+      font-size: 11px;
+    }
+
+    .mac-menu-time {
+      min-width: 54px;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
    Dock. The shelf is deliberately unchanged — it is the owner's favourite
    element. Only the indicator, separator and help tag are new.
    --------------------------------------------------------------------------- */
@@ -852,6 +1090,230 @@
 .pause-on-hover:hover .animate-marquee,
 .pause-on-hover:hover .animate-marquee-reverse {
   animation-play-state: paused;
+}
+
+/* ---------------------------------------------------------------------------
+   Floating portfolio artifact
+   --------------------------------------------------------------------------- */
+
+.portfolio-stage {
+  perspective: 1200px;
+  perspective-origin: 50% 46%;
+  isolation: isolate;
+}
+
+.portfolio-float,
+.portfolio-object {
+  transform-style: preserve-3d;
+}
+
+.portfolio-object-shadow {
+  position: absolute;
+  left: 10%;
+  right: 2%;
+  bottom: -34px;
+  height: 62px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    hsl(220 24% 8% / 0.34) 0%,
+    hsl(220 24% 8% / 0.13) 44%,
+    transparent 72%
+  );
+  filter: blur(10px);
+  transform: translateZ(-72px) rotateX(76deg);
+  pointer-events: none;
+}
+
+.portfolio-window-front {
+  position: relative;
+  z-index: 3;
+  transform: translateZ(42px);
+  backface-visibility: hidden;
+  box-shadow:
+    inset 0 1px 0 hsl(var(--aqua-highlight) / 0.78),
+    0 3px 6px hsl(220 24% 10% / 0.22),
+    0 24px 42px -14px hsl(220 30% 8% / 0.42);
+}
+
+.portfolio-window-front .aqua-titlebar-title {
+  right: 8px;
+  left: 72px;
+  padding-inline: 0;
+  text-align: left;
+}
+
+.portfolio-resume-action {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 28px;
+  padding: 5px 8px;
+  border: 1px solid hsl(0 0% 100% / 0.34);
+  border-radius: var(--radius-control);
+  color: hsl(0 0% 100%);
+  background: hsl(220 12% 14% / 0.84);
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.18),
+    0 5px 12px hsl(220 30% 8% / 0.3);
+  backdrop-filter: blur(7px);
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.group\/pdf:hover .portfolio-resume-action {
+  background: hsl(var(--aqua-blue-deep) / 0.94);
+}
+
+.portfolio-rear-window {
+  position: absolute;
+  inset: 18px 8px 22px;
+  overflow: hidden;
+  border: 1px solid hsl(var(--aqua-hairline) / 0.42);
+  border-radius: var(--radius-window);
+  background: hsl(var(--aqua-window-bg) / 0.92);
+  box-shadow: 0 16px 28px -14px hsl(220 28% 8% / 0.42);
+  backface-visibility: hidden;
+}
+
+.portfolio-rear-window::after {
+  content: '';
+  position: absolute;
+  inset: 28px 0 0;
+  background: linear-gradient(to bottom, transparent 46%, hsl(215 38% 10% / 0.5));
+}
+
+.portfolio-rear-window--near {
+  transform: translate3d(25px, -20px, 5px) rotateZ(1.7deg);
+}
+
+.portfolio-rear-window--far {
+  transform: translate3d(-22px, 18px, -32px) rotateZ(-2.2deg);
+  filter: saturate(0.82) brightness(0.9);
+}
+
+.portfolio-rear-titlebar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 9px;
+  border-bottom: 1px solid hsl(var(--aqua-hairline) / 0.34);
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--aqua-titlebar-top)),
+    hsl(var(--aqua-titlebar-bottom))
+  );
+  box-shadow: inset 0 1px 0 hsl(var(--aqua-highlight) / 0.72);
+}
+
+.portfolio-rear-title {
+  position: absolute;
+  inset-inline: 60px 12px;
+  overflow: hidden;
+  color: hsl(var(--aqua-titlebar-text));
+  font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portfolio-profile-anchor {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  bottom: 4px;
+  transform: translate3d(-50%, 0, 96px);
+  transform-style: preserve-3d;
+}
+
+.portfolio-profile-window {
+  width: 124px;
+  overflow: hidden;
+  border: 1px solid hsl(var(--aqua-hairline) / 0.48);
+  border-radius: var(--radius-window);
+  background: hsl(var(--aqua-window-bg) / 0.96);
+  box-shadow:
+    inset 0 1px 0 hsl(var(--aqua-highlight) / 0.74),
+    0 3px 7px hsl(220 24% 10% / 0.24),
+    0 18px 30px -12px hsl(220 30% 8% / 0.46);
+  backface-visibility: hidden;
+}
+
+.portfolio-profile-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 27px;
+  padding: 0 7px;
+  border-bottom: 1px solid hsl(var(--aqua-hairline) / 0.34);
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--aqua-titlebar-top)),
+    hsl(var(--aqua-titlebar-bottom))
+  );
+  box-shadow: inset 0 1px 0 hsl(var(--aqua-highlight) / 0.78);
+}
+
+.portfolio-profile-titlebar .aqua-light {
+  width: 9px;
+  height: 9px;
+}
+
+.portfolio-profile-title {
+  min-width: 0;
+  overflow: hidden;
+  color: hsl(var(--aqua-titlebar-text));
+  font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portfolio-sunglasses-anchor {
+  position: absolute;
+  z-index: 3;
+  top: 50px;
+  left: calc(50% - 2px);
+  width: 66px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .portfolio-profile-anchor {
+    top: 270px;
+    bottom: auto;
+    left: -54px;
+    transform: translate3d(0, 0, 96px) rotateZ(-1.6deg);
+  }
+}
+
+@media (max-width: 639px) {
+  .portfolio-rear-window--near {
+    transform: translate3d(14px, -13px, 4px) rotateZ(1.2deg);
+  }
+
+  .portfolio-rear-window--far {
+    transform: translate3d(-12px, 14px, -28px) rotateZ(-1.6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-object,
+  .portfolio-float {
+    transition: none !important;
+  }
 }
 
 /* ---------------------------------------------------------------------------

@@ -4,12 +4,10 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Mail, Download } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import Typewriter from 'typewriter-effect';
-import Image from 'next/image';
 import Link from 'next/link';
-import AquaWindow from '@/components/ui/aqua-window';
-import { AquaList, AquaRow } from '@/components/ui/aqua-list';
+import FloatingPortfolioArtifact from '@/components/floating-portfolio-artifact';
 
 // Global flag to track if the hero section has already completed its intro sequence
 let hasHeroAnimated = false;
@@ -42,18 +40,6 @@ export default function Hero() {
     'Prisma ORM',
     'Docker',
   ];
-
-  // Read straight off the résumé. About This Mac lists what the machine is;
-  // this lists what the developer is.
-  const specs = [
-    { label: 'Role', value: 'Full Stack Developer Trainee' },
-    { label: 'Company', value: 'Edufied Pte (Remote)' },
-    { label: 'Degree', value: 'BS Information Systems, 2027' },
-    { label: 'GWA', value: '1.45' },
-    { label: 'Location', value: 'Cebu, Philippines' },
-  ];
-
-  const resumeLink = "/resume.pdf";
 
   // Unified transition settings to match SectionWrapper
   const fluidTransition = { duration: 0.4, ease: [0.22, 1, 0.36, 1] };
@@ -120,6 +106,15 @@ export default function Hero() {
                 Full-stack developer and systems analyst.
               </motion.p>
 
+              <motion.div
+                className="pt-3 lg:hidden"
+                initial={{ opacity: 0, scale: 0.97, y: 18 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={isFirstReveal ? { delay: 0.55, ...cinematicTransition } : fluidTransition}
+              >
+                <FloatingPortfolioArtifact />
+              </motion.div>
+
               <motion.p
                 className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
                 variants={fadeUp}
@@ -160,11 +155,11 @@ export default function Hero() {
               animate={fadeInControls}
             >
               <Button asChild className="btn-aqua btn-aqua-primary h-12 px-7">
-                <a href={resumeLink} target="_blank" rel="noopener noreferrer">
+                <Link href="/contact">
                   <span className="flex items-center gap-2">
-                    Download résumé <Download className="h-4 w-4" />
+                    Contact Me <Mail className="h-4 w-4" />
                   </span>
-                </a>
+                </Link>
               </Button>
               <Button asChild className="btn-aqua btn-aqua-secondary h-12 px-7">
                 <Link href="/portfolio">
@@ -199,56 +194,12 @@ export default function Hero() {
           </div>
 
           <motion.div
-            className="relative flex justify-center lg:justify-end z-10"
+            className="relative z-10 hidden justify-center lg:flex lg:justify-end"
             initial={{ opacity: 0, scale: 0.97, y: yOffset }}
-            animate={hasHeroAnimated ? { opacity: 1, scale: 1, y: 0 } : (headlineFinished ? { opacity: 1, scale: 1, y: 0 } : {})}
-            transition={activeTransition}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={isFirstReveal ? { delay: 0.4, ...cinematicTransition } : fluidTransition}
           >
-            <AquaWindow
-              title="About This Developer"
-              className="w-full max-w-md"
-              statusBar={<span>Open to new opportunities</span>}
-            >
-              <div className="space-y-5 p-6">
-                <div className="flex items-center gap-4">
-                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-control border border-aqua-hairline/40 shadow-inner">
-                    <Image
-                      src="/about/600x750.png"
-                      alt="Josephus Kim L. Sarsonas"
-                      fill
-                      sizes="80px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-headline text-xl font-bold leading-tight text-foreground">
-                      Josephus Kim L. Sarsonas
-                    </p>
-                    <p className="mt-1 text-[13px] text-muted-foreground">
-                      Cebu Technological University
-                    </p>
-                  </div>
-                </div>
-
-                <AquaList>
-                  {specs.map((spec) => (
-                    <AquaRow key={spec.label} label={spec.label} value={spec.value} />
-                  ))}
-                </AquaList>
-
-                <div className="space-y-2">
-                  <p className="text-[11px] font-bold text-muted-foreground">Currently building</p>
-                  <div className="rounded-control border border-aqua-hairline/35 bg-white/60 px-3 py-2.5 dark:bg-black/25">
-                    <p className="text-[13px] font-bold text-foreground">
-                      OWBAP, One Window Bayanihan Assistance Program
-                    </p>
-                    <p className="mt-0.5 text-[12px] text-muted-foreground">
-                      Capstone, for the Department of Migrant Workers
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </AquaWindow>
+            <FloatingPortfolioArtifact />
           </motion.div>
         </div>
       </div>

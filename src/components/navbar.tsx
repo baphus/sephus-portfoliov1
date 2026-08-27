@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from 'framer-motion';
 import { ThemeToggle } from './theme-toggle';
 import Image from 'next/image';
+import { useSitePreferences } from '@/components/site-preferences';
 
 const navLinks = [
   { href: '/', label: 'Home', iconSrc: '/nav-icons/home.png' },
@@ -82,7 +83,8 @@ function DockIcon({ href, label, iconSrc, isActive, pointerX }: DockIconProps) {
 export default function Navbar() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
-  const [magnify, setMagnify] = useState(false);
+  const [pointerCanMagnify, setPointerCanMagnify] = useState(false);
+  const { animationsEnabled, dockMagnificationEnabled } = useSitePreferences();
 
   const pointerX = useMotionValue(Number.POSITIVE_INFINITY);
 
@@ -91,22 +93,21 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-  // Magnification needs a real pointer to track, and it is motion the user may
-  // have asked not to see.
+  // Magnification needs a real pointer. Motion and magnification preferences
+  // are controlled globally from the menu bar.
   useEffect(() => {
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    const sync = () => setMagnify(finePointer.matches && !reducedMotion.matches);
+    const sync = () => setPointerCanMagnify(finePointer.matches);
     sync();
 
     finePointer.addEventListener('change', sync);
-    reducedMotion.addEventListener('change', sync);
     return () => {
       finePointer.removeEventListener('change', sync);
-      reducedMotion.removeEventListener('change', sync);
     };
   }, []);
+
+  const magnify = pointerCanMagnify && animationsEnabled && dockMagnificationEnabled;
 
   return (
     <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-[100] w-auto max-w-[95vw]">

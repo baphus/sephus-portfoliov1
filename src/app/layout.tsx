@@ -4,6 +4,7 @@ import { Providers } from '@/components/providers';
 import { Toaster } from '@/components/ui/toaster';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import MenuBar from '@/components/menu-bar';
 
 export const metadata: Metadata = {
   /**
@@ -30,7 +31,8 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen bg-background">
         <Providers attribute="class" defaultTheme="dark" enableSystem={false}>
-          <main className="flex-1">
+          <MenuBar />
+          <main className="flex-1 pt-7">
             {children}
           </main>
           <Footer />
