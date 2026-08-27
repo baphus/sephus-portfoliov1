@@ -33,6 +33,7 @@ function ProjectWindow({
               src={project.image}
               alt={project.title}
               fill
+              priority={project.id === 'tulai'}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
               data-ai-hint={project.hint}
@@ -137,6 +138,11 @@ export default function Portfolio() {
         count: projects.filter((p) => p.category === 'personal').length,
       },
       {
+        id: 'hackathon',
+        label: 'Hackathons',
+        count: projects.filter((p) => p.category === 'hackathon').length,
+      },
+      {
         id: 'coursework',
         label: 'Coursework',
         count: projects.filter((p) => p.category === 'coursework').length,
@@ -153,6 +159,8 @@ export default function Portfolio() {
         return projects.filter((p) => p.category === 'capstone' || p.category === 'client');
       case 'personal':
         return projects.filter((p) => p.category === 'personal');
+      case 'hackathon':
+        return projects.filter((p) => p.category === 'hackathon');
       case 'coursework':
         return projects.filter((p) => p.category === 'coursework');
       default:
@@ -172,9 +180,10 @@ export default function Portfolio() {
         <AquaWindow title="Projects">
           <div className="space-y-5 p-6 md:p-8">
             <p className="max-w-2xl text-[14px] leading-relaxed text-muted-foreground">
-              Eight projects: a case management system for a government agency, two client
-              systems, a licensure reviewer that reached 120 users in its first two weeks, and
-              the coursework I learned on. Open any one for screenshots and what it taught me.
+              Nine projects, including Tul.AI from my first hackathon, a case management system
+              for a government agency, two client systems, a licensure reviewer that reached 120
+              users in its first two weeks, and the coursework I learned on. Open any one for
+              screenshots, project media and what it taught me.
             </p>
             <AquaSegmentedControl
               segments={segments}

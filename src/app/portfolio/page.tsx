@@ -5,7 +5,7 @@ import SectionWrapper from '@/components/section-wrapper';
 export const metadata: Metadata = {
   title: 'Portfolio',
   description:
-    'Eight projects: a government case management system, two client systems, a licensure exam reviewer, and the coursework behind them.',
+    'Nine projects, including Tul.AI from my first hackathon, a government case management system, client systems, a licensure exam reviewer, and coursework.',
 };
 
 export default function PortfolioPage() {

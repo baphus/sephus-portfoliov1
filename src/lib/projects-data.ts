@@ -13,7 +13,7 @@
 
 import imageData from '@/app/lib/placeholder-images.json';
 
-export type Category = 'capstone' | 'client' | 'personal' | 'coursework';
+export type Category = 'capstone' | 'client' | 'personal' | 'hackathon' | 'coursework';
 
 export interface ProjectShot {
   src: string;
@@ -24,6 +24,20 @@ export interface ProjectShot {
 export interface ProjectLesson {
   skill: string;
   note: string;
+}
+
+export interface ProjectFact {
+  label: string;
+  value: string;
+}
+
+export interface ProjectResource {
+  kind: 'video' | 'slides' | 'certificate';
+  title: string;
+  description: string;
+  href: string;
+  preview?: string;
+  meta?: string;
 }
 
 export interface ProjectDetail {
@@ -38,6 +52,9 @@ export interface ProjectDetail {
     mobile: ProjectShot[];
   };
   lessons: ProjectLesson[];
+  /** Structured context and attached media for projects with more than screenshots. */
+  facts?: ProjectFact[];
+  resources?: ProjectResource[];
   /** Content gaps for the owner to fill. Never rendered. */
   todos?: string[];
 }
@@ -65,6 +82,113 @@ const image = (id: string) => imageData.projects.find((p) => p.id === id);
  * matching shape reads as generated even when every fact is true.
  */
 export const projects: Project[] = [
+  {
+    id: 'tulai',
+    title: 'Tul.AI — Scholarship Opportunity Bridge',
+    monogram: 'TA',
+    category: 'hackathon',
+    categoryLabel: 'Hackathon',
+    featured: true,
+    description:
+      'My first hackathon project, built with Team “HAHAHA” for Can You HackIT: The IBPAP Challenge (Cebu). Tul means bridge in Bisaya: the prototype helps Filipino students find scholarships they qualify for, check requirements and deadlines, and get AI explanations grounded in verified sources. It supports guidance in Bisaya, Tagalog and English.',
+    image: image('tulai')?.url,
+    hint: image('tulai')?.hint,
+    tech: [
+      'AI-assisted research',
+      'Structured eligibility data',
+      'Responsive web app',
+      'Multilingual UX',
+    ],
+    link: '/portfolio/tulai/tulai-demo.mp4',
+    linkKind: 'demo',
+    detail: {
+      overview:
+        'Tul.AI is a scholarship discovery prototype for Filipino students. “Tul” means bridge in Bisaya: the product is designed to bridge students to funding opportunities that already exist but can be difficult to find. Students create a profile, receive scholarship matches based on structured eligibility data, check requirements and deadlines, and continue to the provider’s official application page. Eligibility matching is deterministic; the AI explains results from verified source material rather than deciding who qualifies.',
+      role: 'Team member on Team “HAHAHA”. Tul.AI was our entry for Can You HackIT: The IBPAP Challenge (Cebu), and this was the first hackathon I attended.',
+      shots: {
+        desktop: [],
+        fullPage: [],
+        mobile: [],
+      },
+      facts: [
+        {
+          label: 'Event',
+          value: 'Can You HackIT: The IBPAP Challenge (Cebu)',
+        },
+        {
+          label: 'Date',
+          value: 'August 17, 2026',
+        },
+        {
+          label: 'Venue',
+          value: 'Cebu Institute of Technology – University (CIT-U)',
+        },
+        {
+          label: 'Team',
+          value: 'Team “HAHAHA”',
+        },
+        {
+          label: 'Milestone',
+          value: 'My first hackathon',
+        },
+        {
+          label: 'Recognition',
+          value: 'Certificate of Participation',
+        },
+      ],
+      resources: [
+        {
+          kind: 'video',
+          title: 'Product demo and marketing video',
+          description:
+            'A 3-minute, 13-second walkthrough of the student profile, ranked scholarship matches, verified-source AI assistance, saved opportunities and responsive experience.',
+          href: '/portfolio/tulai/tulai-demo.mp4',
+          preview: '/portfolio/tulai/tulai-demo-poster.jpg',
+          meta: '3:13 · 1080p',
+        },
+        {
+          kind: 'slides',
+          title: 'Tul.AI pitch deck',
+          description:
+            'The 12-slide hackathon deck covering the funding and discovery gap, the product workflow, target users, competitive position and roadmap.',
+          href: '/portfolio/tulai/tulai-pitch-deck.html',
+          preview: '/portfolio/tulai/tulai-pitch-deck-preview.png',
+          meta: '12 slides · Interactive HTML',
+        },
+        {
+          kind: 'certificate',
+          title: 'Can You HackIT certificate',
+          description:
+            'Certificate of Participation issued to Josephus Kim L. Sarsonas of Team “HAHAHA” by IBPAP for the Cebu challenge.',
+          href: '/portfolio/tulai/can-you-hackit-certificate.pdf',
+          preview: '/portfolio/tulai/can-you-hackit-certificate-preview.jpg',
+          meta: 'Certificate of Participation · PDF',
+        },
+      ],
+      lessons: [
+        {
+          skill: 'Building under hackathon constraints',
+          note: 'My first hackathon forced the team to turn a broad student-access problem into a focused prototype, a clear product story and a working demonstration in one event.',
+        },
+        {
+          skill: 'Keeping eligibility explainable',
+          note: 'Structured rules decide whether a scholarship matches. AI is used to explain the published information and cite the verified source, not to make the eligibility decision.',
+        },
+        {
+          skill: 'Designing for local context',
+          note: 'The experience supports guidance in Bisaya, Tagalog and English, and begins with students and scholarship providers in Cebu.',
+        },
+        {
+          skill: 'Pitching the problem before the product',
+          note: 'The deck starts with the funding and discovery gap, then introduces Tul.AI as the bridge. That sequence made the product easier to understand than opening with a feature list.',
+        },
+      ],
+      todos: [
+        'Add the exact implementation stack once the team confirms the framework, data store and AI provider used in the prototype.',
+        'Add a public live-demo URL if the prototype is deployed later.',
+      ],
+    },
+  },
   {
     id: 'owbap',
     title: 'OWBAP — One Window Bayanihan Assistance Program',
@@ -446,8 +570,11 @@ export const projects: Project[] = [
 /** A project only offers "Learn more" when there is more to show. */
 export function hasDetail(project: Project): boolean {
   if (!project.detail) return false;
-  const { overview, lessons, shots } = project.detail;
-  return Boolean(overview) && (lessons.length > 0 || shots.desktop.length > 0);
+  const { overview, lessons, resources, shots } = project.detail;
+  return (
+    Boolean(overview) &&
+    (lessons.length > 0 || shots.desktop.length > 0 || (resources?.length ?? 0) > 0)
+  );
 }
 
 export function projectById(id: string): Project | undefined {

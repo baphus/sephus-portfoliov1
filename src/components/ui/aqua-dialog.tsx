@@ -10,6 +10,8 @@ interface AquaDialogProps {
   onOpenChange: (open: boolean) => void;
   /** Shown in the title bar and used as the dialog's accessible name. */
   title: string;
+  /** Concise accessible summary. Falls back to a generic title-based description. */
+  description?: string;
   /** Optional strip along the bottom of the window. */
   statusBar?: React.ReactNode;
   children: React.ReactNode;
@@ -31,6 +33,7 @@ export default function AquaDialog({
   open,
   onOpenChange,
   title,
+  description,
   statusBar,
   children,
   className,
@@ -58,6 +61,9 @@ export default function AquaDialog({
             className
           )}
         >
+          <DialogPrimitive.Description className="sr-only">
+            {description ?? `Details for ${title}.`}
+          </DialogPrimitive.Description>
           <AquaWindow
             title={<DialogPrimitive.Title>{title}</DialogPrimitive.Title>}
             statusBar={statusBar}

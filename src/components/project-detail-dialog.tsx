@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ArrowUpRight, Github, Lock } from 'lucide-react';
+import { ArrowUpRight, Award, FileText, Github, Lock, PlayCircle } from 'lucide-react';
 import AquaDialog from '@/components/ui/aqua-dialog';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,7 +14,13 @@ import {
   type CarouselApi,
 } from '@/components/ui/carousel';
 import { cn } from '@/lib/utils';
-import { shotCount, type Project, type ProjectShot } from '@/lib/projects-data';
+import {
+  shotCount,
+  type Project,
+  type ProjectFact,
+  type ProjectResource,
+  type ProjectShot,
+} from '@/lib/projects-data';
 
 /** An Aqua "group box" heading: hairline rule, bold Lucida-ish label. */
 function Section({
@@ -198,6 +204,119 @@ function MobileStrip({ shots, title }: { shots: ProjectShot[]; title: string }) 
   );
 }
 
+function ProjectFacts({ facts }: { facts: ProjectFact[] }) {
+  return (
+    <dl className="grid overflow-hidden rounded-control border border-aqua-hairline/30 bg-aqua-hairline/20 sm:grid-cols-2">
+      {facts.map((fact) => (
+        <div key={fact.label} className="bg-background/90 p-3.5">
+          <dt className="text-[11px] font-bold text-muted-foreground">{fact.label}</dt>
+          <dd className="mt-1 text-[13px] leading-relaxed text-foreground">{fact.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function ProjectResources({ resources }: { resources: ProjectResource[] }) {
+  const video = resources.find((resource) => resource.kind === 'video');
+  const documents = resources.filter((resource) => resource.kind !== 'video');
+
+  return (
+    <div className="space-y-6">
+      {video && (
+        <article className="space-y-3">
+          <div className="flex items-start gap-3">
+            <PlayCircle className="mt-0.5 h-5 w-5 shrink-0 text-aqua-blue" aria-hidden="true" />
+            <div>
+              <h4 className="text-[14px] font-bold text-foreground">{video.title}</h4>
+              {video.meta && (
+                <p className="mt-0.5 text-[11px] font-bold text-muted-foreground">{video.meta}</p>
+              )}
+              <p className="mt-1.5 max-w-[70ch] text-[13px] leading-relaxed text-muted-foreground">
+                {video.description}
+              </p>
+            </div>
+          </div>
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            poster={video.preview}
+            className="aspect-video w-full rounded-control border border-aqua-hairline/30 bg-black shadow-sm"
+          >
+            <source src={video.href} type="video/mp4" />
+            Your browser cannot play this video.{' '}
+            <a href={video.href} target="_blank" rel="noopener noreferrer">
+              Open the demo video instead.
+            </a>
+          </video>
+        </article>
+      )}
+
+      {documents.length > 0 && (
+        <div className="grid gap-4 md:grid-cols-2">
+          {documents.map((resource) => {
+            const ResourceIcon = resource.kind === 'certificate' ? Award : FileText;
+            const action = resource.kind === 'certificate' ? 'Open certificate' : 'Open pitch deck';
+
+            return (
+              <article
+                key={resource.href}
+                className="overflow-hidden rounded-control border border-aqua-hairline/30 bg-black/[0.02] dark:bg-white/[0.03]"
+              >
+                {resource.preview && (
+                  <a
+                    href={resource.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative block aspect-video border-b border-aqua-hairline/25 bg-black/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-blue focus-visible:ring-inset dark:bg-black/40"
+                    aria-label={`${action}: ${resource.title}`}
+                  >
+                    <Image
+                      src={resource.preview}
+                      alt={`${resource.title} preview`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      className="object-contain"
+                    />
+                  </a>
+                )}
+                <div className="space-y-3 p-4">
+                  <div className="flex items-start gap-2.5">
+                    <ResourceIcon
+                      className="mt-0.5 h-4 w-4 shrink-0 text-aqua-blue"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <h4 className="text-[13px] font-bold text-foreground">{resource.title}</h4>
+                      {resource.meta && (
+                        <p className="mt-0.5 text-[11px] font-bold text-muted-foreground">
+                          {resource.meta}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-[12px] leading-relaxed text-muted-foreground">
+                    {resource.description}
+                  </p>
+                  <Button asChild className="btn-aqua btn-aqua-secondary h-9 w-full">
+                    <a href={resource.href} target="_blank" rel="noopener noreferrer">
+                      <span className="flex items-center gap-2">
+                        {action}
+                        <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </span>
+                    </a>
+                  </Button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ProjectDetailDialog({
   project,
   open,
@@ -212,16 +331,20 @@ export default function ProjectDetailDialog({
 
   const shots = shotCount(detail);
   const hasShots = shots > 0;
+  const resourceCount = detail.resources?.length ?? 0;
 
   return (
     <AquaDialog
       open={open}
       onOpenChange={onOpenChange}
       title={project.title}
+      description={`Project case study for ${project.title}, including the overview, role, media, lessons and technology.`}
       statusBar={
         <span>
           {project.categoryLabel}
           {hasShots && ` — ${shots} screenshot${shots === 1 ? '' : 's'}`}
+          {resourceCount > 0 &&
+            `${hasShots ? ' · ' : ' — '}${resourceCount} attachment${resourceCount === 1 ? '' : 's'}`}
         </span>
       }
     >
@@ -234,6 +357,12 @@ export default function ProjectDetailDialog({
           <p className="text-[14px] leading-relaxed text-muted-foreground">{detail.role}</p>
         </Section>
 
+        {detail.facts && detail.facts.length > 0 && (
+          <Section title="Project details">
+            <ProjectFacts facts={detail.facts} />
+          </Section>
+        )}
+
         {hasShots && (
           <Section title="Screenshots">
             <div className="space-y-6">
@@ -241,6 +370,12 @@ export default function ProjectDetailDialog({
               <FullPageStrip shots={detail.shots.fullPage} title={project.title} />
               <MobileStrip shots={detail.shots.mobile} title={project.title} />
             </div>
+          </Section>
+        )}
+
+        {detail.resources && detail.resources.length > 0 && (
+          <Section title="Project media">
+            <ProjectResources resources={detail.resources} />
           </Section>
         )}
 
@@ -259,7 +394,7 @@ export default function ProjectDetailDialog({
           </Section>
         )}
 
-        <Section title="Stack">
+        <Section title="Technology & approach">
           <div className="flex flex-wrap gap-1.5">
             {project.tech.map((tech) => (
               <span

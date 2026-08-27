@@ -2,6 +2,11 @@
 {
   "projects": [
     {
+      "id": "tulai",
+      "url": "/portfolio/tulai/tulai-demo-poster.jpg",
+      "hint": "scholarship matching app"
+    },
+    {
       "id": "bayanihan",
       "url": "/portfolio/owbap/bayanihan.png",
       "hint": "government system"
