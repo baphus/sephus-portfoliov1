@@ -504,8 +504,9 @@
       0 1px 2px hsl(216 60% 20% / 0.4);
   }
 
-  .btn-aqua-secondary {
-    background: linear-gradient(
+  .btn-aqua.btn-aqua-secondary {
+    background-color: hsl(0 0% 80%);
+    background-image: linear-gradient(
       to bottom,
       hsl(0 0% 97%),
       hsl(0 0% 92%) 48%,
@@ -522,8 +523,9 @@
     background: none;
   }
 
-  .dark .btn-aqua-secondary {
-    background: linear-gradient(
+  .dark .btn-aqua.btn-aqua-secondary {
+    background-color: hsl(220 8% 22%);
+    background-image: linear-gradient(
       to bottom,
       hsl(220 6% 40%),
       hsl(220 7% 32%) 48%,
