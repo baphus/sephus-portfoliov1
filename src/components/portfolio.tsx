@@ -2,21 +2,15 @@
 
 import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import AquaWindow from '@/components/ui/aqua-window';
 import AquaSegmentedControl from '@/components/ui/aqua-segmented-control';
-import ProjectDetailDialog from '@/components/project-detail-dialog';
 import { ArrowUpRight, Github, Lock, Maximize2 } from 'lucide-react';
-import { hasDetail, projects, type Project } from '@/lib/projects-data';
+import { hasDetail, projectPath, projects, type Project } from '@/lib/projects-data';
 
-function ProjectWindow({
-  project,
-  onLearnMore,
-}: {
-  project: Project;
-  onLearnMore: (project: Project) => void;
-}) {
+function ProjectWindow({ project }: { project: Project }) {
   const canExpand = hasDetail(project);
 
   return (
@@ -70,14 +64,15 @@ function ProjectWindow({
             <div className="space-y-2">
               {canExpand && (
                 <Button
-                  type="button"
-                  onClick={() => onLearnMore(project)}
+                  asChild
                   className="btn-aqua btn-aqua-primary h-10 w-full"
                 >
-                  <span className="flex items-center gap-2">
-                    Learn more
-                    <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
-                  </span>
+                  <Link href={projectPath(project)}>
+                    <span className="flex items-center gap-2">
+                      Read case study
+                      <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                  </Link>
                 </Button>
               )}
 
@@ -116,12 +111,7 @@ function ProjectWindow({
 }
 
 export default function Portfolio() {
-  const [filter, setFilter] = useState('featured');
-  /**
-   * One dialog for the whole grid rather than one per card — eight mounted
-   * dialogs would mean eight portals and eight focus traps.
-   */
-  const [active, setActive] = useState<Project | null>(null);
+  const [filter, setFilter] = useState('all');
 
   const segments = useMemo(
     () => [
@@ -210,19 +200,12 @@ export default function Portfolio() {
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="h-full"
             >
-              <ProjectWindow project={project} onLearnMore={setActive} />
+              <ProjectWindow project={project} />
             </motion.div>
           ))}
         </AnimatePresence>
       </motion.div>
 
-      <ProjectDetailDialog
-        project={active}
-        open={active !== null}
-        onOpenChange={(open) => {
-          if (!open) setActive(null);
-        }}
-      />
     </div>
   );
 }

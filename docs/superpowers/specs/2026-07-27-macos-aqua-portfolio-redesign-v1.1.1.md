@@ -38,7 +38,7 @@ owner's résumé — in places it actively undersells him.
 
 | # | Site currently says | Résumé says | Severity |
 |---|---------------------|-------------|----------|
-| C1 | No Edufied Pte entry. "Seeking a remote internship opportunity starting in May", "Available for Internship", "Seeking May Internship". | **Full Stack Developer Trainee, Edufied Pte, Remote, May 2026 – Present.** | High — stale, undersells |
+| C1 | No Edufied Pte entry. "Seeking a remote internship opportunity starting in May", "Available for Internship", "Seeking May Internship". | **Full-Stack Software Engineer Trainee, Edufied Pte, Remote, May 2026 – Present.** | High — stale, undersells |
 | C2 | Bayanihan One Window built with **Vue.js**; no leadership or security work mentioned. | OWBAP: **Laravel 13, React, Inertia.js, PostgreSQL, Redis, S3**. Capstone **lead developer, team leader, systems analyst for a team of 4**. Email OTP, TOTP MFA, RBAC, audit logging, rate limiting. Client: Department of Migrant Workers. | High |
 | C3 | Absent. | **OEC Verify** — Next.js, TypeScript, Supabase, PostgreSQL, Tailwind. RBAC, Row-Level Security, encrypted receipt tokens, QR verification. | High |
 | C4 | "Aug 2023 – Present", no GWA. | BS Information Systems, **GWA 1.45**, expected **2027**. | Medium |

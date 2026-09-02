@@ -1,11 +1,10 @@
 
 "use client";
 
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import Typewriter from 'typewriter-effect';
 import Link from 'next/link';
 import FloatingPortfolioArtifact from '@/components/floating-portfolio-artifact';
 
@@ -14,23 +13,13 @@ let hasHeroAnimated = false;
 
 export default function Hero() {
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const [headlineFinished, setHeadlineFinished] = useState(hasHeroAnimated);
-  const [isFirstReveal, setIsFirstReveal] = useState(!hasHeroAnimated);
+  const [isFirstReveal] = useState(!hasHeroAnimated);
   const fadeInControls = useAnimation();
 
   useEffect(() => {
-    if (hasHeroAnimated) {
-      fadeInControls.start("visible");
-    }
+    fadeInControls.start('visible');
+    hasHeroAnimated = true;
   }, [fadeInControls]);
-
-  useEffect(() => {
-    if (headlineFinished && !hasHeroAnimated) {
-      fadeInControls.start("visible");
-      hasHeroAnimated = true;
-      setIsFirstReveal(false);
-    }
-  }, [headlineFinished, fadeInControls]);
 
   const workingWith = [
     'Laravel & PostgreSQL',
@@ -66,7 +55,7 @@ export default function Hero() {
             >
               <p className="inline-flex w-fit items-center gap-2 rounded-control border border-aqua-hairline/40 bg-white/70 px-3 py-1.5 text-[12px] font-bold text-foreground shadow-sm dark:bg-black/30">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]" />
-                Full Stack Developer Trainee at Edufied Pte
+                Full-Stack Software Engineer Trainee at Edufied Pte
               </p>
             </motion.div>
 
@@ -77,33 +66,16 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={activeTransition}
               >
-                {hasHeroAnimated ? (
-                  <span className="whitespace-nowrap">Hi, I&apos;m Josephus</span>
-                ) : (
-                  <Typewriter
-                    onInit={(typewriter) => {
-                      typewriter
-                        .typeString('<span class="whitespace-nowrap">Hi, I\'m Josephus</span>')
-                        .callFunction(() => {
-                          setHeadlineFinished(true);
-                        })
-                        .start();
-                    }}
-                    options={{
-                      cursor: '|',
-                      delay: 80,
-                    }}
-                  />
-                )}
+                Hi, I&apos;m Josephus Kim Sarsonas
               </motion.h1>
 
               <motion.p
                 className="text-xl md:text-2xl font-bold text-muted-foreground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: isFirstReveal ? 1 : 0.2, ...activeTransition }}
+                transition={{ delay: isFirstReveal ? 0.45 : 0.2, ...activeTransition }}
               >
-                Full-stack developer and systems analyst.
+                Full-stack software engineer and systems analyst.
               </motion.p>
 
               <motion.div

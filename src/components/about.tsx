@@ -124,7 +124,7 @@ export default function About() {
                   <p>
                     I&apos;m{' '}
                     <strong className="font-bold text-foreground">Josephus Kim L. Sarsonas</strong>,
-                    a full-stack developer and Information Systems student based in Cebu.
+                    a full-stack software engineer and Information Systems student based in Cebu.
                   </p>
                   <p>
                     Most of my projects start with listening: how people work today, where they
@@ -149,7 +149,7 @@ export default function About() {
                       aria-hidden="true"
                     />
                     <span className="leading-relaxed text-muted-foreground">
-                      Full Stack Developer Trainee at Edufied Pte
+                      Full-Stack Software Engineer Trainee at Edufied Pte
                     </span>
                   </div>
                 </div>

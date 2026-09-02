@@ -61,6 +61,8 @@ export interface ProjectDetail {
 
 export interface Project {
   id: string;
+  /** Optional public URL segment when the internal id would be unclear. */
+  slug?: string;
   title: string;
   monogram: string;
   category: Category;
@@ -539,6 +541,7 @@ export const projects: Project[] = [
   },
   {
     id: 'portfolio',
+    slug: 'sephus-tech',
     title: 'This Portfolio',
     monogram: 'JS',
     category: 'personal',
@@ -577,8 +580,16 @@ export function hasDetail(project: Project): boolean {
   );
 }
 
+export function projectSlug(project: Project): string {
+  return project.slug ?? project.id;
+}
+
+export function projectPath(project: Project): string {
+  return `/portfolio/${projectSlug(project)}`;
+}
+
 export function projectById(id: string): Project | undefined {
-  return projects.find((project) => project.id === id);
+  return projects.find((project) => project.id === id || projectSlug(project) === id);
 }
 
 export function shotCount(detail: ProjectDetail): number {

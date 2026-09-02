@@ -2,12 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Eye } from 'lucide-react';
 import AquaWindow from '@/components/ui/aqua-window';
-import ProjectDetailDialog from '@/components/project-detail-dialog';
-import { projects, type Project } from '@/lib/projects-data';
+import { projectPath, projects } from '@/lib/projects-data';
 
 const featuredProjectIds = ['tulai', 'owbap', 'letreview'] as const;
 
@@ -30,7 +28,6 @@ const restingOffsets = [7, -7, 5] as const;
 
 export default function FeaturedProjects() {
   const reduceMotion = useReducedMotion();
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   return (
     <>
@@ -173,15 +170,14 @@ export default function FeaturedProjects() {
                       </div>
 
                       {project.detail && (
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject(project)}
+                        <Link
+                          href={projectPath(project)}
                           aria-label={`View ${project.title} project details`}
                           className="btn-aqua btn-aqua-primary inline-flex h-9 shrink-0 items-center gap-1.5 px-3 text-[11px] font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-blue focus-visible:ring-offset-2"
                         >
                           View
                           <Eye className="h-3.5 w-3.5" aria-hidden="true" />
-                        </button>
+                        </Link>
                       )}
                     </div>
                   </div>
@@ -193,13 +189,6 @@ export default function FeaturedProjects() {
         </div>
       </section>
 
-      <ProjectDetailDialog
-        project={activeProject}
-        open={activeProject !== null}
-        onOpenChange={(open) => {
-          if (!open) setActiveProject(null);
-        }}
-      />
     </>
   );
 }

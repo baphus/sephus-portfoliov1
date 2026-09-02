@@ -15,7 +15,7 @@ const RESUME_LINK =
  * job-shaped titles live on the Projects page, which is where they belong.
  */
 const role = {
-  title: 'Full Stack Developer Trainee',
+  title: 'Full-Stack Software Engineer Trainee',
   company: 'Edufied Pte',
   location: 'Remote',
   period: 'May 2026 – Present',

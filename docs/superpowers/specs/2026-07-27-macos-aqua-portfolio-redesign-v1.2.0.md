@@ -39,7 +39,7 @@ owner's résumé — in places it actively undersells him.
 
 | # | Site currently says | Résumé says | Severity |
 |---|---------------------|-------------|----------|
-| C1 | No Edufied Pte entry. "Seeking a remote internship opportunity starting in May", "Available for Internship", "Seeking May Internship". | **Full Stack Developer Trainee, Edufied Pte, Remote, May 2026 – Present.** | High — stale, undersells |
+| C1 | No Edufied Pte entry. "Seeking a remote internship opportunity starting in May", "Available for Internship", "Seeking May Internship". | **Full-Stack Software Engineer Trainee, Edufied Pte, Remote, May 2026 – Present.** | High — stale, undersells |
 | C2 | Bayanihan One Window built with **Vue.js**; no leadership or security work mentioned. | OWBAP: **Laravel 13, React, Inertia.js, PostgreSQL, Redis, S3**. Capstone **lead developer, team leader, systems analyst for a team of 4**. Email OTP, TOTP MFA, RBAC, audit logging, rate limiting. Client: Department of Migrant Workers. | High |
 | C3 | Absent. | **OEC Verify** — Next.js, TypeScript, Supabase, PostgreSQL, Tailwind. RBAC, Row-Level Security, encrypted receipt tokens, QR verification. | High |
 | C4 | "Aug 2023 – Present", no GWA. | BS Information Systems, **GWA 1.45**, expected **2027**. | Medium |
@@ -51,7 +51,7 @@ owner's résumé — in places it actively undersells him.
 | C10 | Looping typewriter cycling "Self-Driven & Highly Autonomous", "Problem Solver", "Communicator". | — | Medium |
 | C11 | Metadata: "Dynamic and versatile digital professional with expertise spanning video editing, social media management, web development, and data analytics." | No video editing, social media, or data analytics on the résumé. | High — wrong person |
 | C12 | "academic, **viral**, and production environments." Skills lists **Vue.js**. | Vue.js is not on the résumé; OWBAP is React. | Medium |
-| C13 | The Experience page lists **six entries**, five of which are projects given job-shaped role titles and employer-shaped company names — "Fullstack Developer / System Analyst" at "Bayanihan One Window", at "Medicare Clinic System", at "AbsoluteCinema". Two are labelled "Freelance Web Developer" for a personal project and a proposed system. | The résumé has exactly **one** Experience entry — Edufied Pte — and lists the rest under **Projects**. | High — reads as padded employment history |
+| C13 | The Experience page lists **six entries**, five of which are projects given job-shaped role titles and employer-shaped company names — "Full-Stack Software Engineer / Systems Analyst" at "Bayanihan One Window", at "Medicare Clinic System", at "AbsoluteCinema". Two are labelled "Freelance Web Developer" for a personal project and a proposed system. | The résumé has exactly **one** Experience entry — Edufied Pte — and lists the rest under **Projects**. | High — reads as padded employment history |
 
 ---
 
@@ -189,13 +189,13 @@ the title bar. "Read More" becomes a **disclosure triangle**. Filters become
 
 The page holds **only** the Edufied Pte internship. This resolves C13.
 
-The five other entries are projects wearing job titles. "Fullstack Developer / System Analyst"
+The five other entries are projects wearing job titles. "Full-Stack Software Engineer / Systems Analyst"
 at "Medicare Clinic System" describes a school requirement as employment; "Freelance Web
 Developer" at "LETReview" describes a personal project as client work. Presenting them as an
 employment history is padding, and padding is exactly what a reader discounts. One real
 internship, stated plainly, is stronger than six entries a reader has to sort through.
 
-- **Content:** Full Stack Developer Trainee, Edufied Pte, Remote, May 2026 – Present. Built from
+- **Content:** Full-Stack Software Engineer Trainee, Edufied Pte, Remote, May 2026 – Present. Built from
   the three résumé bullets — full-stack work across the SDLC from requirements gathering to
   deployment; daily scrum, troubleshooting and system improvement with the team; tool evaluation
   and integration, application security, technical documentation.

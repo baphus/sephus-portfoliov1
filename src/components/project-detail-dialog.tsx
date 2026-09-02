@@ -27,16 +27,20 @@ function Section({
   title,
   children,
   className,
+  headingLevel = 'h3',
 }: {
   title: string;
   children: React.ReactNode;
   className?: string;
+  headingLevel?: 'h2' | 'h3';
 }) {
+  const Heading = headingLevel;
+
   return (
     <section className={cn('space-y-3', className)}>
-      <h3 className="font-headline text-[13px] font-bold uppercase tracking-wider text-muted-foreground">
+      <Heading className="font-headline text-[13px] font-bold uppercase tracking-wider text-muted-foreground">
         {title}
-      </h3>
+      </Heading>
       <div className="border-t border-aqua-hairline/25 pt-4">{children}</div>
     </section>
   );
@@ -317,6 +321,103 @@ function ProjectResources({ resources }: { resources: ProjectResource[] }) {
   );
 }
 
+export function ProjectDetailContent({
+  project,
+  headingLevel = 'h2',
+}: {
+  project: Project;
+  headingLevel?: 'h2' | 'h3';
+}) {
+  const detail = project.detail;
+  if (!detail) return null;
+
+  const hasShots = shotCount(detail) > 0;
+
+  return (
+    <div className="space-y-8 p-5 md:p-8">
+      <Section title="Overview" headingLevel={headingLevel}>
+        <p className="text-[14px] leading-relaxed text-muted-foreground">{detail.overview}</p>
+      </Section>
+
+      <Section title="My role" headingLevel={headingLevel}>
+        <p className="text-[14px] leading-relaxed text-muted-foreground">{detail.role}</p>
+      </Section>
+
+      {detail.facts && detail.facts.length > 0 && (
+        <Section title="Project details" headingLevel={headingLevel}>
+          <ProjectFacts facts={detail.facts} />
+        </Section>
+      )}
+
+      {hasShots && (
+        <Section title="Screenshots" headingLevel={headingLevel}>
+          <div className="space-y-6">
+            <DesktopGallery shots={detail.shots.desktop} title={project.title} />
+            <FullPageStrip shots={detail.shots.fullPage} title={project.title} />
+            <MobileStrip shots={detail.shots.mobile} title={project.title} />
+          </div>
+        </Section>
+      )}
+
+      {detail.resources && detail.resources.length > 0 && (
+        <Section title="Project media" headingLevel={headingLevel}>
+          <ProjectResources resources={detail.resources} />
+        </Section>
+      )}
+
+      {detail.lessons.length > 0 && (
+        <Section title="Lessons learned" headingLevel={headingLevel}>
+          <ul className="space-y-4">
+            {detail.lessons.map((lesson) => (
+              <li key={lesson.skill} className="flex flex-col gap-1">
+                <span className="w-fit rounded-control border border-aqua-hairline/30 bg-black/[0.03] px-2 py-0.5 text-[11px] font-bold text-foreground dark:bg-white/[0.05]">
+                  {lesson.skill}
+                </span>
+                <p className="text-[14px] leading-relaxed text-muted-foreground">{lesson.note}</p>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
+
+      <Section title="Technology & approach" headingLevel={headingLevel}>
+        <div className="flex flex-wrap gap-1.5">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="rounded-control border border-aqua-hairline/30 bg-black/[0.03] px-2 py-0.5 text-[11px] font-bold text-muted-foreground dark:bg-white/[0.04]"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Links" headingLevel={headingLevel}>
+        {project.link ? (
+          <Button asChild className="btn-aqua btn-aqua-primary h-10 w-full sm:w-auto">
+            <a href={project.link} target="_blank" rel="noopener noreferrer">
+              <span className="flex items-center gap-2">
+                {project.linkKind === 'github' ? 'View on GitHub' : 'View demo'}
+                {project.linkKind === 'github' ? (
+                  <Github className="h-4 w-4" />
+                ) : (
+                  <ArrowUpRight className="h-4 w-4" />
+                )}
+              </span>
+            </a>
+          </Button>
+        ) : (
+          <p className="flex w-fit items-center gap-2 rounded-control border border-aqua-hairline/30 bg-black/[0.02] px-3 py-2 text-[12px] font-bold text-muted-foreground dark:bg-white/[0.03]">
+            <Lock className="h-3.5 w-3.5" aria-hidden="true" />
+            No public demo
+          </p>
+        )}
+      </Section>
+    </div>
+  );
+}
+
 export default function ProjectDetailDialog({
   project,
   open,
@@ -348,87 +449,7 @@ export default function ProjectDetailDialog({
         </span>
       }
     >
-      <div className="space-y-8 p-5 md:p-8">
-        <Section title="Overview">
-          <p className="text-[14px] leading-relaxed text-muted-foreground">{detail.overview}</p>
-        </Section>
-
-        <Section title="My role">
-          <p className="text-[14px] leading-relaxed text-muted-foreground">{detail.role}</p>
-        </Section>
-
-        {detail.facts && detail.facts.length > 0 && (
-          <Section title="Project details">
-            <ProjectFacts facts={detail.facts} />
-          </Section>
-        )}
-
-        {hasShots && (
-          <Section title="Screenshots">
-            <div className="space-y-6">
-              <DesktopGallery shots={detail.shots.desktop} title={project.title} />
-              <FullPageStrip shots={detail.shots.fullPage} title={project.title} />
-              <MobileStrip shots={detail.shots.mobile} title={project.title} />
-            </div>
-          </Section>
-        )}
-
-        {detail.resources && detail.resources.length > 0 && (
-          <Section title="Project media">
-            <ProjectResources resources={detail.resources} />
-          </Section>
-        )}
-
-        {detail.lessons.length > 0 && (
-          <Section title="Lessons learned">
-            <ul className="space-y-4">
-              {detail.lessons.map((lesson) => (
-                <li key={lesson.skill} className="flex flex-col gap-1">
-                  <span className="w-fit rounded-control border border-aqua-hairline/30 bg-black/[0.03] px-2 py-0.5 text-[11px] font-bold text-foreground dark:bg-white/[0.05]">
-                    {lesson.skill}
-                  </span>
-                  <p className="text-[14px] leading-relaxed text-muted-foreground">{lesson.note}</p>
-                </li>
-              ))}
-            </ul>
-          </Section>
-        )}
-
-        <Section title="Technology & approach">
-          <div className="flex flex-wrap gap-1.5">
-            {project.tech.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-control border border-aqua-hairline/30 bg-black/[0.03] px-2 py-0.5 text-[11px] font-bold text-muted-foreground dark:bg-white/[0.04]"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </Section>
-
-        <Section title="Links">
-          {project.link ? (
-            <Button asChild className="btn-aqua btn-aqua-primary h-10 w-full sm:w-auto">
-              <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <span className="flex items-center gap-2">
-                  {project.linkKind === 'github' ? 'View on GitHub' : 'View demo'}
-                  {project.linkKind === 'github' ? (
-                    <Github className="h-4 w-4" />
-                  ) : (
-                    <ArrowUpRight className="h-4 w-4" />
-                  )}
-                </span>
-              </a>
-            </Button>
-          ) : (
-            <p className="flex w-fit items-center gap-2 rounded-control border border-aqua-hairline/30 bg-black/[0.02] px-3 py-2 text-[12px] font-bold text-muted-foreground dark:bg-white/[0.03]">
-              <Lock className="h-3.5 w-3.5" aria-hidden="true" />
-              No public demo
-            </p>
-          )}
-        </Section>
-      </div>
+      <ProjectDetailContent project={project} headingLevel="h3" />
     </AquaDialog>
   );
 }
