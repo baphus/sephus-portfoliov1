@@ -7,24 +7,38 @@ import { Button } from '@/components/ui/button';
 import AquaWindow from '@/components/ui/aqua-window';
 import Link from 'next/link';
 
-const RESUME_LINK =
-  'https://drive.google.com/file/d/1DuSx0NbhRIhrQStPamOgR52aI2DZD75D/view?usp=sharing';
+const RESUME_LINK = '/resume.pdf';
 
 /**
- * One entry, because there is one job. The projects that used to sit here with
- * job-shaped titles live on the Projects page, which is where they belong.
+ * Two entries: freelance work and a prior traineeship. The projects that used to
+ * sit here with job-shaped titles live on the Projects page, which is where they belong.
  */
-const role = {
-  title: 'Full-Stack Software Engineer Trainee',
-  company: 'Edufied Pte',
-  location: 'Remote',
-  period: 'May 2026 – Present',
-  work: [
-    'Build and maintain full-stack web applications across the SDLC, from requirements gathering through to deployment.',
-    'Join daily scrum, working with the team to troubleshoot issues and improve how the system behaves.',
-    'Evaluate and integrate software tools, keep application security current, and write the technical documentation.',
-  ],
-};
+const roles = [
+  {
+    title: 'Freelance Software Developer',
+    company: 'CKGrounds',
+    location: 'Remote',
+    period: 'Oct 2026 – Present',
+    badge: 'Current',
+    work: [
+      'Pickleball court booking and management system with email notifications + admin tools for rentals/courts/bookings.',
+      'Serverless functions with Next.js + TypeScript, PostgreSQL storage, deployed on Vercel.',
+      'QR code scanning to booking status tracker.',
+    ],
+  },
+  {
+    title: 'Full Stack Developer Trainee',
+    company: 'Edufied Pte',
+    location: 'Remote',
+    period: 'May 2026 – Oct 2026',
+    badge: undefined,
+    work: [
+      'Full-stack apps across SDLC from requirements to deployment+docs.',
+      'Daily Scrum troubleshooting, security evaluation, tool evaluation.',
+      'Onboarded new interns (dev env setup + project workflows).',
+    ],
+  },
+];
 
 export default function Experience() {
   return (
@@ -46,39 +60,47 @@ export default function Experience() {
             </p>
 
             <div className="space-y-5 border-t border-aqua-hairline/25 pt-6">
-              <div className="flex flex-wrap items-center gap-3">
-                <h3 className="font-headline text-2xl font-bold text-foreground">{role.title}</h3>
-                <span className="rounded-control border border-emerald-600/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-400">
-                  Current
-                </span>
-              </div>
+              {roles.map((role, i) => (
+                <div key={role.title} className="space-y-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="font-headline text-2xl font-bold text-foreground">
+                      {role.title}
+                    </h3>
+                    {role.badge && (
+                      <span className="rounded-control border border-emerald-600/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-400">
+                        Current
+                      </span>
+                    )}
+                  </div>
 
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-muted-foreground">
-                <span className="flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-aqua-graphite" />
-                  {role.company}
-                </span>
-                <span className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-aqua-graphite" />
-                  {role.location}
-                </span>
-                <span className="flex items-center gap-2">
-                  <CalendarDays className="h-4 w-4 text-aqua-graphite" />
-                  {role.period}
-                </span>
-              </div>
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-muted-foreground">
+                    <span className="flex items-center gap-2">
+                      <Building2 className="h-4 w-4 text-aqua-graphite" />
+                      {role.company}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-aqua-graphite" />
+                      {role.location}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <CalendarDays className="h-4 w-4 text-aqua-graphite" />
+                      {role.period}
+                    </span>
+                  </div>
 
-              <ul className="space-y-3">
-                {role.work.map((item) => (
-                  <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground">
-                    <span
-                      className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-aqua-blue"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+                  <ul className="space-y-3">
+                    {role.work.map((item) => (
+                      <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground">
+                        <span
+                          className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-aqua-blue"
+                          aria-hidden="true"
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </AquaWindow>
