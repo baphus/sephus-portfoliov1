@@ -7,11 +7,11 @@ import { ArrowRight, Eye } from 'lucide-react';
 import AquaWindow from '@/components/ui/aqua-window';
 import { projectPath, projects } from '@/lib/projects-data';
 
-const featuredProjectIds = ['tulai', 'owbap', 'letreview'] as const;
+const featuredProjectIds = ['ckgrounds', 'owbap', 'letreview'] as const;
 
 const cardCopy: Record<(typeof featuredProjectIds)[number], string> = {
-  tulai:
-    'A multilingual scholarship discovery prototype built at my first hackathon for Filipino students.',
+  ckgrounds:
+    'A live pickleball court booking and management system with QR status tracking, built freelance with Next.js and PostgreSQL.',
   owbap:
     'An inter-agency case management system for distressed OFW cases, led and architected with a four-person team.',
   letreview:
@@ -46,7 +46,7 @@ export default function FeaturedProjects() {
               A few things I&apos;ve built
             </h2>
             <p className="max-w-[62ch] text-[15px] leading-relaxed text-muted-foreground">
-              Selected work across public service, education, and rapid product prototyping.
+              Selected work across public service, education, and client work.
             </p>
           </div>
 

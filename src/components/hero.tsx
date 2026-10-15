@@ -96,7 +96,8 @@ export default function Hero() {
                 I work across the whole stack: gathering requirements, designing the database,
                 building the backend and the interface, then deploying it. I led a team of four
                 on OWBAP, an inter-agency case management system for the Department of Migrant
-                Workers, and I&apos;m finishing a BS in Information Systems at Cebu Technological
+                Workers, and I&apos;m currently building CKGrounds, a live court booking system,
+                while finishing a BS in Information Systems at Cebu Technological
                 University.
               </motion.p>
             </div>

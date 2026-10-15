@@ -19,7 +19,7 @@ const communityRoles = [
     role: 'Core Tech Officer',
     organization: 'AWS Student Builder Group — Cebu Technological University',
     description:
-      'Helping create a campus community where students can learn, experiment, and build with cloud technology together.',
+      'Volunteer chapter officer helping run a campus community where students learn, experiment, and build with cloud technology together — supporting member projects and hands-on learning.',
     image: '/about/aws-sbg-ctu.jpg',
     imageAlt: 'AWS Student Builder Group at Cebu Technological University artwork',
   },
@@ -27,7 +27,7 @@ const communityRoles = [
     role: 'Web & Systems Lead',
     organization: 'Google Developer Groups — CTU Main',
     description:
-      'Guiding the group’s web presence and the systems that support its community at CTU Main.',
+      'Volunteer lead for the group’s web presence and community systems, including the official chapter website — built and maintained with contributions from the technical team.',
     image: '/about/gdg-ctu.jpg',
     imageAlt: 'Google Developer Groups CTU Main artwork',
   },
@@ -77,7 +77,7 @@ export default function About() {
           More than the stack
         </h2>
         <p className="max-w-[65ch] text-[15px] leading-relaxed text-muted-foreground md:text-base">
-          The person, communities, and working style behind the projects.
+          The person, volunteer work, and working style behind the projects.
         </p>
       </motion.div>
 
@@ -149,7 +149,7 @@ export default function About() {
                       aria-hidden="true"
                     />
                     <span className="leading-relaxed text-muted-foreground">
-                      Full-Stack Software Engineer Trainee at Edufied Pte
+                      Freelance Software Developer at CKGrounds
                     </span>
                   </div>
                 </div>
@@ -167,7 +167,7 @@ export default function About() {
           className="lg:col-span-5"
         >
           <AquaWindow
-            title="Community"
+            title="Volunteering"
             className="h-full"
             bodyClassName="h-full"
             contentClassName="flex h-full flex-col"
@@ -177,7 +177,7 @@ export default function About() {
                 Building with students at CTU Main
               </div>
             }
-            statusBar={<span>2 campus leadership roles</span>}
+            statusBar={<span>2 campus volunteer roles</span>}
           >
             <div className="flex flex-1 flex-col divide-y divide-aqua-hairline/25">
               {communityRoles.map((item) => {
