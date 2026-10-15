@@ -251,7 +251,7 @@ export const projects: Project[] = [
     categoryLabel: 'Independent',
     featured: true,
     description:
-      'A verification platform for application intake and evaluator review. Access is enforced with role-based permissions and Postgres row-level security, and receipts carry encrypted tokens that verify by QR scan.',
+      'Verification platform for application intake and evaluator review, built for Department of Migrant Workers – Region 7, automating document verification with QR codes and email notifications. Access is enforced with role-based permissions and Postgres row-level security, and receipts carry encrypted tokens that verify by QR scan.',
     image: image('oec-verify')?.url,
     hint: image('oec-verify')?.hint,
     tech: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS'],
@@ -295,7 +295,7 @@ export const projects: Project[] = [
     categoryLabel: 'Client work',
     featured: true,
     description:
-      "A reviewer system for Cebu Normal University's BLEPT department. Students get mock exams, flashcards, score analytics and scheduling; staff get exam import and export, so content no longer has to be keyed in by hand. I translated the department's requirements into the workflows the system runs on.",
+      "A reviewer system for Cebu Normal University's BLEPT department. Admin / student / reviewer roles. Students get mock exams, flashcards, score analytics and scheduling; staff get exam import and export, including Excel template upload for automated batch upload of flashcard + mock-exam resources. Gamified student features (daily streaks, achievements) keep engagement high. I translated the department's requirements into the workflows the system runs on.",
     image: image('normalite')?.url,
     hint: image('normalite')?.hint,
     tech: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL'],
@@ -387,6 +387,86 @@ export const projects: Project[] = [
     },
   },
   {
+    id: 'ckgrounds',
+    title: 'CKGrounds Pickleball Booking System',
+    monogram: 'CG',
+    category: 'client',
+    categoryLabel: 'Client work',
+    featured: true,
+    description:
+      'Booking and management system for pickleball courts with email notifications and admin tools for rentals/courts/bookings. QR code scanning to booking status tracker.',
+    image: image('ckgrounds')?.url,
+    hint: image('ckgrounds')?.hint,
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Vercel'],
+    link: 'https://ckgrounds.vercel.app',
+    linkKind: 'demo',
+    detail: {
+      overview:
+        'CKGrounds Pickleball Booking System: a booking and management system for pickleball courts with email notifications and admin tools for rentals/courts/bookings. QR code scanning to booking status tracker.',
+      role: 'Freelance Software Developer — sole developer, Oct 2026–Present',
+      shots: {
+        desktop: [{ src: '/portfolio/ckgrounds/ckgrounds.png' }],
+        fullPage: [],
+        mobile: [
+          { src: '/portfolio/ckgrounds/ckgrounds-mobile-1.png' },
+          { src: '/portfolio/ckgrounds/ckgrounds-mobile-2.png' },
+          { src: '/portfolio/ckgrounds/ckgrounds-mobile-3.png' },
+          { src: '/portfolio/ckgrounds/ckgrounds-mobile-4.png' },
+        ],
+      },
+      lessons: [
+        {
+          skill: 'Serverless functions',
+          note: 'Next.js serverless functions with PostgreSQL storage, deployed on Vercel.',
+        },
+        {
+          skill: 'QR status tracking',
+          note: 'QR code scanning to update booking status tracker.',
+        },
+        {
+          skill: 'Admin tooling',
+          note: 'Admin tools for managing rentals, courts, and bookings.',
+        },
+      ],
+      todos: [],
+    },
+  },
+  {
+    id: 'gdgoc',
+    title: 'GDGOC Official Website',
+    monogram: 'GD',
+    category: 'personal',
+    categoryLabel: 'Independent',
+    featured: false,
+    description:
+      'Official Google Developer Groups on Campus website for CTU–Main Campus, coordinating technical team contributions and site updates.',
+    image: image('gdgoc')?.url,
+    hint: image('gdgoc')?.hint,
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    link: 'https://ctu-gdgoc.vercel.app',
+    linkKind: 'demo',
+    detail: {
+      overview:
+        'GDGOC Official Website: the Google Developer Groups on Campus website for CTU–Main Campus, coordinating technical team contributions and site updates.',
+      role: 'Developer and maintainer — coordinates technical team contributions and site updates.',
+      shots: {
+        desktop: [
+          { src: '/portfolio/gdgoc/gdgoc.png' },
+          { src: '/portfolio/gdgoc/gdgoc2.png' },
+        ],
+        fullPage: [],
+        mobile: [],
+      },
+      lessons: [
+        {
+          skill: 'Maintaining a team site',
+          note: 'Coordinating technical team contributions and keeping the chapter site current.',
+        },
+      ],
+      todos: ['Desktop screenshots added. Add mobile-viewport captures if the site is viewed on phones.'],
+    },
+  },
+  {
     id: 'bnhs',
     title: 'BNHS eDocument Request and Tracking',
     monogram: 'BN',
@@ -403,7 +483,7 @@ export const projects: Project[] = [
     detail: {
       overview:
         'Bato National High School was running document requests on paper. This replaces that with a request and tracking system: the backend is Laravel on an MVC structure over a PostgreSQL schema I designed, Livewire handles the interactive parts without leaving PHP, and Cloudinary stores the uploaded files.',
-      role: 'Backend developer and database designer. Requirements came from sitting down with the school administration directly.',
+      role: 'Led a three-person team analyzing Bato National High School workflow; backend Laravel/PostgreSQL, email notifications, and status tracking.',
       shots: {
         desktop: [{ src: '/portfolio/bnhs/bnhs-2.png' }],
         fullPage: [

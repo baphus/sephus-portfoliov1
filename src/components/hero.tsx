@@ -55,7 +55,7 @@ export default function Hero() {
             >
               <p className="inline-flex w-fit items-center gap-2 rounded-control border border-aqua-hairline/40 bg-white/70 px-3 py-1.5 text-[12px] font-bold text-foreground shadow-sm dark:bg-black/30">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]" />
-                Full-Stack Software Engineer Trainee at Edufied Pte
+                Freelance Software Developer — CKGrounds
               </p>
             </motion.div>
 
