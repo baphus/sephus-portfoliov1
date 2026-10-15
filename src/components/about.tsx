@@ -24,10 +24,10 @@ const communityRoles = [
     imageAlt: 'AWS Student Builder Group at Cebu Technological University artwork',
   },
   {
-    role: 'Web & Systems Lead',
+    role: 'Chief Technical Officer',
     organization: 'Google Developer Groups — CTU Main',
     description:
-      'Volunteer lead for the group’s web presence and community systems, including the official chapter website — built and maintained with contributions from the technical team.',
+      'Volunteer technical lead for the group’s web presence and community systems, including the official chapter website — built and maintained with contributions from the technical team.',
     image: '/about/gdg-ctu.jpg',
     imageAlt: 'Google Developer Groups CTU Main artwork',
   },
