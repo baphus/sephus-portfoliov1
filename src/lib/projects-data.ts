@@ -85,6 +85,51 @@ const image = (id: string) => imageData.projects.find((p) => p.id === id);
  */
 export const projects: Project[] = [
   {
+    id: 'ckgrounds',
+    title: 'CKGrounds Pickleball Booking System',
+    monogram: 'CG',
+    category: 'client',
+    categoryLabel: 'Client work',
+    featured: true,
+    description:
+      'Booking and management system for pickleball courts with email notifications and admin tools for rentals/courts/bookings. QR code scanning to booking status tracker.',
+    image: image('ckgrounds')?.url,
+    hint: image('ckgrounds')?.hint,
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Vercel'],
+    link: 'https://ckgrounds.vercel.app',
+    linkKind: 'demo',
+    detail: {
+      overview:
+        'CKGrounds Pickleball Booking System: a booking and management system for pickleball courts with email notifications and admin tools for rentals/courts/bookings. QR code scanning to booking status tracker.',
+      role: 'Freelance Software Developer — sole developer, Oct 2026–Present',
+      shots: {
+        desktop: [{ src: '/portfolio/ckgrounds/ckgrounds.png' }],
+        fullPage: [],
+        mobile: [
+          { src: '/portfolio/ckgrounds/ckgrounds-mobile-1.png' },
+          { src: '/portfolio/ckgrounds/ckgrounds-mobile-2.png' },
+          { src: '/portfolio/ckgrounds/ckgrounds-mobile-3.png' },
+          { src: '/portfolio/ckgrounds/ckgrounds-mobile-4.png' },
+        ],
+      },
+      lessons: [
+        {
+          skill: 'Serverless functions',
+          note: 'Next.js serverless functions with PostgreSQL storage, deployed on Vercel.',
+        },
+        {
+          skill: 'QR status tracking',
+          note: 'QR code scanning to update booking status tracker.',
+        },
+        {
+          skill: 'Admin tooling',
+          note: 'Admin tools for managing rentals, courts, and bookings.',
+        },
+      ],
+      todos: [],
+    },
+  },
+  {
     id: 'tulai',
     title: 'Tul.AI — Scholarship Opportunity Bridge',
     monogram: 'TA',
@@ -384,51 +429,6 @@ export const projects: Project[] = [
         'Add a desktop screenshot of quiz mode and of the achievements screen.',
         'Caption letreviewmobile1 through 5 — the first four mobile shots are captioned, these are not.',
       ],
-    },
-  },
-  {
-    id: 'ckgrounds',
-    title: 'CKGrounds Pickleball Booking System',
-    monogram: 'CG',
-    category: 'client',
-    categoryLabel: 'Client work',
-    featured: true,
-    description:
-      'Booking and management system for pickleball courts with email notifications and admin tools for rentals/courts/bookings. QR code scanning to booking status tracker.',
-    image: image('ckgrounds')?.url,
-    hint: image('ckgrounds')?.hint,
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Vercel'],
-    link: 'https://ckgrounds.vercel.app',
-    linkKind: 'demo',
-    detail: {
-      overview:
-        'CKGrounds Pickleball Booking System: a booking and management system for pickleball courts with email notifications and admin tools for rentals/courts/bookings. QR code scanning to booking status tracker.',
-      role: 'Freelance Software Developer — sole developer, Oct 2026–Present',
-      shots: {
-        desktop: [{ src: '/portfolio/ckgrounds/ckgrounds.png' }],
-        fullPage: [],
-        mobile: [
-          { src: '/portfolio/ckgrounds/ckgrounds-mobile-1.png' },
-          { src: '/portfolio/ckgrounds/ckgrounds-mobile-2.png' },
-          { src: '/portfolio/ckgrounds/ckgrounds-mobile-3.png' },
-          { src: '/portfolio/ckgrounds/ckgrounds-mobile-4.png' },
-        ],
-      },
-      lessons: [
-        {
-          skill: 'Serverless functions',
-          note: 'Next.js serverless functions with PostgreSQL storage, deployed on Vercel.',
-        },
-        {
-          skill: 'QR status tracking',
-          note: 'QR code scanning to update booking status tracker.',
-        },
-        {
-          skill: 'Admin tooling',
-          note: 'Admin tools for managing rentals, courts, and bookings.',
-        },
-      ],
-      todos: [],
     },
   },
   {

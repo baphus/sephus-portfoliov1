@@ -170,10 +170,11 @@ export default function Portfolio() {
         <AquaWindow title="Projects">
           <div className="space-y-5 p-6 md:p-8">
             <p className="max-w-2xl text-[14px] leading-relaxed text-muted-foreground">
-              Nine projects, including Tul.AI from my first hackathon, a case management system
-              for a government agency, two client systems, a licensure reviewer that reached 120
-              users in its first two weeks, and the coursework I learned on. Open any one for
-              screenshots, project media and what it taught me.
+              Eleven projects, led by CKGrounds, a live court booking system — plus Tul.AI
+              from my first hackathon, a case management system for a government agency,
+              client systems, a licensure reviewer that reached 120 users in its first
+              two weeks, and the coursework I learned on. Open any one for screenshots,
+              project media and what it taught me.
             </p>
             <AquaSegmentedControl
               segments={segments}
