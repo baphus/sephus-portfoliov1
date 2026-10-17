@@ -103,7 +103,17 @@ export const projects: Project[] = [
         'CKGrounds Pickleball Booking System: a booking and management system for pickleball courts with email notifications and admin tools for rentals/courts/bookings. QR code scanning to booking status tracker.',
       role: 'Freelance Software Developer — sole developer, Oct 2026–Present',
       shots: {
-        desktop: [{ src: '/portfolio/ckgrounds/ckgrounds.png' }],
+        desktop: [
+          { src: '/portfolio/ckgrounds/ckgrounds.png' },
+          { src: '/portfolio/ckgrounds/ckgrounds1.png', caption: 'Admin dashboard — revenue, bookings and pending approvals' },
+          { src: '/portfolio/ckgrounds/ckgrounds2.png', caption: 'Bookings — search, filter and approve requests' },
+          { src: '/portfolio/ckgrounds/ckgrounds3.png', caption: 'Booking calendar — monthly view' },
+          { src: '/portfolio/ckgrounds/ckgrounds4.png', caption: 'Booking calendar — weekly schedule of approved bookings' },
+          { src: '/portfolio/ckgrounds/ckgrounds5.png', caption: 'Revenue — date ranges, totals and monthly chart' },
+          { src: '/portfolio/ckgrounds/ckgrounds6.png', caption: 'Activity log — every submission and approval, audit-logged' },
+          { src: '/portfolio/ckgrounds/ckgrounds7.png', caption: 'Courts & pricing — per-court weekday and weekend rates' },
+          { src: '/portfolio/ckgrounds/ckgrounds8.png', caption: 'Hours & closures — operating hours and scheduled closures' },
+        ],
         fullPage: [],
         mobile: [
           { src: '/portfolio/ckgrounds/ckgrounds-mobile-1.png' },
